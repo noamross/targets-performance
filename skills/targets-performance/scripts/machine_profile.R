@@ -8,7 +8,7 @@ dir <- if (length(args)) args[[1]] else "."
 
 has <- function(p) nzchar(system.file(package = p))
 line <- function(label, value) cat(sprintf("%-26s %s\n", label, paste(value, collapse = " ")))
-read1 <- function(f) if (file.exists(f)) trimws(readLines(f, n = 1, warn = FALSE)) else NA
+read1 <- function(f) if (file.exists(f)) trimws(readLines(f, n = 1, warn = FALSE)) else NA_character_
 
 # Machine ----
 si <- Sys.info()
