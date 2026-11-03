@@ -1,0 +1,101 @@
+---
+title: "Branching and batching"
+---
+
+```{r}
+source("_helpers.R")
+c6 <- "targets_mech/results/c6_branching.csv"
+c6b <- "targets_mech/results/c6b_tar_rep.csv"
+c6c <- "targets_mech/results/c6c_bigmap.csv"
+c7 <- "targets_mech/results/c7_static.csv"
+c1 <- "targets_mech/results/c1_nproc.csv"
+b6 <- function(m) v1(c6, method = m, col = "wall_s")
+rp <- function(m) v1(c6b, method = m, col = "wall_s")
+bm <- function(m, col = "wall_s") v1(c6c, method = m, col = col)
+s7 <- function(m, n) v1(c7, method = m, n = n, col = "wall_s")
+ov_list <- (b6("serial list B=1000") - b6("serial one target")) / 1000
+ov_group <- (b6("serial group B=1000") - b6("serial one target")) / 1000
+```
+
+**When this matters.** You are adding, removing or resizing branches; `tar_profile.R` flags many tiny branches; or branches read a big table. Branching is first a **design tool**: static branching (`tar_map()`) gives one named target per region, country or scenario, and dynamic branching (`pattern = map()`) gives one branch per file or key. Both make the pipeline readable and **cache at the branch level**: when one input changes, only its branch reruns. Speed is a third concern. Never add or remove branching for speed alone without weighing what it does to organization and incremental rebuilds.
+
+## Branching does not speed up a serial run
+
+Every branch is a target with its own bookkeeping, save and load. The same 5 s of work (1e4 rows at 0.5 ms each):
+
+```{r}
+tbl(data.frame(
+  setup = c("one target", "10 branches", "100 branches", "1000 branches (list chunks)", "1000 branches (`tar_group_count`)"),
+  serial = secs(c(b6("serial one target"), b6("serial list B=10"), b6("serial list B=100"), b6("serial list B=1000"), b6("serial group B=1000"))),
+  `4 workers` = secs(c(b6("nproc=4 one target"), b6("nproc=4 list B=10"), b6("nproc=4 list B=100"), b6("nproc=4 list B=1000"), b6("nproc=4 group B=1000"))),
+  check.names = FALSE))
+```
+
+`r src_line(c6)`
+
+- Serially, overhead was a few ms per branch: invisible at 100 branches, a large share at 1000 branches of 5 ms.
+- With workers, branches are how one big job uses several cores. 10-100 branches gave the speedup; 1000 gave part of it back to overhead.
+- Per-target overhead was similar for static and dynamic branching (`tar_map` vs `map()`: `r secs(s7("static tar_map rep1", 300))` vs `r secs(s7("dynamic map rep1", 300))` for 300 targets of 50 ms). Choose between them on design, not speed. `r src_line(c7)`
+- Under crew each target also pays a worker round trip, and the main process dispatches one target at a time (`parallelism.md`).
+
+**Rule of thumb:** each branch should do at least 10-20 times the per-branch overhead (here about `r ms(ov_list)` serial with list chunks, `r ms(ov_group)` with `tar_group_count`), ideally half a second or more; use 2 to ~25 branches per worker. If the work is naturally tiny per item, batch it.
+
+## Batching
+
+Group tiny items into fewer branches. For replications, `tarchetypes::tar_rep(name, command, batches = B, reps = R)` runs R reps per batch; seeds do not depend on batching, so re-batching is safe. 1000 replications of 20 ms:
+
+```{r}
+tbl(data.frame(
+  batches = c(1000, 100, 40, 10, 4),
+  serial = secs(c(rp("serial tar_rep batches=1000 reps=1"), rp("serial tar_rep batches=100 reps=10"), rp("serial tar_rep batches=40 reps=25"), rp("serial tar_rep batches=10 reps=100"), NA)),
+  `4 workers` = secs(c(rp("nproc=4 tar_rep batches=1000 reps=1"), rp("nproc=4 tar_rep batches=100 reps=10"), rp("nproc=4 tar_rep batches=40 reps=25"), rp("nproc=4 tar_rep batches=10 reps=100"), rp("nproc=4 tar_rep batches=4 reps=250"))),
+  check.names = FALSE))
+```
+
+`r src_line(c6b)` Ideal: 20 s of work serially, 5 s on 4 workers, plus 1-2 s of start-up. Serial with 4 batches not run.
+
+For data, chunk with `tarchetypes::tar_group_count()` / `tar_group_size()` (`iteration = "group"`), or a list target of chunks with `iteration = "list"`; `tar_group_count` had lower per-branch overhead than a list target. `tar_map_rep()` combines static parameters with batched replications. Batches = 2-10 × workers works when items cost about the same; use more when costs vary.
+
+## Mapping over a big stored table
+
+Four ways to run branches over one 200 MB table: map over the table itself (A, `iteration = "group"`), map over a list of chunks stored as one target (B), let each branch take the whole table as an ordinary dependency (C), or build each chunk as its own branch target and map over those (D). What A and B cost depends on `retrieval`:
+
+```{r}
+lab <- c("A: map over group-iterated big table", "B: map over list-of-chunks target", "C: branches take whole table as dependency", "D: each chunk built as its own branch target")
+lay <- c("A map over group-iterated big table target", "B map over list-of-chunks target (one stored object)", "C branches use the whole table as static dependency", "D chunks produced per branch (dynamic chunk target)")
+cm <- function(mode, retr, l) sprintf("%s [retrieval=%s]: %s", mode, retr, l)
+col_of <- function(mode, retr, col, f) vapply(lay, \(l) f(bm(cm(mode, retr, l), col = col)), "")
+ld <- function(v) as.character(v)
+tbl(data.frame(layout = lab,
+               `reads, default (serial / 3 workers)` = paste(col_of("serial", "auto", "loads", ld), "/", col_of("nproc=3", "auto", "loads", ld)),
+               `3 workers wall, default` = col_of("nproc=3", "auto", "wall_s", secs),
+               `3 workers peak, default` = col_of("nproc=3", "auto", "peak_rss_mb", mb),
+               `reads, worker (serial / 3 workers)` = paste(col_of("serial", "worker", "loads", ld), "/", col_of("nproc=3", "worker", "loads", ld)),
+               `3 workers wall, worker` = col_of("nproc=3", "worker", "wall_s", secs),
+               check.names = FALSE))
+a_def <- bm(cm("nproc=3", "auto", lay[1]))
+a_wrk <- bm(cm("nproc=3", "worker", lay[1]))
+d_def <- bm(cm("nproc=3", "auto", lay[4]))
+```
+
+`r src_line(c6c)` 200 MB table, 6 branches of 0.5 s. "Default" = `retrieval = "auto"` (targets ≥ 1.11); "worker" = `retrieval = "worker"`. Reads count whole-table loads (D: loads of the small chunks).
+
+- **Default retrieval (A, B):** a pattern that maps over a stored non-dynamic target makes `"auto"` act as `"main"`: main loads the table once (it stays in memory, since `memory = "auto"` keeps it) and sends each branch only its slice. With 3 workers A took `r secs(a_def)` vs `r secs(a_wrk)` with worker retrieval. The cost moves to main, which must hold the whole table.
+- **`retrieval = "worker"` (A, B):** every branch reads the whole object, then slices it. Avoid A and B with explicit worker retrieval.
+- **C** reads the whole table in every branch under either setting: the branches do not map over it, so `"auto"` acts as `"worker"`.
+- **D** was the fastest and lightest with 3 workers (`r secs(d_def)`), because each branch builds and loads only its own chunk. Prefer it when the table is big relative to main's memory: a branch target per chunk (for example `pattern = map(ids)` producing each chunk), then map the work over those chunks.
+
+## Organization and caching, with numbers that matter less
+
+- Split a monolithic target when its inputs change independently (one file per year, one model per region): a change reruns one branch instead of the whole job.
+- Keep a branch's identity stable (map over a key or file name, not row positions) so adding an item does not rebuild the others.
+- Name static branches by their values (`tar_map(values = tibble(region = ...), names = region)`) so `tar_meta()` and `tar_visnetwork()` stay readable; combine with `tar_combine()`.
+- Many thousands of branches slow the dependency check and the store (one file per branch: `r num(v1(c6b, method = "serial tar_rep batches=1000 reps=1", col = "completed"))` targets for 1000 single-rep batches vs `r num(v1(c6b, method = "serial tar_rep batches=10 reps=100", col = "completed"))` for 10 batches).
+
+## Traps
+
+- More branches than workers × ~25 add overhead without speedup.
+- `iteration = "list"` vs `"vector"`: vectors and data frames split by row with vctrs; non-vctrs objects need `"list"`.
+- `format = "file"` branches store one file bundle per branch.
+- Seeds: branches get their own seeds from their names; renaming branches changes random results.
+- With crew, a branch that captures a big global object ships it to the worker every time; pass data as targets instead.

@@ -1,0 +1,78 @@
+---
+title: "Operation order: do less work, earlier"
+---
+
+```{r}
+source("_helpers.R")
+od <- "remote/results/ordering.csv"
+ss <- csv("remote/results/ordering_store_size.csv")
+o <- function(task, eng) x(ratio(csv(od), paste0(eng, "_bad"), paste0(eng, "_good"), task = task))
+```
+
+**When this matters.** A target filters, joins, aggregates or sorts a large table and spends its time on rows or columns it later drops; or big intermediate targets are cached only to be filtered downstream. Database optimizers reorder such work automatically. dplyr, data.table and base R run your steps in the order written.
+
+## The rules
+
+1. **Filter early** (predicate pushdown): filter before an expensive `mutate()`, before joins, before per-row functions.
+2. **Select early** (projection pushdown): keep only needed columns, especially before joins and before saving.
+3. **Aggregate before joining** when the join only adds labels to a summary.
+4. **Filter with a semi-join** (or filter the small table) before an expensive join.
+5. **Deduplicate before costly per-row work**: run `distinct()` / `unique()` on the inputs of an expensive function, compute, then join or `match()` back (`vectorization.md`).
+6. **Sort last**, or not at all.
+7. **Avoid wide intermediates**: do not join everything into one wide table "just in case".
+
+## Measured: wrong order vs right order
+
+Ratio = time with the expensive step first / time with the cheap reduction first. 2e6 rows; every variant returned the same result.
+
+```{r}
+tasks <- c(a1_mutate_filter = "regex `mutate()` then `filter()` (5% kept)", a2a_join_filter_fact = "join then filter on a fact column (1% kept)",
+           a2b_join_filter_dim = "join then filter on a dimension column", a2c_join_agg = "join then aggregate (vs aggregate then join)",
+           a3a_arrange_early = "`arrange()` first (vs last)", a3b_distinct_first = "regex on all rows then `distinct()` (vs distinct first)")
+tbl(data.frame(pipeline = unname(tasks),
+  dplyr = vapply(names(tasks), o, "", eng = "dplyr"), data.table = vapply(names(tasks), o, "", eng = "dt"),
+  duckplyr = vapply(names(tasks), o, "", eng = "duckplyr"), `dbplyr + duckdb` = vapply(names(tasks), o, "", eng = "dbplyr"),
+  check.names = FALSE))
+```
+
+`r src_line(od)` dplyr and data.table ran in memory; duckplyr and dbplyr read the same table from a local parquet file. All `r sum(csv(od)$identical_to_ref)` of `r nrow(csv(od))` variants matched the reference result.
+
+What the optimizer does and does not do:
+
+- DuckDB (via duckplyr or dbplyr) **pushed filters and column selection into the parquet scan** and below joins, so the bad order cost almost nothing. `EXPLAIN` shows it: `Read Parquet ... Projections: id, txt; Filters: x > 0.95` under the projection, and the filter below the hash join.
+- It did **not** fix `arrange()` placed early (duckplyr), and it did **not** move `distinct()` ahead of an expensive expression. Write sort-last and distinct-first by hand, even for duckdb.
+- dplyr and data.table never reorder. Their bad orders were the slowest of all.
+
+## In a pipeline: filter in the upstream target
+
+The cache is part of the cost. A target that stores the full table makes every downstream target load the full table. Putting the filter and the column selection in the upstream target shrank this table's store size:
+
+```{r}
+tbl(data.frame(stored = ss$object, `in memory` = mb(ss$ram_mb), qs2 = mb(ss$qs2_mb), parquet = mb(ss$parquet_mb), check.names = FALSE))
+```
+
+`r src_line("remote/results/ordering_store_size.csv")`
+
+Smaller stored targets save write time, every downstream load, memory per worker, and the hidden I/O `tar_profile.R` reports. Split a "clean everything" target into a filtered, selected core plus separate targets for the rarely used columns.
+
+## Hand-ordering vs letting duckdb order
+
+- Rewriting a dplyr pipeline in the right order keeps the output identical and needs no new dependency. Do this first.
+- Running it through duckdb (`duckplyr::as_duckdb_tibble()`, or dbplyr on a duckdb connection) also gets pushdown for free, and pays most for data that already live in parquet or a database (`remote-data.md`).
+- `library(duckplyr)` replaces dplyr verbs for **all** data frames in the session. Use `duckplyr::` calls or `duckplyr::methods_restore()` to keep it local.
+- duckplyr optimizes only functions it can translate. `gsub()`, `sub()` and `grepl()` translated; `toupper()`, `nchar()`, `paste0()`, `substr()` and `stringr::str_replace_all()` did not. With `prudence = "stingy"` that is an error; with the default it silently falls back to dplyr, without the optimizer. dbplyr translates `str_replace_all()`/`str_detect()` but passes `gsub()` through to SQL, where it fails.
+
+## How to check
+
+```r
+identical(arrange(old_pipeline(x), id), arrange(new_pipeline(x), id))
+bench::mark(old_pipeline(x), new_pipeline(x), check = FALSE)
+dplyr::explain(lazy_query)      # duckplyr / dbplyr: look for Filters and Projections in the scan
+```
+
+## Traps
+
+- A filter moved before a join changes results if it tests a column the join creates or fills (e.g. `NA` from a left join). Check that the filter uses only columns that exist before the join with the same values.
+- Moving `distinct()` earlier is exact only if the expensive function is element-wise and pure.
+- Sorting differences: grouped results may come back in a different order; compare after sorting.
+- An early `select()` that drops a column a later step needs fails loudly, which is fine; one that drops an ID column needed to join back fails silently in logic. Keep keys.

@@ -1,0 +1,16 @@
+.rvenv/
+_targets*/
+bench/**/tmp/
+.claude/*
+!.claude/skills
+.claude/settings.local.json
+.DS_Store
+bench/.extralib/
+notes/issues/
+bench/.hold
+bench/ci/
+
+.private-names
+# Local working notes and private context (not published)
+notes/
+bench/blas/results/*.rds

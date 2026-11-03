@@ -1,0 +1,81 @@
+---
+title: "Memory: settings, budgets and limits"
+---
+
+```{r}
+source("_helpers.R")
+c3 <- "targets_mech/results/c3_memory.csv"
+c4 <- "targets_mech/results/c4_gc.csv"
+c5 <- "targets_mech/results/c5_mori.csv"
+b7d <- "docker/results/b7_duckdb_spill.csv"
+d7 <- function(m, col) v1(b7d, method = m, col = col)
+w3 <- function(m, n = 300, col = "wall_s") v1(c3, task = paste0("big", n, "_6consumers"), method = m, col = col)
+```
+
+**When this matters.** A parallel build is killed, swaps, or slows down as it runs; or a big object is read by many targets and each read costs seconds. The knobs are `memory`, `retrieval`, `storage`, `deployment` and `garbage_collection` in `tar_option_set()` / `tar_target()`, plus the worker count. The budget that matters is **available** memory, which is often far less than physical RAM because other processes share the machine.
+
+## What the settings do (targets ≥ 1.11)
+
+- `memory = "auto"` (default) behaves as `"transient"` for ordinary targets: a target's value is dropped after use and read from the store again by the next consumer. It is persistent only for non-dynamic targets that other targets dynamically branch over.
+- `storage = "worker"` (default): each worker saves its own output.
+- `retrieval = "auto"` (default): acts as `"worker"` (each worker reads its inputs from the store) except when a dynamic branch maps over a non-dynamic target. Then it acts as `"main"`: main loads that target once (kept, since `memory = "auto"` makes it persistent) and sends each branch only its slice. For ordinary (static) consumers of a big object, `memory` therefore makes little difference: every consumer reads from disk.
+- `retrieval = "main"`: the main process loads the input and sends it to the worker over the network connection. With `memory = "persistent"` in a serial run this avoids repeated reads; under crew it costs a copy per in-flight task in the main process.
+- `deployment = "main"`: run the target in the main process. Good for tiny targets and for consumers of a big object that is already in main memory.
+- `garbage_collection`: an integer since targets 1.9 (default 0 since 1.11); `gc()` runs every N targets on each worker, and `TRUE` means 1. Target-level `garbage_collection = TRUE` runs `gc()` before that one target.
+
+## Measured: one 300 MB object, six consumers
+
+```{r}
+mm <- c("serial memory=auto storage/retrieval=auto", "serial memory=transient storage/retrieval=worker", "serial memory=persistent storage/retrieval=worker",
+        "serial memory=persistent storage/retrieval=main", "nproc=3 memory=auto storage/retrieval=auto", "nproc=3 memory=transient storage/retrieval=worker",
+        "nproc=3 memory=persistent storage/retrieval=main")
+lbl <- c("serial, defaults (auto memory, auto retrieval)", "serial, transient, worker retrieval", "serial, persistent, worker retrieval",
+         "serial, persistent, **main retrieval**", "3 workers, defaults", "3 workers, transient, worker retrieval", "3 workers, persistent, main retrieval")
+val_or_killed <- function(m, col, f) { v <- w3(m, col = col); if (is.na(v)) "killed at memory cap" else f(v) }
+killed_peak <- w3("nproc=3 memory=persistent storage/retrieval=main", col = "peak_rss_mb")
+tbl(data.frame(
+  setup = lbl,
+  `reads of big` = vapply(mm, \(m) { v <- w3(m, col = "loads"); if (is.na(v)) "-" else as.character(v) }, ""),
+  wall = vapply(mm, \(m) val_or_killed(m, "wall_s", secs), ""),
+  `peak memory (process tree)` = vapply(mm, \(m) mb(w3(m, col = "peak_rss_mb")), ""),
+  check.names = FALSE))
+```
+
+`r src_line(c3)` Peak memory sums RSS over the R process tree, including workers; for killed runs it is the peak when the run was killed (a lower bound).
+
+Read it as:
+
+- The defaults behaved like worker retrieval (`r w3("serial memory=auto storage/retrieval=auto", col = "loads")` reads serially, `r w3("nproc=3 memory=auto storage/retrieval=auto", col = "loads")` with 3 workers): these consumers are not dynamic branches, so `"auto"` does not act as `"main"`. They were up to about a second faster than the worker rows; these are single runs from a separate session, so that is likely noise. The reads are the same.
+- `persistent` alone changed nothing (still `r w3("serial memory=persistent storage/retrieval=worker", col = "loads")` reads) because worker retrieval re-reads from the store. Only persistent **plus** explicit `retrieval = "main"` avoided the reads in a serial run.
+- With 3 workers, main retrieval of a 300 MB object was killed at the benchmark's memory cap (at `r mb(killed_peak)` or more): main holds the object plus a serialized copy for each task in flight. At 100 MB it fit, at `r mb(v1(c3, task = "big100_6consumers", method = "nproc=3 memory=persistent storage/retrieval=main", col = "peak_rss_mb"))` vs `r mb(v1(c3, task = "big100_6consumers", method = "nproc=3 memory=transient storage/retrieval=worker", col = "peak_rss_mb"))` with worker retrieval.
+- Under crew, keep worker storage and retrieval for big objects read by ordinary (static) consumers; for patterns that map over a big target, the default `"auto"` is better (`branching.md`). To stop repeated reads, use partial reads (`storage-formats.md`), split the object, or share it (`sharing-mori.md`).
+
+`garbage_collection = 0`, 1 or 10 made no measurable difference to wall time (`r secs(v1(c4, method = "serial gc=0 rep1", col = "wall_s"))`, `r secs(v1(c4, method = "serial gc=1 rep1", col = "wall_s"))`, `r secs(v1(c4, method = "serial gc=10 rep1", col = "wall_s"))`) or peak memory: R already collects when it allocates large vectors. Leave it at 0 unless a target keeps big intermediates alive; then set target-level `garbage_collection = TRUE` on that target. `r src_line(c4)`
+
+## The budget
+
+Predict before you parallelize:
+
+> peak ≈ main process + workers × (largest inputs a target loads + its intermediates + output) + any copies made by main retrieval or sharing
+
+- Each crew worker started at a few hundred MB (R + targets + crew + packages) before loading data; see `parallelism.md`.
+- Compare the budget with **available** memory (`machine_profile.R`), not total RAM, and leave headroom for the rest of the machine.
+- In containers, the limit is the cgroup `memory.max`; `ps::ps_system_memory()` and `/proc/meminfo` report the host. `machine_profile.R` prints both.
+- Library defaults assume they own the machine: duckdb's `memory_limit` defaults to 80% of RAM *per process*, so four duckdb workers each believe they may use most of the memory. Set it per worker (about half the container limit, or 0.6 × available / workers). In a `r d7("default memory_limit", "container_memory")` container, a duckdb query that spills to disk completed in `r d7("default memory_limit", "completed")` of `r d7("default memory_limit", "runs")` runs with the default limit (`r d7("default memory_limit", "oom_killed")` OOM-killed, `r d7("default memory_limit", "stalled")` stalled) and in `r d7("memory_limit = '1GB'", "completed")` of `r d7("memory_limit = '1GB'", "runs")` with `memory_limit = '1GB'`. `r src_line(b7d)`
+- Reading a character-heavy table can take much more memory than `object.size()` reports before saving; budget from the serialized size and a measured read (`tar_profile.R measure=`).
+
+When over budget: fewer workers for the memory-heavy part (a separate small controller in a `crew_controller_group()`), partial reads, smaller upstream targets (filter and select early: `query-order.md`), or shared memory for a big read-only object.
+
+## Monitoring a run
+
+- crew and mirai workers are detached from the session's process tree; a session's own RSS misses them. Watch system available memory or sum RSS over all R processes (`ps::ps()` filtered on name).
+- `tar_meta()` has no memory field. For per-target memory, profile with `profile_pipeline.R memory=TRUE` (allocations) or run the target alone and watch RSS.
+- Run one heavy benchmark or build at a time on a shared machine.
+
+## Traps
+
+- `memory = "persistent"` with worker or default (`"auto"`) retrieval does not prevent reads by ordinary consumers; it only keeps copies in memory longer.
+- Main retrieval multiplies memory by the number of tasks in flight.
+- With `retrieval = "worker"`, dynamic branches over a big stored table load the whole table in every branch. The default `"auto"` loads it once in main instead, so main must hold it (`branching.md`).
+- `/dev/shm` in Docker defaults to 64 MB; shared-memory objects need `--shm-size` (`sharing-mori.md`).
+- Older targets (< 1.11) had other defaults (e.g. `garbage_collection` 1000 in the book); check `targets::tar_option_get()` rather than trusting old advice.

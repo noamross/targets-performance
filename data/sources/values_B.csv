@@ -1,0 +1,24 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+poorman_split_apply_vs_vec_10k_groups,20,x speedup,https://nathaneastwood.github.io/2026/10/25/poorman-tips-and-tricks-for-faster-grouped-operations-in-base-r/,2026-11-02,table "Centring split-apply-combine vs vectorised" 522.85ms->26.27ms,10000 groups; 8x at 10 groups
+poorman_rbind_vs_unlist_1000,1000,x speedup,https://nathaneastwood.github.io/2026/10/25/poorman-tips-and-tricks-for-faster-grouped-operations-in-base-r/,2026-11-02,"Combine rbind vs unlist (1000 pieces) 7.11ms->7.38us",plain vectors only
+poorman_group_numbering_match,250,x speedup,https://nathaneastwood.github.io/2026/10/25/poorman-tips-and-tricks-for-faster-grouped-operations-in-base-r/,2026-11-02,"compare 162ms -> match 653us",
+poorman_split_cols_vs_df,6,x speedup,https://nathaneastwood.github.io/2026/10/25/poorman-tips-and-tricks-for-faster-grouped-operations-in-base-r/,2026-11-02,13.01ms->2.04ms,split columns vs data.frame
+poorman_rowsum_vs_manual_10k,3,x speedup,https://nathaneastwood.github.io/2026/10/25/poorman-tips-and-tricks-for-faster-grouped-operations-in-base-r/,2026-11-02,22.65ms->6.59ms,
+purrr_parallel_iter_threshold,100-1000,microseconds per iteration,https://tidyverse.org/blog/2025/07/purrr-1-1-0-parallel/,2026-11-02,"at least 100 microseconds to 1 millisecond",
+stringi_gsub_2014,2.5,x speedup (gsub 170 vs 67),https://rstudio-pubs-static.s3.amazonaws.com/45999_4b4a72d1450b4ca9a94385bda47d96fe.html,2026-11-02,via search summary; old; tiny data; no fixed=TRUE,weak evidence
+"stringi_locate_all_fixed_100x100k","5.112","ms median","https://www.jstatsoft.org/article/download/v103i02/4324","2026-11-02","microbenchmark stri_locate_all_fixed(x,""acca""); x=100 random actg strings of 100000 chars","fixed"
+stringi_locate_all_regex_100x100k,113.649,ms median,https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,same,regex (22x slower than fixed)
+stringi_locate_all_coll_100x100k,418.041,ms median,https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,same,coll (82x slower than fixed)
+base_gregexpr_tre_100x100k,129.566,ms median,https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,same,gregexpr default
+base_gregexpr_pcre_100x100k,75.49,ms median,https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,same,perl=TRUE
+base_gregexpr_fixed_100x100k,64.498,ms median,https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,same,fixed=TRUE; 12.6x slower than stri fixed
+stringi_join_vs_paste,2.7,x speedup (97.5 vs 36.3 ms median),https://www.jstatsoft.org/article/download/v103i02/4324,2026-11-02,stri_join vs paste collapse 26000 strings x1000 chars,
+rbindlist_vs_rbind_2014,670,x speedup (11388s vs 17s per 100 reps),https://www.r-bloggers.com/2014/06/concatenating-a-list-of-data-frames/,2026-11-02,via search summary; old,weak
+rbindlist_vs_bindrows_rpubs,2,x speedup,https://rstudio-pubs-static.s3.amazonaws.com/406521_7fc7b6c1dc374e9b8860e15a699d8bb0.html,2026-11-02,via search summary; bind_rows 1050ms vs rbind 5358ms,old
+tabulate_vs_table,32,x speedup (154.8us->4.9us),https://uscbiostats.github.io/software-dev-site/handbook-slow-patterns.html,2026-11-02,1000 ints in 1..10,tabulate ignores <=0
+findInterval_vs_cut,5.6,x speedup (629us->113us),https://uscbiostats.github.io/software-dev-site/handbook-slow-patterns.html,2026-11-02,binning,returns ints not factor
+unlist_use_names_false,17,x speedup (61.6us->3.7us),https://uscbiostats.github.io/software-dev-site/handbook-slow-patterns.html,2026-11-02,unlist(mtcars),names cost
+"apply_row_var_vs_loop","1.05","x (10.8ms vs 10.3ms)","https://uscbiostats.github.io/software-dev-site/handbook-slow-patterns.html","2026-11-02","apply(x,1,var) vs for loop","apply is not vectorized"
+"purrr_map_names_1e6","2.2","x speedup new vs old purrr (137->61ms)","https://github.com/tidyverse/purrr/pull/1263","2026-11-02","map(x,names) 1e6 unclassed",""
+"lapply_vs_vectorised_sqrt","67","x (20us vs 0.3us)","https://urbaninstitute.github.io/r-at-urban/optimization.html","2026-11-02","lapply(x,sqrt) vs sqrt(x)","via search summary; n unknown"
+purrr_in_parallel_1000_lm,221,ms median in_parallel (parLapply 123),https://github.com/tidyverse/purrr/issues/1235,2026-11-02,1000 lm 4 workers,

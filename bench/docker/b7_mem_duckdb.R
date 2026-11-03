@@ -1,0 +1,15 @@
+# Run from /scratch (spill files land in cwd/.tmp). Env: Q = default|big_limit|threads2|mem1g|tmp_cap
+suppressMessages({library(DBI); library(duckdb)})
+q <- Sys.getenv("Q", "default")
+con <- dbConnect(duckdb())
+show <- function(s) cat(sprintf("%-20s %s\n", s, dbGetQuery(con, sprintf("SELECT current_setting('%s') v", s))$v))
+for (s in c("memory_limit", "threads", "temp_directory", "max_temp_directory_size")) try(show(s), silent = TRUE)
+cat("ps total GiB", round(ps::ps_system_memory()$total / 2^30, 2), " arrow cpu", arrow::cpu_count(), " arrow pool", arrow::default_memory_pool()$backend_name, "\n")
+if (q == "big_limit") dbExecute(con, "SET memory_limit='12GB'")
+if (q == "threads2") dbExecute(con, "SET threads=2")
+if (q == "mem1g") dbExecute(con, "SET memory_limit='1GB'")
+if (q == "tmp_cap") dbExecute(con, "SET max_temp_directory_size='1GB'")
+sql <- "SELECT count(*), max(h) FROM (SELECT i, hash(i) h FROM range(150000000) t(i) ORDER BY h)"
+t0 <- Sys.time(); r <- try(dbGetQuery(con, sql), silent = TRUE)
+cat("query:", if (inherits(r, "try-error")) paste("ERROR", substr(conditionMessage(attr(r, "condition")), 1, 160)) else paste(r[[1]], "rows"), "in", round(as.numeric(Sys.time() - t0, units = "secs"), 1), "s\n")
+cat("temp files after:", length(list.files(".tmp", recursive = TRUE)), "\n")

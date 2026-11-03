@@ -1,0 +1,164 @@
+---
+title: "Environment: BLAS, OpenMP builds, versions and start-up"
+---
+
+```{r}
+source("_helpers.R")
+bm <- "blas/results/blas.csv"
+bl <- "blas/results/blas_linux.csv"
+pl <- "startup/results/pkg_load_time.csv"
+ops <- c(
+  crossprod = "`crossprod(A)` 2000²",
+  matmul = "`A %*% A` 2000²",
+  solve = "`solve()` 2000²",
+  chol = "`chol()` 2000²",
+  svd_1000 = "`svd()` 1000²",
+  qr = "`qr()` 2000²",
+  lm_fit_2e5x51 = "`.lm.fit()` 2e5 x 51",
+  glm_logit_2e5x51 = "`glm.fit()` logit 2e5 x 51"
+)
+bd <- "blas/results/blas_diffs.csv"
+reldiff <- vapply(
+  names(ops),
+  \(o) pick(csv(bd), task = o, method = "accelerate", col = "max_rel_diff"),
+  0
+)
+lin <- function(task, m) v1(bl, task = task, method = m)
+```
+
+**When this matters.** Targets spend their time in linear algebra (regressions on wide model matrices, `crossprod`, matrix factorizations, GAMs, mixed models), in packages that may or may not have been built with OpenMP, or in starting R workers. These are machine and installation settings, not pipeline code. Changing them needs the user's approval: it affects every project that uses that R installation, and it can change numerical results.
+
+## Which BLAS R uses
+
+`sessionInfo()` (or `machine_profile.R`) names the BLAS and LAPACK libraries. What the common installers ship:
+
+- **Windows** (CRAN installer): R's reference BLAS. Optimized BLAS needs a replacement `Rblas.dll` (e.g. OpenBLAS or MKL builds); not tested here.
+- **macOS** (CRAN installer): reference BLAS, with Apple's Accelerate shipped alongside and selectable.
+- **Linux**: whatever the distribution's BLAS alternative points to; many builds (e.g. rocker images) use OpenBLAS (section below).
+
+The CI runs (`benchmarks.md`, cross-platform section) time `blas/blas.R` under each runner's BLAS. A local macOS machine, same code, reference BLAS vs Accelerate:
+
+```{r}
+tbl(data.frame(
+  operation = unname(ops),
+  reference = secs(vapply(
+    names(ops),
+    \(o) v1(bm, task = o, method = "libRblas.0.dylib"),
+    0
+  )),
+  Accelerate = secs(vapply(
+    names(ops),
+    \(o) v1(bm, task = o, method = "accelerate"),
+    0
+  )),
+  speedup = vapply(
+    names(ops),
+    \(o) x(ratio(csv(bm), "libRblas.0.dylib", "accelerate", task = o)),
+    ""
+  ),
+  `max relative difference` = formatC(reldiff, format = "e", digits = 0),
+  check.names = FALSE
+))
+```
+
+`r src_line(c(bm, bd))` Relative difference = largest absolute difference in the results (ignoring sign, which factorizations may flip) / largest absolute value.
+
+- Matrix products and factorizations gain the most. `qr()` gains little because R's default `qr()` uses LINPACK (`dqrdc2`), which calls only level-1 (vector) BLAS; `qr(x, LAPACK = TRUE)` uses LAPACK instead (not measured here). `lm()` and `glm()` gain less than raw products because they do more than BLAS work.
+- **Results change in the last bits.** `identical()` regression checks fail after a switch; use `all.equal()` with a stated tolerance, and re-snapshot (`tar_snapshot.R`) after switching, not across the switch.
+- The setting applies to the whole R installation (every project on that R version) and usually needs admin rights. macOS: the R for macOS FAQ describes switching to `libRblas.vecLib.dylib`; [rig](https://github.com/r-lib/rig) wraps it (`rig system blas set accelerate <version>`). Linux: `update-alternatives` (below). Windows: replace `Rblas.dll` in R's `bin\x64` with an optimized build, keeping the original to undo.
+- Predict the payoff before suggesting it: profile (`profile_pipeline.R`) and check the share of time in `%*%`, `crossprod`, `solve`, `chol`, `La_*`, `lm.fit`, `glm.fit`. If it is small, skip it.
+
+## BLAS on Linux
+
+Many Linux R builds (e.g. the rocker images) already link OpenBLAS. Which variant matters:
+
+```{r}
+cfg <- c(
+  "reference|OPENBLAS_NUM_THREADS=-,OMP_NUM_THREADS=-" = "reference BLAS",
+  "serial|OPENBLAS_NUM_THREADS=-,OMP_NUM_THREADS=-" = "OpenBLAS serial",
+  "pthread|OPENBLAS_NUM_THREADS=1,OMP_NUM_THREADS=-" = "OpenBLAS pthread, 1 thread",
+  "pthread|OPENBLAS_NUM_THREADS=6,OMP_NUM_THREADS=-" = "OpenBLAS pthread, 6 threads",
+  "pthread|OPENBLAS_NUM_THREADS=-,OMP_NUM_THREADS=-" = "OpenBLAS pthread, unset (host CPUs)",
+  "openmp|OPENBLAS_NUM_THREADS=-,OMP_NUM_THREADS=6" = "OpenBLAS OpenMP, `OMP_NUM_THREADS=6`",
+  "openmp|OPENBLAS_NUM_THREADS=-,OMP_NUM_THREADS=-" = "OpenBLAS OpenMP, unset (host CPUs)"
+)
+tk <- c("crossprod", "solve", "svd_1000", "lm_fit_2e5x51", "glm_logit_2e5x51")
+out <- data.frame(setup = unname(cfg), check.names = FALSE)
+for (t in tk) {
+  out[[unname(ops[t])]] <- secs(vapply(names(cfg), \(m) lin(t, m), 0))
+}
+tbl(out)
+```
+
+`r src_line(bl)` ARM64 Linux container with a CPU quota below the host's CPU count (`benchmarks.md`).
+
+- Any OpenBLAS beats reference BLAS by a wide margin, even single-threaded.
+- **Thread defaults are the trap.** Unset, OpenBLAS starts one thread per *host* CPU, ignoring the container's CPU limit, and was slower than a single thread on some operations. With parallel workers it is far worse (`parallelism.md`).
+- Variables: the pthread build reads `OPENBLAS_NUM_THREADS` (falls back to `OMP_NUM_THREADS`); the OpenMP build reads only `OMP_NUM_THREADS`; the serial build ignores both. Set both. At run time use `RhpcBLASctl::blas_set_num_threads()` (pthread) or `RhpcBLASctl::omp_set_num_threads()` (OpenMP).
+- Find the real library: `sessionInfo()` shows the `libblas.so.3` symlink. `machine_profile.R` reads `/proc/self/maps`; the directory (`openblas-pthread`, `openblas-openmp`, `openblas-serial`) names the variant.
+- Switching on Debian/Ubuntu needs root and `update-alternatives --set` on three alternatives: `libblas.so.3-<arch>-linux-gnu`, `liblapack.so.3-<arch>-linux-gnu` and `libopenblas.so.0-<arch>-linux-gnu` (`<arch>` is `x86_64` or `aarch64`). For example, for the pthread variant:
+
+  ```sh
+  a=/usr/lib/aarch64-linux-gnu
+  sudo update-alternatives --set libblas.so.3-aarch64-linux-gnu $a/openblas-pthread/libblas.so.3
+  sudo update-alternatives --set libopenblas.so.0-aarch64-linux-gnu $a/openblas-pthread/libopenblas.so.0
+  sudo update-alternatives --set liblapack.so.3-aarch64-linux-gnu $a/openblas-pthread/liblapack.so.3
+  # interactive: sudo update-alternatives --config libblas.so.3-aarch64-linux-gnu
+  ```
+
+  Switching only `libblas.so.3` gave the wrong variant or a `symbol lookup error`. Verify afterwards in `/proc/self/maps`.
+- Avoid the OpenMP variant if code forks (`parallel::mclapply()`): forked children hung on BLAS after the parent had used OpenMP. The pthread variant did not.
+- MKL: x86-64 only; not tested here.
+
+## OpenMP builds of packages
+
+Several packages thread with OpenMP only if they were compiled with it:
+
+- data.table: OpenMP on the macOS CRAN binary and on Linux in these tests.
+- kit: the macOS CRAN binary had OpenMP disabled; the Linux build had it (default 1 thread). Only matters for `iif`, `nif`, `vswitch`.
+- fst: its macOS binary failed to load on the local test machine (missing OpenMP runtime symbol).
+
+OpenMP support depends on the OS, the binary and the compiler it was built with (the CI runners' machine profiles show it per platform), so check rather than assume: `machine_profile.R` reports each. Building from source with OpenMP on macOS needs a separate OpenMP runtime and compiler flags; suggest it only when a profiled hot spot uses one of these functions on large data.
+
+## Versions
+
+- **targets.** Large pipelines got much faster up-to-date checks in targets 1.10 (`r val("news_1_10_bench_before_mac")` s to `r val("news_1_10_bench_after_mac")` s on a published benchmark`r fn("news_1_10_bench_after_mac")`) and later; the first run after upgrading from < 1.10 is slow once (timestamp conversion).
+- **duckdb ≥ 2.0** adds asynchronous I/O for remote parquet and DuckLake 1.1 support (`remote-data.md`). The in-memory cache for remote files is older (on by default since 1.3.0`r ffn("duckdb_ext_file_cache_130")`), so it is a reason to upgrade only from duckdb < 1.3.0. For async I/O, a published S3 benchmark went from `r val("duckdb_async_s3_q6_sync")` s to `r val("duckdb_async_s3_q6_async")` s`r fn("duckdb_async_s3_q6_async")`. Upgrading changes a dependency: ask, and check the lock file.
+- **R** itself: newer R versions change BLAS defaults and APIs (one GitHub-only package needed a patch to build on R 4.6). Upgrade deliberately, never in passing.
+- `check_versions.R` compares installed versions with those the skill's benchmarks used and flags major/minor differences.
+
+## Start-up: `.Rprofile`, renv and packages
+
+Every worker runs the project `.Rprofile` and then loads the pipeline's packages (`parallelism.md`). Typical costs, from fresh `Rscript` processes:
+
+```{r}
+d <- csv(pl)
+d <- d[!is.na(d$attach_s), ]
+tbl(data.frame(
+  package = d$pkg,
+  `attach time` = secs(d$attach_s),
+  check.names = FALSE
+))
+```
+
+`r src_line(pl)` Bare `Rscript`: `r secs(d$bare_rscript_s[1])`. Elsewhere, tidyverse took `r secs(val("load_tidyverse"))` and ggplot2 `r secs(val("load_ggplot2"))``r fn("load_tidyverse")`.
+
+renv projects pay more. In a small test project, R start-up averaged `r secs(val("renv_default_startup"))` with default renv, `r secs(val("renv_nosynccheck_startup"))` with the synchronization check off and `r secs(val("renv_none_startup"))` without renv`r fn("renv_default_startup")`.
+
+```r
+# .Rprofile
+options(renv.config.synchronized.check = FALSE)   # before activate.R: skip the status check at start
+source("renv/activate.R")
+if (interactive() && !nzchar(Sys.getenv("TAR_ACTIVE"))) {
+  # status checks, dev packages, messages: interactive sessions only
+}
+```
+
+Workers and `tar_make()`'s background process are never interactive, so `interactive()` alone already excludes them; `TAR_ACTIVE` also covers an interactive `tar_make(callr_function = NULL)`. Keep the renv autoloader on (workers need the project library). Definitions can stay outside the guard; calls and attaches go inside. `startup_cost.R` measures all of this for a project.
+
+## Traps
+
+- Switching BLAS breaks bit-identical regression checks and changes every project on that R version.
+- A container's CPU limit is invisible to `detectCores()`, data.table, OpenBLAS and arrow; duckdb respects it.
+- Project library tools (renv, `rig proj sync`) can prune packages installed outside the lock file; record any off-manifest install.
+- Never install, upgrade or switch BLAS without the user's approval.

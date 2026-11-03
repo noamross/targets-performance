@@ -1,0 +1,5059 @@
+version = 7
+
+[[tool.rig.repository]]
+name = "bioc"
+metadata = "https://ppm-bioc.r-pkg.org/%v"
+
+[[tool.rig.repository]]
+name = "cran"
+metadata = "https://ppm.r-pkg.org"
+
+[[targets]]
+r_version = "4.6.2"
+platform = "aarch64-apple-darwin"
+bioc-version = "3.23"
+
+[[targets.direct_dependencies]]
+name = "DBI"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "arrow"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "bench"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "callr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "collapse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "crew"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "data.table"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dbplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckdb"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fastverse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fst"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "kit"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mirai"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mori"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "nanoparquet"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "processx"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "purrr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "qs2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "rlang"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "stringi"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tarchetypes"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "targets"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tibble"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "vctrs"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "waldo"
+constraint = "*"
+
+[[targets.packages]]
+package = "bench"
+version = "1.1.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "tibble",
+    "glue",
+    "profmem",
+    "pillar",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-01-17/bin/macosx/sonoma-arm64/contrib/4.6/bench_1.1.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/bench_1.1.4-0d57d369.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b822f5b7648deecc6b516dcca4e932ce92e65eb166b997b04355218aceb1d083" }
+
+[[targets.packages]]
+package = "bit64"
+version = "4.8.6"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["bit"]
+sources = ["https://p3m.dev/cran/2026-09-02/bin/macosx/sonoma-arm64/contrib/4.6/bit64_4.8.6.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/bit64_4.8.6-8edb959f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "a5fcec17ba772a561a7375ca8fd966bdd5f20dd4e89b4dae07d7da933d554b45" }
+
+[[targets.packages]]
+package = "bit"
+version = "4.6.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-07/bin/macosx/sonoma-arm64/contrib/4.6/bit_4.6.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/bit_4.6.0-a639bb1d.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "48fe21c5d04c7b724d695eeb60074395c0c631a7fb234e2075de92471445de08" }
+
+[[targets.packages]]
+package = "stringi"
+version = "1.8.9"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-05/bin/macosx/sonoma-arm64/contrib/4.6/stringi_1.8.9.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/stringi_1.8.9-226ba057.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "427fcebd281d7ea850becce75e0807576dd394a723a814b2d487419b93275a33" }
+
+[[targets.packages]]
+package = "Matrix"
+version = "1.7-6"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["lattice"]
+sources = ["https://p3m.dev/cran/2026-07-25/bin/macosx/sonoma-arm64/contrib/4.6/Matrix_1.7-6.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/Matrix_1.7-6-bc0483e0.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "694239dbe47e659d6d39a49af95157f46bd94977c283df00c4e8a016601cf143" }
+
+[[targets.packages]]
+package = "dplyr"
+version = "1.2.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "rlang",
+    "tibble",
+    "tidyselect",
+    "glue",
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "R6",
+    "generics",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-04-04/bin/macosx/sonoma-arm64/contrib/4.6/dplyr_1.2.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/dplyr_1.2.1-050cebcf.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "18d66fe2f24cda8b619c177326d39dd015229ab99695fa67d3fa31e4569390e0" }
+
+[[targets.packages]]
+package = "tidyselect"
+version = "1.2.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "withr",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2024-03-12/bin/macosx/sonoma-arm64/contrib/4.6/tidyselect_1.2.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/tidyselect_1.2.1-6c88146a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "169e97ba0bbfbcdf4a80534322751f87a04370310c40e27f04aac6525d45903c" }
+
+[[targets.packages]]
+package = "kit"
+version = "0.0.21"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-01-24/bin/macosx/sonoma-arm64/contrib/4.6/kit_0.0.21.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/kit_0.0.21-cf90d39c.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "bfe4ffbb87e11cb7d87207b96f82cbae8381c5fb445c05f6a8653fab99424fca" }
+
+[[targets.packages]]
+package = "dbplyr"
+version = "2.6.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "glue",
+    "tidyr",
+    "withr",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "pillar",
+    "R6",
+    "blob",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-06-18/bin/macosx/sonoma-arm64/contrib/4.6/dbplyr_2.6.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/dbplyr_2.6.0-1f81f743.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "3672daf73f7f0238a2c547dce5d4fb31e50235bca796c710d6f7caf49c212bd8" }
+
+[[targets.packages]]
+package = "collapse"
+version = "2.1.8"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-08-31/bin/macosx/sonoma-arm64/contrib/4.6/collapse_2.1.8.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/collapse_2.1.8-5b051c3f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "13fd523cadfa0541b42e805da825a8c882af35ec3da1df0decf96a72488acffd", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "Rnanoflann"
+version = "0.0.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "Rcpp",
+    "RcppArmadillo",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/macosx/sonoma-arm64/contrib/4.6/Rnanoflann_0.0.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/Rnanoflann_0.0.3-4d4d220e.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "46fcf84c640f8fb71d8fa397b6c441af95b6a0dadc168ecac214074b8ef57211", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d" }
+
+[[targets.packages]]
+package = "lifecycle"
+version = "1.0.5"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "rlang",
+    "cli",
+]
+sources = ["https://p3m.dev/cran/2026-01-09/bin/macosx/sonoma-arm64/contrib/4.6/lifecycle_1.0.5.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/lifecycle_1.0.5-fbf429a7.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "61841e3e6edba056a88355a3f1d6698ab8d5d9cb3c05f2af0ec5a44ab516f8ee" }
+
+[[targets.packages]]
+package = "waldo"
+version = "0.6.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "diffobj",
+    "cli",
+    "glue",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-07-12/bin/macosx/sonoma-arm64/contrib/4.6/waldo_0.6.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/waldo_0.6.2-8173eaf9.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b22a746be625eec49736d2a0a18d96c45c14d97e30e42bc81a0740f3194e07fa" }
+
+[[targets.packages]]
+package = "cachem"
+version = "1.1.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "fastmap",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2024-05-17/bin/macosx/sonoma-arm64/contrib/4.6/cachem_1.1.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/cachem_1.1.0-c7485274.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "550839fc2ae5d865db475ba2c1714144f07fa0c052c72135b0e4a70287492e21" }
+
+[[targets.packages]]
+package = "stringfish"
+version = "0.19.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/macosx/sonoma-arm64/contrib/4.6/stringfish_0.19.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/stringfish_0.19.2-d59340a7.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "424e9b2c69f5b7af74753e401cfaf9e9be08729dda99bdf0946ea53849e9aad0", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "Rfast2"
+version = "0.1.5.6"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "zigg",
+    "Rnanoflann",
+    "RcppArmadillo",
+    "RcppParallel",
+    "Rfast",
+    "Rcpp",
+    "BH",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/macosx/sonoma-arm64/contrib/4.6/Rfast2_0.1.5.6.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/Rfast2_0.1.5.6-7cd73efe.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "a9b4bb5578221fc09911d17f0d9dad3eb923f673dd181e6884499dfe2ad1134f", RemoteLinkingToHashes = "BH@1.90.0-1=2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b, Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, Rfast@2.1.5.2=d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "ps"
+version = "1.9.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-21/bin/macosx/sonoma-arm64/contrib/4.6/ps_1.9.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/ps_1.9.3-be551c7f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "7b227f0627709a2073daf960ac612a0b87d03e18f7dd5c1938048ed440ef2e68" }
+
+[[targets.packages]]
+package = "processx"
+version = "3.9.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "ps",
+    "R6",
+]
+sources = ["https://p3m.dev/cran/2026-04-23/bin/macosx/sonoma-arm64/contrib/4.6/processx_3.9.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/processx_3.9.0-aa680842.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "cdfef9035405891d8b104b258a40f62656f215aba7dcdc9f3226203c4c8fb354" }
+
+[[targets.packages]]
+package = "Rcpp"
+version = "1.1.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/macosx/sonoma-arm64/contrib/4.6/Rcpp_1.1.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/Rcpp_1.1.2-0af8c486.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "generics"
+version = "0.1.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-10/bin/macosx/sonoma-arm64/contrib/4.6/generics_0.1.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/generics_0.1.4-72fadd7a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "bbe95a097792d38fc3b7e677738af1b95b66ea5e5017e33b8beac6a6088d0801" }
+
+[[targets.packages]]
+package = "crew"
+version = "1.3.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "nanonext",
+    "mirai",
+    "cli",
+    "data.table",
+    "later",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "ps",
+    "R6",
+    "processx",
+    "collections",
+    "promises",
+]
+sources = ["https://p3m.dev/cran/2026-09-05/bin/macosx/sonoma-arm64/contrib/4.6/crew_1.3.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/crew_1.3.3-cd52ad1a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "42d0f6cbf42f41f912e5fb05372fcd7c1518da5dae8da2a69022b8df141aa6ec" }
+
+[[targets.packages]]
+package = "promises"
+version = "1.5.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "otel",
+    "lifecycle",
+    "fastmap",
+    "later",
+    "R6",
+    "rlang",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2025-11-02/bin/macosx/sonoma-arm64/contrib/4.6/promises_1.5.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/promises_1.5.0-42eb7358.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "bb68fd4065cc072996aed416f0b2388f58738797a3a38024720c29d67164747d" }
+
+[[targets.packages]]
+package = "yaml"
+version = "2.3.12"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-10/bin/macosx/sonoma-arm64/contrib/4.6/yaml_2.3.12.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/yaml_2.3.12-2b15f7a9.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "80ccf3dde851133ef3e333b818a817c296c6ccdacfc4709cd466995289cd556c" }
+
+[[targets.packages]]
+package = "zigg"
+version = "0.0.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-08/bin/macosx/sonoma-arm64/contrib/4.6/zigg_0.0.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/zigg_0.0.2-bd4e143b.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "jsonlite"
+version = "2.0.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-28/bin/macosx/sonoma-arm64/contrib/4.6/jsonlite_2.0.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/jsonlite_2.0.0-38c76850.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "75eb910c82b350ec33f094779da0f87bff154c232e4ae39c9896a9b89f3ac82d" }
+
+[[targets.packages]]
+package = "profmem"
+version = "0.7.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-03/bin/macosx/sonoma-arm64/contrib/4.6/profmem_0.7.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/profmem_0.7.0-1b655b68.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "16efc5f13f4b78919c9d51c07acf62c051e0e3830ae3cc32c596f8daf569c3cb" }
+
+[[targets.packages]]
+package = "memoise"
+version = "2.0.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "rlang",
+    "cachem",
+]
+sources = ["https://p3m.dev/cran/2021-11-29/bin/macosx/sonoma-arm64/contrib/4.6/memoise_2.0.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/memoise_2.0.1-d2e8eb41.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "f85034ee98c8ca07fb3cd826142c1cd1e1e5747075a94c75a45783bbc4fe2deb" }
+
+[[targets.packages]]
+package = "withr"
+version = "3.0.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-06-20/bin/macosx/sonoma-arm64/contrib/4.6/withr_3.0.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/withr_3.0.3-937174ff.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "d86c6454164fc85678bfc85e2a6cce42f7461d45fa9a87de71f376e7956c991e" }
+
+[[targets.packages]]
+package = "secretbase"
+version = "1.3.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-26/bin/macosx/sonoma-arm64/contrib/4.6/secretbase_1.3.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/secretbase_1.3.1-e6fcc16d.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "0708bb7f715647368f29fafd0f460e5d8e035d5ffc869c9c4b1bfd6553aa0b5f" }
+
+[[targets.packages]]
+package = "diffobj"
+version = "0.3.9"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["crayon"]
+sources = ["https://p3m.dev/cran/2026-09-12/bin/macosx/sonoma-arm64/contrib/4.6/diffobj_0.3.9.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/diffobj_0.3.9-2bdc8978.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "ac5502b9fb37b28dd2cd09061a0a973e7eeea66997b87a7f76f006499e5693bd" }
+
+[[targets.packages]]
+package = "crayon"
+version = "1.5.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-06-21/bin/macosx/sonoma-arm64/contrib/4.6/crayon_1.5.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/crayon_1.5.3-f2d80489.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "3e74a0685541efb5ea763b92cfd5c859df71c46b0605967a0b5dbb7326e9da69" }
+
+[[targets.packages]]
+package = "cli"
+version = "3.6.6"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-10/bin/macosx/sonoma-arm64/contrib/4.6/cli_3.6.6.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/cli_3.6.6-20e4b277.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "fastmap"
+version = "1.2.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-05-16/bin/macosx/sonoma-arm64/contrib/4.6/fastmap_1.2.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/fastmap_1.2.0-50e8363a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b1da04a2915d1d057f3c2525e295ef15016a64e6667eac83a14641bbd83b9246" }
+
+[[targets.packages]]
+package = "qs2"
+version = "0.3.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "stringfish",
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/macosx/sonoma-arm64/contrib/4.6/qs2_0.3.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/qs2_0.3.1-994ce001.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "1d555e5c38cf352209aeefb0355aa95bc04cda4af229a2a32c26d5582723b942", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "purrr"
+version = "1.2.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "vctrs",
+    "cli",
+    "lifecycle",
+    "magrittr",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-11/bin/macosx/sonoma-arm64/contrib/4.6/purrr_1.2.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/purrr_1.2.2-bec4fda3.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "ac3bc0fc0e789510042522e6c4294336c71447be8f6921b5ef78b9a9fb86617d", RemoteLinkingToHashes = "cli@3.6.6=b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "later"
+version = "1.4.8"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "Rcpp",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/macosx/sonoma-arm64/contrib/4.6/later_1.4.8.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/later_1.4.8-65d05100.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "ce5d88b3fd1df409eaa21aa53bf20b1a9331f75cd69e7e9b2a27b40d2290d219", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "codetools"
+version = "0.2-20"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-04-01/bin/macosx/sonoma-arm64/contrib/4.6/codetools_0.2-20.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/codetools_0.2-20-f63b6416.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "3be6f375ec178723ddfd559d1e8e85bfeee04a5fbaf9f53f2f844e1669fea863" }
+
+[[targets.packages]]
+package = "data.table"
+version = "1.18.6.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-25/bin/macosx/sonoma-arm64/contrib/4.6/data.table_1.18.6.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/data.table_1.18.6.1-1ada39aa.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "f2846f45fbbdfe886f05fa7489314a56ae0f3352ae5bc1070b0cdd4f44ffa1f5" }
+
+[[targets.packages]]
+package = "backports"
+version = "1.5.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-04/bin/macosx/sonoma-arm64/contrib/4.6/backports_1.5.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/backports_1.5.1-be1588a8.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b8eeeabe3c27e1486f43e0b18dae57f0e870dd7c6979d3668df76bf0d4735bad" }
+
+[[targets.packages]]
+package = "DBI"
+version = "1.3.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-02-26/bin/macosx/sonoma-arm64/contrib/4.6/DBI_1.3.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/DBI_1.3.0-5360a0a2.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "13def8e90cbe41205a0dfcf585a6a7ea79ce10d45969789e82613c7ce3d5fb18" }
+
+[[targets.packages]]
+package = "igraph"
+version = "2.3.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "magrittr",
+    "cli",
+    "rlang",
+    "pkgconfig",
+    "lifecycle",
+    "cpp11",
+    "Matrix",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-01/bin/macosx/sonoma-arm64/contrib/4.6/igraph_2.3.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/igraph_2.3.4-6e6825c0.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "38b114f4ebc9b61af6c29a56d72a2329cd08191e4b3612df4f184c519ee60740", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "assertthat"
+version = "0.2.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-03-25/bin/macosx/sonoma-arm64/contrib/4.6/assertthat_0.2.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/assertthat_0.2.1-5a885991.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f" }
+
+[[targets.packages]]
+package = "RcppArmadillo"
+version = "15.6.2-1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/macosx/sonoma-arm64/contrib/4.6/RcppArmadillo_15.6.2-1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/RcppArmadillo_15.6.2-1-853a06a1.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "stringr"
+version = "1.6.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "glue",
+    "stringi",
+    "lifecycle",
+    "cli",
+    "rlang",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2025-11-05/bin/macosx/sonoma-arm64/contrib/4.6/stringr_1.6.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/stringr_1.6.0-77631810.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "24f2fc5df980a7eb888659e22b9744d2316c558624015c7a7cd8c3ce3e370064" }
+
+[[targets.packages]]
+package = "knitr"
+version = "1.52"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "evaluate",
+    "yaml",
+    "highr",
+    "xfun",
+]
+sources = ["https://p3m.dev/cran/2026-09-07/bin/macosx/sonoma-arm64/contrib/4.6/knitr_1.52.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/knitr_1.52-5a1c1d62.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "bdd66a02dfba08a4c644b38a6ae08f6ba915c16d6b6ab6a188ec193c35905ff2" }
+
+[[targets.packages]]
+package = "callr"
+version = "3.8.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "R6",
+    "otel",
+    "processx",
+]
+sources = ["https://p3m.dev/cran/2026-06-05/bin/macosx/sonoma-arm64/contrib/4.6/callr_3.8.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/callr_3.8.0-9226cf8e.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "a16b50e41ddbbf2bac236572e3e68c4ef9c76b88faf5cf840c79524c49000b06" }
+
+[[targets.packages]]
+package = "lattice"
+version = "0.23-1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-13/bin/macosx/sonoma-arm64/contrib/4.6/lattice_0.23-1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/lattice_0.23-1-e5eeae8d.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "34e9b2fc023582c4246959b543c331233c62118efd922bcc1ba72b4888adc590" }
+
+[[targets.packages]]
+package = "evaluate"
+version = "1.0.5"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-28/bin/macosx/sonoma-arm64/contrib/4.6/evaluate_1.0.5.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/evaluate_1.0.5-5d48b781.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "47aac79f889a828a5f8b4756cb972d7c2966bb984cbae17a4bd2389a73270794" }
+
+[[targets.packages]]
+package = "nanonext"
+version = "1.10.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-31/bin/macosx/sonoma-arm64/contrib/4.6/nanonext_1.10.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/nanonext_1.10.4-80ba5f8a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "9e49ee84ee159fa735f8c57bd90bf7cfc49de23ee44e3f53666eb138b30b701e" }
+
+[[targets.packages]]
+package = "glue"
+version = "1.8.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-18/bin/macosx/sonoma-arm64/contrib/4.6/glue_1.8.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/glue_1.8.1-c40aadfc.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "1c55905d3efc3d5c199ceb0bd12218e97f0d4c64df6038ff41ecef415478a122" }
+
+[[targets.packages]]
+package = "RcppParallel"
+version = "6.2.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-28/bin/macosx/sonoma-arm64/contrib/4.6/RcppParallel_6.2.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/RcppParallel_6.2.1-f03709d3.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "highr"
+version = "0.12"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["xfun"]
+sources = ["https://p3m.dev/cran/2026-03-07/bin/macosx/sonoma-arm64/contrib/4.6/highr_0.12.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/highr_0.12-465b14f8.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "e8e1d6460022a9948799602d6b95dc78fbfa318ff6f0627e95c20b7190fc612b" }
+
+[[targets.packages]]
+package = "arrow"
+version = "26.0.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "tidyselect",
+    "vctrs",
+    "cpp11",
+    "assertthat",
+    "glue",
+    "purrr",
+    "R6",
+    "rlang",
+    "bit64",
+]
+sources = ["https://p3m.dev/cran/2026-10-25/bin/macosx/sonoma-arm64/contrib/4.6/arrow_26.0.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/arrow_26.0.0-123d57b5.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "24b7ec87c75fcc6afa4bd9db8156993adfe42779a73af84c5024d9eb79ab19ab", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "pkgconfig"
+version = "2.0.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-09-23/bin/macosx/sonoma-arm64/contrib/4.6/pkgconfig_2.0.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/pkgconfig_2.0.3-279c7882.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850" }
+
+[[targets.packages]]
+package = "prettyunits"
+version = "1.2.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2023-09-25/bin/macosx/sonoma-arm64/contrib/4.6/prettyunits_1.2.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/prettyunits_1.2.0-a9c78d7c.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "f059f27e2a5c82e351fe05b87ad712f7afc273c651450453f59d99af5deeacea" }
+
+[[targets.packages]]
+package = "tarchetypes"
+version = "0.14.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "vctrs",
+    "tibble",
+    "secretbase",
+    "targets",
+    "withr",
+    "fs",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+]
+sources = ["https://p3m.dev/cran/2026-03-25/bin/macosx/sonoma-arm64/contrib/4.6/tarchetypes_0.14.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/tarchetypes_0.14.1-5fbaa66f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "df3d78bcafafde96a927eb785c356a5652ae3495808ed22e8267ba1650cde2c4" }
+
+[[targets.packages]]
+package = "xfun"
+version = "0.62"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-17/bin/macosx/sonoma-arm64/contrib/4.6/xfun_0.62.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/xfun_0.62-4783e8b7.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "56102222347f91ef0446dfb203016ff5935d6d6b0bff3b8776673c5e46a94baf" }
+
+[[targets.packages]]
+package = "pillar"
+version = "1.11.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "utf8",
+    "vctrs",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-09-18/bin/macosx/sonoma-arm64/contrib/4.6/pillar_1.11.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/pillar_1.11.1-98507d8f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "056ce154238c9b5b8d5dcbcb52e1bc51d33870ce08c8a9ca9496478bd59f4653" }
+
+[[targets.packages]]
+package = "magrittr"
+version = "2.0.5"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-05/bin/macosx/sonoma-arm64/contrib/4.6/magrittr_2.0.5.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/magrittr_2.0.5-0995a92c.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "3f5b5b1d4e6d12807a95c50b6c88cb1d8af2c5eb5213f08bfe58f278eca2ed23" }
+
+[[targets.packages]]
+package = "vctrs"
+version = "0.7.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-12/bin/macosx/sonoma-arm64/contrib/4.6/vctrs_0.7.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/vctrs_0.7.3-fd6ec28d.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "b45078413e06ac624dddb7221a3a43908b405c8abec09822cb86638d30b0435b" }
+
+[[targets.packages]]
+package = "cpp11"
+version = "0.5.5"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-05-07/bin/macosx/sonoma-arm64/contrib/4.6/cpp11_0.5.5.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/cpp11_0.5.5-73034f81.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "BH"
+version = "1.90.0-1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-15/bin/macosx/sonoma-arm64/contrib/4.6/BH_1.90.0-1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/BH_1.90.0-1-a2f4a6d1.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b" }
+
+[[targets.packages]]
+package = "fastverse"
+version = "0.3.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "data.table",
+    "collapse",
+    "kit",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2024-10-09/bin/macosx/sonoma-arm64/contrib/4.6/fastverse_0.3.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/fastverse_0.3.4-c417b1c3.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "86002fb57b3a656e83fc3bcc3609320f0d893ba39e2091d4d06ba232633a4bf0" }
+
+[[targets.packages]]
+package = "otel"
+version = "0.2.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-30/bin/macosx/sonoma-arm64/contrib/4.6/otel_0.2.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/otel_0.2.0-654a63cd.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "ef8afe5a1bc8074bbeb8a84134699ef348a1f8ac629ffba25ee43ea7bcd8dd17" }
+
+[[targets.packages]]
+package = "tidyr"
+version = "1.3.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "glue",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "lifecycle",
+    "stringr",
+    "cpp11",
+    "vctrs",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-05-07/bin/macosx/sonoma-arm64/contrib/4.6/tidyr_1.3.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/tidyr_1.3.2-fa96568a.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "04c0e6daf0af682af73763a42c027d7171761cdbdbf9ff7a77a0e421343d665a", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "mirai"
+version = "2.7.3"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["nanonext"]
+sources = ["https://p3m.dev/cran/2026-09-25/bin/macosx/sonoma-arm64/contrib/4.6/mirai_2.7.3.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/mirai_2.7.3-8c175e0f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "20bd6fb95c6262ae24649963c399f20ef3203cda46919f5669f823a2a56bb18a" }
+
+[[targets.packages]]
+package = "utf8"
+version = "1.2.6"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-06-09/bin/macosx/sonoma-arm64/contrib/4.6/utf8_1.2.6.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/utf8_1.2.6-7c454a4c.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "4589f8b72291329e70b7f3a8c20f2feb4e7764eebad2e6976bc9a3eee7686ce9" }
+
+[[targets.packages]]
+package = "duckdb"
+version = "2.0.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["DBI"]
+sources = ["https://p3m.dev/cran/2026-10-24/bin/macosx/sonoma-arm64/contrib/4.6/duckdb_2.0.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/duckdb_2.0.0-cd816c66.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "23db64ca8054c7984dba06958ae9d530579cb7430831ac4f503f33a44f013741" }
+
+[[targets.packages]]
+package = "fst"
+version = "0.9.8"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "fstcore",
+    "Rcpp",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/macosx/sonoma-arm64/contrib/4.6/fst_0.9.8.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/fst_0.9.8-ec332e01.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "44c7e889879c2a3a704b70152196e27b6fc1d700062056f9a9c0a49cb98d2665", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, fstcore@0.10.0=1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc" }
+
+[[targets.packages]]
+package = "rlang"
+version = "1.3.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/macosx/sonoma-arm64/contrib/4.6/rlang_1.3.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/rlang_1.3.0-cd54cc8f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "80aa537d49e72265f443a15e8936128af583caa5e572086518b503cbf064279c" }
+
+[[targets.packages]]
+package = "mori"
+version = "0.2.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-22/bin/macosx/sonoma-arm64/contrib/4.6/mori_0.2.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/mori_0.2.2-ee7e8086.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "f231e915aab655ad31126c0214572f328775eb003a67e8f06e604cac1ebe3539" }
+
+[[targets.packages]]
+package = "tibble"
+version = "3.3.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "rlang",
+    "magrittr",
+    "pkgconfig",
+]
+sources = ["https://p3m.dev/cran/2026-01-12/bin/macosx/sonoma-arm64/contrib/4.6/tibble_3.3.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/tibble_3.3.1-54804be3.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "fb309f8a1939021b237c7e85ff7ad6e8ff5acd57a6230d220a452094b492b28f" }
+
+[[targets.packages]]
+package = "nanoparquet"
+version = "0.5.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-17/bin/macosx/sonoma-arm64/contrib/4.6/nanoparquet_0.5.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/nanoparquet_0.5.2-1b7b2120.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "c9a462cf175f88a02c507e9b53a0c41be0a9c27cd71b3e7cddc61858541094b0" }
+
+[[targets.packages]]
+package = "base64url"
+version = "1.4"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["backports"]
+sources = ["https://p3m.dev/cran/2018-05-17/bin/macosx/sonoma-arm64/contrib/4.6/base64url_1.4.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/base64url_1.4-3005911e.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "1d058f138660e9155ebb331d7a2561e2541ee3321b8da90f6c41fd8dcc122c58" }
+
+[[targets.packages]]
+package = "targets"
+version = "1.12.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "secretbase",
+    "igraph",
+    "cli",
+    "codetools",
+    "data.table",
+    "rlang",
+    "tidyselect",
+    "prettyunits",
+    "tibble",
+    "base64url",
+    "knitr",
+    "ps",
+    "callr",
+    "R6",
+    "yaml",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-02-10/bin/macosx/sonoma-arm64/contrib/4.6/targets_1.12.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/targets_1.12.0-5e985c8f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "9ae2e0edd25bf5f34eb97f566e74073fdbe8bd968b43475a964882875fa3a06e" }
+
+[[targets.packages]]
+package = "Rfast"
+version = "2.1.5.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "zigg",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/macosx/sonoma-arm64/contrib/4.6/Rfast_2.1.5.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/Rfast_2.1.5.2-fbd20867.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "fstcore"
+version = "0.10.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/macosx/sonoma-arm64/contrib/4.6/fstcore_0.10.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/fstcore_0.10.0-ed839288.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "duckplyr"
+version = "1.2.2"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "glue",
+    "memoise",
+    "duckdb",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "jsonlite",
+    "pillar",
+    "collections",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-23/bin/macosx/sonoma-arm64/contrib/4.6/duckplyr_1.2.2.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/duckplyr_1.2.2-c43d06b4.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "e6875c8b7d022a871c72585ce7dfe46fda6156e11ff618fce5d165c6d5284731" }
+
+[[targets.packages]]
+package = "R6"
+version = "2.6.1"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-15/bin/macosx/sonoma-arm64/contrib/4.6/R6_2.6.1.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/R6_2.6.1-6a2d2539.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "59c6eba8b1b912eb7e104f65053235604be853425ee67c152ac4e86a1f2073b4" }
+
+[[targets.packages]]
+package = "collections"
+version = "0.3.12"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-03-23/bin/macosx/sonoma-arm64/contrib/4.6/collections_0.3.12.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/collections_0.3.12-c84fd5fd.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "60e63ee65bc1889e54a008410f53cb5b643f2fffdb926c3ed12316094709c60d" }
+
+[[targets.packages]]
+package = "blob"
+version = "1.3.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = [
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-01-15/bin/macosx/sonoma-arm64/contrib/4.6/blob_1.3.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/blob_1.3.0-54a0849f.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "d4d2aeb8d17683bbfc256a7541e282af9663a752988a21a6ba72a4ab268c7331" }
+
+[[targets.packages]]
+package = "fs"
+version = "2.1.0"
+binary = true
+platform = "aarch64-apple-darwin"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-19/bin/macosx/sonoma-arm64/contrib/4.6/fs_2.1.0.tgz"]
+target = "bin/macosx/sonoma-arm64/4.6/fs_2.1.0-82584eb4.tgz"
+groups = ["main"]
+metadata = { RemoteHash = "7088af1117d65c4ceb144b532e323f197fc8243b1d704bf6edf40774789829cd" }
+
+[[targets]]
+r_version = "4.6.2"
+platform = "source"
+bioc-version = "3.23"
+
+[[targets.direct_dependencies]]
+name = "DBI"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "arrow"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "bench"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "callr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "collapse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "crew"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "data.table"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dbplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckdb"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fastverse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fst"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "kit"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mirai"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mori"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "nanoparquet"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "processx"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "purrr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "qs2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "rlang"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "stringi"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tarchetypes"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "targets"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tibble"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "vctrs"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "waldo"
+constraint = "*"
+
+[[targets.packages]]
+package = "bench"
+version = "1.1.4"
+binary = false
+platform = "source"
+dependencies = [
+    "tibble",
+    "glue",
+    "profmem",
+    "pillar",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-01-17/src/contrib/bench_1.1.4.tar.gz"]
+target = "src/bench_1.1.4-0d57d369.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b822f5b7648deecc6b516dcca4e932ce92e65eb166b997b04355218aceb1d083" }
+
+[[targets.packages]]
+package = "bit64"
+version = "4.8.6"
+binary = false
+platform = "source"
+dependencies = ["bit"]
+sources = ["https://p3m.dev/cran/2026-09-02/src/contrib/bit64_4.8.6.tar.gz"]
+target = "src/bit64_4.8.6-8edb959f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "a5fcec17ba772a561a7375ca8fd966bdd5f20dd4e89b4dae07d7da933d554b45" }
+
+[[targets.packages]]
+package = "bit"
+version = "4.6.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-07/src/contrib/bit_4.6.0.tar.gz"]
+target = "src/bit_4.6.0-a639bb1d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "48fe21c5d04c7b724d695eeb60074395c0c631a7fb234e2075de92471445de08" }
+
+[[targets.packages]]
+package = "stringi"
+version = "1.8.9"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-05/src/contrib/stringi_1.8.9.tar.gz"]
+target = "src/stringi_1.8.9-226ba057.tar.gz"
+groups = ["main"]
+system_requirements = "ICU4C (>= 61, optional)"
+metadata = { RemoteHash = "427fcebd281d7ea850becce75e0807576dd394a723a814b2d487419b93275a33" }
+
+[[targets.packages]]
+package = "Matrix"
+version = "1.7-6"
+binary = false
+platform = "source"
+dependencies = ["lattice"]
+sources = ["https://p3m.dev/cran/2026-07-25/src/contrib/Matrix_1.7-6.tar.gz"]
+target = "src/Matrix_1.7-6-bc0483e0.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "694239dbe47e659d6d39a49af95157f46bd94977c283df00c4e8a016601cf143" }
+
+[[targets.packages]]
+package = "dplyr"
+version = "1.2.1"
+binary = false
+platform = "source"
+dependencies = [
+    "rlang",
+    "tibble",
+    "tidyselect",
+    "glue",
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "R6",
+    "generics",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-04-04/src/contrib/dplyr_1.2.1.tar.gz"]
+target = "src/dplyr_1.2.1-050cebcf.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "18d66fe2f24cda8b619c177326d39dd015229ab99695fa67d3fa31e4569390e0" }
+
+[[targets.packages]]
+package = "tidyselect"
+version = "1.2.1"
+binary = false
+platform = "source"
+dependencies = [
+    "withr",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2024-03-12/src/contrib/tidyselect_1.2.1.tar.gz"]
+target = "src/tidyselect_1.2.1-6c88146a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "169e97ba0bbfbcdf4a80534322751f87a04370310c40e27f04aac6525d45903c" }
+
+[[targets.packages]]
+package = "kit"
+version = "0.0.21"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-01-24/src/contrib/kit_0.0.21.tar.gz"]
+target = "src/kit_0.0.21-cf90d39c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bfe4ffbb87e11cb7d87207b96f82cbae8381c5fb445c05f6a8653fab99424fca" }
+
+[[targets.packages]]
+package = "dbplyr"
+version = "2.6.0"
+binary = false
+platform = "source"
+dependencies = [
+    "glue",
+    "tidyr",
+    "withr",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "pillar",
+    "R6",
+    "blob",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-06-18/src/contrib/dbplyr_2.6.0.tar.gz"]
+target = "src/dbplyr_2.6.0-1f81f743.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3672daf73f7f0238a2c547dce5d4fb31e50235bca796c710d6f7caf49c212bd8" }
+
+[[targets.packages]]
+package = "collapse"
+version = "2.1.8"
+binary = false
+platform = "source"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-08-31/src/contrib/collapse_2.1.8.tar.gz"]
+target = "src/collapse_2.1.8-b59e5df5.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "13fd523cadfa0541b42e805da825a8c882af35ec3da1df0decf96a72488acffd", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "Rnanoflann"
+version = "0.0.3"
+binary = false
+platform = "source"
+dependencies = [
+    "Rcpp",
+    "RcppArmadillo",
+]
+sources = ["https://p3m.dev/cran/2024-05-18/src/contrib/Rnanoflann_0.0.3.tar.gz"]
+target = "src/Rnanoflann_0.0.3-b95a2c3d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "46fcf84c640f8fb71d8fa397b6c441af95b6a0dadc168ecac214074b8ef57211", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d" }
+
+[[targets.packages]]
+package = "lifecycle"
+version = "1.0.5"
+binary = false
+platform = "source"
+dependencies = [
+    "rlang",
+    "cli",
+]
+sources = ["https://p3m.dev/cran/2026-01-09/src/contrib/lifecycle_1.0.5.tar.gz"]
+target = "src/lifecycle_1.0.5-fbf429a7.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "61841e3e6edba056a88355a3f1d6698ab8d5d9cb3c05f2af0ec5a44ab516f8ee" }
+
+[[targets.packages]]
+package = "waldo"
+version = "0.6.2"
+binary = false
+platform = "source"
+dependencies = [
+    "diffobj",
+    "cli",
+    "glue",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-07-12/src/contrib/waldo_0.6.2.tar.gz"]
+target = "src/waldo_0.6.2-8173eaf9.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b22a746be625eec49736d2a0a18d96c45c14d97e30e42bc81a0740f3194e07fa" }
+
+[[targets.packages]]
+package = "cachem"
+version = "1.1.0"
+binary = false
+platform = "source"
+dependencies = [
+    "fastmap",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2024-05-17/src/contrib/cachem_1.1.0.tar.gz"]
+target = "src/cachem_1.1.0-c7485274.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "550839fc2ae5d865db475ba2c1714144f07fa0c052c72135b0e4a70287492e21" }
+
+[[targets.packages]]
+package = "stringfish"
+version = "0.19.2"
+binary = false
+platform = "source"
+dependencies = [
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-05/src/contrib/stringfish_0.19.2.tar.gz"]
+target = "src/stringfish_0.19.2-cb6d743b.tar.gz"
+groups = ["main"]
+system_requirements = "GNU make, C++17"
+metadata = { RemoteHash = "424e9b2c69f5b7af74753e401cfaf9e9be08729dda99bdf0946ea53849e9aad0", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "Rfast2"
+version = "0.1.5.6"
+binary = false
+platform = "source"
+dependencies = [
+    "zigg",
+    "Rnanoflann",
+    "RcppArmadillo",
+    "RcppParallel",
+    "Rfast",
+    "Rcpp",
+    "BH",
+]
+sources = ["https://p3m.dev/cran/2026-03-08/src/contrib/Rfast2_0.1.5.6.tar.gz"]
+target = "src/Rfast2_0.1.5.6-431ac7d8.tar.gz"
+groups = ["main"]
+system_requirements = "C++17"
+metadata = { RemoteHash = "a9b4bb5578221fc09911d17f0d9dad3eb923f673dd181e6884499dfe2ad1134f", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, Rfast@2.1.5.2=d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec, BH@1.90.0-1=2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b" }
+
+[[targets.packages]]
+package = "crew"
+version = "1.3.3"
+binary = false
+platform = "source"
+dependencies = [
+    "nanonext",
+    "mirai",
+    "cli",
+    "data.table",
+    "later",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "ps",
+    "R6",
+    "processx",
+    "collections",
+    "promises",
+]
+sources = ["https://p3m.dev/cran/2026-09-05/src/contrib/crew_1.3.3.tar.gz"]
+target = "src/crew_1.3.3-cd52ad1a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "42d0f6cbf42f41f912e5fb05372fcd7c1518da5dae8da2a69022b8df141aa6ec" }
+
+[[targets.packages]]
+package = "ps"
+version = "1.9.3"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-21/src/contrib/ps_1.9.3.tar.gz"]
+target = "src/ps_1.9.3-be551c7f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "7b227f0627709a2073daf960ac612a0b87d03e18f7dd5c1938048ed440ef2e68" }
+
+[[targets.packages]]
+package = "Rcpp"
+version = "1.1.2"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/src/contrib/Rcpp_1.1.2.tar.gz"]
+target = "src/Rcpp_1.1.2-0af8c486.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "generics"
+version = "0.1.4"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-10/src/contrib/generics_0.1.4.tar.gz"]
+target = "src/generics_0.1.4-72fadd7a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bbe95a097792d38fc3b7e677738af1b95b66ea5e5017e33b8beac6a6088d0801" }
+
+[[targets.packages]]
+package = "processx"
+version = "3.9.0"
+binary = false
+platform = "source"
+dependencies = [
+    "ps",
+    "R6",
+]
+sources = ["https://p3m.dev/cran/2026-04-23/src/contrib/processx_3.9.0.tar.gz"]
+target = "src/processx_3.9.0-aa680842.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "cdfef9035405891d8b104b258a40f62656f215aba7dcdc9f3226203c4c8fb354" }
+
+[[targets.packages]]
+package = "promises"
+version = "1.5.0"
+binary = false
+platform = "source"
+dependencies = [
+    "otel",
+    "lifecycle",
+    "fastmap",
+    "later",
+    "R6",
+    "rlang",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2025-11-02/src/contrib/promises_1.5.0.tar.gz"]
+target = "src/promises_1.5.0-42eb7358.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bb68fd4065cc072996aed416f0b2388f58738797a3a38024720c29d67164747d" }
+
+[[targets.packages]]
+package = "yaml"
+version = "2.3.12"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-10/src/contrib/yaml_2.3.12.tar.gz"]
+target = "src/yaml_2.3.12-2b15f7a9.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "80ccf3dde851133ef3e333b818a817c296c6ccdacfc4709cd466995289cd556c" }
+
+[[targets.packages]]
+package = "zigg"
+version = "0.0.2"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-08/src/contrib/zigg_0.0.2.tar.gz"]
+target = "src/zigg_0.0.2-bd4e143b.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "jsonlite"
+version = "2.0.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-28/src/contrib/jsonlite_2.0.0.tar.gz"]
+target = "src/jsonlite_2.0.0-38c76850.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "75eb910c82b350ec33f094779da0f87bff154c232e4ae39c9896a9b89f3ac82d" }
+
+[[targets.packages]]
+package = "profmem"
+version = "0.7.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-03/src/contrib/profmem_0.7.0.tar.gz"]
+target = "src/profmem_0.7.0-1b655b68.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "16efc5f13f4b78919c9d51c07acf62c051e0e3830ae3cc32c596f8daf569c3cb" }
+
+[[targets.packages]]
+package = "memoise"
+version = "2.0.1"
+binary = false
+platform = "source"
+dependencies = [
+    "rlang",
+    "cachem",
+]
+sources = ["https://p3m.dev/cran/2021-11-29/src/contrib/memoise_2.0.1.tar.gz"]
+target = "src/memoise_2.0.1-d2e8eb41.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f85034ee98c8ca07fb3cd826142c1cd1e1e5747075a94c75a45783bbc4fe2deb" }
+
+[[targets.packages]]
+package = "withr"
+version = "3.0.3"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-06-20/src/contrib/withr_3.0.3.tar.gz"]
+target = "src/withr_3.0.3-937174ff.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "d86c6454164fc85678bfc85e2a6cce42f7461d45fa9a87de71f376e7956c991e" }
+
+[[targets.packages]]
+package = "secretbase"
+version = "1.3.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-26/src/contrib/secretbase_1.3.1.tar.gz"]
+target = "src/secretbase_1.3.1-e6fcc16d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "0708bb7f715647368f29fafd0f460e5d8e035d5ffc869c9c4b1bfd6553aa0b5f" }
+
+[[targets.packages]]
+package = "diffobj"
+version = "0.3.9"
+binary = false
+platform = "source"
+dependencies = ["crayon"]
+sources = ["https://p3m.dev/cran/2026-09-12/src/contrib/diffobj_0.3.9.tar.gz"]
+target = "src/diffobj_0.3.9-2bdc8978.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ac5502b9fb37b28dd2cd09061a0a973e7eeea66997b87a7f76f006499e5693bd" }
+
+[[targets.packages]]
+package = "crayon"
+version = "1.5.3"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-06-21/src/contrib/crayon_1.5.3.tar.gz"]
+target = "src/crayon_1.5.3-f2d80489.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3e74a0685541efb5ea763b92cfd5c859df71c46b0605967a0b5dbb7326e9da69" }
+
+[[targets.packages]]
+package = "cli"
+version = "3.6.6"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-10/src/contrib/cli_3.6.6.tar.gz"]
+target = "src/cli_3.6.6-20e4b277.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "fastmap"
+version = "1.2.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-05-16/src/contrib/fastmap_1.2.0.tar.gz"]
+target = "src/fastmap_1.2.0-50e8363a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b1da04a2915d1d057f3c2525e295ef15016a64e6667eac83a14641bbd83b9246" }
+
+[[targets.packages]]
+package = "qs2"
+version = "0.3.1"
+binary = false
+platform = "source"
+dependencies = [
+    "stringfish",
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-22/src/contrib/qs2_0.3.1.tar.gz"]
+target = "src/qs2_0.3.1-ab890f22.tar.gz"
+groups = ["main"]
+system_requirements = "GNU make, C++17"
+metadata = { RemoteHash = "1d555e5c38cf352209aeefb0355aa95bc04cda4af229a2a32c26d5582723b942", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "purrr"
+version = "1.2.2"
+binary = false
+platform = "source"
+dependencies = [
+    "vctrs",
+    "cli",
+    "lifecycle",
+    "magrittr",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-11/src/contrib/purrr_1.2.2.tar.gz"]
+target = "src/purrr_1.2.2-76caf9ff.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ac3bc0fc0e789510042522e6c4294336c71447be8f6921b5ef78b9a9fb86617d", RemoteLinkingToHashes = "cli@3.6.6=b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "later"
+version = "1.4.8"
+binary = false
+platform = "source"
+dependencies = [
+    "Rcpp",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-03-06/src/contrib/later_1.4.8.tar.gz"]
+target = "src/later_1.4.8-edc056f1.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ce5d88b3fd1df409eaa21aa53bf20b1a9331f75cd69e7e9b2a27b40d2290d219", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "codetools"
+version = "0.2-20"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-04-01/src/contrib/codetools_0.2-20.tar.gz"]
+target = "src/codetools_0.2-20-f63b6416.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3be6f375ec178723ddfd559d1e8e85bfeee04a5fbaf9f53f2f844e1669fea863" }
+
+[[targets.packages]]
+package = "data.table"
+version = "1.18.6.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-25/src/contrib/data.table_1.18.6.1.tar.gz"]
+target = "src/data.table_1.18.6.1-1ada39aa.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f2846f45fbbdfe886f05fa7489314a56ae0f3352ae5bc1070b0cdd4f44ffa1f5" }
+
+[[targets.packages]]
+package = "igraph"
+version = "2.3.4"
+binary = false
+platform = "source"
+dependencies = [
+    "Matrix",
+    "pkgconfig",
+    "rlang",
+    "vctrs",
+    "cpp11",
+    "lifecycle",
+    "cli",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-10-01/src/contrib/igraph_2.3.4.tar.gz"]
+target = "src/igraph_2.3.4-f24957bf.tar.gz"
+groups = ["main"]
+system_requirements = "libxml2 (optional), glpk (>= 4.57, optional)"
+metadata = { RemoteHash = "38b114f4ebc9b61af6c29a56d72a2329cd08191e4b3612df4f184c519ee60740", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "DBI"
+version = "1.3.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-02-26/src/contrib/DBI_1.3.0.tar.gz"]
+target = "src/DBI_1.3.0-5360a0a2.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "13def8e90cbe41205a0dfcf585a6a7ea79ce10d45969789e82613c7ce3d5fb18" }
+
+[[targets.packages]]
+package = "backports"
+version = "1.5.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-04/src/contrib/backports_1.5.1.tar.gz"]
+target = "src/backports_1.5.1-be1588a8.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b8eeeabe3c27e1486f43e0b18dae57f0e870dd7c6979d3668df76bf0d4735bad" }
+
+[[targets.packages]]
+package = "assertthat"
+version = "0.2.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-03-25/src/contrib/assertthat_0.2.1.tar.gz"]
+target = "src/assertthat_0.2.1-5a885991.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f" }
+
+[[targets.packages]]
+package = "RcppArmadillo"
+version = "15.6.2-1"
+binary = false
+platform = "source"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-10-19/src/contrib/RcppArmadillo_15.6.2-1.tar.gz"]
+target = "src/RcppArmadillo_15.6.2-1-b8cdaa5f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "stringr"
+version = "1.6.0"
+binary = false
+platform = "source"
+dependencies = [
+    "glue",
+    "stringi",
+    "lifecycle",
+    "cli",
+    "rlang",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2025-11-05/src/contrib/stringr_1.6.0.tar.gz"]
+target = "src/stringr_1.6.0-77631810.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "24f2fc5df980a7eb888659e22b9744d2316c558624015c7a7cd8c3ce3e370064" }
+
+[[targets.packages]]
+package = "knitr"
+version = "1.52"
+binary = false
+platform = "source"
+dependencies = [
+    "evaluate",
+    "yaml",
+    "highr",
+    "xfun",
+]
+sources = ["https://p3m.dev/cran/2026-09-07/src/contrib/knitr_1.52.tar.gz"]
+target = "src/knitr_1.52-5a1c1d62.tar.gz"
+groups = ["main"]
+system_requirements = "Package vignettes based on R Markdown v2 or reStructuredText require Pandoc (http://pandoc.org). The function rst2pdf() requires rst2pdf (https://github.com/rst2pdf/rst2pdf)."
+metadata = { RemoteHash = "bdd66a02dfba08a4c644b38a6ae08f6ba915c16d6b6ab6a188ec193c35905ff2" }
+
+[[targets.packages]]
+package = "callr"
+version = "3.8.0"
+binary = false
+platform = "source"
+dependencies = [
+    "R6",
+    "otel",
+    "processx",
+]
+sources = ["https://p3m.dev/cran/2026-06-05/src/contrib/callr_3.8.0.tar.gz"]
+target = "src/callr_3.8.0-9226cf8e.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "a16b50e41ddbbf2bac236572e3e68c4ef9c76b88faf5cf840c79524c49000b06" }
+
+[[targets.packages]]
+package = "lattice"
+version = "0.23-1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-13/src/contrib/lattice_0.23-1.tar.gz"]
+target = "src/lattice_0.23-1-e5eeae8d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "34e9b2fc023582c4246959b543c331233c62118efd922bcc1ba72b4888adc590" }
+
+[[targets.packages]]
+package = "evaluate"
+version = "1.0.5"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-28/src/contrib/evaluate_1.0.5.tar.gz"]
+target = "src/evaluate_1.0.5-5d48b781.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "47aac79f889a828a5f8b4756cb972d7c2966bb984cbae17a4bd2389a73270794" }
+
+[[targets.packages]]
+package = "nanonext"
+version = "1.10.4"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-31/src/contrib/nanonext_1.10.4.tar.gz"]
+target = "src/nanonext_1.10.4-80ba5f8a.tar.gz"
+groups = ["main"]
+system_requirements = "'libnng' >= 1.12 and 'libmbedtls' >= 3.0 (optional, bundled sources compiled otherwise)"
+metadata = { RemoteHash = "9e49ee84ee159fa735f8c57bd90bf7cfc49de23ee44e3f53666eb138b30b701e" }
+
+[[targets.packages]]
+package = "glue"
+version = "1.8.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-18/src/contrib/glue_1.8.1.tar.gz"]
+target = "src/glue_1.8.1-c40aadfc.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1c55905d3efc3d5c199ceb0bd12218e97f0d4c64df6038ff41ecef415478a122" }
+
+[[targets.packages]]
+package = "RcppParallel"
+version = "6.2.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-28/src/contrib/RcppParallel_6.2.1.tar.gz"]
+target = "src/RcppParallel_6.2.1-f03709d3.tar.gz"
+groups = ["main"]
+system_requirements = "CMake (>= 3.5)"
+metadata = { RemoteHash = "6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "highr"
+version = "0.12"
+binary = false
+platform = "source"
+dependencies = ["xfun"]
+sources = ["https://p3m.dev/cran/2026-03-07/src/contrib/highr_0.12.tar.gz"]
+target = "src/highr_0.12-465b14f8.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "e8e1d6460022a9948799602d6b95dc78fbfa318ff6f0627e95c20b7190fc612b" }
+
+[[targets.packages]]
+package = "arrow"
+version = "26.0.0"
+binary = false
+platform = "source"
+dependencies = [
+    "tidyselect",
+    "vctrs",
+    "cpp11",
+    "assertthat",
+    "glue",
+    "purrr",
+    "R6",
+    "rlang",
+    "bit64",
+]
+sources = ["https://p3m.dev/cran/2026-10-25/src/contrib/arrow_26.0.0.tar.gz"]
+target = "src/arrow_26.0.0-7a2eb194.tar.gz"
+groups = ["main"]
+system_requirements = "C++20; for AWS S3 support on Linux, libcurl and openssl, and libxml2 for Azure (optional); cmake >= 3.26 (build-time only, and only for full source build)"
+metadata = { RemoteHash = "24b7ec87c75fcc6afa4bd9db8156993adfe42779a73af84c5024d9eb79ab19ab", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "pkgconfig"
+version = "2.0.3"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-09-23/src/contrib/pkgconfig_2.0.3.tar.gz"]
+target = "src/pkgconfig_2.0.3-279c7882.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850" }
+
+[[targets.packages]]
+package = "prettyunits"
+version = "1.2.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2023-09-25/src/contrib/prettyunits_1.2.0.tar.gz"]
+target = "src/prettyunits_1.2.0-a9c78d7c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f059f27e2a5c82e351fe05b87ad712f7afc273c651450453f59d99af5deeacea" }
+
+[[targets.packages]]
+package = "tarchetypes"
+version = "0.14.1"
+binary = false
+platform = "source"
+dependencies = [
+    "vctrs",
+    "tibble",
+    "secretbase",
+    "targets",
+    "withr",
+    "fs",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+]
+sources = ["https://p3m.dev/cran/2026-03-25/src/contrib/tarchetypes_0.14.1.tar.gz"]
+target = "src/tarchetypes_0.14.1-5fbaa66f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "df3d78bcafafde96a927eb785c356a5652ae3495808ed22e8267ba1650cde2c4" }
+
+[[targets.packages]]
+package = "xfun"
+version = "0.62"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-17/src/contrib/xfun_0.62.tar.gz"]
+target = "src/xfun_0.62-4783e8b7.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "56102222347f91ef0446dfb203016ff5935d6d6b0bff3b8776673c5e46a94baf" }
+
+[[targets.packages]]
+package = "pillar"
+version = "1.11.1"
+binary = false
+platform = "source"
+dependencies = [
+    "utf8",
+    "vctrs",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-09-18/src/contrib/pillar_1.11.1.tar.gz"]
+target = "src/pillar_1.11.1-98507d8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "056ce154238c9b5b8d5dcbcb52e1bc51d33870ce08c8a9ca9496478bd59f4653" }
+
+[[targets.packages]]
+package = "magrittr"
+version = "2.0.5"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-05/src/contrib/magrittr_2.0.5.tar.gz"]
+target = "src/magrittr_2.0.5-0995a92c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3f5b5b1d4e6d12807a95c50b6c88cb1d8af2c5eb5213f08bfe58f278eca2ed23" }
+
+[[targets.packages]]
+package = "vctrs"
+version = "0.7.3"
+binary = false
+platform = "source"
+dependencies = [
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-12/src/contrib/vctrs_0.7.3.tar.gz"]
+target = "src/vctrs_0.7.3-fd6ec28d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b45078413e06ac624dddb7221a3a43908b405c8abec09822cb86638d30b0435b" }
+
+[[targets.packages]]
+package = "cpp11"
+version = "0.5.5"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-05-07/src/contrib/cpp11_0.5.5.tar.gz"]
+target = "src/cpp11_0.5.5-73034f81.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "BH"
+version = "1.90.0-1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-15/src/contrib/BH_1.90.0-1.tar.gz"]
+target = "src/BH_1.90.0-1-a2f4a6d1.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b" }
+
+[[targets.packages]]
+package = "fastverse"
+version = "0.3.4"
+binary = false
+platform = "source"
+dependencies = [
+    "data.table",
+    "collapse",
+    "kit",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2024-10-09/src/contrib/fastverse_0.3.4.tar.gz"]
+target = "src/fastverse_0.3.4-c417b1c3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "86002fb57b3a656e83fc3bcc3609320f0d893ba39e2091d4d06ba232633a4bf0" }
+
+[[targets.packages]]
+package = "otel"
+version = "0.2.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-30/src/contrib/otel_0.2.0.tar.gz"]
+target = "src/otel_0.2.0-654a63cd.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ef8afe5a1bc8074bbeb8a84134699ef348a1f8ac629ffba25ee43ea7bcd8dd17" }
+
+[[targets.packages]]
+package = "tidyr"
+version = "1.3.2"
+binary = false
+platform = "source"
+dependencies = [
+    "vctrs",
+    "tibble",
+    "cpp11",
+    "glue",
+    "lifecycle",
+    "stringr",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "magrittr",
+    "tidyselect",
+]
+sources = ["https://p3m.dev/cran/2025-12-20/src/contrib/tidyr_1.3.2.tar.gz"]
+target = "src/tidyr_1.3.2-de79b3f6.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "04c0e6daf0af682af73763a42c027d7171761cdbdbf9ff7a77a0e421343d665a", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "mirai"
+version = "2.7.3"
+binary = false
+platform = "source"
+dependencies = ["nanonext"]
+sources = ["https://p3m.dev/cran/2026-09-25/src/contrib/mirai_2.7.3.tar.gz"]
+target = "src/mirai_2.7.3-8c175e0f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "20bd6fb95c6262ae24649963c399f20ef3203cda46919f5669f823a2a56bb18a" }
+
+[[targets.packages]]
+package = "utf8"
+version = "1.2.6"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-06-09/src/contrib/utf8_1.2.6.tar.gz"]
+target = "src/utf8_1.2.6-7c454a4c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "4589f8b72291329e70b7f3a8c20f2feb4e7764eebad2e6976bc9a3eee7686ce9" }
+
+[[targets.packages]]
+package = "duckdb"
+version = "2.0.0"
+binary = false
+platform = "source"
+dependencies = ["DBI"]
+sources = ["https://p3m.dev/cran/2026-10-24/src/contrib/duckdb_2.0.0.tar.gz"]
+target = "src/duckdb_2.0.0-cd816c66.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "23db64ca8054c7984dba06958ae9d530579cb7430831ac4f503f33a44f013741" }
+
+[[targets.packages]]
+package = "fst"
+version = "0.9.8"
+binary = false
+platform = "source"
+dependencies = [
+    "Rcpp",
+    "fstcore",
+]
+sources = ["https://p3m.dev/cran/2022-02-09/src/contrib/fst_0.9.8.tar.gz"]
+target = "src/fst_0.9.8-3b0a406d.tar.gz"
+groups = ["main"]
+system_requirements = "little-endian platform"
+metadata = { RemoteHash = "44c7e889879c2a3a704b70152196e27b6fc1d700062056f9a9c0a49cb98d2665", RemoteLinkingToHashes = "fstcore@0.10.0=1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc, Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "rlang"
+version = "1.3.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/src/contrib/rlang_1.3.0.tar.gz"]
+target = "src/rlang_1.3.0-cd54cc8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "80aa537d49e72265f443a15e8936128af583caa5e572086518b503cbf064279c" }
+
+[[targets.packages]]
+package = "mori"
+version = "0.2.2"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-22/src/contrib/mori_0.2.2.tar.gz"]
+target = "src/mori_0.2.2-ee7e8086.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f231e915aab655ad31126c0214572f328775eb003a67e8f06e604cac1ebe3539" }
+
+[[targets.packages]]
+package = "tibble"
+version = "3.3.1"
+binary = false
+platform = "source"
+dependencies = [
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "rlang",
+    "magrittr",
+    "pkgconfig",
+]
+sources = ["https://p3m.dev/cran/2026-01-12/src/contrib/tibble_3.3.1.tar.gz"]
+target = "src/tibble_3.3.1-54804be3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "fb309f8a1939021b237c7e85ff7ad6e8ff5acd57a6230d220a452094b492b28f" }
+
+[[targets.packages]]
+package = "nanoparquet"
+version = "0.5.2"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-17/src/contrib/nanoparquet_0.5.2.tar.gz"]
+target = "src/nanoparquet_0.5.2-1b7b2120.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "c9a462cf175f88a02c507e9b53a0c41be0a9c27cd71b3e7cddc61858541094b0" }
+
+[[targets.packages]]
+package = "base64url"
+version = "1.4"
+binary = false
+platform = "source"
+dependencies = ["backports"]
+sources = ["https://p3m.dev/cran/2018-05-17/src/contrib/base64url_1.4.tar.gz"]
+target = "src/base64url_1.4-3005911e.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1d058f138660e9155ebb331d7a2561e2541ee3321b8da90f6c41fd8dcc122c58" }
+
+[[targets.packages]]
+package = "targets"
+version = "1.12.0"
+binary = false
+platform = "source"
+dependencies = [
+    "secretbase",
+    "igraph",
+    "cli",
+    "codetools",
+    "data.table",
+    "rlang",
+    "tidyselect",
+    "prettyunits",
+    "tibble",
+    "base64url",
+    "knitr",
+    "ps",
+    "callr",
+    "R6",
+    "yaml",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-02-10/src/contrib/targets_1.12.0.tar.gz"]
+target = "src/targets_1.12.0-5e985c8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "9ae2e0edd25bf5f34eb97f566e74073fdbe8bd968b43475a964882875fa3a06e" }
+
+[[targets.packages]]
+package = "Rfast"
+version = "2.1.5.2"
+binary = false
+platform = "source"
+dependencies = [
+    "zigg",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2025-10-11/src/contrib/Rfast_2.1.5.2.tar.gz"]
+target = "src/Rfast_2.1.5.2-5a82d3c5.tar.gz"
+groups = ["main"]
+system_requirements = "C++17"
+metadata = { RemoteHash = "d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d" }
+
+[[targets.packages]]
+package = "fstcore"
+version = "0.10.0"
+binary = false
+platform = "source"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2025-02-11/src/contrib/fstcore_0.10.0.tar.gz"]
+target = "src/fstcore_0.10.0-0922f72a.tar.gz"
+groups = ["main"]
+system_requirements = "little-endian platform"
+metadata = { RemoteHash = "1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "duckplyr"
+version = "1.2.2"
+binary = false
+platform = "source"
+dependencies = [
+    "glue",
+    "memoise",
+    "duckdb",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "jsonlite",
+    "pillar",
+    "collections",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-23/src/contrib/duckplyr_1.2.2.tar.gz"]
+target = "src/duckplyr_1.2.2-c43d06b4.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "e6875c8b7d022a871c72585ce7dfe46fda6156e11ff618fce5d165c6d5284731" }
+
+[[targets.packages]]
+package = "R6"
+version = "2.6.1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-15/src/contrib/R6_2.6.1.tar.gz"]
+target = "src/R6_2.6.1-6a2d2539.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "59c6eba8b1b912eb7e104f65053235604be853425ee67c152ac4e86a1f2073b4" }
+
+[[targets.packages]]
+package = "blob"
+version = "1.3.0"
+binary = false
+platform = "source"
+dependencies = [
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-01-15/src/contrib/blob_1.3.0.tar.gz"]
+target = "src/blob_1.3.0-54a0849f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "d4d2aeb8d17683bbfc256a7541e282af9663a752988a21a6ba72a4ab268c7331" }
+
+[[targets.packages]]
+package = "collections"
+version = "0.3.12"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-03-23/src/contrib/collections_0.3.12.tar.gz"]
+target = "src/collections_0.3.12-c84fd5fd.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "60e63ee65bc1889e54a008410f53cb5b643f2fffdb926c3ed12316094709c60d" }
+
+[[targets.packages]]
+package = "fs"
+version = "2.1.0"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-19/src/contrib/fs_2.1.0.tar.gz"]
+target = "src/fs_2.1.0-82584eb4.tar.gz"
+groups = ["main"]
+system_requirements = "libuv: libuv-devel (rpm) or libuv1-dev (deb). Alternatively to build the vendored libuv 'cmake' is required. GNU make."
+metadata = { RemoteHash = "7088af1117d65c4ceb144b532e323f197fc8243b1d704bf6edf40774789829cd" }
+
+[[targets]]
+r_version = "4.6.2"
+platform = "x86_64-unknown-linux-gnu"
+bioc-version = "3.23"
+
+[[targets.direct_dependencies]]
+name = "DBI"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "arrow"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "bench"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "callr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "collapse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "crew"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "data.table"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dbplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckdb"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fastverse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fst"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "kit"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mirai"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mori"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "nanoparquet"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "processx"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "purrr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "qs2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "rlang"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "stringi"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tarchetypes"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "targets"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tibble"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "vctrs"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "waldo"
+constraint = "*"
+
+[[targets.packages]]
+package = "bench"
+version = "1.1.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "tibble",
+    "glue",
+    "profmem",
+    "pillar",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-01-17/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/bench_1.1.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/bench_1.1.4-0d57d369.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b822f5b7648deecc6b516dcca4e932ce92e65eb166b997b04355218aceb1d083" }
+
+[[targets.packages]]
+package = "bit64"
+version = "4.8.6"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["bit"]
+sources = ["https://p3m.dev/cran/2026-09-02/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/bit64_4.8.6.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/bit64_4.8.6-8edb959f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "a5fcec17ba772a561a7375ca8fd966bdd5f20dd4e89b4dae07d7da933d554b45" }
+
+[[targets.packages]]
+package = "bit"
+version = "4.6.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-07/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/bit_4.6.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/bit_4.6.0-a639bb1d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "48fe21c5d04c7b724d695eeb60074395c0c631a7fb234e2075de92471445de08" }
+
+[[targets.packages]]
+package = "stringi"
+version = "1.8.9"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-05/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/stringi_1.8.9.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/stringi_1.8.9-226ba057.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "427fcebd281d7ea850becce75e0807576dd394a723a814b2d487419b93275a33" }
+
+[[targets.packages]]
+package = "Matrix"
+version = "1.7-6"
+binary = false
+platform = "source"
+dependencies = ["lattice"]
+sources = ["https://p3m.dev/cran/2026-07-25/src/contrib/Matrix_1.7-6.tar.gz"]
+target = "src/Matrix_1.7-6-bc0483e0.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "694239dbe47e659d6d39a49af95157f46bd94977c283df00c4e8a016601cf143" }
+
+[[targets.packages]]
+package = "dplyr"
+version = "1.2.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "rlang",
+    "tibble",
+    "tidyselect",
+    "glue",
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "R6",
+    "generics",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-04-04/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/dplyr_1.2.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/dplyr_1.2.1-050cebcf.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "18d66fe2f24cda8b619c177326d39dd015229ab99695fa67d3fa31e4569390e0" }
+
+[[targets.packages]]
+package = "tidyselect"
+version = "1.2.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "withr",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2024-03-12/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/tidyselect_1.2.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/tidyselect_1.2.1-6c88146a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "169e97ba0bbfbcdf4a80534322751f87a04370310c40e27f04aac6525d45903c" }
+
+[[targets.packages]]
+package = "kit"
+version = "0.0.21"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-01-24/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/kit_0.0.21.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/kit_0.0.21-cf90d39c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bfe4ffbb87e11cb7d87207b96f82cbae8381c5fb445c05f6a8653fab99424fca" }
+
+[[targets.packages]]
+package = "dbplyr"
+version = "2.6.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "glue",
+    "tidyr",
+    "withr",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "pillar",
+    "R6",
+    "blob",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-06-18/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/dbplyr_2.6.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/dbplyr_2.6.0-1f81f743.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3672daf73f7f0238a2c547dce5d4fb31e50235bca796c710d6f7caf49c212bd8" }
+
+[[targets.packages]]
+package = "collapse"
+version = "2.1.8"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-08-31/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/collapse_2.1.8.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/collapse_2.1.8-5b051c3f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "13fd523cadfa0541b42e805da825a8c882af35ec3da1df0decf96a72488acffd", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "Rnanoflann"
+version = "0.0.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "Rcpp",
+    "RcppArmadillo",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/Rnanoflann_0.0.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/Rnanoflann_0.0.3-4d4d220e.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "46fcf84c640f8fb71d8fa397b6c441af95b6a0dadc168ecac214074b8ef57211", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d" }
+
+[[targets.packages]]
+package = "lifecycle"
+version = "1.0.5"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "rlang",
+    "cli",
+]
+sources = ["https://p3m.dev/cran/2026-01-09/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/lifecycle_1.0.5.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/lifecycle_1.0.5-fbf429a7.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "61841e3e6edba056a88355a3f1d6698ab8d5d9cb3c05f2af0ec5a44ab516f8ee" }
+
+[[targets.packages]]
+package = "waldo"
+version = "0.6.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "diffobj",
+    "cli",
+    "glue",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-07-12/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/waldo_0.6.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/waldo_0.6.2-8173eaf9.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b22a746be625eec49736d2a0a18d96c45c14d97e30e42bc81a0740f3194e07fa" }
+
+[[targets.packages]]
+package = "cachem"
+version = "1.1.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "fastmap",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2024-05-17/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/cachem_1.1.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/cachem_1.1.0-c7485274.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "550839fc2ae5d865db475ba2c1714144f07fa0c052c72135b0e4a70287492e21" }
+
+[[targets.packages]]
+package = "stringfish"
+version = "0.19.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/stringfish_0.19.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/stringfish_0.19.2-d59340a7.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "424e9b2c69f5b7af74753e401cfaf9e9be08729dda99bdf0946ea53849e9aad0", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "Rfast2"
+version = "0.1.5.6"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "zigg",
+    "Rnanoflann",
+    "RcppArmadillo",
+    "RcppParallel",
+    "Rfast",
+    "Rcpp",
+    "BH",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/Rfast2_0.1.5.6.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/Rfast2_0.1.5.6-7cd73efe.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "a9b4bb5578221fc09911d17f0d9dad3eb923f673dd181e6884499dfe2ad1134f", RemoteLinkingToHashes = "BH@1.90.0-1=2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b, Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, Rfast@2.1.5.2=d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "ps"
+version = "1.9.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-21/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/ps_1.9.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/ps_1.9.3-be551c7f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "7b227f0627709a2073daf960ac612a0b87d03e18f7dd5c1938048ed440ef2e68" }
+
+[[targets.packages]]
+package = "processx"
+version = "3.9.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "ps",
+    "R6",
+]
+sources = ["https://p3m.dev/cran/2026-04-23/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/processx_3.9.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/processx_3.9.0-aa680842.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "cdfef9035405891d8b104b258a40f62656f215aba7dcdc9f3226203c4c8fb354" }
+
+[[targets.packages]]
+package = "Rcpp"
+version = "1.1.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/Rcpp_1.1.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/Rcpp_1.1.2-0af8c486.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "generics"
+version = "0.1.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-10/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/generics_0.1.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/generics_0.1.4-72fadd7a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bbe95a097792d38fc3b7e677738af1b95b66ea5e5017e33b8beac6a6088d0801" }
+
+[[targets.packages]]
+package = "crew"
+version = "1.3.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "nanonext",
+    "mirai",
+    "cli",
+    "data.table",
+    "later",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "ps",
+    "R6",
+    "processx",
+    "collections",
+    "promises",
+]
+sources = ["https://p3m.dev/cran/2026-09-05/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/crew_1.3.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/crew_1.3.3-cd52ad1a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "42d0f6cbf42f41f912e5fb05372fcd7c1518da5dae8da2a69022b8df141aa6ec" }
+
+[[targets.packages]]
+package = "promises"
+version = "1.5.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "otel",
+    "lifecycle",
+    "fastmap",
+    "later",
+    "R6",
+    "rlang",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2025-11-02/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/promises_1.5.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/promises_1.5.0-42eb7358.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bb68fd4065cc072996aed416f0b2388f58738797a3a38024720c29d67164747d" }
+
+[[targets.packages]]
+package = "yaml"
+version = "2.3.12"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-10/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/yaml_2.3.12.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/yaml_2.3.12-2b15f7a9.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "80ccf3dde851133ef3e333b818a817c296c6ccdacfc4709cd466995289cd556c" }
+
+[[targets.packages]]
+package = "zigg"
+version = "0.0.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-08/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/zigg_0.0.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/zigg_0.0.2-bd4e143b.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "jsonlite"
+version = "2.0.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-28/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/jsonlite_2.0.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/jsonlite_2.0.0-38c76850.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "75eb910c82b350ec33f094779da0f87bff154c232e4ae39c9896a9b89f3ac82d" }
+
+[[targets.packages]]
+package = "profmem"
+version = "0.7.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-03/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/profmem_0.7.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/profmem_0.7.0-1b655b68.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "16efc5f13f4b78919c9d51c07acf62c051e0e3830ae3cc32c596f8daf569c3cb" }
+
+[[targets.packages]]
+package = "memoise"
+version = "2.0.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "rlang",
+    "cachem",
+]
+sources = ["https://p3m.dev/cran/2021-11-29/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/memoise_2.0.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/memoise_2.0.1-d2e8eb41.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f85034ee98c8ca07fb3cd826142c1cd1e1e5747075a94c75a45783bbc4fe2deb" }
+
+[[targets.packages]]
+package = "withr"
+version = "3.0.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-06-20/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/withr_3.0.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/withr_3.0.3-937174ff.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "d86c6454164fc85678bfc85e2a6cce42f7461d45fa9a87de71f376e7956c991e" }
+
+[[targets.packages]]
+package = "secretbase"
+version = "1.3.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-26/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/secretbase_1.3.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/secretbase_1.3.1-e6fcc16d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "0708bb7f715647368f29fafd0f460e5d8e035d5ffc869c9c4b1bfd6553aa0b5f" }
+
+[[targets.packages]]
+package = "diffobj"
+version = "0.3.9"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["crayon"]
+sources = ["https://p3m.dev/cran/2026-09-12/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/diffobj_0.3.9.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/diffobj_0.3.9-2bdc8978.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ac5502b9fb37b28dd2cd09061a0a973e7eeea66997b87a7f76f006499e5693bd" }
+
+[[targets.packages]]
+package = "crayon"
+version = "1.5.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-06-21/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/crayon_1.5.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/crayon_1.5.3-f2d80489.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3e74a0685541efb5ea763b92cfd5c859df71c46b0605967a0b5dbb7326e9da69" }
+
+[[targets.packages]]
+package = "cli"
+version = "3.6.6"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-10/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/cli_3.6.6.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/cli_3.6.6-20e4b277.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "fastmap"
+version = "1.2.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-05-16/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/fastmap_1.2.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/fastmap_1.2.0-50e8363a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b1da04a2915d1d057f3c2525e295ef15016a64e6667eac83a14641bbd83b9246" }
+
+[[targets.packages]]
+package = "qs2"
+version = "0.3.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "stringfish",
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/qs2_0.3.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/qs2_0.3.1-994ce001.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1d555e5c38cf352209aeefb0355aa95bc04cda4af229a2a32c26d5582723b942", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "purrr"
+version = "1.2.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "vctrs",
+    "cli",
+    "lifecycle",
+    "magrittr",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-11/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/purrr_1.2.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/purrr_1.2.2-bec4fda3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ac3bc0fc0e789510042522e6c4294336c71447be8f6921b5ef78b9a9fb86617d", RemoteLinkingToHashes = "cli@3.6.6=b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "later"
+version = "1.4.8"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "Rcpp",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/later_1.4.8.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/later_1.4.8-65d05100.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ce5d88b3fd1df409eaa21aa53bf20b1a9331f75cd69e7e9b2a27b40d2290d219", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "codetools"
+version = "0.2-20"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-04-01/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/codetools_0.2-20.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/codetools_0.2-20-f63b6416.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3be6f375ec178723ddfd559d1e8e85bfeee04a5fbaf9f53f2f844e1669fea863" }
+
+[[targets.packages]]
+package = "data.table"
+version = "1.18.6.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-25/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/data.table_1.18.6.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/data.table_1.18.6.1-1ada39aa.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f2846f45fbbdfe886f05fa7489314a56ae0f3352ae5bc1070b0cdd4f44ffa1f5" }
+
+[[targets.packages]]
+package = "backports"
+version = "1.5.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-04/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/backports_1.5.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/backports_1.5.1-be1588a8.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b8eeeabe3c27e1486f43e0b18dae57f0e870dd7c6979d3668df76bf0d4735bad" }
+
+[[targets.packages]]
+package = "DBI"
+version = "1.3.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-02-26/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/DBI_1.3.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/DBI_1.3.0-5360a0a2.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "13def8e90cbe41205a0dfcf585a6a7ea79ce10d45969789e82613c7ce3d5fb18" }
+
+[[targets.packages]]
+package = "igraph"
+version = "2.3.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "magrittr",
+    "cli",
+    "rlang",
+    "pkgconfig",
+    "lifecycle",
+    "cpp11",
+    "Matrix",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-01/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/igraph_2.3.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/igraph_2.3.4-6e6825c0.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "38b114f4ebc9b61af6c29a56d72a2329cd08191e4b3612df4f184c519ee60740", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "assertthat"
+version = "0.2.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-03-25/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/assertthat_0.2.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/assertthat_0.2.1-5a885991.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f" }
+
+[[targets.packages]]
+package = "RcppArmadillo"
+version = "15.6.2-1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/RcppArmadillo_15.6.2-1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/RcppArmadillo_15.6.2-1-853a06a1.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "stringr"
+version = "1.6.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "glue",
+    "stringi",
+    "lifecycle",
+    "cli",
+    "rlang",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2025-11-05/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/stringr_1.6.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/stringr_1.6.0-77631810.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "24f2fc5df980a7eb888659e22b9744d2316c558624015c7a7cd8c3ce3e370064" }
+
+[[targets.packages]]
+package = "knitr"
+version = "1.52"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "evaluate",
+    "yaml",
+    "highr",
+    "xfun",
+]
+sources = ["https://p3m.dev/cran/2026-09-07/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/knitr_1.52.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/knitr_1.52-5a1c1d62.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "bdd66a02dfba08a4c644b38a6ae08f6ba915c16d6b6ab6a188ec193c35905ff2" }
+
+[[targets.packages]]
+package = "callr"
+version = "3.8.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "R6",
+    "otel",
+    "processx",
+]
+sources = ["https://p3m.dev/cran/2026-06-05/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/callr_3.8.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/callr_3.8.0-9226cf8e.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "a16b50e41ddbbf2bac236572e3e68c4ef9c76b88faf5cf840c79524c49000b06" }
+
+[[targets.packages]]
+package = "lattice"
+version = "0.23-1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-13/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/lattice_0.23-1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/lattice_0.23-1-e5eeae8d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "34e9b2fc023582c4246959b543c331233c62118efd922bcc1ba72b4888adc590" }
+
+[[targets.packages]]
+package = "evaluate"
+version = "1.0.5"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-28/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/evaluate_1.0.5.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/evaluate_1.0.5-5d48b781.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "47aac79f889a828a5f8b4756cb972d7c2966bb984cbae17a4bd2389a73270794" }
+
+[[targets.packages]]
+package = "nanonext"
+version = "1.10.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-31/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/nanonext_1.10.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/nanonext_1.10.4-80ba5f8a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "9e49ee84ee159fa735f8c57bd90bf7cfc49de23ee44e3f53666eb138b30b701e" }
+
+[[targets.packages]]
+package = "glue"
+version = "1.8.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-18/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/glue_1.8.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/glue_1.8.1-c40aadfc.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1c55905d3efc3d5c199ceb0bd12218e97f0d4c64df6038ff41ecef415478a122" }
+
+[[targets.packages]]
+package = "RcppParallel"
+version = "6.2.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-28/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/RcppParallel_6.2.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/RcppParallel_6.2.1-f03709d3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "highr"
+version = "0.12"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["xfun"]
+sources = ["https://p3m.dev/cran/2026-03-07/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/highr_0.12.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/highr_0.12-465b14f8.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "e8e1d6460022a9948799602d6b95dc78fbfa318ff6f0627e95c20b7190fc612b" }
+
+[[targets.packages]]
+package = "arrow"
+version = "26.0.0"
+binary = false
+platform = "source"
+dependencies = [
+    "tidyselect",
+    "vctrs",
+    "cpp11",
+    "assertthat",
+    "glue",
+    "purrr",
+    "R6",
+    "rlang",
+    "bit64",
+]
+sources = ["https://p3m.dev/cran/2026-10-25/src/contrib/arrow_26.0.0.tar.gz"]
+target = "src/arrow_26.0.0-7a2eb194.tar.gz"
+groups = ["main"]
+system_requirements = "C++20; for AWS S3 support on Linux, libcurl and openssl, and libxml2 for Azure (optional); cmake >= 3.26 (build-time only, and only for full source build)"
+metadata = { RemoteHash = "24b7ec87c75fcc6afa4bd9db8156993adfe42779a73af84c5024d9eb79ab19ab", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "pkgconfig"
+version = "2.0.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-09-23/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/pkgconfig_2.0.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/pkgconfig_2.0.3-279c7882.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850" }
+
+[[targets.packages]]
+package = "prettyunits"
+version = "1.2.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2023-09-25/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/prettyunits_1.2.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/prettyunits_1.2.0-a9c78d7c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f059f27e2a5c82e351fe05b87ad712f7afc273c651450453f59d99af5deeacea" }
+
+[[targets.packages]]
+package = "tarchetypes"
+version = "0.14.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "vctrs",
+    "tibble",
+    "secretbase",
+    "targets",
+    "withr",
+    "fs",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+]
+sources = ["https://p3m.dev/cran/2026-03-25/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/tarchetypes_0.14.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/tarchetypes_0.14.1-5fbaa66f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "df3d78bcafafde96a927eb785c356a5652ae3495808ed22e8267ba1650cde2c4" }
+
+[[targets.packages]]
+package = "xfun"
+version = "0.62"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-17/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/xfun_0.62.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/xfun_0.62-4783e8b7.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "56102222347f91ef0446dfb203016ff5935d6d6b0bff3b8776673c5e46a94baf" }
+
+[[targets.packages]]
+package = "pillar"
+version = "1.11.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "utf8",
+    "vctrs",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-09-18/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/pillar_1.11.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/pillar_1.11.1-98507d8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "056ce154238c9b5b8d5dcbcb52e1bc51d33870ce08c8a9ca9496478bd59f4653" }
+
+[[targets.packages]]
+package = "magrittr"
+version = "2.0.5"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-05/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/magrittr_2.0.5.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/magrittr_2.0.5-0995a92c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "3f5b5b1d4e6d12807a95c50b6c88cb1d8af2c5eb5213f08bfe58f278eca2ed23" }
+
+[[targets.packages]]
+package = "vctrs"
+version = "0.7.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-12/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/vctrs_0.7.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/vctrs_0.7.3-fd6ec28d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "b45078413e06ac624dddb7221a3a43908b405c8abec09822cb86638d30b0435b" }
+
+[[targets.packages]]
+package = "cpp11"
+version = "0.5.5"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-05-07/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/cpp11_0.5.5.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/cpp11_0.5.5-73034f81.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "BH"
+version = "1.90.0-1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-15/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/BH_1.90.0-1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/BH_1.90.0-1-a2f4a6d1.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b" }
+
+[[targets.packages]]
+package = "fastverse"
+version = "0.3.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "data.table",
+    "collapse",
+    "kit",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2024-10-09/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/fastverse_0.3.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/fastverse_0.3.4-c417b1c3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "86002fb57b3a656e83fc3bcc3609320f0d893ba39e2091d4d06ba232633a4bf0" }
+
+[[targets.packages]]
+package = "otel"
+version = "0.2.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-30/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/otel_0.2.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/otel_0.2.0-654a63cd.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "ef8afe5a1bc8074bbeb8a84134699ef348a1f8ac629ffba25ee43ea7bcd8dd17" }
+
+[[targets.packages]]
+package = "tidyr"
+version = "1.3.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "glue",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "lifecycle",
+    "stringr",
+    "cpp11",
+    "vctrs",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-05-07/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/tidyr_1.3.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/tidyr_1.3.2-fa96568a.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "04c0e6daf0af682af73763a42c027d7171761cdbdbf9ff7a77a0e421343d665a", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "mirai"
+version = "2.7.3"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["nanonext"]
+sources = ["https://p3m.dev/cran/2026-09-25/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/mirai_2.7.3.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/mirai_2.7.3-8c175e0f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "20bd6fb95c6262ae24649963c399f20ef3203cda46919f5669f823a2a56bb18a" }
+
+[[targets.packages]]
+package = "utf8"
+version = "1.2.6"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-06-09/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/utf8_1.2.6.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/utf8_1.2.6-7c454a4c.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "4589f8b72291329e70b7f3a8c20f2feb4e7764eebad2e6976bc9a3eee7686ce9" }
+
+[[targets.packages]]
+package = "duckdb"
+version = "2.0.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["DBI"]
+sources = ["https://p3m.dev/cran/2026-10-24/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/duckdb_2.0.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/duckdb_2.0.0-cd816c66.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "23db64ca8054c7984dba06958ae9d530579cb7430831ac4f503f33a44f013741" }
+
+[[targets.packages]]
+package = "fst"
+version = "0.9.8"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "fstcore",
+    "Rcpp",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/fst_0.9.8.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/fst_0.9.8-ec332e01.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "44c7e889879c2a3a704b70152196e27b6fc1d700062056f9a9c0a49cb98d2665", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, fstcore@0.10.0=1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc" }
+
+[[targets.packages]]
+package = "rlang"
+version = "1.3.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/rlang_1.3.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/rlang_1.3.0-cd54cc8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "80aa537d49e72265f443a15e8936128af583caa5e572086518b503cbf064279c" }
+
+[[targets.packages]]
+package = "mori"
+version = "0.2.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-22/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/mori_0.2.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/mori_0.2.2-ee7e8086.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "f231e915aab655ad31126c0214572f328775eb003a67e8f06e604cac1ebe3539" }
+
+[[targets.packages]]
+package = "tibble"
+version = "3.3.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "rlang",
+    "magrittr",
+    "pkgconfig",
+]
+sources = ["https://p3m.dev/cran/2026-01-12/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/tibble_3.3.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/tibble_3.3.1-54804be3.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "fb309f8a1939021b237c7e85ff7ad6e8ff5acd57a6230d220a452094b492b28f" }
+
+[[targets.packages]]
+package = "nanoparquet"
+version = "0.5.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-17/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/nanoparquet_0.5.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/nanoparquet_0.5.2-1b7b2120.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "c9a462cf175f88a02c507e9b53a0c41be0a9c27cd71b3e7cddc61858541094b0" }
+
+[[targets.packages]]
+package = "base64url"
+version = "1.4"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["backports"]
+sources = ["https://p3m.dev/cran/2018-05-17/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/base64url_1.4.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/base64url_1.4-3005911e.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1d058f138660e9155ebb331d7a2561e2541ee3321b8da90f6c41fd8dcc122c58" }
+
+[[targets.packages]]
+package = "targets"
+version = "1.12.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "secretbase",
+    "igraph",
+    "cli",
+    "codetools",
+    "data.table",
+    "rlang",
+    "tidyselect",
+    "prettyunits",
+    "tibble",
+    "base64url",
+    "knitr",
+    "ps",
+    "callr",
+    "R6",
+    "yaml",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-02-10/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/targets_1.12.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/targets_1.12.0-5e985c8f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "9ae2e0edd25bf5f34eb97f566e74073fdbe8bd968b43475a964882875fa3a06e" }
+
+[[targets.packages]]
+package = "Rfast"
+version = "2.1.5.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "zigg",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/Rfast_2.1.5.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/Rfast_2.1.5.2-fbd20867.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "fstcore"
+version = "0.10.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/fstcore_0.10.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/fstcore_0.10.0-ed839288.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "duckplyr"
+version = "1.2.2"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "glue",
+    "memoise",
+    "duckdb",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "jsonlite",
+    "pillar",
+    "collections",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-23/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/duckplyr_1.2.2.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/duckplyr_1.2.2-c43d06b4.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "e6875c8b7d022a871c72585ce7dfe46fda6156e11ff618fce5d165c6d5284731" }
+
+[[targets.packages]]
+package = "R6"
+version = "2.6.1"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-15/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/R6_2.6.1.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/R6_2.6.1-6a2d2539.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "59c6eba8b1b912eb7e104f65053235604be853425ee67c152ac4e86a1f2073b4" }
+
+[[targets.packages]]
+package = "collections"
+version = "0.3.12"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-03-23/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/collections_0.3.12.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/collections_0.3.12-c84fd5fd.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "60e63ee65bc1889e54a008410f53cb5b643f2fffdb926c3ed12316094709c60d" }
+
+[[targets.packages]]
+package = "blob"
+version = "1.3.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = [
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-01-15/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/blob_1.3.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/blob_1.3.0-54a0849f.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "d4d2aeb8d17683bbfc256a7541e282af9663a752988a21a6ba72a4ab268c7331" }
+
+[[targets.packages]]
+package = "fs"
+version = "2.1.0"
+binary = true
+platform = "x86_64-unknown-linux-gnu"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-19/bin/linux/manylinux_2_28-x86_64/4.6/src/contrib/fs_2.1.0.tar.gz"]
+target = "bin/linux/manylinux_2_28-x86_64/4.6/fs_2.1.0-82584eb4.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "7088af1117d65c4ceb144b532e323f197fc8243b1d704bf6edf40774789829cd" }
+
+[[targets]]
+r_version = "4.6.2"
+platform = "x86_64-w64-mingw32"
+bioc-version = "3.23"
+
+[[targets.direct_dependencies]]
+name = "DBI"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "Rfast2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "arrow"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "bench"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "callr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "collapse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "crew"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "data.table"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dbplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "dplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckdb"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "duckplyr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fastverse"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "fst"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "kit"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mirai"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "mori"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "nanoparquet"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "processx"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "purrr"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "qs2"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "rlang"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "stringi"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tarchetypes"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "targets"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "tibble"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "vctrs"
+constraint = "*"
+
+[[targets.direct_dependencies]]
+name = "waldo"
+constraint = "*"
+
+[[targets.packages]]
+package = "bench"
+version = "1.1.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "tibble",
+    "glue",
+    "profmem",
+    "pillar",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-01-17/bin/windows/contrib/4.6/bench_1.1.4.zip"]
+target = "bin/windows/4.6/bench_1.1.4-0d57d369.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b822f5b7648deecc6b516dcca4e932ce92e65eb166b997b04355218aceb1d083" }
+
+[[targets.packages]]
+package = "bit64"
+version = "4.8.6"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["bit"]
+sources = ["https://p3m.dev/cran/2026-09-02/bin/windows/contrib/4.6/bit64_4.8.6.zip"]
+target = "bin/windows/4.6/bit64_4.8.6-8edb959f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "a5fcec17ba772a561a7375ca8fd966bdd5f20dd4e89b4dae07d7da933d554b45" }
+
+[[targets.packages]]
+package = "bit"
+version = "4.6.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-07/bin/windows/contrib/4.6/bit_4.6.0.zip"]
+target = "bin/windows/4.6/bit_4.6.0-a639bb1d.zip"
+groups = ["main"]
+metadata = { RemoteHash = "48fe21c5d04c7b724d695eeb60074395c0c631a7fb234e2075de92471445de08" }
+
+[[targets.packages]]
+package = "stringi"
+version = "1.8.9"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-05/bin/windows/contrib/4.6/stringi_1.8.9.zip"]
+target = "bin/windows/4.6/stringi_1.8.9-226ba057.zip"
+groups = ["main"]
+metadata = { RemoteHash = "427fcebd281d7ea850becce75e0807576dd394a723a814b2d487419b93275a33" }
+
+[[targets.packages]]
+package = "Matrix"
+version = "1.7-6"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["lattice"]
+sources = ["https://p3m.dev/cran/2026-07-25/bin/windows/contrib/4.6/Matrix_1.7-6.zip"]
+target = "bin/windows/4.6/Matrix_1.7-6-bc0483e0.zip"
+groups = ["main"]
+metadata = { RemoteHash = "694239dbe47e659d6d39a49af95157f46bd94977c283df00c4e8a016601cf143" }
+
+[[targets.packages]]
+package = "dplyr"
+version = "1.2.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "rlang",
+    "tibble",
+    "tidyselect",
+    "glue",
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "R6",
+    "generics",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-04-04/bin/windows/contrib/4.6/dplyr_1.2.1.zip"]
+target = "bin/windows/4.6/dplyr_1.2.1-050cebcf.zip"
+groups = ["main"]
+metadata = { RemoteHash = "18d66fe2f24cda8b619c177326d39dd015229ab99695fa67d3fa31e4569390e0" }
+
+[[targets.packages]]
+package = "tidyselect"
+version = "1.2.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "withr",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2024-03-12/bin/windows/contrib/4.6/tidyselect_1.2.1.zip"]
+target = "bin/windows/4.6/tidyselect_1.2.1-6c88146a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "169e97ba0bbfbcdf4a80534322751f87a04370310c40e27f04aac6525d45903c" }
+
+[[targets.packages]]
+package = "kit"
+version = "0.0.21"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-01-24/bin/windows/contrib/4.6/kit_0.0.21.zip"]
+target = "bin/windows/4.6/kit_0.0.21-cf90d39c.zip"
+groups = ["main"]
+metadata = { RemoteHash = "bfe4ffbb87e11cb7d87207b96f82cbae8381c5fb445c05f6a8653fab99424fca" }
+
+[[targets.packages]]
+package = "dbplyr"
+version = "2.6.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "glue",
+    "tidyr",
+    "withr",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "pillar",
+    "R6",
+    "blob",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-06-18/bin/windows/contrib/4.6/dbplyr_2.6.0.zip"]
+target = "bin/windows/4.6/dbplyr_2.6.0-1f81f743.zip"
+groups = ["main"]
+metadata = { RemoteHash = "3672daf73f7f0238a2c547dce5d4fb31e50235bca796c710d6f7caf49c212bd8" }
+
+[[targets.packages]]
+package = "collapse"
+version = "2.1.8"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-08-31/bin/windows/contrib/4.6/collapse_2.1.8.zip"]
+target = "bin/windows/4.6/collapse_2.1.8-5b051c3f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "13fd523cadfa0541b42e805da825a8c882af35ec3da1df0decf96a72488acffd", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "Rnanoflann"
+version = "0.0.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "Rcpp",
+    "RcppArmadillo",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/windows/contrib/4.6/Rnanoflann_0.0.3.zip"]
+target = "bin/windows/4.6/Rnanoflann_0.0.3-4d4d220e.zip"
+groups = ["main"]
+metadata = { RemoteHash = "46fcf84c640f8fb71d8fa397b6c441af95b6a0dadc168ecac214074b8ef57211", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d" }
+
+[[targets.packages]]
+package = "lifecycle"
+version = "1.0.5"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "rlang",
+    "cli",
+]
+sources = ["https://p3m.dev/cran/2026-01-09/bin/windows/contrib/4.6/lifecycle_1.0.5.zip"]
+target = "bin/windows/4.6/lifecycle_1.0.5-fbf429a7.zip"
+groups = ["main"]
+metadata = { RemoteHash = "61841e3e6edba056a88355a3f1d6698ab8d5d9cb3c05f2af0ec5a44ab516f8ee" }
+
+[[targets.packages]]
+package = "waldo"
+version = "0.6.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "diffobj",
+    "cli",
+    "glue",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-07-12/bin/windows/contrib/4.6/waldo_0.6.2.zip"]
+target = "bin/windows/4.6/waldo_0.6.2-8173eaf9.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b22a746be625eec49736d2a0a18d96c45c14d97e30e42bc81a0740f3194e07fa" }
+
+[[targets.packages]]
+package = "cachem"
+version = "1.1.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "fastmap",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2024-05-17/bin/windows/contrib/4.6/cachem_1.1.0.zip"]
+target = "bin/windows/4.6/cachem_1.1.0-c7485274.zip"
+groups = ["main"]
+metadata = { RemoteHash = "550839fc2ae5d865db475ba2c1714144f07fa0c052c72135b0e4a70287492e21" }
+
+[[targets.packages]]
+package = "stringfish"
+version = "0.19.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/windows/contrib/4.6/stringfish_0.19.2.zip"]
+target = "bin/windows/4.6/stringfish_0.19.2-d59340a7.zip"
+groups = ["main"]
+metadata = { RemoteHash = "424e9b2c69f5b7af74753e401cfaf9e9be08729dda99bdf0946ea53849e9aad0", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "Rfast2"
+version = "0.1.5.6"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "zigg",
+    "Rnanoflann",
+    "RcppArmadillo",
+    "RcppParallel",
+    "Rfast",
+    "Rcpp",
+    "BH",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/windows/contrib/4.6/Rfast2_0.1.5.6.zip"]
+target = "bin/windows/4.6/Rfast2_0.1.5.6-7cd73efe.zip"
+groups = ["main"]
+metadata = { RemoteHash = "a9b4bb5578221fc09911d17f0d9dad3eb923f673dd181e6884499dfe2ad1134f", RemoteLinkingToHashes = "BH@1.90.0-1=2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b, Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, Rfast@2.1.5.2=d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "ps"
+version = "1.9.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-21/bin/windows/contrib/4.6/ps_1.9.3.zip"]
+target = "bin/windows/4.6/ps_1.9.3-be551c7f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "7b227f0627709a2073daf960ac612a0b87d03e18f7dd5c1938048ed440ef2e68" }
+
+[[targets.packages]]
+package = "processx"
+version = "3.9.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "ps",
+    "R6",
+]
+sources = ["https://p3m.dev/cran/2026-04-23/bin/windows/contrib/4.6/processx_3.9.0.zip"]
+target = "bin/windows/4.6/processx_3.9.0-aa680842.zip"
+groups = ["main"]
+metadata = { RemoteHash = "cdfef9035405891d8b104b258a40f62656f215aba7dcdc9f3226203c4c8fb354" }
+
+[[targets.packages]]
+package = "Rcpp"
+version = "1.1.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/windows/contrib/4.6/Rcpp_1.1.2.zip"]
+target = "bin/windows/4.6/Rcpp_1.1.2-0af8c486.zip"
+groups = ["main"]
+metadata = { RemoteHash = "2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "generics"
+version = "0.1.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-10/bin/windows/contrib/4.6/generics_0.1.4.zip"]
+target = "bin/windows/4.6/generics_0.1.4-72fadd7a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "bbe95a097792d38fc3b7e677738af1b95b66ea5e5017e33b8beac6a6088d0801" }
+
+[[targets.packages]]
+package = "crew"
+version = "1.3.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "nanonext",
+    "mirai",
+    "cli",
+    "data.table",
+    "later",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "ps",
+    "R6",
+    "processx",
+    "collections",
+    "promises",
+]
+sources = ["https://p3m.dev/cran/2026-09-05/bin/windows/contrib/4.6/crew_1.3.3.zip"]
+target = "bin/windows/4.6/crew_1.3.3-cd52ad1a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "42d0f6cbf42f41f912e5fb05372fcd7c1518da5dae8da2a69022b8df141aa6ec" }
+
+[[targets.packages]]
+package = "promises"
+version = "1.5.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "otel",
+    "lifecycle",
+    "fastmap",
+    "later",
+    "R6",
+    "rlang",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2025-11-02/bin/windows/contrib/4.6/promises_1.5.0.zip"]
+target = "bin/windows/4.6/promises_1.5.0-42eb7358.zip"
+groups = ["main"]
+metadata = { RemoteHash = "bb68fd4065cc072996aed416f0b2388f58738797a3a38024720c29d67164747d" }
+
+[[targets.packages]]
+package = "yaml"
+version = "2.3.12"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-10/bin/windows/contrib/4.6/yaml_2.3.12.zip"]
+target = "bin/windows/4.6/yaml_2.3.12-2b15f7a9.zip"
+groups = ["main"]
+metadata = { RemoteHash = "80ccf3dde851133ef3e333b818a817c296c6ccdacfc4709cd466995289cd556c" }
+
+[[targets.packages]]
+package = "zigg"
+version = "0.0.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-08/bin/windows/contrib/4.6/zigg_0.0.2.zip"]
+target = "bin/windows/4.6/zigg_0.0.2-bd4e143b.zip"
+groups = ["main"]
+metadata = { RemoteHash = "6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "jsonlite"
+version = "2.0.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-03-28/bin/windows/contrib/4.6/jsonlite_2.0.0.zip"]
+target = "bin/windows/4.6/jsonlite_2.0.0-38c76850.zip"
+groups = ["main"]
+metadata = { RemoteHash = "75eb910c82b350ec33f094779da0f87bff154c232e4ae39c9896a9b89f3ac82d" }
+
+[[targets.packages]]
+package = "profmem"
+version = "0.7.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-05-03/bin/windows/contrib/4.6/profmem_0.7.0.zip"]
+target = "bin/windows/4.6/profmem_0.7.0-1b655b68.zip"
+groups = ["main"]
+metadata = { RemoteHash = "16efc5f13f4b78919c9d51c07acf62c051e0e3830ae3cc32c596f8daf569c3cb" }
+
+[[targets.packages]]
+package = "memoise"
+version = "2.0.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "rlang",
+    "cachem",
+]
+sources = ["https://p3m.dev/cran/2021-11-29/bin/windows/contrib/4.6/memoise_2.0.1.zip"]
+target = "bin/windows/4.6/memoise_2.0.1-d2e8eb41.zip"
+groups = ["main"]
+metadata = { RemoteHash = "f85034ee98c8ca07fb3cd826142c1cd1e1e5747075a94c75a45783bbc4fe2deb" }
+
+[[targets.packages]]
+package = "withr"
+version = "3.0.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-06-20/bin/windows/contrib/4.6/withr_3.0.3.zip"]
+target = "bin/windows/4.6/withr_3.0.3-937174ff.zip"
+groups = ["main"]
+metadata = { RemoteHash = "d86c6454164fc85678bfc85e2a6cce42f7461d45fa9a87de71f376e7956c991e" }
+
+[[targets.packages]]
+package = "secretbase"
+version = "1.3.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-26/bin/windows/contrib/4.6/secretbase_1.3.1.zip"]
+target = "bin/windows/4.6/secretbase_1.3.1-e6fcc16d.zip"
+groups = ["main"]
+metadata = { RemoteHash = "0708bb7f715647368f29fafd0f460e5d8e035d5ffc869c9c4b1bfd6553aa0b5f" }
+
+[[targets.packages]]
+package = "diffobj"
+version = "0.3.9"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["crayon"]
+sources = ["https://p3m.dev/cran/2026-09-12/bin/windows/contrib/4.6/diffobj_0.3.9.zip"]
+target = "bin/windows/4.6/diffobj_0.3.9-2bdc8978.zip"
+groups = ["main"]
+metadata = { RemoteHash = "ac5502b9fb37b28dd2cd09061a0a973e7eeea66997b87a7f76f006499e5693bd" }
+
+[[targets.packages]]
+package = "crayon"
+version = "1.5.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-06-21/bin/windows/contrib/4.6/crayon_1.5.3.zip"]
+target = "bin/windows/4.6/crayon_1.5.3-f2d80489.zip"
+groups = ["main"]
+metadata = { RemoteHash = "3e74a0685541efb5ea763b92cfd5c859df71c46b0605967a0b5dbb7326e9da69" }
+
+[[targets.packages]]
+package = "cli"
+version = "3.6.6"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-10/bin/windows/contrib/4.6/cli_3.6.6.zip"]
+target = "bin/windows/4.6/cli_3.6.6-20e4b277.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "fastmap"
+version = "1.2.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-05-16/bin/windows/contrib/4.6/fastmap_1.2.0.zip"]
+target = "bin/windows/4.6/fastmap_1.2.0-50e8363a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b1da04a2915d1d057f3c2525e295ef15016a64e6667eac83a14641bbd83b9246" }
+
+[[targets.packages]]
+package = "qs2"
+version = "0.3.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "stringfish",
+    "Rcpp",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-08-28/bin/windows/contrib/4.6/qs2_0.3.1.zip"]
+target = "bin/windows/4.6/qs2_0.3.1-994ce001.zip"
+groups = ["main"]
+metadata = { RemoteHash = "1d555e5c38cf352209aeefb0355aa95bc04cda4af229a2a32c26d5582723b942", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "purrr"
+version = "1.2.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "vctrs",
+    "cli",
+    "lifecycle",
+    "magrittr",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-11/bin/windows/contrib/4.6/purrr_1.2.2.zip"]
+target = "bin/windows/4.6/purrr_1.2.2-bec4fda3.zip"
+groups = ["main"]
+metadata = { RemoteHash = "ac3bc0fc0e789510042522e6c4294336c71447be8f6921b5ef78b9a9fb86617d", RemoteLinkingToHashes = "cli@3.6.6=b2b58d6dd82f5798b335e39c00591686a01fd3e94399ef898e146173e36f18f9" }
+
+[[targets.packages]]
+package = "later"
+version = "1.4.8"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "Rcpp",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/windows/contrib/4.6/later_1.4.8.zip"]
+target = "bin/windows/4.6/later_1.4.8-65d05100.zip"
+groups = ["main"]
+metadata = { RemoteHash = "ce5d88b3fd1df409eaa21aa53bf20b1a9331f75cd69e7e9b2a27b40d2290d219", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "codetools"
+version = "0.2-20"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2024-04-01/bin/windows/contrib/4.6/codetools_0.2-20.zip"]
+target = "bin/windows/4.6/codetools_0.2-20-f63b6416.zip"
+groups = ["main"]
+metadata = { RemoteHash = "3be6f375ec178723ddfd559d1e8e85bfeee04a5fbaf9f53f2f844e1669fea863" }
+
+[[targets.packages]]
+package = "data.table"
+version = "1.18.6.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-25/bin/windows/contrib/4.6/data.table_1.18.6.1.zip"]
+target = "bin/windows/4.6/data.table_1.18.6.1-1ada39aa.zip"
+groups = ["main"]
+metadata = { RemoteHash = "f2846f45fbbdfe886f05fa7489314a56ae0f3352ae5bc1070b0cdd4f44ffa1f5" }
+
+[[targets.packages]]
+package = "backports"
+version = "1.5.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-04/bin/windows/contrib/4.6/backports_1.5.1.zip"]
+target = "bin/windows/4.6/backports_1.5.1-be1588a8.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b8eeeabe3c27e1486f43e0b18dae57f0e870dd7c6979d3668df76bf0d4735bad" }
+
+[[targets.packages]]
+package = "DBI"
+version = "1.3.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-02-26/bin/windows/contrib/4.6/DBI_1.3.0.zip"]
+target = "bin/windows/4.6/DBI_1.3.0-5360a0a2.zip"
+groups = ["main"]
+metadata = { RemoteHash = "13def8e90cbe41205a0dfcf585a6a7ea79ce10d45969789e82613c7ce3d5fb18" }
+
+[[targets.packages]]
+package = "igraph"
+version = "2.3.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "magrittr",
+    "cli",
+    "rlang",
+    "pkgconfig",
+    "lifecycle",
+    "cpp11",
+    "Matrix",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-01/bin/windows/contrib/4.6/igraph_2.3.4.zip"]
+target = "bin/windows/4.6/igraph_2.3.4-6e6825c0.zip"
+groups = ["main"]
+metadata = { RemoteHash = "38b114f4ebc9b61af6c29a56d72a2329cd08191e4b3612df4f184c519ee60740", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "assertthat"
+version = "0.2.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-03-25/bin/windows/contrib/4.6/assertthat_0.2.1.zip"]
+target = "bin/windows/4.6/assertthat_0.2.1-5a885991.zip"
+groups = ["main"]
+metadata = { RemoteHash = "85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f" }
+
+[[targets.packages]]
+package = "RcppArmadillo"
+version = "15.6.2-1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/windows/contrib/4.6/RcppArmadillo_15.6.2-1.zip"]
+target = "bin/windows/4.6/RcppArmadillo_15.6.2-1-853a06a1.zip"
+groups = ["main"]
+metadata = { RemoteHash = "66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "stringr"
+version = "1.6.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "glue",
+    "stringi",
+    "lifecycle",
+    "cli",
+    "rlang",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2025-11-05/bin/windows/contrib/4.6/stringr_1.6.0.zip"]
+target = "bin/windows/4.6/stringr_1.6.0-77631810.zip"
+groups = ["main"]
+metadata = { RemoteHash = "24f2fc5df980a7eb888659e22b9744d2316c558624015c7a7cd8c3ce3e370064" }
+
+[[targets.packages]]
+package = "knitr"
+version = "1.52"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "evaluate",
+    "yaml",
+    "highr",
+    "xfun",
+]
+sources = ["https://p3m.dev/cran/2026-09-07/bin/windows/contrib/4.6/knitr_1.52.zip"]
+target = "bin/windows/4.6/knitr_1.52-5a1c1d62.zip"
+groups = ["main"]
+metadata = { RemoteHash = "bdd66a02dfba08a4c644b38a6ae08f6ba915c16d6b6ab6a188ec193c35905ff2" }
+
+[[targets.packages]]
+package = "callr"
+version = "3.8.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "R6",
+    "otel",
+    "processx",
+]
+sources = ["https://p3m.dev/cran/2026-06-05/bin/windows/contrib/4.6/callr_3.8.0.zip"]
+target = "bin/windows/4.6/callr_3.8.0-9226cf8e.zip"
+groups = ["main"]
+metadata = { RemoteHash = "a16b50e41ddbbf2bac236572e3e68c4ef9c76b88faf5cf840c79524c49000b06" }
+
+[[targets.packages]]
+package = "lattice"
+version = "0.23-1"
+binary = false
+platform = "source"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-13/src/contrib/lattice_0.23-1.tar.gz"]
+target = "src/lattice_0.23-1-e5eeae8d.tar.gz"
+groups = ["main"]
+metadata = { RemoteHash = "34e9b2fc023582c4246959b543c331233c62118efd922bcc1ba72b4888adc590" }
+
+[[targets.packages]]
+package = "evaluate"
+version = "1.0.5"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-28/bin/windows/contrib/4.6/evaluate_1.0.5.zip"]
+target = "bin/windows/4.6/evaluate_1.0.5-5d48b781.zip"
+groups = ["main"]
+metadata = { RemoteHash = "47aac79f889a828a5f8b4756cb972d7c2966bb984cbae17a4bd2389a73270794" }
+
+[[targets.packages]]
+package = "nanonext"
+version = "1.10.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-31/bin/windows/contrib/4.6/nanonext_1.10.4.zip"]
+target = "bin/windows/4.6/nanonext_1.10.4-80ba5f8a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "9e49ee84ee159fa735f8c57bd90bf7cfc49de23ee44e3f53666eb138b30b701e" }
+
+[[targets.packages]]
+package = "glue"
+version = "1.8.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-18/bin/windows/contrib/4.6/glue_1.8.1.zip"]
+target = "bin/windows/4.6/glue_1.8.1-c40aadfc.zip"
+groups = ["main"]
+metadata = { RemoteHash = "1c55905d3efc3d5c199ceb0bd12218e97f0d4c64df6038ff41ecef415478a122" }
+
+[[targets.packages]]
+package = "RcppParallel"
+version = "6.2.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-08-28/bin/windows/contrib/4.6/RcppParallel_6.2.1.zip"]
+target = "bin/windows/4.6/RcppParallel_6.2.1-f03709d3.zip"
+groups = ["main"]
+metadata = { RemoteHash = "6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc" }
+
+[[targets.packages]]
+package = "highr"
+version = "0.12"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["xfun"]
+sources = ["https://p3m.dev/cran/2026-03-07/bin/windows/contrib/4.6/highr_0.12.zip"]
+target = "bin/windows/4.6/highr_0.12-465b14f8.zip"
+groups = ["main"]
+metadata = { RemoteHash = "e8e1d6460022a9948799602d6b95dc78fbfa318ff6f0627e95c20b7190fc612b" }
+
+[[targets.packages]]
+package = "arrow"
+version = "26.0.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "tidyselect",
+    "vctrs",
+    "cpp11",
+    "assertthat",
+    "glue",
+    "purrr",
+    "R6",
+    "rlang",
+    "bit64",
+]
+sources = ["https://p3m.dev/cran/2026-10-25/bin/windows/contrib/4.6/arrow_26.0.0.zip"]
+target = "bin/windows/4.6/arrow_26.0.0-123d57b5.zip"
+groups = ["main"]
+metadata = { RemoteHash = "24b7ec87c75fcc6afa4bd9db8156993adfe42779a73af84c5024d9eb79ab19ab", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "pkgconfig"
+version = "2.0.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2019-09-23/bin/windows/contrib/4.6/pkgconfig_2.0.3.zip"]
+target = "bin/windows/4.6/pkgconfig_2.0.3-279c7882.zip"
+groups = ["main"]
+metadata = { RemoteHash = "330fef440ffeb842a7dcfffc8303743f1feae83e8d6131078b5a44ff11bc3850" }
+
+[[targets.packages]]
+package = "prettyunits"
+version = "1.2.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2023-09-25/bin/windows/contrib/4.6/prettyunits_1.2.0.zip"]
+target = "bin/windows/4.6/prettyunits_1.2.0-a9c78d7c.zip"
+groups = ["main"]
+metadata = { RemoteHash = "f059f27e2a5c82e351fe05b87ad712f7afc273c651450453f59d99af5deeacea" }
+
+[[targets.packages]]
+package = "tarchetypes"
+version = "0.14.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "vctrs",
+    "tibble",
+    "secretbase",
+    "targets",
+    "withr",
+    "fs",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+]
+sources = ["https://p3m.dev/cran/2026-03-25/bin/windows/contrib/4.6/tarchetypes_0.14.1.zip"]
+target = "bin/windows/4.6/tarchetypes_0.14.1-5fbaa66f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "df3d78bcafafde96a927eb785c356a5652ae3495808ed22e8267ba1650cde2c4" }
+
+[[targets.packages]]
+package = "xfun"
+version = "0.62"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-10-17/bin/windows/contrib/4.6/xfun_0.62.zip"]
+target = "bin/windows/4.6/xfun_0.62-4783e8b7.zip"
+groups = ["main"]
+metadata = { RemoteHash = "56102222347f91ef0446dfb203016ff5935d6d6b0bff3b8776673c5e46a94baf" }
+
+[[targets.packages]]
+package = "pillar"
+version = "1.11.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "utf8",
+    "vctrs",
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2025-09-18/bin/windows/contrib/4.6/pillar_1.11.1.zip"]
+target = "bin/windows/4.6/pillar_1.11.1-98507d8f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "056ce154238c9b5b8d5dcbcb52e1bc51d33870ce08c8a9ca9496478bd59f4653" }
+
+[[targets.packages]]
+package = "magrittr"
+version = "2.0.5"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-05/bin/windows/contrib/4.6/magrittr_2.0.5.zip"]
+target = "bin/windows/4.6/magrittr_2.0.5-0995a92c.zip"
+groups = ["main"]
+metadata = { RemoteHash = "3f5b5b1d4e6d12807a95c50b6c88cb1d8af2c5eb5213f08bfe58f278eca2ed23" }
+
+[[targets.packages]]
+package = "vctrs"
+version = "0.7.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "cli",
+    "glue",
+    "lifecycle",
+    "rlang",
+]
+sources = ["https://p3m.dev/cran/2026-04-12/bin/windows/contrib/4.6/vctrs_0.7.3.zip"]
+target = "bin/windows/4.6/vctrs_0.7.3-fd6ec28d.zip"
+groups = ["main"]
+metadata = { RemoteHash = "b45078413e06ac624dddb7221a3a43908b405c8abec09822cb86638d30b0435b" }
+
+[[targets.packages]]
+package = "cpp11"
+version = "0.5.5"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-05-07/bin/windows/contrib/4.6/cpp11_0.5.5.zip"]
+target = "bin/windows/4.6/cpp11_0.5.5-73034f81.zip"
+groups = ["main"]
+metadata = { RemoteHash = "72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "BH"
+version = "1.90.0-1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-12-15/bin/windows/contrib/4.6/BH_1.90.0-1.zip"]
+target = "bin/windows/4.6/BH_1.90.0-1-a2f4a6d1.zip"
+groups = ["main"]
+metadata = { RemoteHash = "2e1fafb05938e81073561ae4892dc543ef15807e375e0ea8fa75e3ab79f0281b" }
+
+[[targets.packages]]
+package = "fastverse"
+version = "0.3.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "data.table",
+    "collapse",
+    "kit",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2024-10-09/bin/windows/contrib/4.6/fastverse_0.3.4.zip"]
+target = "bin/windows/4.6/fastverse_0.3.4-c417b1c3.zip"
+groups = ["main"]
+metadata = { RemoteHash = "86002fb57b3a656e83fc3bcc3609320f0d893ba39e2091d4d06ba232633a4bf0" }
+
+[[targets.packages]]
+package = "otel"
+version = "0.2.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-08-30/bin/windows/contrib/4.6/otel_0.2.0.zip"]
+target = "bin/windows/4.6/otel_0.2.0-654a63cd.zip"
+groups = ["main"]
+metadata = { RemoteHash = "ef8afe5a1bc8074bbeb8a84134699ef348a1f8ac629ffba25ee43ea7bcd8dd17" }
+
+[[targets.packages]]
+package = "tidyr"
+version = "1.3.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "glue",
+    "purrr",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "lifecycle",
+    "stringr",
+    "cpp11",
+    "vctrs",
+    "magrittr",
+]
+sources = ["https://p3m.dev/cran/2026-05-07/bin/windows/contrib/4.6/tidyr_1.3.2.zip"]
+target = "bin/windows/4.6/tidyr_1.3.2-fa96568a.zip"
+groups = ["main"]
+metadata = { RemoteHash = "04c0e6daf0af682af73763a42c027d7171761cdbdbf9ff7a77a0e421343d665a", RemoteLinkingToHashes = "cpp11@0.5.5=72486beb0605c1229bf3d422cd536224af8dc09bd389a3116f62f4c7705c62f4" }
+
+[[targets.packages]]
+package = "mirai"
+version = "2.7.3"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["nanonext"]
+sources = ["https://p3m.dev/cran/2026-09-25/bin/windows/contrib/4.6/mirai_2.7.3.zip"]
+target = "bin/windows/4.6/mirai_2.7.3-8c175e0f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "20bd6fb95c6262ae24649963c399f20ef3203cda46919f5669f823a2a56bb18a" }
+
+[[targets.packages]]
+package = "utf8"
+version = "1.2.6"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-06-09/bin/windows/contrib/4.6/utf8_1.2.6.zip"]
+target = "bin/windows/4.6/utf8_1.2.6-7c454a4c.zip"
+groups = ["main"]
+metadata = { RemoteHash = "4589f8b72291329e70b7f3a8c20f2feb4e7764eebad2e6976bc9a3eee7686ce9" }
+
+[[targets.packages]]
+package = "duckdb"
+version = "2.0.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["DBI"]
+sources = ["https://p3m.dev/cran/2026-10-24/bin/windows/contrib/4.6/duckdb_2.0.0.zip"]
+target = "bin/windows/4.6/duckdb_2.0.0-cd816c66.zip"
+groups = ["main"]
+metadata = { RemoteHash = "23db64ca8054c7984dba06958ae9d530579cb7430831ac4f503f33a44f013741" }
+
+[[targets.packages]]
+package = "fst"
+version = "0.9.8"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "fstcore",
+    "Rcpp",
+]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/windows/contrib/4.6/fst_0.9.8.zip"]
+target = "bin/windows/4.6/fst_0.9.8-ec332e01.zip"
+groups = ["main"]
+metadata = { RemoteHash = "44c7e889879c2a3a704b70152196e27b6fc1d700062056f9a9c0a49cb98d2665", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, fstcore@0.10.0=1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc" }
+
+[[targets.packages]]
+package = "rlang"
+version = "1.3.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-06/bin/windows/contrib/4.6/rlang_1.3.0.zip"]
+target = "bin/windows/4.6/rlang_1.3.0-cd54cc8f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "80aa537d49e72265f443a15e8936128af583caa5e572086518b503cbf064279c" }
+
+[[targets.packages]]
+package = "mori"
+version = "0.2.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-07-22/bin/windows/contrib/4.6/mori_0.2.2.zip"]
+target = "bin/windows/4.6/mori_0.2.2-ee7e8086.zip"
+groups = ["main"]
+metadata = { RemoteHash = "f231e915aab655ad31126c0214572f328775eb003a67e8f06e604cac1ebe3539" }
+
+[[targets.packages]]
+package = "tibble"
+version = "3.3.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "vctrs",
+    "lifecycle",
+    "pillar",
+    "cli",
+    "rlang",
+    "magrittr",
+    "pkgconfig",
+]
+sources = ["https://p3m.dev/cran/2026-01-12/bin/windows/contrib/4.6/tibble_3.3.1.zip"]
+target = "bin/windows/4.6/tibble_3.3.1-54804be3.zip"
+groups = ["main"]
+metadata = { RemoteHash = "fb309f8a1939021b237c7e85ff7ad6e8ff5acd57a6230d220a452094b492b28f" }
+
+[[targets.packages]]
+package = "nanoparquet"
+version = "0.5.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-09-17/bin/windows/contrib/4.6/nanoparquet_0.5.2.zip"]
+target = "bin/windows/4.6/nanoparquet_0.5.2-1b7b2120.zip"
+groups = ["main"]
+metadata = { RemoteHash = "c9a462cf175f88a02c507e9b53a0c41be0a9c27cd71b3e7cddc61858541094b0" }
+
+[[targets.packages]]
+package = "base64url"
+version = "1.4"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["backports"]
+sources = ["https://p3m.dev/cran/2018-05-17/bin/windows/contrib/4.6/base64url_1.4.zip"]
+target = "bin/windows/4.6/base64url_1.4-3005911e.zip"
+groups = ["main"]
+metadata = { RemoteHash = "1d058f138660e9155ebb331d7a2561e2541ee3321b8da90f6c41fd8dcc122c58" }
+
+[[targets.packages]]
+package = "targets"
+version = "1.12.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "secretbase",
+    "igraph",
+    "cli",
+    "codetools",
+    "data.table",
+    "rlang",
+    "tidyselect",
+    "prettyunits",
+    "tibble",
+    "base64url",
+    "knitr",
+    "ps",
+    "callr",
+    "R6",
+    "yaml",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-02-10/bin/windows/contrib/4.6/targets_1.12.0.zip"]
+target = "bin/windows/4.6/targets_1.12.0-5e985c8f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "9ae2e0edd25bf5f34eb97f566e74073fdbe8bd968b43475a964882875fa3a06e" }
+
+[[targets.packages]]
+package = "Rfast"
+version = "2.1.5.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "zigg",
+    "Rcpp",
+    "RcppArmadillo",
+    "RcppParallel",
+]
+sources = ["https://p3m.dev/cran/2026-10-19/bin/windows/contrib/4.6/Rfast_2.1.5.2.zip"]
+target = "bin/windows/4.6/Rfast_2.1.5.2-fbd20867.zip"
+groups = ["main"]
+metadata = { RemoteHash = "d2032ce3565b6e1e63b8d3ea66d3b4e92fcafd7db46a0e28ff93d60b87dc1697", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3, RcppArmadillo@15.6.2-1=66fb2b707e237e1086b4f39111a172794f43a8bb815c1b589363d2219d61368d, RcppParallel@6.2.1=6d076439020f64f502552ae924e93f62b6fefd2bb5c193987751dc7a48826ebc, zigg@0.0.2=6ca47cc54af5b4decd80fbe420952c05c6aa7d3ddba9f489b8cccb2655082cec" }
+
+[[targets.packages]]
+package = "fstcore"
+version = "0.10.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = ["Rcpp"]
+sources = ["https://p3m.dev/cran/2026-07-06/bin/windows/contrib/4.6/fstcore_0.10.0.zip"]
+target = "bin/windows/4.6/fstcore_0.10.0-ed839288.zip"
+groups = ["main"]
+metadata = { RemoteHash = "1e9e976d295dccda563a7d100665cb9d36d1403d3c37ce835f681b81f7a8d9cc", RemoteLinkingToHashes = "Rcpp@1.1.2=2746cf2fb188e5f0a84dbf5c8f68915b54564ed33e5754572f174e7b32e7f4f3" }
+
+[[targets.packages]]
+package = "duckplyr"
+version = "1.2.2"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "glue",
+    "memoise",
+    "duckdb",
+    "cli",
+    "dplyr",
+    "rlang",
+    "tidyselect",
+    "tibble",
+    "DBI",
+    "lifecycle",
+    "jsonlite",
+    "pillar",
+    "collections",
+    "magrittr",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-10-23/bin/windows/contrib/4.6/duckplyr_1.2.2.zip"]
+target = "bin/windows/4.6/duckplyr_1.2.2-c43d06b4.zip"
+groups = ["main"]
+metadata = { RemoteHash = "e6875c8b7d022a871c72585ce7dfe46fda6156e11ff618fce5d165c6d5284731" }
+
+[[targets.packages]]
+package = "R6"
+version = "2.6.1"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2025-02-15/bin/windows/contrib/4.6/R6_2.6.1.zip"]
+target = "bin/windows/4.6/R6_2.6.1-6a2d2539.zip"
+groups = ["main"]
+metadata = { RemoteHash = "59c6eba8b1b912eb7e104f65053235604be853425ee67c152ac4e86a1f2073b4" }
+
+[[targets.packages]]
+package = "collections"
+version = "0.3.12"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-03-23/bin/windows/contrib/4.6/collections_0.3.12.zip"]
+target = "bin/windows/4.6/collections_0.3.12-c84fd5fd.zip"
+groups = ["main"]
+metadata = { RemoteHash = "60e63ee65bc1889e54a008410f53cb5b643f2fffdb926c3ed12316094709c60d" }
+
+[[targets.packages]]
+package = "blob"
+version = "1.3.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = [
+    "rlang",
+    "vctrs",
+]
+sources = ["https://p3m.dev/cran/2026-01-15/bin/windows/contrib/4.6/blob_1.3.0.zip"]
+target = "bin/windows/4.6/blob_1.3.0-54a0849f.zip"
+groups = ["main"]
+metadata = { RemoteHash = "d4d2aeb8d17683bbfc256a7541e282af9663a752988a21a6ba72a4ab268c7331" }
+
+[[targets.packages]]
+package = "fs"
+version = "2.1.0"
+binary = true
+platform = "x86_64-w64-mingw32"
+dependencies = []
+sources = ["https://p3m.dev/cran/2026-04-19/bin/windows/contrib/4.6/fs_2.1.0.zip"]
+target = "bin/windows/4.6/fs_2.1.0-82584eb4.zip"
+groups = ["main"]
+metadata = { RemoteHash = "7088af1117d65c4ceb144b532e323f197fc8243b1d704bf6edf40774789829cd" }

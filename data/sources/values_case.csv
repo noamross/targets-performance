@@ -1,0 +1,41 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+case_docs,412000,documents,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"~412k records (paraphrased)",approximate
+case_big_gb,1.1,GB in memory,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"main table ~1.1 GB in memory (paraphrased)",
+case_ram_gb,36,GB RAM,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"macOS, 36 GB RAM",
+case_before_summed_s,736,s summed target time,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Before: serial, memory = transient | 736 s summed (~12 min wall)",
+case_before_wall_min,12,min wall,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"(~12 min wall)",approximate
+case_after_wall_s,316,s wall,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Changes 1-6 + crew (NPROC=8) + mori | 316 s wall, 571 s summed",
+case_after_summed_s,571,s summed,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"571 s summed",
+case_after_nproc,8,workers,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"crew (NPROC=8)",
+case_identical_targets,14,targets,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"14 intermediate targets identical",
+case_file_hashes_equal,44,files,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"44/45 output-file hashes equal (xlsx embeds save time)",
+case_file_hashes_total,45,files,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"44/45",
+case_slowest_plot_s,208,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"wordstream plot 208 s (ggsave; ggwordcloud raster placement)",
+case_reload_s,7,s per load,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"big object reloaded by many targets under transient memory (7 s x 9 loads)",
+case_reload_n,9,loads,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"7 s x 9 loads",
+case_prefilter_before_s,47.4,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Fixed-string prefilter ... 47.4 s -> 7.0 s",
+case_prefilter_after_s,7.0,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"47.4 s -> 7.0 s",
+case_window_before_s,55,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Windowed regex ... 55 s -> 3.4 s",
+case_window_after_s,3.4,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"55 s -> 3.4 s",
+case_window_matches,37284,matches,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Same 37,284 matches",
+case_cache_before_n,242000,computations,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"~242k computations",approximate
+case_cache_after_n,135000,computations,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"union of ids (~135k)",approximate
+case_lower_per_term_s,1.1,s per term,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"1.1 s/term -> 0.5 s once + 0.14 s/term",
+case_lower_once_s,0.5,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"0.5 s once",
+case_lower_term_after_s,0.14,s per term,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"0.14 s/term",
+case_lower_total_before_s,100,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"~100 s -> 25 s",approximate
+case_lower_total_after_s,25,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"~100 s -> 25 s",
+case_lower_count_before,14541,count,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"naive fallback changed a count 14,541 -> 14,576",
+case_lower_count_after,14576,count,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"14,541 -> 14,576",
+case_unique_before_s,16.4,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"f(unique(x))[match(x, unique(x))]. 16.4 s -> 7.2 s",
+case_unique_after_s,7.2,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"16.4 s -> 7.2 s",
+case_charclass_before_s,2.6,s per 60k,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"2.6 s -> 1.15 s per 60k",
+case_charclass_after_s,1.15,s per 60k,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"2.6 s -> 1.15 s per 60k",
+case_ascii_full_s,117,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Full Any-Latin; Latin-ASCII 117 s on 214k texts",
+case_ascii_full_n,214000,texts,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"214k texts",approximate
+case_ascii_fast_s,39,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"39 s for 3 columns",
+case_alternation_s,13.6,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Merging all artifact regexes into one alternation: slower (13.6 s vs 4.1 s)",
+case_alternation_sep_s,4.1,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"vs 4.1 s",
+case_synonym_prefilter_s,5.3,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"Fixed prefilter before each synonym regex: slower (5.3 vs 3.8 s)",
+case_synonym_plain_s,3.8,s,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"5.3 vs 3.8 s",
+case_chunks,16,chunks,"unpublished case notes from the pipeline author (session 1)",2026-11-02,"split(df, rep_len(1:16, nrow(df)))",

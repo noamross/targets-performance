@@ -1,0 +1,120 @@
+---
+title: "Fast replacement functions"
+---
+
+```{r}
+source("_helpers.R")
+g <- "fastfns/results/b1_grouped.csv"
+m <- "fastfns/results/b2_matrix.csv"
+s <- "fastfns/results/b3_sortuniq.csv"
+j <- "fastfns/results/b4_join.csv"
+il <- "fastfns/results/b4_ifelse_lag.csv"
+th <- "fastfns/results/b6_threads.csv"
+thl <- "fastfns/results/b6_threads_linux.csv"
+idn <- csv("fastfns/results/b6_identity.csv")
+rc <- unique(csv("fastfns/results/b4_join_rowcount.csv"))  # file holds each run twice
+id_res <- function(id) idn$result[idn$id == id]
+```
+
+**When this matters.** A profile shows one target spending its time in grouped summaries, sorting, counting, joins or row/column statistics on large vectors (≥ 1e5 rows), or the same small operation called thousands of times. Swapping in collapse, data.table, kit or Rfast is often the cheapest big win, but every swap can change the output in small ways, so each one needs an identity check.
+
+## How to read the numbers
+
+Speedup = time of the usual call / time of the replacement, same input, one thread unless stated, median of several runs. They come from the `fastfns` benchmarks on one machine (see the source lines and `benchmarks.md`); use them as ratios, not absolute times. Re-measure on your data with `bench::mark()` before adopting.
+
+Two effects drive the gains:
+
+- **Per-call overhead.** dplyr `.by` and data.table `[, by =]` cost a fixed fraction of a millisecond per call regardless of size: at 1e3 rows a grouped sum took `r tm(g, task = "grouped_sum_int_few", n = 1e3, method = "dplyr")` in dplyr, `r tm(g, task = "grouped_sum_int_few", n = 1e3, method = "DT")` in data.table and `r tm(g, task = "grouped_sum_int_few", n = 1e3, method = "collapse")` in collapse. Code that runs a small summary inside a loop or a branch pays this many times.
+- **Algorithms.** Radix sorting, hashing and precomputed groupings scale better: collapse with a reused grouping object (`GRP()`) summed 1e7 values over 1e6 groups `r sp(g, "dplyr", "collapse_GRP", task = "grouped_sum_int_many", n = 1e7)` faster than dplyr.
+
+Where base R is already optimal, swaps gain nothing: `rowSums()`/`rowMeans()` matched Rfast (`r sp(m, "base", "Rfast", task = "matrix_rowSums", n = 1e7)`), and base `order()` on numbers is already radix (Rfast `Order` was `r sp(s, "base", "Rfast_Order", task = "su_order_int", n = 1e7)` of base speed, i.e. slower).
+
+## Swap table
+
+```{r}
+swap_tbl(list(
+  list(what = "grouped sum, 10 groups (`rowsum`)", use = "`collapse::fsum(x, g)`", path = g, task = "grouped_sum_int_few", n = 1e7, slow = "base_rowsum", fast = "collapse", trap = "na.rm = TRUE default"),
+  list(what = "same, grouping reused", use = "`g <- GRP(key); fsum(x, g)`", path = g, task = "grouped_sum_int_few", n = 1e7, slow = "base_rowsum", fast = "collapse_GRP", trap = "build GRP once, reuse across stats"),
+  list(what = "grouped sum, 1e6 groups (dplyr)", use = "`fsum(x, GRP(key))`", path = g, task = "grouped_sum_int_many", n = 1e7, slow = "dplyr", fast = "collapse_GRP", trap = "groups sorted, not appearance order"),
+  list(what = "grouped mean, 1e6 groups (`tapply`)", use = "`collapse::fmean(x, g)`", path = g, task = "grouped_mean_int_many", n = 1e7, slow = "base_tapply", fast = "collapse", trap = "last-bit differences: use all.equal"),
+  list(what = "grouped median, 1e6 groups (dplyr)", use = "`collapse::fmedian(x, g)`", path = g, task = "grouped_median_int_many", n = 1e7, slow = "dplyr", fast = "collapse", trap = ""),
+  list(what = "same (dplyr)", use = "data.table GForce (its built-in C grouped stats) `DT[, median(x), by = g]`", path = g, task = "grouped_median_int_many", n = 1e7, slow = "dplyr", fast = "DT", trap = "GForce only for a bare call in j"),
+  list(what = "grouped 90% quantile, chr key (`tapply`)", use = "`fnth(x, 0.9, GRP(key))`", path = g, task = "grouped_quantile90_chr_few", n = 1e7, slow = "base_tapply", fast = "collapse_fnth_GRP", trap = "not bit-identical"),
+  list(what = "`apply(m, 2, var)`", use = "`Rfast::colVars(m)`", path = m, task = "matrix_colVar", n = 1e7, slow = "base_apply", fast = "Rfast", trap = "matrix only; no NA handling"),
+  list(what = "`apply(m, 1, median)`", use = "`Rfast::rowMedians(m)`", path = m, task = "matrix_rowMedian", n = 1e7, slow = "base_apply", fast = "Rfast", trap = "not identical; all.equal"),
+  list(what = "`colSums(m)`", use = "`collapse::fsum(m)`", path = m, task = "matrix_colSums", n = 1e7, slow = "base", fast = "collapse", trap = "drops names unless asked"),
+  list(what = "`order(chr)` (locale)", use = "`order(x, method = \"radix\")`", path = s, task = "su_order_chr", n = 2e6, slow = "base", fast = "base_radix", trap = "**C-locale order differs**"),
+  list(what = "`unique(int)`", use = "`collapse::funique` / `kit::funique`", path = s, task = "su_unique_int", n = 1e7, slow = "base", fast = "collapse_funique", trap = "same first-appearance order"),
+  list(what = "`duplicated(chr)`", use = "`collapse::fduplicated`", path = s, task = "su_duplicated_chr", n = 2e6, slow = "base", fast = "collapse_fduplicated", trap = ""),
+  list(what = "`match(dbl)`", use = "`collapse::fmatch`", path = s, task = "su_match_dbl", n = 1e7, slow = "base", fast = "collapse_fmatch", trap = "`Rfast::Match` is not a drop-in"),
+  list(what = "`table(dbl)`", use = "`collapse::fcount`", path = s, task = "su_count_dbl", n = 1e7, slow = "base_table", fast = "collapse_fcount", trap = "returns a data frame, not a table"),
+  list(what = "`table(chr)`", use = "`kit::countOccur`", path = s, task = "su_count_chr", n = 2e6, slow = "base_table", fast = "kit_countOccur", trap = "returns a data frame"),
+  list(what = "`left_join` m:1 (dplyr)", use = "`collapse::join(x, y)`", path = j, task = "join_left_m1", n = 2e6, slow = "dplyr", fast = "collapse", trap = "**first match only by default**"),
+  list(what = "same (dplyr)", use = "data.table `y[x, on = ]`", path = j, task = "join_left_m1", n = 2e6, slow = "dplyr", fast = "DT", trap = "column order, class differ"),
+  list(what = "`ifelse()`", use = "`kit::iif` / `data.table::fifelse`", path = il, task = "ifelse2", n = 1e7, slow = "base_ifelse", fast = "kit_iif", trap = "strict types; keeps attributes"),
+  list(what = "nested `ifelse`, 3 cases", use = "`kit::nif` / `fcase` / `case_when`", path = il, task = "case3", n = 1e7, slow = "base_nested", fast = "kit_nif", trap = "fcase evaluates every branch"),
+  list(what = "grouped lag (`ave`)", use = "`collapse::flag(x, g = g)`", path = il, task = "lag_grouped", n = 1e7, slow = "base_ave", fast = "collapse_flag", trap = "name `g =`; needs sorted data or `t =`"),
+  list(what = "grouped cumsum (`ave`)", use = "`collapse::fcumsum(x, g)`", path = il, task = "cumsum_grouped", n = 1e7, slow = "base_ave_cumsum", fast = "collapse_fcumsum", trap = "skips NA instead of propagating")
+))
+```
+
+`r src_line(c(g, m, s, j, il))`
+
+Small inputs: at 1e3 rows collapse beat dplyr by `r sp(g, "dplyr", "collapse", task = "grouped_mean_int_many", n = 1e3)` on a grouped mean and `kit::countOccur` beat `table()` by `r sp(s, "base_table", "kit_countOccur", task = "su_count_int", n = 1e3)`, while data.table's `unique()` was slower than base (`r sp(s, "base", "DT_unique", task = "su_unique_int", n = 1e3)` of base speed). For small data called often, collapse and kit win; data.table and dplyr pay their per-call setup.
+
+**fastverse and Rfast2.** The `fastverse` meta-package installs and attaches data.table, collapse, kit and magrittr`r ffn("fastverse_core")`; `fastverse_conflicts()` lists masked functions, and attaching it does not turn on collapse masking`r ffn("fastverse_conflicts")`. In a pipeline, list the packages you use in `tar_option_set(packages = )` instead, so workers load only those. Rfast2 adds functions beyond Rfast, such as `colGroup()` for grouped column statistics on a matrix; its group index must be consecutive integers from 1, or it crashes`r ffn("rfast2_colgroup")`.
+
+## Threads
+
+Several of these functions can run multithreaded. Speedup from 1 to k threads at 1e7 elements:
+
+```{r}
+d1 <- csv(th); d2 <- csv(thl)
+tasks <- intersect(unique(d1$task), unique(d2$task))
+sc <- function(d, t, k) x(pick(d, task = t, method = "threads_1") / pick(d, task = t, method = k))
+out <- data.frame(
+  task = tasks,
+  `macOS 4` = vapply(tasks, \(t) sc(d1, t, "threads_4"), ""),
+  `macOS 8` = vapply(tasks, \(t) sc(d1, t, "threads_8"), ""),
+  `Linux 4` = vapply(tasks, \(t) sc(d2, t, "threads_4"), ""),
+  `Linux 6` = vapply(tasks, \(t) sc(d2, t, "threads_6"), ""),
+  check.names = FALSE
+)
+tbl(out)
+```
+
+`r src_line(c(th, thl))` Linux = ARM64 container limited to 6 CPUs.
+
+- data.table defaults to half the logical CPUs; collapse, kit and qs2 default to 1 thread; Rfast threads only with `parallel = TRUE` (`cores = 0` means all cores).
+- kit uses OpenMP only where it was built with it: the macOS CRAN build prints "OPENMP disabled", the Linux build "OPENMP enabled using 1 thread". `kit::iif(nThread =)` scales on Linux only; the one-step drop on macOS is not threading (OpenMP is off there, and the time stays flat from 2 to 8 threads). `machine_profile.R` reports which build you have.
+- Not every function threads: `collapse::fsum(x, g)` on a grouped vector and `kit::psort` did not scale on either OS.
+- Threads compete with pipeline workers. See `parallelism.md` before turning them on inside parallel targets.
+
+## Identity traps
+
+Check every swap with `identical(old, new)` on real data; fall back to `all.equal()` only when you accept floating-point differences, and say so.
+
+1. **Means and quantiles are not bit-identical.** `fmean(x)` vs `mean(x)`: `r id_res("b_fmean")` (20 seeds). Grouped sums and medians matched exactly; grouped means did not (collapse, data.table GForce, Rfast). Regression checks need a tolerance for these.
+2. **`na.rm = TRUE` is collapse's default.** `fsum(c(NA, 1))` returns 1 where `sum()` gives NA; an all-NA group gives NA in `fmean` but NaN in base; `fcumsum(c(1, NA, 3))` gives `1, NA, 4`. Set `set_collapse(na.rm = FALSE)` to match base.
+3. **Character order.** Every radix tool (`order(method = "radix")`, data.table, collapse, dplyr's `arrange()`) sorts in the C locale: uppercase before lowercase, accents last. Base `order()` uses the session locale. Group order, sorted joins and "keep the first row" logic change.
+4. **Joins.** With duplicate keys in `y`, `collapse::join()` keeps the first match only: `r num(pick(rc, n = 2e6, col = "collapse_default"))` rows where dplyr returns `r num(pick(rc, n = 2e6, col = "dplyr"))` (no warning). Pass `multiple = TRUE`. data.table errors unless `allow.cartesian = TRUE`.
+5. **Types and classes.** `kit::iif(TRUE, 1L, 2)` errors on the integer/double mix; `fifelse` keeps `Date` where `ifelse` drops it; count functions return data frames, not `table`s; grouped integer `fsum` errors on overflow.
+6. **Random numbers.** `Rfast::Rnorm` ignores `set.seed()`; keep base RNG for seeded work.
+7. **Masking.** `set_collapse(mask = "all")` replaces dplyr verbs by collapse ones. Afterwards an unqualified `summarise(d, s = sum(x), .by = g)` ignores `.by` and returns the grand total on every row; `dplyr::summarise` still groups but `sum()` now skips NA. Never mask `"all"` or `"manip"` in a pipeline that uses dplyr; call `collapse::` functions explicitly.
+
+## How to check a swap
+
+```r
+old <- targets::tar_read(input) |> old_fun()
+new <- targets::tar_read(input) |> new_fun()
+identical(old, new)          # required for exact swaps
+all.equal(old, new)          # only when last-bit differences are acceptable
+bench::mark(old_fun(x), new_fun(x), check = FALSE, iterations = 10)
+```
+
+## Traps
+
+- `data.table::forder` is not exported (use `setorder()` or `order(method = "radix")`); collapse has no `%fin%` (use `fmatch(x, table, 0L) > 0L`).
+- `flag(x, g)`: the second positional argument is the lag count, not the group. Name it.
+- `DT[, lapply(.SD, fmean), by = g]` calls a collapse function per group and loses both speedups; use plain `mean` (GForce) or collapse on the whole column.
+- data.table's thread default ignores container CPU limits (see `environment.md`).

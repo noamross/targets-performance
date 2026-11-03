@@ -1,0 +1,12 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+news_1_10_bench_before_mac,413.16,s,https://raw.githubusercontent.com/ropensci/targets/main/NEWS.md,2026-11-02,tar_make 66002 up-to-date targets M2 Macbook before,1.10.0
+news_1_10_bench_after_mac,35.538,s,https://raw.githubusercontent.com/ropensci/targets/main/NEWS.md,2026-11-02,after,1.10.0
+news_1_10_bench_before_rhel,450.66,s,https://raw.githubusercontent.com/ropensci/targets/main/NEWS.md,2026-11-02,RHEL9 before,1.10.0
+news_1_10_bench_after_rhel,94.08,s,https://raw.githubusercontent.com/ropensci/targets/main/NEWS.md,2026-11-02,RHEL9 after,1.10.0
+book_gc_default,1000,targets,https://books.ropensci.org/targets/performance.html,2026-11-02,"The default is 1000",conflicts with NEWS 1.11.0 default 0; check tar_option_set docs
+mori_bench_workers,8,workers,https://opensource.posit.co/blog/2026-04-23_mori-0-1-0/,2026-11-02,bootstrap 200MB df mirai,
+mori_bench_noshare,10.454,s elapsed,https://opensource.posit.co/blog/2026-04-23_mori-0-1-0/,2026-11-02,without mori,blog
+mori_bench_share,4.959,s elapsed,https://opensource.posit.co/blog/2026-04-23_mori-0-1-0/,2026-11-02,with mori,blog; gap shrinks as per-task compute grows
+mori_payload,300,bytes,https://opensource.posit.co/blog/2026-04-23_mori-0-1-0/,2026-11-02,payload per daemon vs 200 MB,
+mori_local_serialize,267,bytes,scratchpad/mori_qs2.R,2026-11-02,serialize(share(df 5e6x2)) vs 80000186 plain,local test
+crew_seconds_idle_default,300,s,https://wlandau.github.io/crew/reference/crew_controller_local.html,2026-11-02,seconds_idle default,

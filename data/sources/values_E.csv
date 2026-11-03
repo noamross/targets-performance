@@ -1,0 +1,15 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+flights_2024_size,200541939,bytes,https://blobs.duckdb.org/flight-data-partitioned/Year=2024/data_0.parquet,2026-11-02,"content-length on HEAD",
+flights_2023_size,392104223,bytes,https://blobs.duckdb.org/flight-data-partitioned/Year=2023/data_0.parquet,2026-11-02,"content-length on HEAD",
+duckdb_http_retries_default,3,count,https://duckdb.org/docs/2.0/configuration/overview.html,2026-11-02,"http_retries",
+duckdb_http_retry_wait_ms_default,100,ms,https://duckdb.org/docs/2.0/configuration/overview.html,2026-11-02,"http_retry_wait_ms",
+duckdb_http_timeout_default,30,seconds,https://duckdb.org/docs/2.0/configuration/overview.html,2026-11-02,"http_timeout",
+duckdb_ext_cache_remote_max_block,2097152,bytes,https://duckdb.org/docs/2.0/configuration/overview.html,2026-11-02,"external_file_cache_remote_max_block_size",
+duckdb_ext_cache_remote_min_block,4096,bytes,https://duckdb.org/docs/2.0/configuration/overview.html,2026-11-02,"external_file_cache_remote_min_block_size",
+duckdb_row_group_default,122880,rows,https://duckdb.org/docs/2.0/data/parquet/tips.html,2026-11-02,"ROW_GROUP_SIZE default",
+cache_httpfs_block_size_default,524288,bytes,https://github.com/dentiny/duck-read-cache-fs/blob/main/src/cache_filesystem_config.cpp,2026-11-02,"DEFAULT_CACHE_BLOCK_SIZE = 512_KiB",
+duckdb_async_s3_q6_sync,8.230,seconds,https://duckdb.org/2026/07/31/asynchronous-io.html,2026-11-02,"mean runtime v1.5.5","EC2 r7i.16xlarge, same-region S3, uncached"
+duckdb_async_s3_q6_async,2.844,seconds,https://duckdb.org/2026/07/31/asynchronous-io.html,2026-11-02,"mean runtime v2.0.0-dev","same setup"
+r_duckdb_version,2.0.0,version,local R packageVersion,2026-11-02,"Rscript",
+r_duckplyr_version,1.2.2,version,local R packageVersion,2026-11-02,"Rscript",
+r_targets_crew_versions,"targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; arrow 26.0.0; dbplyr 2.6.0",version,local R packageVersion,2026-11-02,"Rscript",

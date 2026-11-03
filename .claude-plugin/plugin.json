@@ -1,0 +1,7 @@
+{
+  "name": "targets-performance",
+  "version": "0.4.0",
+  "description": "Skill for diagnosing and speeding up R {targets} pipelines: profiling from tar_meta, fast packages, vectorization, parallelism levels, storage formats, shared memory, remote parquet.",
+  "author": { "name": "Noam Ross" },
+  "license": "MIT"
+}

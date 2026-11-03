@@ -1,0 +1,153 @@
+---
+title: "Remote data: parquet over HTTP/S3 and downloads"
+---
+
+```{r}
+source("_helpers.R")
+b12 <- "remote/results/b12.csv"; b3 <- "remote/results/b3.csv"; b4 <- "remote/results/b4.csv"
+b5 <- "remote/results/b5.csv"; b67 <- "remote/results/b67.csv"
+q <- function(p, t, m, col = "seconds") v1(p, task = t, method = m, col = col)
+mbq <- function(p, t, m) mb(q(p, t, m, "mb_fetched"))
+dl <- q(b4, "b4_download", "curl::multi_download")
+be <- function(cols) dl / (q(b4, "b4_query", paste0("remote range-read, ", cols)) - q(b4, "b4_query", paste0("local file, ", cols)))
+file_mb <- val("flights_2024_size") / 1e6
+```
+
+**When this matters.** Targets read parquet files from object storage (S3, R2, GCS) or plain HTTPS, or the pipeline downloads many files. Remote reads are bound by requests and bytes, not CPU, so the levers are: read fewer bytes (columns, partitions, sorted row groups), reuse what was fetched (caches, one connection per process), and decide when to download the whole file instead.
+
+The measurements use a public test file, `blobs.duckdb.org/flight-data-partitioned/Year=2024/data_0.parquet` (`r mb(file_mb)`, 110 columns, sorted by date`r fn("flights_2024_size")`), over a home connection with duckdb 2.0.0. Seconds are single runs and noisy; bytes are exact (from duckdb's HTTP log).
+
+## Read fewer bytes
+
+```{r}
+tbl(data.frame(
+  query = c("3 columns, row filter", "20 columns, row filter", "all 110 columns, row filter", "`count(*)` only",
+            "2 yearly files, filter on the hive partition `Year`", "same, no partition filter",
+            "filter on the sorted column (one day)", "filter on an unsorted column"),
+  `MB fetched` = c(mbq(b12, "b1_projection", "3 cols, filter DepDelay>300"), mbq(b12, "b1_projection", "20 cols, filter DepDelay>300"),
+                   mbq(b12, "b1_projection", "all cols, filter DepDelay>300"), mbq(b12, "b1_projection", "count(*) only (footer)"),
+                   mbq(b12, "b2_pruning", "2 urls, Year = 2024 (hive)"), mbq(b12, "b2_pruning", "2 urls, no Year filter"),
+                   mbq(b12, "b2_rowgroup", "filter FlightDate = one day"), mbq(b12, "b2_rowgroup", "filter Origin = 'JFK'")),
+  seconds = secs(c(q(b12, "b1_projection", "3 cols, filter DepDelay>300"), q(b12, "b1_projection", "20 cols, filter DepDelay>300"),
+                   q(b12, "b1_projection", "all cols, filter DepDelay>300"), q(b12, "b1_projection", "count(*) only (footer)"),
+                   q(b12, "b2_pruning", "2 urls, Year = 2024 (hive)"), q(b12, "b2_pruning", "2 urls, no Year filter"),
+                   q(b12, "b2_rowgroup", "filter FlightDate = one day"), q(b12, "b2_rowgroup", "filter Origin = 'JFK'"))),
+  check.names = FALSE))
+```
+
+`r src_line(b12)`
+
+1. **Select columns before `collect()`.** Parquet stores columns separately; a narrow query fetches only those column chunks. `SELECT *` on a wide remote file downloads nearly all of it, through many small requests.
+2. **Filter on partition columns with literal values.** With hive paths (`Year=2024/`), a partition filter skips other files' data, but duckdb still reads each listed file's footer. Pass an explicit list of URLs for the partitions you need; plain HTTPS cannot glob.
+3. **Row filters save bytes only on sorted (clustered) columns.** Row-group min/max statistics let duckdb skip row groups when the data are sorted by the filter column; on an unsorted column the whole column is read. When you write parquet for later remote reads, sort by the main filter column.
+4. **Collect only the filtered subset, once, into a target** (`qs` or parquet). Downstream targets then read locally (`query-order.md`).
+
+## Reuse what was fetched
+
+```{r}
+tbl(data.frame(
+  case = c("cold query, external file cache on (default)", "same query again, same session", "other columns, same file, same session",
+           "cache off: same query again", "cache_httpfs, first session (cold)", "cache_httpfs, new R session (warm)"),
+  `MB fetched` = c(mbq(b3, "b3a_ext_cache", "cache=TRUE run1 (cold)"), mbq(b3, "b3a_ext_cache", "cache=TRUE run2 same query"), mbq(b3, "b3a_ext_cache", "cache=TRUE run3 other cols"),
+                   mbq(b3, "b3a_ext_cache", "cache=FALSE run2 same query"), mbq(b3, "b3c_cache_httpfs", "session 1 (cold)"), mbq(b3, "b3c_cache_httpfs", "session 2 (warm, fresh R)")),
+  seconds = secs(c(q(b3, "b3a_ext_cache", "cache=TRUE run1 (cold)"), q(b3, "b3a_ext_cache", "cache=TRUE run2 same query"), q(b3, "b3a_ext_cache", "cache=TRUE run3 other cols"),
+                   q(b3, "b3a_ext_cache", "cache=FALSE run2 same query"), q(b3, "b3c_cache_httpfs", "session 1 (cold)"), q(b3, "b3c_cache_httpfs", "session 2 (warm, fresh R)"))),
+  check.names = FALSE))
+```
+
+`r src_line(b3)`
+
+- **duckdb caches remote reads in memory by default** (`enable_external_file_cache`, since duckdb 1.3.0`r ffn("duckdb_ext_file_cache_130")`): a repeated query in the same session fetched nothing, and a query on other columns of the same file fetched only the missing chunks. Measured on 2.0.0 only. Upgrading from 1.3.x does not add this cache; duckdb older than 1.3.0 lacks it.
+- `enable_http_metadata_cache` and `parquet_metadata_cache` (off by default) trimmed only HEAD and footer requests here; not worth turning on next to the external file cache.
+- **cache_httpfs** (community extension; version 0.15.0 loaded on duckdb 2.0.0) keeps a disk cache across sessions. It fetches in large blocks, so a cold sparse query downloaded several times more than needed (`r mbq(b3, "b3c_cache_httpfs", "session 1 (cold)")` vs `r mbq(b3, "b3a_ext_cache", "cache=TRUE run1 (cold)")`). Use it for repeated sessions over the same immutable files. It does not notice an overwritten object (clear with `SELECT cache_httpfs_clear_cache()`), and its glob cache can hide new files`r ffn("cache_httpfs_immutable")`.
+- **One connection per process.** 20 remote `count(*)` calls took `r secs(q(b67, "b6_conn_reuse", "new connection each call, remote count(*)"))` with a new connection each time and `r secs(q(b67, "b6_conn_reuse", "memoized connection, remote count(*)"))` with one memoized connection. Opening the connection itself was cheap (`r secs(q(b67, "b6_conn_reuse", "new connection + INSTALL/LOAD httpfs + secret, SELECT 1"))` for 20); the loss is the cache. `r src_line(b67)`
+
+A memoized connection, created inside targets (never returned as a target value):
+
+```r
+get_con <- local({
+  con <- NULL
+  function(threads = NULL, memory_limit = NULL) {
+    if (is.null(con) || !DBI::dbIsValid(con)) {
+      cfg <- Filter(Negate(is.null), list(threads = threads, memory_limit = memory_limit))
+      con <<- DBI::dbConnect(duckdb::duckdb(config = cfg))
+      DBI::dbExecute(con, "INSTALL httpfs; LOAD httpfs;")
+      DBI::dbExecute(con, "SET http_retries = 6; SET http_retry_wait_ms = 500;")
+      # S3/R2: CREATE SECRET with KEY_ID getenv('...'), never paste key values into SQL strings
+    }
+    con
+  }
+})
+```
+
+Each crew worker builds its own connection; set `threads` and `memory_limit` per worker (`parallelism.md`, `memory.md`). For remote scans keep several threads: 1 thread fetched `r mbq(b67, "b7_threads_remote", "threads 1")` in `r secs(q(b67, "b7_threads_remote", "threads 1"))` vs `r mbq(b67, "b7_threads_remote", "threads 12")` in `r secs(q(b67, "b7_threads_remote", "threads 12"))` with 12, because fewer threads made coarser reads.
+
+## Download once or read remotely?
+
+```{r}
+cols <- c("3 cols", "20 cols", "all cols (110)")
+tbl(data.frame(
+  columns = cols,
+  `remote query` = secs(vapply(cols, \(cc) q(b4, "b4_query", paste0("remote range-read, ", cc)), 0)),
+  `local query after download` = secs(vapply(cols, \(cc) q(b4, "b4_query", paste0("local file, ", cc)), 0)),
+  `break-even queries` = num(vapply(cols, be, 0), 1),
+  check.names = FALSE))
+```
+
+`r src_line(b4)` Whole-file download: `r secs(dl)` with `curl::multi_download()`. Break-even = download time / (remote − local) per query.
+
+Rule: one narrow query, read remotely; two or more queries, or a large share of the columns, download once (as a `format = "file"` target) and query locally. The break-even scales with link speed and file size: on a slow link or a multi-GB file, narrow remote reads win for more queries.
+
+## Front ends
+
+- duckplyr `read_parquet_duckdb(url, prudence = "stingy")` and dbplyr on your own duckdb connection gave the same plan and result (`r secs(q(b5, "b5_frontend", "duckplyr read_parquet_duckdb run1 cold"))` and `r secs(q(b5, "b5_frontend", "dbplyr tbl(sql read_parquet) run1 cold"))` cold). "Stingy" makes duckplyr error rather than silently pull a large table into R; end with `collect()` or `compute_parquet()`.
+- duckplyr uses its own default connection: configure it with `duckplyr::db_exec()` (extensions, secrets, cache). dbplyr uses the connection you configured.
+- arrow: `open_dataset("https://...")` failed (no HTTPS filesystem); `arrow::read_parquet(url)` worked but took `r secs(q(b5, "b5_frontend", "arrow read_parquet(https) run1 cold"))` and again `r secs(q(b5, "b5_frontend", "arrow read_parquet(https) run2 same session"))` on repeat, about a full download each time. Use duckdb for remote parquet; arrow datasets work against S3-compatible stores via `s3_bucket()`.
+- DuckLake catalogs (a small catalog database plus parquet files) prune files from catalog statistics without listing; DuckLake 1.1 needs duckdb ≥ 2.0`r ffn("ducklake_11")`. A local catalog is one database file plus a data directory`r ffn("ducklake_catalog_attach")`; a minimal recipe (not benchmarked here):
+
+  ```r
+  con <- DBI::dbConnect(duckdb::duckdb())
+  DBI::dbExecute(con, "INSTALL ducklake; LOAD ducklake;")
+  DBI::dbExecute(con, "ATTACH 'ducklake:lake.ducklake' AS lake (DATA_PATH 'lake_data/')")
+  DBI::dbExecute(con, "CREATE TABLE lake.flights AS SELECT * FROM read_parquet('https://.../*.parquet')")
+  # later sessions: ATTACH again, then query lake.flights; filters prune files from catalog statistics
+  ```
+
+  Keep the catalog and data directory outside the `{targets}` store and track them with a file target, or fetch into the catalog in one explicit target.
+
+## Downloading many files
+
+| Need | Tool |
+|---|---|
+| Many files, no extra packages | `download.file(urls, destfiles, method = "libcurl")`: simultaneous; `method = "libcurl"` must be given explicitly; check `attr(res, "retvals")` per file`r ffn("f3_download_file_vector")` |
+| Many files, resumable | `curl::multi_download(urls, destfiles, resume = TRUE)`; returns a status table |
+| Many API calls, pipeline already uses httr2 | `httr2::req_perform_parallel(reqs, max_active = )` with `req_throttle()` and `req_retry()``r ffn("f3_httr2_parallel")` |
+| Custom handlers | `curl::curl_fetch_multi()` with a `new_pool(host_con = )``r ffn("f3_pool")` |
+| One huge file | `aria2c -x4 -s4` (parallel ranges; measured `r secs(q(b4, "b4_download", "aria2c -x4 -s4"))` vs `r secs(dl)` for curl on one run, so not a reliable win for a single file); verify a checksum |
+| One huge file, R only | ranged requests: one `curl::new_handle(range = "<from>-<to>")` per part in `curl_fetch_multi()`, then concatenate the parts in order and verify a checksum. Not tested here. |
+| Crawling a site | `wget -m -np --wait=1 --random-wait`; respects robots.txt |
+
+In the pipeline:
+
+- Make network fetches explicit targets with a refresh policy (`tarchetypes::tar_age()`, or a force cue from an environment variable), so code edits do not re-fetch. Track a remote file with `format = "url"` (needs an ETag or Last-Modified header) or `tarchetypes::tar_download()`.
+- Put each rate-limited host on its own one-worker crew controller in a `crew_controller_group()`, and pin its fetch targets with `tar_resources_crew(controller = )`; other targets keep the main pool.
+- Retry at two levels: duckdb `http_retries` / `http_retry_wait_ms` (defaults `r val("duckdb_http_retries_default")` and `r val("duckdb_http_retry_wait_ms_default")` ms`r fn("duckdb_http_retries_default")`) and an R-level retry around `collect()` for transient network errors.
+
+## How to measure
+
+```sql
+CALL enable_logging('HTTP');
+-- run the query, then:
+SELECT count(*) AS requests FROM duckdb_logs WHERE type = 'HTTP';
+```
+
+Sum the response `Content-Length` of GET requests for bytes; `EXPLAIN` shows which filters and columns reached the parquet scan. duckdb 2.0 removed the older `enable_http_logging` setting.
+
+## Traps
+
+- `union_by_name = true` over many remote files reads every file's schema up front.
+- Parquet files with few, huge row groups cannot use many threads or skip much.
+- Never interpolate secret values into SQL strings (they appear in logs and error messages); use `getenv()` inside `CREATE SECRET`.
+- A remote object replaced under the same name is invisible to cache_httpfs until you clear its cache.
+- Connections and lazy tables are external pointers: never store them as target values.
+- Not tested here: duckdb 1.x behaviour, S3/R2 with credentials, arrow on S3.

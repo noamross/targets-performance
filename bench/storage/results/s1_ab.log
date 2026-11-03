@@ -1,0 +1,75 @@
+[INFO] RIG START [pid:87762] rig run --rscript storage/s1_ab.R
+a: 572.2 Mb
+WRITE FAIL a_numdf fst: unable to load shared object '<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so':
+  dlopen(<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so, 0x0006): symbol not found in flat namespace '___kmpc_barrier'
+WRITE FAIL a_numdf fst_c0: unable to load shared object '<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so':
+  dlopen(<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so, 0x0006): symbol not found in flat namespace '___kmpc_barrier'
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+       method size_mb write_s read_s identical equal_ignoring_attrs
+     rds_gzip   407.7   24.08   1.29      TRUE                 TRUE
+     rds_none   534.1    0.43   0.36      TRUE                 TRUE
+       qs2_t1   375.8    1.23   0.44      TRUE                 TRUE
+       qs2_t4   375.8    0.40   0.16      TRUE                 TRUE
+    qs2_t1_l1   386.1    0.82   0.36      TRUE                 TRUE
+    qs2_t4_l1   386.1    0.26   0.14      TRUE                 TRUE
+        qd_t1   376.0    1.24   0.43      TRUE                 TRUE
+        qd_t4   376.0    0.40   0.16      TRUE                 TRUE
+          zap   362.4    0.77   0.55      TRUE                 TRUE
+    np_snappy   487.9    1.49   0.36     FALSE                 TRUE
+      np_zstd   509.2    1.24   0.28     FALSE                 TRUE
+ arrow_snappy   516.7    1.32   0.20     FALSE                 TRUE
+   arrow_zstd   462.9    1.55   0.19     FALSE                 TRUE
+    duck_zstd   425.3    1.93   0.82      TRUE                 TRUE
+          used (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
+Ncells 1157655 61.9    2189641  117.0         NA   1586417   84.8
+Vcells 1999523 15.3  428529277 3269.5      36864 534270970 4076.2
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+b: 109.4 Mb
+WRITE FAIL b_chartbl fst: unable to load shared object '<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so':
+  dlopen(<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so, 0x0006): symbol not found in flat namespace '___kmpc_barrier'
+WRITE FAIL b_chartbl fst_c0: unable to load shared object '<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so':
+  dlopen(<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so, 0x0006): symbol not found in flat namespace '___kmpc_barrier'
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+       method size_mb write_s read_s identical equal_ignoring_attrs
+     rds_gzip   292.4   19.11   3.20      TRUE                 TRUE
+     rds_none   879.0    0.80   1.44      TRUE                 TRUE
+       qs2_t1   251.0    3.20   1.86      TRUE                 TRUE
+       qs2_t4   251.0    0.90   1.13      TRUE                 TRUE
+    qs2_t1_l1   280.8    2.56   1.79      TRUE                 TRUE
+    qs2_t4_l1   280.8    0.74   1.11      TRUE                 TRUE
+        qd_t1   249.6    3.15   1.77      TRUE                 TRUE
+        qd_t4   249.6    0.87   1.04      TRUE                 TRUE
+  qd_t1_noalt   249.6    3.16   1.88      TRUE                 TRUE
+          zap   225.1    2.89   1.98      TRUE                 TRUE
+    np_snappy   430.0    2.27   1.59     FALSE                 TRUE
+      np_zstd   865.8    0.85   1.37     FALSE                 TRUE
+ arrow_snappy   425.1    2.53   0.52      TRUE                 TRUE
+   arrow_zstd   282.0    3.42   0.96      TRUE                 TRUE
+    duck_zstd    56.3    1.22   1.57     FALSE                FALSE
+          used (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
+Ncells 1166318 62.3    3819359  204.0         NA   2608212  139.3
+Vcells 3001516 22.9  329174485 2511.5      36864 534270970 4076.2
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+[INFO] RIG END [pid:87762] rig run --rscript storage/s1_ab.R

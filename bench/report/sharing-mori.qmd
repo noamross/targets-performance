@@ -1,0 +1,90 @@
+---
+title: "Sharing a big object across parallel targets (mori)"
+---
+
+```{r}
+source("_helpers.R")
+c5 <- "targets_mech/results/c5_mori.csv"
+c5b <- "targets_mech/results/c5b_mori_marshal.csv"
+m5 <- function(t, m, col = "peak_rss_mb") v1(c5, task = t, method = m, col = col)
+m5b <- function(t, m, col = "peak_rss_mb") v1(c5b, task = t, method = m, col = col)
+```
+
+**When this matters.** One big read-only object (hundreds of MB or more) is read by several targets that run in parallel, and either the build does not fit in memory or each consumer spends seconds loading it. [mori](https://cran.r-project.org/package=mori) puts the object in shared memory once; workers on the same machine map it instead of copying it. In the benchmarks the gain was **memory, not speed**.
+
+## Measured
+
+Three crew workers, six consumers of one object:
+
+```{r}
+tbl(data.frame(
+  setup = c("100 MB, no mori, worker retrieval", "100 MB, no mori, main retrieval", "100 MB, mori (`format_qs_shared`)", "300 MB, no mori, worker retrieval", "300 MB, no mori, main retrieval", "300 MB, mori"),
+  wall = c(secs(m5("a_big100_nproc3", "no mori, worker retrieval", "wall_s")), secs(m5("a_big100_nproc3", "no mori, main retrieval (qs2)", "wall_s")),
+           secs(m5("a_big100_nproc3", "mori format_qs_shared, main retrieval", "wall_s")), "killed", "killed",
+           secs(m5("a_big300_nproc3", "mori format_qs_shared, main retrieval", "wall_s"))),
+  `peak memory (tree sum)` = mb(c(m5("a_big100_nproc3", "no mori, worker retrieval"), m5("a_big100_nproc3", "no mori, main retrieval (qs2)"),
+           m5("a_big100_nproc3", "mori format_qs_shared, main retrieval"), m5("a_big300_nproc3", "no mori, worker retrieval"),
+           m5("a_big300_nproc3", "no mori, main retrieval (qs2)"), m5("a_big300_nproc3", "mori format_qs_shared, main retrieval"))),
+  check.names = FALSE))
+```
+
+`r src_line(c5)` The tree sum counts shared pages once per process that maps them, so it overstates mori's real use; "killed" = killed at the benchmark's memory cap (peak `r mb(m5("a_big300_nproc3", "no mori, worker retrieval"))` or more). Consumers here are ordinary (static) targets, so the default `retrieval = "auto"` acts as worker retrieval.
+
+A second `tar_make()` with everything up to date skipped all targets (`r m5("b_rerun_big100", "mori format_qs_shared: 2nd tar_make", "completed")` completed): the shared format does not invalidate downstream targets.
+
+## How to use it
+
+`scripts/formats.R` defines the formats. Source it in `_targets.R`.
+
+```r
+source("path/to/targets-performance/scripts/formats.R")
+tar_option_set(format = format_qs_unshared)   # every other target: safe to save shared columns
+list(
+  tar_target(big, mori::share(make_big()), format = format_qs_shared,
+             memory = "persistent", deployment = "main", storage = "main", retrieval = "main"),
+  tar_target(a, summarise_a(big), retrieval = "main"),  # workers receive only the region name
+  tar_target(b, summarise_b(big), retrieval = "main")
+)
+```
+
+- `format_qs_shared` writes real data (`rlang::duplicate()` then `qs2::qs_save()`) and re-shares on read, so the store stays valid across sessions.
+- `format_qs_unshared` copies any shared vector inside an object before saving. Use it as the default format: `dplyr::mutate(big, z = 1)` keeps the untouched shared columns, and saving them with a plain writer stores only the region name.
+- Parquet variants: `format_parquet_shared` / `format_parquet_unshared` (parquet writes values, so no copy is needed).
+
+## Where the copies are
+
+- **Build run:** `share()` copies the object into shared memory; the write makes one more copy (`duplicate`) before saving.
+- **Later runs** (big up to date, consumers outdated): read from disk, then `share()`: about twice the object at peak, and the load is slower than a plain read.
+- **Per consumer:** only the region name crosses to the worker.
+
+It pays when (readers in parallel × per-reader load or copy) exceeds one share copy, and when the object would not fit once per worker.
+
+## Alternatives, often simpler
+
+```{r}
+alt <- c("(e0) format_qs_shared, consumers retrieval main rep1", "(e) marshal format (plain object; share on ship), retrieval main rep1",
+         "(f) no mori, persistent, consumers deployment main rep1", "(g) retrieval worker, each consumer reads from disk rep1")
+tbl(data.frame(
+  layout = c("shared format (above)", "plain object, `marshal = mori::share`", "no mori: big persistent, consumers `deployment = \"main\"`", "no mori: `retrieval = \"worker\"`"),
+  wall = secs(vapply(alt, \(m) m5b("e_marshal_100MB_nproc3", m, "wall_s"), 0)),
+  `peak memory` = mb(vapply(alt, \(m) m5b("e_marshal_100MB_nproc3", m), 0)),
+  check.names = FALSE))
+```
+
+`r src_line(c5b)` 100 MB object, 3 workers, 6 consumers, first repetition.
+
+- **Consumers in main** (`deployment = "main"`, big persistent): least memory, no copies, but consumers run one at a time. Best when consumers are short and the parallel work is elsewhere in the DAG.
+- **Worker retrieval** (what the default `"auto"` does for ordinary consumers): simplest; fine up to roughly 100 MB objects and a few readers if memory allows workers × object.
+- **Marshal-based sharing** (`tar_format(..., marshal = function(object) mori::share(object))`): targets calls `marshal` once per consumer dispatch, so each dispatch makes a full share copy. Same wall time, more memory. Not recommended.
+- **Don't load it at all**: partial parquet reads or a smaller upstream target (`storage-formats.md`).
+
+## Traps
+
+- **Never return `share()` from a target with a plain format.** qs2 and `saveRDS` write only the region name (a few hundred bytes; about `r val("mori_payload")` per transfer`r fn("mori_payload")`); a fresh session then fails with `mori: shared memory region not found`.
+- **Never make a "shared" target with `cue = tar_cue("always")`.** The region name changes every run, so all downstream targets rebuild every time; with transient memory the pipeline errors.
+- A big target built in main is not shared unless the command calls `mori::share()`.
+- `tar_format()` functions run on workers: keep helpers inside them and namespace every call (as in `formats.R`).
+- Same machine only. Consumers are read-only; modifying a shared vector makes a private full copy.
+- Docker's default `/dev/shm` is 64 MB: `share()` of 100 MB failed with "cannot create region ... out of space" until the container ran with `--shm-size=1g`. Shared memory counts toward the container's memory limit.
+- A crash can leave regions behind; `mori::prune_shared()` removes those of dead processes.
+- Changing a target's format invalidates it and its downstream targets once.

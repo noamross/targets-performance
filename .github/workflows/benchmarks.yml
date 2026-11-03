@@ -1,0 +1,235 @@
+name: benchmarks
+
+# Weekly: install the latest R packages, compare versions with the last stored
+# run, and when anything changed rerun the CI-safe benchmark suite
+# (bench/suite.csv, ci == TRUE) across OSs, CPU architectures, BLAS libraries
+# and R versions. Results go to the bench-results branch (see docs/architecture.md).
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run benchmarks even if no versions changed"
+        type: boolean
+        default: false
+      scripts:
+        description: "Comma-separated suite scripts to run (test runs; stored under runs/ only, not latest/)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: benchmarks
+  cancel-in-progress: false
+
+env:
+  # bench/rproj.toml [dependencies] without fst (fails to load on macOS) and
+  # zap (needs a patched build on R >= 4.6); plus packages used by scripts.
+  BENCH_PACKAGES: |
+    any::targets
+    any::tarchetypes
+    any::crew
+    any::mirai
+    any::qs2
+    any::mori
+    any::Rfast
+    any::Rfast2
+    any::collapse
+    any::data.table
+    any::kit
+    any::fastverse
+    any::stringi
+    any::stringr
+    any::arrow
+    any::nanoparquet
+    any::duckdb
+    any::duckplyr
+    any::dbplyr
+    any::DBI
+    any::bench
+    any::purrr
+    any::vctrs
+    any::dplyr
+    any::tibble
+    any::rlang
+    any::waldo
+    any::processx
+    any::callr
+    any::ps
+    any::curl
+    any::httr2
+    any::parallelly
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-24.04
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: ${{ env.BENCH_PACKAGES }}
+          install-quarto: false
+      - name: Versions now
+        working-directory: bench
+        run: Rscript write_tested_versions.R out=ci/versions-now.csv
+      - name: Compare with stored versions
+        id: diff
+        working-directory: bench
+        run: |
+          git fetch --depth=1 origin bench-results:refs/remotes/origin/bench-results 2>/dev/null \
+            && git show origin/bench-results:latest/versions.csv > ci/versions-stored.csv 2>/dev/null \
+            || : > ci/versions-stored.csv
+          Rscript ci_versions_diff.R ci/versions-stored.csv ci/versions-now.csv | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: versions
+          path: bench/ci/versions-now.csv
+
+  bench:
+    needs: check-updates
+    if: needs.check-updates.outputs.changed == 'true' || inputs.force
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, r: release, blas: default, label: linux-x64 }
+          - { os: ubuntu-24.04, r: devel, blas: default, label: linux-x64-devel }
+          - { os: ubuntu-24.04-arm, r: release, blas: default, label: linux-arm64 }
+          - { os: macos-15, r: release, blas: reference, label: macos-arm64 }
+          - { os: macos-15, r: release, blas: accelerate, label: macos-arm64-accelerate }
+          - { os: macos-15-intel, r: release, blas: reference, label: macos-x64 }
+          - { os: windows-latest, r: release, blas: default, label: windows-x64 }
+          - { os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: openblas, label: rocker-x64-openblas }
+          - { os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: reference, label: rocker-x64-reference }
+    env:
+      BENCH_ENV_LABEL: gha-${{ matrix.label }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        if: matrix.container == ''
+        with:
+          r-version: ${{ matrix.r }}
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: ${{ env.BENCH_PACKAGES }}
+          install-quarto: false
+      - name: Switch BLAS (macOS Accelerate)
+        if: matrix.blas == 'accelerate'
+        run: |
+          cd "$(Rscript -e 'cat(R.home("lib"))')"
+          sudo ln -sf libRblas.vecLib.dylib libRblas.dylib
+          Rscript -e "stopifnot(grepl('vecLib|Accelerate', sessionInfo()[['BLAS']]))"
+      - name: Switch BLAS (rocker reference)
+        if: matrix.container != '' && matrix.blas == 'reference'
+        run: |
+          a="/usr/lib/$(uname -m)-linux-gnu"
+          update-alternatives --set "libblas.so.3-$(uname -m)-linux-gnu" "$a/blas/libblas.so.3"
+          update-alternatives --set "liblapack.so.3-$(uname -m)-linux-gnu" "$a/lapack/liblapack.so.3"
+      - name: Check BLAS (rocker)
+        if: matrix.container != ''
+        env:
+          WANT: ${{ matrix.blas == 'reference' && '/blas/' || 'openblas' }}
+        run: Rscript -e "b <- sessionInfo()[['BLAS']]; print(b); stopifnot(grepl(Sys.getenv('WANT'), b))"
+      - name: Machine profile and versions
+        working-directory: bench
+        run: |
+          mkdir -p ci
+          Rscript -e 'sessionInfo()' | tee ci/session_info.txt
+          Rscript ../skills/targets-performance/scripts/machine_profile.R | tee ci/machine_profile.txt
+          Rscript write_tested_versions.R out=ci/versions.csv
+      - name: Clear committed results
+        # Results files key rows without the machine; start empty so the
+        # artifact holds only this runner's rows.
+        run: find bench -path '*/results/*' -type f -delete
+      - name: Run suite
+        working-directory: bench
+        env:
+          SCRIPTS: ${{ inputs.scripts }}
+        run: Rscript run_suite.R ci=TRUE timeout_min=30 cap_gb=4 ${SCRIPTS:+scripts=$SCRIPTS}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench-${{ matrix.label }}
+          path: |
+            bench/*/results/
+            bench/ci/
+          if-no-files-found: warn
+
+  store:
+    needs: [check-updates, bench]
+    if: always() && needs.bench.result != 'skipped' && needs.bench.result != 'cancelled'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+      - name: Check out or create bench-results branch
+        run: |
+          if git -C src ls-remote --exit-code --heads origin bench-results >/dev/null; then
+            git -C src fetch --depth=1 origin bench-results
+            git -C src worktree add ../store FETCH_HEAD
+            git -C store switch -c bench-results
+          else
+            git -C src worktree add --orphan -b bench-results ../store
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Copy results
+        env:
+          SHA: ${{ github.sha }}
+          SCRIPTS: ${{ inputs.scripts }}
+        run: |
+          # Test runs (scripts input set) go to runs/ only; latest/ and versions stay as they were.
+          scope=full; [ -n "$SCRIPTS" ] && scope=partial
+          # Timestamped so names sort by time and reruns of one commit don't collide.
+          run="$(date -u +%Y-%m-%d-%H%M%S)-${SHA:0:7}"
+          [ -f store/index.csv ] || echo "run,label,sha,date,files,scope" > store/index.csv
+          logs=0
+          for d in artifacts/bench-*/; do
+            [ -f "$d/ci/run_log.csv" ] && logs=$((logs + 1))
+            label="$(basename "$d")"; label="${label#bench-}"
+            mkdir -p "store/runs/$run/$label"
+            cp -R "$d". "store/runs/$run/$label/"
+            if [ "$scope" = full ]; then
+              rm -rf "store/latest/$label"; mkdir -p "store/latest/$label"
+              cp -R "$d". "store/latest/$label/"
+            fi
+            echo "$run,$label,$SHA,$(date -u +%Y-%m-%d),$(find "$d" -type f | wc -l | tr -d ' '),$scope" >> store/index.csv
+          done
+          # Store versions only if some runner benchmarked them; otherwise the
+          # next check would see no change and skip the rerun.
+          if [ "$logs" -gt 0 ] && [ "$scope" = full ]; then
+            cp artifacts/versions/versions-now.csv store/latest/versions.csv
+          fi
+      - name: Commit and push
+        working-directory: store
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Benchmark results ${GITHUB_SHA:0:7}" || exit 0
+          git log --stat -1 | head -40
+      - name: Push
+        # act (local test runs) sets ACT; never push from there.
+        if: env.ACT == ''
+        working-directory: store
+        run: git push origin HEAD:bench-results

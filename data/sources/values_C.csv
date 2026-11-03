@@ -1,0 +1,20 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+zap_diamonds_write_ms,4.16,ms median,https://github.com/coolbutuseless/zap,2026-11-02,README diamonds write table,zap_write; 329681 bytes; author's machine unknown
+zap_diamonds_xz_write_ms,815.38,ms median,https://github.com/coolbutuseless/zap,2026-11-02,README diamonds write table,saveRDS(xz); 332468 bytes
+zap_diamonds_rds_raw_write_ms,2.87,ms median,https://github.com/coolbutuseless/zap,2026-11-02,README,saveRDS uncompressed; 3452964 bytes
+zap_diamonds_read_ms,2.31,ms median,https://github.com/coolbutuseless/zap,2026-11-02,README,zap_read; readRDS uncompressed 1.93; readRDS xz 15.29
+qs2_version,0.4.0,version,https://crandb.r-pkg.org/qs2,2026-11-02,Version field,CRAN
+np_read_small_ms,21,ms,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,Parquet reading table,nanoparquet; arrow 26ms; duckdb 40ms; 336776x19 (40.7MB mem)
+np_read_medium_ms,721,ms,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,Parquet reading table,nanoparquet; arrow 625; duckdb 716; 6.7M rows x19 (808MB)
+np_read_large_s,5.9,s,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,Parquet reading table,nanoparquet; arrow 4.8; duckdb 5.3; 67M rows x19 (8.1GB); peak mem 14.1GB vs arrow 17.6GB
+np_write_medium_s,1.7,s,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,Parquet writing table,nanoparquet; arrow 1.9; duckdb 1.5; sizes 111/112.5/115.9 MB
+np_write_large_s,15.6,s,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,Parquet writing table,nanoparquet; arrow 19; duckdb 14.8; file 1.1GB; arrow uses less write mem (2.7GB vs 4GB)
+np_bench_env,"macOS 26.4 aarch64, R 4.5.3, arrow 23.0.1.2, duckdb 1.5.2, nanoparquet 0.5.1, session 2026-04-21",text,https://nanoparquet.r-lib.org/articles/benchmarks.html,2026-11-02,session info,nanoparquet authors' own benchmark
+rowgroup_default_rows,122880,rows,https://nanoparquet.r-lib.org/reference/write_parquet.html,2026-11-02,num_rows_per_row_group option,same as DuckDB default
+arrow_partition_min_mb,20,MB,https://arrow.apache.org/docs/r/articles/dataset.html,2026-11-02,"Avoid files smaller than 20MB",max 2GB
+arrow_partition_max_n,10000,partitions,https://arrow.apache.org/docs/r/articles/dataset.html,2026-11-02,"Avoid partitioning layouts with more than 10,000 distinct partitions",
+targets_gc_default,1000,targets,https://books.ropensci.org/targets/performance.html,2026-11-02,"The default value is 1000",garbage_collection
+targets_1_10_speedup,4.5-11.6,x,https://docs.ropensci.org/targets/news/index.html,2026-11-02,1.10.0 entry,tar_make/tar_outdated on 66002-target pipeline
+fst_bench_read_ms,457,ms,https://www.fstpackage.org/fst/,2026-11-02,fst benchmark table,1000MB df; readRDS 1577; read_feather 3950; i7-4710HQ 2015-era laptop - dated
+fst_bench_write_ms,314,ms,https://www.fstpackage.org/fst/,2026-11-02,fst benchmark table,write_fst; saveRDS 2042; write_feather 1820; file 303MB vs 1000MB rds
+duckdb_row_group_default,122880,rows,https://duckdb.org/docs/2.0/data/parquet/tips.html,2026-11-02,"default is 122,880",min 2048 (vector size)

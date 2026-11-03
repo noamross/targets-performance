@@ -1,0 +1,130 @@
+---
+title: "Vectorization: replacing loops, map and apply"
+---
+
+```{r}
+source("_helpers.R")
+rb <- "vectorize/results/b1_rbind.csv"
+gr <- "vectorize/results/b2_groups.csv"
+el <- "vectorize/results/b3_elementwise.csv"
+pr <- "vectorize/results/b4_pairs.csv"
+tx <- "vectorize/results/b5_text.csv"
+gt <- "vectorize/results/b6_text_tricks.csv"
+jc <- "vectorize/results/b7_join_cbind.csv"
+```
+
+**When this matters.** A profile shows time in `lapply`, `purrr::map*`, `sapply`, `apply`, `mapply`, `Reduce` or `do.call(rbind, ...)`, or in many string operations over a long character vector. The fix is to call one function on the whole vector, or to do less work (filter first, compute on unique values). Loops over a few dozen heavy items (model fits, files, API calls) are fine; leave them.
+
+## Loop and apply patterns
+
+```{r}
+r <- function(what, use, path, task, n, slow, fast) list(what = what, use = use, path = path, task = task, n = n, slow = slow, fast = fast)
+swap_tbl(list(
+  r("`do.call(rbind, dfs)`, 1000 pieces", "`collapse::rowbind(dfs)`", rb, "rbind 1000 dfs x 10 rows", 1e4, "do_call_rbind", "collapse_rowbind"),
+  r("`Reduce(rbind, dfs)`, 1000 pieces", "`collapse::rowbind(dfs)`", rb, "rbind 1000 dfs x 10 rows", 1e4, "Reduce_rbind", "collapse_rowbind"),
+  r("`do.call(rbind, dfs)`, 1000 pieces", "`data.table::rbindlist(dfs)`", rb, "rbind 1000 dfs x 10 rows", 1e4, "do_call_rbind", "rbindlist"),
+  r("`do.call(rbind, dfs)`, 1000 pieces", "`purrr::list_rbind(dfs)`", rb, "rbind 1000 dfs x 10 rows", 1e4, "do_call_rbind", "list_rbind"),
+  r("`vctrs::vec_rbind(!!!dfs)`, 10000 pieces", "`purrr::list_rbind(dfs)`", rb, "rbind 10000 dfs x 10 rows", 1e5, "vec_rbind", "list_rbind"),
+  r("`split()` + `lapply(mean)`, 1e5 groups", "`collapse::fmean(x, g)`", gr, "group mean, 1e+06 rows, 100000 groups", 1e6, "split_lapply", "collapse_fmean"),
+  r("dplyr `.by` mean, 1e5 groups", "`collapse::fmean(x, g)`", gr, "group mean, 1e+06 rows, 100000 groups", 1e6, "dplyr_by", "collapse_fmean"),
+  r("`split()` + `lapply(mean)`, 1e5 groups", "`rowsum(x, g) / tabulate(g)`", gr, "group mean, 1e+06 rows, 100000 groups", 1e6, "split_lapply", "rowsum_tabulate"),
+  r("`sapply(x, \\(v) if (v > .5) v*2 else v+1)`", "`ifelse(x > .5, x*2, x+1)`", el, "scalar op over vector", 1e6, "sapply", "vectorized"),
+  r("same", "`data.table::fifelse(...)`", el, "scalar op over vector", 1e6, "sapply", "vec_fifelse"),
+  r("`map_dbl(x, sqrt)`", "`sqrt(x)`", el, "sqrt over vector", 1e6, "map_dbl", "vectorized"),
+  r("`apply(m, 1, mean)`", "`rowMeans(m)`", el, "row mean/sum of 10-col matrix", 1e6, "apply_mean", "rowMeans"),
+  r("`apply(m, 1, var)`", "`Rfast::rowVars(m)`", el, "row var of 10-col matrix", 1e6, "apply_var", "Rfast_rowVars"),
+  r("`mapply(min, a, b)`", "`pmin(a, b)`", pr, "pairwise min", 1e5, "mapply_min", "pmin"),
+  r("`map2_dbl(a, b, min)`", "`pmin(a, b)`", pr, "pairwise min (map2 1e6 incl)", 1e6, "map2_dbl", "pmin"),
+  r("`do.call(c, list_of_scalars)`", "`unlist(l, use.names = FALSE)`", pr, "flatten list of scalars", 1e6, "do_call_c", "unlist"),
+  r("`sapply(x, switch, ...)` recode", "`new[match(x, old)]`", pr, "recode 3 levels", 1e6, "sapply_switch", "match_idx"),
+  r("`case_when()` recode", "`new[match(x, old)]`", pr, "recode 3 levels", 1e6, "case_when", "match_idx"),
+  r("`Reduce(merge, 20 tables)`", "`Reduce(collapse::join, tables)`", jc, "combine 20 tables x 10000 keys", 2e5, "reduce_merge", "collapse_join"),
+  r("`Reduce(merge, 20 tables)`", "stack + `data.table::dcast`", jc, "combine 20 tables x 10000 keys", 2e5, "reduce_merge", "stack_dcast")
+))
+```
+
+`r src_line(c(rb, gr, el, pr, jc))`
+
+What the table says:
+
+- **Row-binding is never worth looping.** No shape tested (5 to 10,000 pieces, 1e3 to 5e6 rows) made `do.call(rbind)` competitive. `Reduce(rbind)` is quadratic: each step copies everything so far. Spreading thousands of pieces as arguments (`vec_rbind(!!!l)`) is also slow; pass the list.
+- **Grouped statistics:** use a grouped function, not split-apply-combine. At tiny sizes (1e3 rows) dplyr `.by` (`r tm(gr, task = "group mean, 1000 rows, 10 groups", method = "dplyr_by")`) and data.table `by` (`r tm(gr, task = "group mean, 1000 rows, 10 groups", method = "dt_by")`) lose even to `split()` + `lapply` (`r tm(gr, task = "group mean, 1000 rows, 10 groups", method = "split_lapply")`), because of their fixed setup; collapse and `rowsum` win at every size.
+- **`apply(m, 1, f)` is a loop.** It only gains when a dedicated row function exists (`rowSums`, `rowMeans`, `Rfast::rowVars`, `matrixStats`). `collapse::fmean(t(m))` pays for the transpose (`r sp(el, "collapse_fmean_t", "rowMeans", task = "row mean/sum of 10-col matrix", n = 1e6)` slower than `rowMeans`).
+- **`Vectorize()` and `mapply()` are not vectorization**; they loop in R.
+- **Keys already aligned?** `cbind` the columns (`r tm(jc, task = "combine 100 tables x 10000 keys", n = 1e6, method = "cbind_cols")` for 100 tables), but only after `stopifnot(identical(a$id, b$id))`; otherwise a join is required.
+
+## Text: what does and does not help
+
+Many "vectorized" string idioms just move the same loop into C. With fixed (literal) patterns, a plain loop over terms is already near the floor:
+
+```{r}
+t10 <- "any of 10 terms in text"
+d <- data.frame(
+  approach = c("loop of `stri_detect_fixed` (reference)", "`stringr::str_detect(fixed())` loop", "base `grepl(fixed = TRUE)` loop",
+               "outer product (`rep()` docs x terms)", "one alternation regex `a|b|c`", "per-document `vapply`"),
+  `time vs reference` = c("1.0x", vapply(c("map_str_detect", "base_grepl_fixed_loop", "stri_fixed_outer", "alternation_regex", "per_doc_map"),
+    \(m) x(ratio(csv(tx), m, "map_stri_fixed", task = t10, n = 1e5)), "")),
+  check.names = FALSE
+)
+tbl(d)
+```
+
+`r src_line(tx)` 1e5 documents of about 300 characters; values above 1 are slower.
+
+- `stri_replace_all_fixed(x, pats, reps, vectorize_all = FALSE)` was only `r sp(tx, "loop", "vectorize_all_FALSE", task = "replace 200-term dictionary", n = 1e4)` faster than a loop for a 200-term dictionary. It applies replacements in sequence, so an earlier replacement can create a match for a later pattern, as in a loop.
+- Literal matching (`stri_*_fixed`) beats regex for literals; character classes (`stri_replace_all_charclass`) beat regex for one-character classes: removing punctuation and digits `r sp(gt, "regex", "charclass", task = "G6 remove punct+digits: charclass vs regex", n = 5e4)`, collapsing whitespace runs `r sp(gt, "regex", "charclass_merge", task = "G6 collapse whitespace runs: charclass vs regex", n = 5e4)`, a single literal character via `fixed` `r sp(gt, "regex", "fixed", task = "G6 remove single char ',': fixed vs charclass vs regex", n = 5e4)`. All identical.
+
+The real wins skip work. Each trick below was measured on synthetic text (Zipf vocabulary, mixed case, some non-ASCII words) and checked with `identical()`:
+
+```{r}
+row <- function(trick, task, n, slow, fast, exact) data.frame(
+  trick = trick, n = sci(n),
+  speedup = x(ratio(csv(gt), slow, fast, task = task, n = n)),
+  identical = as.character(pick(csv(gt), task = task, n = n, method = fast, col = "identical_to_ref")),
+  exact = exact)
+tbl(rbind(
+  row("fixed-string prefilter before regex, literal in ~1% of docs", "G1 fixed prefilter, rare literal (hit ~1%)", 1e5, "regex_only", "fixed_prefilter", "by construction"),
+  row("same, literal in 50-90% of docs", "G1 fixed prefilter, common literal (hit ~50-90%)", 1e5, "regex_only", "fixed_prefilter", "by construction (no gain)"),
+  row("regex only in a window around each literal hit", "G2 windowed regex anchored on rare token", 1e4, "full_regex", "windowed", "no: see trap"),
+  row("same, larger corpus", "G2 windowed regex anchored on rare token", 1e5, "full_regex", "windowed", "no: see trap"),
+  row("lowercase once, then case-sensitive fixed search", "G4 lowercase once vs case_insensitive per term", 1e5, "fixed_case_insensitive", "lowercase_once", "ASCII terms only"),
+  row("expensive per-string function on unique values, 90% duplicates", "G5 unique-then-match, dup rate 90% stri_trans_general", 1e5, "direct", "unique_match", "yes, if pure"),
+  row("same, 50% duplicates", "G5 unique-then-match, dup rate 50% stri_trans_general", 1e5, "direct", "unique_match", "yes, if pure"),
+  row("same, 10% duplicates", "G5 unique-then-match, dup rate 10% stri_trans_general", 1e5, "direct", "unique_match", "yes, if pure"),
+  row("fixed replacement table, transliterate only still-non-ASCII docs", "G9 to_ascii: fixed table first, trans only on remaining", 5e4, "trans_general_all", "fixed_then_trans_on_remaining", "only if table agrees with transliterator")
+))
+```
+
+`r src_line(gt)`
+
+Patterns, in code:
+
+```r
+# prefilter: the literal must occur in any match of the regex
+hit <- stringi::stri_detect_fixed(text, literal)
+hit[hit] <- stringi::stri_detect_regex(text[hit], pattern)
+
+# compute once per distinct value
+u <- unique(x)
+y <- f(u)[match(x, u)]
+
+# lowercase once (exact only for ASCII terms)
+low <- stringi::stri_trans_tolower(text)
+counts <- vapply(terms_lower, \(t) sum(stringi::stri_count_fixed(low, t)), numeric(1))
+```
+
+When each pays:
+
+- **Prefilter** pays only when few documents contain the literal. When most do, you pay for the fixed search and still run the regex everywhere.
+- **Unique-then-match** breaks even near 10% duplicates; the speedup tracks 1 / (1 - duplicate share). It needs a pure, element-wise function.
+- **Compute once, share**: if several targets derive the same thing from a big input, make one target that computes it for the union of keys and let consumers look it up with `match()` (guard with `stopifnot(!anyNA(i))`). Consumers then no longer depend on, or load, the big input. See `case-study.md`.
+
+## Traps
+
+- **Windowed regex is not exact.** Identical at 1e4 documents, not at 1e5: a window that starts at the literal invents a word boundary when the literal sits inside a longer word, and matches longer than the window are lost. Start the window a few characters earlier, re-check the boundary character, and fall back to the full text when a match touches the window edge.
+- **Lowercasing once is not Unicode case folding.** `stri_trans_tolower()` maps a word-final Greek Σ to ς, so lowercase-then-fixed differs from `case_insensitive = TRUE` for such terms; base `tolower()` differs elsewhere. Ligatures such as "ﬁ" match case-insensitive regex but not case-insensitive fixed search. Exact for ASCII terms; for other text, normalize to ASCII upstream (an intended output change) or keep the old path for non-ASCII documents.
+- Transliteration tables: map soft hyphens and zero-width spaces to the empty string `""`, not a space `" "`. Full `"Any-Latin; Latin-ASCII"` can change meaning (`"µm"` becomes `"mm"`); run NFKC first and transliterate only what the fixed table leaves.
+- Merging many regexes into one alternation was slower and not identical (overlapping matches) in the case study.
+- `fifelse`/`fcase` evaluate every branch; `ifelse` and `kit::nif` do not.
+- `tabulate()` drops values ≤ 0; `rowsum()` sorts groups; `rbindlist()` binds by position after a name-mismatch warning (`use.names = "check"`); comparisons need row names reset and the same class.
+- `purrr::in_parallel()` / `mirai_map()` inside a target that already runs on a crew worker nests parallelism; see `parallelism.md`.

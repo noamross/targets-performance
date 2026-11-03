@@ -1,0 +1,47 @@
+script,topic,args,cap_gb,min_cores,min_ram_gb,est_min,ci,needs,notes
+fastfns/b1_grouped.R,fastfns,1e5;1e7,6,1,8,5,TRUE,,
+fastfns/b2_matrix.R,fastfns,,3,1,2,1,TRUE,,
+fastfns/b3_sortuniq.R,fastfns,,3,1,3,4,TRUE,,
+fastfns/b4_join_ifelse.R,fastfns,,3,1,3,3,TRUE,,
+fastfns/b6_threads.R,fastfns,,3,2,3,1,TRUE,,thread scaling; meaningful only with >=4 cores
+fastfns/b6_envworkers.R,fastfns,,2,2,2,1,TRUE,,env vars reaching crew/mirai workers
+fastfns/b6_identity.R,fastfns,,1,1,1,1,TRUE,,cheap; use as smoke test
+vectorize/b1_rbind.R,vectorize,,3,1,2,1,TRUE,,
+vectorize/b1b_rbind_threads.R,vectorize,,3,2,2,1,TRUE,,
+vectorize/b2_groups.R,vectorize,,3,1,2,1,TRUE,,
+vectorize/b3_elementwise.R,vectorize,,3,1,2,2,TRUE,,
+vectorize/b4_pairs.R,vectorize,,3,1,2,1,TRUE,,
+vectorize/b4b_threads.R,vectorize,,3,2,2,1,TRUE,,
+vectorize/b5_text.R,vectorize,,3,1,2,2,TRUE,,
+vectorize/b6_text_tricks.R,vectorize,1e4,3,1,3,3,TRUE,,n=1e5 takes >15 min locally; run by hand: Rscript vectorize/b6_text_tricks.R
+vectorize/b6b_text_tricks.R,vectorize,,3,1,2,5,TRUE,,
+vectorize/b7_join_cbind.R,vectorize,,3,1,2,1,TRUE,,
+storage/s1_ab.R,storage,a,6,1,8,2,TRUE,,object a; separate process from b because R keeps stage a memory
+storage/s1_ab.R,storage,b,6,1,8,2,TRUE,,object b (character table)
+storage/s1_cde.R,storage,,6,1,8,4,TRUE,,uses zap if installed
+storage/s1_threads.R,storage,,4,1,3,1,TRUE,,
+storage/s2_partial.R,storage,,4,1,4,1,TRUE,,
+storage/s3_fidelity.R,storage,,2,1,1,1,TRUE,,
+storage/s5_targets.R,storage,,3,1,2,1,TRUE,,
+startup/pkg_load_time.R,startup,,1,1,1,1,TRUE,,
+startup/oversubscribe.R,startup,,2.5,4,2,1,TRUE,,
+startup/multi_download_test.R,startup,,1,1,1,1,TRUE,network,two small CRAN files
+targets_mech/c1_nproc.R,targets_mech,,4,2,2,4,TRUE,,
+targets_mech/c2_startup.R,targets_mech,,4,2,2,2,TRUE,,
+targets_mech/c3_memory.R,targets_mech,,5,2,6,3,TRUE,,
+targets_mech/c4_gc.R,targets_mech,,4,2,6,2,TRUE,,
+targets_mech/c5_mori.R,targets_mech,,5,2,6,2,TRUE,unix,mori shared memory; Windows support unverified
+targets_mech/c5b_mori_marshal.R,targets_mech,,5,2,6,,FALSE,unix,rejected design; keep local only
+targets_mech/c6_branching.R,targets_mech,,4,2,2,2,TRUE,,
+targets_mech/c6b_tar_rep.R,targets_mech,,4,2,2,3,TRUE,,
+targets_mech/c6c_bigmap.R,targets_mech,,5,2,4,1,TRUE,,
+targets_mech/c7_static.R,targets_mech,,2,2,2,2,TRUE,,
+targets_mech/c8_level.R,targets_mech,,4,2,4,2,TRUE,,
+targets_mech/c9_partial.R,targets_mech,,4,2,6,2,TRUE,,
+remote/b6_a_order.R,remote,,3,1,2,1,TRUE,network,
+remote/b6_b12.R,remote,,3,1,2,1,TRUE,network,downloads parts of a 200 MB public parquet
+remote/b6_b3_cache.R,remote,,3,1,2,1,TRUE,network,installs cache_httpfs community extension
+remote/b6_b4_download.R,remote,,3,1,2,,FALSE,network,downloads full files; local only
+remote/b6_b5_frontends.R,remote,,3,1,2,1,TRUE,network,
+remote/b6_b6_conn.R,remote,,2,1,2,1,TRUE,network,
+blas/blas.R,blas,,3,1,3,1,TRUE,,timings per runner (BLAS set by the workflow); the cross-BLAS output diff needs both variants in one results dir so runs only locally

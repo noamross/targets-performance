@@ -1,0 +1,22 @@
+key,value,unit,source_url,retrieved,quote_or_location,notes
+load_bare_rscript,0.144,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,Rscript -e 1 wall,M-series 12 cores R 4.6.2; warm cache
+load_targets,0.25,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(targets),bench lib
+load_crew,0.23,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(crew),
+load_dplyr,0.15,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(dplyr),user lib check 0.12
+load_arrow,0.17,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(arrow),
+load_duckdb,0.17,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(duckdb),
+load_datatable,0.03,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(data.table),
+load_collapse,0.05,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(collapse),
+load_qs2,0.05,s,local bench/startup/results/pkg_load_time.csv,2026-11-03,library(qs2),
+load_tidyverse,0.533,s,local plain Rscript (user lib),2026-11-03,library(tidyverse),single run; ns-only loadNamespace('tidyverse') 0.003
+load_ggplot2,0.315,s,local plain Rscript (user lib),2026-11-03,library(ggplot2),ns-only 0.279
+load_sf,0.252,s,local plain Rscript (user lib),2026-11-03,library(sf),ns-only 0.187
+renv_default_startup,0.8,s,local bench/startup/renv_startup.sh,2026-11-03,mean of 10 Rscript -e 1 in 17-pkg renv project,min 0.57-0.59; noisy
+renv_nosynccheck_startup,0.48,s,local bench/startup/renv_startup.sh,2026-11-03,RENV_CONFIG_SYNCHRONIZED_CHECK=FALSE,min 0.44
+renv_noautoload_startup,0.43,s,local bench/startup/renv_startup.sh,2026-11-03,RENV_CONFIG_AUTOLOADER_ENABLED=FALSE,min 0.31
+renv_none_startup,0.33,s,local bench/startup/renv_startup.sh,2026-11-03,same dir no renv (cd /tmp),min 0.27
+oversub_default,2.08,s,local bench/startup/results/oversubscribe.csv,2026-11-03,6 mirai daemons x data.table default 6 threads,"rerun capped via run_capped.R (cap 2.5 GB, peak RSS 2018 MB; 2e6 rows x 6 daemons, 12-core); replaces uncapped 12-daemon 3e7-row run (38.8 s)"
+oversub_1thread,1.55,s,local bench/startup/results/oversubscribe.csv,2026-11-03,6 daemons x 1 thread,capped rerun (replaces 33.7 s uncapped)
+oversub_allcpu,9.46,s,local bench/startup/results/oversubscribe.csv,2026-11-03,6 daemons x 12 threads,capped rerun: 6.1x slower than 1 thread; 4.6x slower than default (replaces 89.2 s uncapped / 2.6x)
+dt_default_threads_local,6,threads,local getDTthreads(),2026-11-03,12 logical CPUs,50% default
+arrow_cpu_count_local,12,threads,local arrow::cpu_count(),2026-11-03,io_thread_count 8,

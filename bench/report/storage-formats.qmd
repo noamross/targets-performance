@@ -1,0 +1,136 @@
+---
+title: "Storage formats"
+---
+
+```{r}
+source("_helpers.R")
+st <- "storage/results/storage.csv"
+rss <- "storage/results/storage_rss.csv"
+fid <- "storage/results/fidelity.csv"
+ts <- "storage/results/targets_store.csv"
+c9 <- "targets_mech/results/c9_partial.csv"
+w <- function(method, obj = "a_numdf") pick(csv(st), task = paste0(obj, "_write"), method = method)
+r <- function(method, obj = "a_numdf") pick(csv(st), task = paste0(obj, "_read"), method = method)
+f_mb <- function(method, obj = "a_numdf") pick(csv(st), task = paste0(obj, "_write"), method = method, col = "file_mb")
+tsr <- function(method, col = "wall_tar_make_s") pick(csv(ts), method = method, col = col)
+net <- function(task, method) pick(csv(rss), task = task, method = method, col = "net_rss_mb")
+```
+
+**When this matters.** `tar_profile.R` shows big targets in `rds` format, a large share of build time that is not in `tar_meta()` seconds, or big objects read by many targets. Saving and loading are hidden costs: `tar_meta()$seconds` times the command only. In a test the save of a `r mb(tsr("sav_qs", "bytes_meta") / 1e6)` target showed `r tsr("sav_qs", "seconds_meta")` s in `tar_meta()` while `tar_make()` took `r secs(tsr("sav_qs"))`.
+
+## The default: `format = "qs"`
+
+Since targets 1.9, `format = "qs"` uses qs2. It stores any R object and is much faster than the default `rds` (gzip):
+
+```{r}
+objs <- c(a_numdf = "numeric data frame, 1e7 x 10", b_chartbl = "character-heavy tibble, 1e6 rows")
+rows <- lapply(names(objs), function(o) data.frame(
+  object = objs[[o]],
+  `rds gzip write` = secs(w("rds_gzip", o)),
+  `qs2 1 thread` = secs(w("qs2_t1", o)),
+  `qs2 4 threads` = secs(w("qs2_t4", o)),
+  `rds / qs2 4t` = x(w("rds_gzip", o) / w("qs2_t4", o)),
+  `read rds` = secs(r("rds_gzip", o)), `read qs2 1t` = secs(r("qs2_t1", o)),
+  `MB rds / qs2` = paste(round(f_mb("rds_gzip", o)), "/", round(f_mb("qs2_t1", o))),
+  check.names = FALSE))
+tbl(do.call(rbind, rows))
+```
+
+`r src_line(st)`
+
+Inside a pipeline the same holds: saving a `r mb(tsr("sav_rds", "bytes_meta") / 1e6)` text table took `r secs(tsr("sav_rds"))` as `rds`, `r secs(tsr("sav_qs"))` as `qs` and `r secs(tsr("sav_qs4"))` with `tar_resources_qs(nthreads = 4)`. Every load pays the read side of this too, once per downstream target under worker retrieval (`branching.md`, `memory.md`).
+
+**Threads.** qs2 threads help big flat buffers and hurt small ones. On a list of 1e5 small data frames, reading with 4 threads took `r secs(r("qs2_t4", "c_listdf"))` vs `r secs(r("qs2_t1", "c_listdf"))` with 1. Use `tar_resources_qs(nthreads = k)` on the few big targets when cores are free, and 1 thread inside parallel workers (see `parallelism.md`). Multi-threaded qs2 needs a build with TBB (Intel's Threading Building Blocks library, which RcppParallel provides); without it, it warns and uses 1 thread.
+
+**Compression.** Random doubles barely compress (matrix of `r mb(pick(csv(st), task = "d_matrix_write", method = "rds_none", col = "file_mb"))` uncompressed vs `r mb(pick(csv(st), task = "d_matrix_write", method = "qs2_t1", col = "file_mb"))` in qs2). Compression level is rarely worth tuning.
+
+## What each format loses
+
+`identical()` after a round trip, by object feature:
+
+```{r}
+fd <- csv(fid)
+fd$feature <- sub("^fidelity_", "", fd$task)
+wide <- reshape(fd[c("feature", "method", "status")], idvar = "feature", timevar = "method", direction = "wide")
+names(wide) <- sub("^status\\.", "", names(wide))
+tbl(wide[c("feature", "rds", "qs2", "zap", "qd", "nanoparquet", "arrow", "duckdb")])
+```
+
+`r src_line(fid)` "lossy" = round trip not identical (class, row names, attributes or types changed); `ERROR` = cannot store.
+
+- **qd** (`qs2::qd_save`) replaces functions, environments, formulas and S4 objects with `NULL` (warning once per object type per session). A fitted model lost its closure and environment members. It was not faster than `qs_save` here (`r secs(w("qd_t1"))` vs `r secs(w("qs2_t1"))` on the numeric table), and its ALTREP string reading (lazy, deferred materialization of character vectors) is disabled in qs2 0.3.1. No reason to use it in a pipeline.
+- **nanoparquet** returns a `tbl`, drops row names and attributes, turns ordered factors into factors, and cannot store list columns of data frames, complex or raw.
+- **arrow** keeps tibble, grouped_df, factor, Date and time zone (it stores R metadata) but turns a plain data.frame into a tibble.
+- **duckdb** returns factors as character.
+- **zap** (GitHub only, needs R ≥ 4.5; its current release needed a patch to build on R 4.6) round-trips everything qs2 does with slightly smaller files; keep it experimental.
+- **fst** failed to load on the macOS test machine (OpenMP symbol missing); no numbers.
+
+## Parquet: partial reads
+
+Parquet pays when downstream targets need a few columns or rows of a big table. A full read is no faster than qs2; the gains come from not reading:
+
+```{r}
+pc <- function(t, m) v1(st, task = t, method = m)
+tbl(data.frame(
+  read = c("2 of 10 columns", "2 of 5 columns, text table", "1% of rows, file sorted by filter column", "1% of rows, unsorted file"),
+  `parquet partial` = c(secs(pc("a_partial_cols", "arrow_col_select")), secs(pc("b_partial_cols", "np_col_select")),
+                        secs(pc("a_partial_filter_rg122880_sorted", "arrow_open_dataset_filter")), secs(pc("a_partial_filter_rg122880_unsorted", "duck_where"))),
+  `reader` = c("arrow `col_select`", "nanoparquet `col_select`", "arrow `open_dataset() |> filter()`", "duckdb `WHERE`"),
+  `full read then subset` = c(secs(pc("a_partial_cols", "qs2_full_then_subset")), secs(pc("b_partial_cols", "qs2_full_then_subset")),
+                              secs(pc("a_partial_filter_rg122880_sorted", "np_full_then_filter")), secs(pc("a_partial_filter_rg122880_unsorted", "np_full_then_filter"))),
+  check.names = FALSE
+))
+```
+
+`r src_line(st)` Table of 2.5e6 rows x 10 columns; text table 1.5e5 rows.
+
+Memory matters more than time. Peak RSS above baseline when reading 2 columns: nanoparquet `r mb(net("a_peak_rss_read", "np_cols@rg122880_unsorted.parquet"))`, arrow `r mb(net("a_peak_rss_read", "arrow_cols@rg122880_unsorted.parquet"))`, duckdb `r mb(net("a_peak_rss_read", "duck_cols@rg122880_unsorted.parquet"))`, vs `r mb(net("a_peak_rss_read", "qs2_full_cols@full.qs2"))` for a full qs2 read. A full arrow read peaked at `r mb(net("a_peak_rss_read", "arrow_full@rg122880_unsorted.parquet"))` vs `r mb(net("a_peak_rss_read", "qs2_full@full.qs2"))` for qs2: arrow builds a Table, then converts. `r src_line(rss)`
+
+Row filters only skip data when the file is **sorted by the filter column** (row-group min/max statistics); on unsorted data every row group must be read. Sorted, duckdb was `r x(pc("a_partial_filter_rg122880_unsorted", "duck_where") / pc("a_partial_filter_rg122880_sorted", "duck_where"))` faster than unsorted. Default row groups (122,880 rows) worked as well as 10,000; 1e6-row groups pruned less.
+
+## Partial loads in a pipeline
+
+Three ways to let a consumer read part of a big table:
+
+1. **`format = "file"` parquet target** (simplest): the command writes `data/big.parquet` and returns the path; consumers read with `col_select` or duckdb. Dependencies work naturally; you manage the file's location.
+2. **Store format parquet + `retrieval = "none"`**: keep the target in the store and read it in place.
+
+   ```r
+   tar_target(big, make_big(), format = tarchetypes::tar_format_nanoparquet())
+   tar_target(
+     two_cols,
+     nanoparquet::read_parquet(
+       tar_path_target(big, store = tar_path_store()),  # symbol `big` declares the dependency; never evaluated
+       col_select = c("x1", "x2")
+     ),
+     retrieval = "none"
+   )
+   ```
+
+   Serial, this cut the consumer's peak RSS from `r mb(v1(c9, method = "normal retrieval, then subset 2 cols (nanoparquet format)", col = "peak_rss_mb"))` to `r mb(v1(c9, method = "retrieval none + nanoparquet col_select 2 cols", col = "peak_rss_mb"))` for a 300 MB table. With 3 crew workers: `r mb(v1(c9, method = "nproc=3 retrieval=none storage=worker, nanoparquet col_select", col = "peak_rss_mb"))` vs `r mb(v1(c9, method = "nproc=3 normal retrieval=worker", col = "peak_rss_mb"))` (normal worker retrieval) vs `r mb(v1(c9, method = "nproc=3 normal retrieval=main (big shipped by main)", col = "peak_rss_mb"))` (main retrieval). A `format = "file"` target gave the same `r mb(v1(c9, method = "format = file parquet target; consumer reads path with col_select", col = "peak_rss_mb"))`. `r src_line(c9)`
+3. **Split the object** into the column sets consumers need (upstream targets).
+
+A qs2 target cannot be read partially: `retrieval = "none"` + `qs_read()` only moves the full read into the command.
+
+## Choosing
+
+| Object | Format |
+|---|---|
+| Anything (models, lists, closures, S4) | `"qs"`; `tar_resources_qs(nthreads = k)` on big targets when cores are free |
+| Big data frame read whole | `"qs"`; parquet only for interop |
+| Big data frame, consumers need few columns or rows | parquet (`tar_format_nanoparquet()`, `format = "file"`), sorted by the main filter column |
+| Larger than available memory | `format = "file"` parquet (or a partitioned directory), read with duckdb with `memory_limit` set |
+| List columns of data frames | `"qs"` (arrow reads them back slowly; nanoparquet cannot write them) |
+| Lazy tables, connections, Arrow Datasets | never a target value; open them inside the command |
+| Shared across parallel readers | see `sharing-mori.md` |
+
+Changing a target's format invalidates it and everything downstream once. `tar_format()` read/write functions must be self-contained (namespace every call, helpers inside the function).
+
+## Traps
+
+- `tar_meta()$seconds` excludes saving; estimate it from bytes (`tar_profile.R` does) or time `tar_make()`.
+- nanoparquet's zstd default produced larger files than snappy on these data (`r mb(pick(csv(st), task = "b_chartbl_write", method = "np_zstd", col = "file_mb"))` vs `r mb(pick(csv(st), task = "b_chartbl_write", method = "np_snappy", col = "file_mb"))` on text); check sizes before choosing.
+- `arrow::set_io_thread_count(1)` can hang reads; for single-threaded arrow use `set_cpu_count(1)` only. Single-threaded arrow reads were several times slower; nanoparquet is single-threaded by design and fast.
+- Character tables use more memory once read than `object.size()` suggests (strings materialize); budget from the serialized size.
+- `tar_path_target(big)` without `store = tar_path_store()` points to the default store even when `tar_make(store = )` uses another one. `tar_read()` inside a command errors. A hard-coded store path has no dependency edge.
+- Parquet files cannot be appended (arrow). Cloud-store targets have no local file; use `format = "file"`.

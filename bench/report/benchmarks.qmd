@@ -1,0 +1,147 @@
+---
+title: "Benchmarks: machines, versions and full results"
+---
+
+```{r}
+source("_helpers.R")
+files <- sort(sub(paste0("^", file.path(repo, "bench"), "/"), "", Sys.glob(file.path(repo, "bench", "*", "results", "*.csv"))))
+tv <- utils::read.csv(file.path(repo, "skills", "targets-performance", "tested-versions.csv"))
+```
+
+**When this matters.** To check where a number in another reference came from, to compare your machine with the test machines, or to rerun a benchmark. This file is long; search it rather than reading it whole. Every other reference cites the CSV each number comes from, as `<topic>/<file>.csv`.
+
+**Where the results are.** The result CSVs, benchmark scripts and run logs are not shipped with the skill. They live in the skill's source repository (see its `README.md`) under `bench/<topic>/results/`; the tables below reproduce every row.
+
+## Machines
+
+```{r}
+info <- do.call(rbind, lapply(files, function(p) {
+  d <- csv(p)
+  data.frame(machine = if ("machine" %in% names(d)) unique(d$machine)[1] else "(not recorded)",
+             cores = if ("cores" %in% names(d)) unique(d$cores)[1] else NA,
+             R = if ("r_version" %in% names(d)) unique(d$r_version)[1] else NA)
+}))
+info <- unique(info[info$machine != "(not recorded)", ])
+tbl(info)
+```
+
+Two local machines contributed most of the rows the other references quote; they are informational, not the platforms the skill assumes. Cross-platform evidence is in the next section.
+
+- **macOS (local):** Apple Silicon (arm64), with R's reference BLAS except where the BLAS benchmark switched to Accelerate. Other work ran on the machine at the same time; numbers are medians and should be read as ratios.
+- **Linux (local container):** an ARM64 container (`rocker/r-ver` image, Ubuntu, in a Linux VM on the same Mac), run with explicit `--memory`, `--cpus` and `--shm-size` limits. The `cores` column is what the VM reports; the container's CPU quota was lower for the thread and BLAS runs. Not x86.
+- Remote benchmarks used a home internet connection; seconds there are single runs, bytes exact.
+
+## Package versions
+
+Versions of the benchmark library (source repository `bench/rproj.toml`, lock file `bench/rproj.lock`), as recorded in `tested-versions.csv` (tested `r unique(tv$tested)` on R `r unique(tv$r_version)`, `r unique(tv$platform)`):
+
+```{r}
+half <- ceiling(nrow(tv) / 2)
+pad <- rep("", 2 * half - nrow(tv))
+tbl(data.frame(package = tv$package[1:half], version = tv$version[1:half],
+               `package ` = c(tv$package[-(1:half)], pad), `version ` = c(tv$version[-(1:half)], pad), check.names = FALSE))
+```
+
+The Linux container used P3M binaries of the same CRAN versions, except where its rows' `packages` column says otherwise (e.g. qs2 and mirai patch releases).
+
+## Cross-platform runs (CI)
+
+```{r}
+ci_dir <- file.path(repo, "bench", "ci-results")
+ci_labels <- basename(Sys.glob(file.path(ci_dir, "*", "ci")) |> dirname())
+read_opt <- function(f) if (file.exists(f)) utils::read.csv(f, stringsAsFactors = FALSE) else NULL
+grab <- function(f, pattern) {
+  if (!file.exists(f)) return(NA)
+  hit <- grep(pattern, readLines(f, warn = FALSE), value = TRUE)
+  if (length(hit)) trimws(sub(pattern, "", hit[[1]])) else NA
+}
+```
+
+```{r}
+if (!length(ci_labels)) {
+  cat("No CI results imported yet. The source repository's `benchmarks` GitHub Actions workflow reruns the CI-safe scripts (`bench/suite.csv`) on several OSs, CPU architectures, BLAS libraries and R versions; `bench/ci_results.R` imports them into `bench/ci-results/`.\n")
+} else {
+  runs <- do.call(rbind, lapply(ci_labels, function(l) {
+    d <- file.path(ci_dir, l, "ci")
+    v <- read_opt(file.path(d, "versions.csv"))
+    log <- read_opt(file.path(d, "run_log.csv"))
+    data.frame(label = l,
+               R = if (is.null(v)) NA else v$r_version[1],
+               platform = if (is.null(v)) NA else v$platform[1],
+               BLAS = sub(".*/([^/]+/[^/]+)$", "\\1", grab(file.path(d, "session_info.txt"), "^BLAS:")),
+               cores = grab(file.path(d, "machine_profile.txt"), "^cores logical / physical"),
+               ok = if (is.null(log)) NA else sum(log$status == 0),
+               failed = if (is.null(log)) NA else sum(log$status != 0),
+               run_date = if (is.null(log)) NA else max(log$run_date))
+  }))
+  cat("GitHub Actions runners (shared virtual machines; read ratios, not seconds). Imported from the `bench-results` branch by `bench/ci_results.R`.\n\n")
+  cat(tbl(runs), sep = "\n")
+}
+```
+
+```{r}
+# Fastest method per task on each machine: where they disagree, advice measured
+# on the local machine may not carry over.
+if (length(ci_labels)) {
+  key <- c("topic", "task", "n", "method", "median_s")
+  timing <- function(paths, label) {
+    do.call(rbind, lapply(paths, function(p) {
+      d <- utils::read.csv(p, stringsAsFactors = FALSE)
+      if (!all(key %in% names(d))) return(NULL)
+      d <- d[is.finite(d$median_s), key]
+      if (nrow(d)) cbind(d, label = label) else NULL
+    }))
+  }
+  all_t <- rbind(
+    timing(Sys.glob(file.path(repo, "bench", "*", "results", "*.csv")), "local"),
+    do.call(rbind, lapply(ci_labels, \(l) timing(Sys.glob(file.path(ci_dir, l, "*", "results", "*.csv")), l)))
+  )
+  all_t <- all_t[!duplicated(all_t[c(key[1:4], "label")]), ]
+  g <- split(all_t, paste(all_t$topic, all_t$task, all_t$n, all_t$label, sep = "\r"))
+  best <- do.call(rbind, lapply(g, function(x) {
+    if (length(unique(x$method)) < 2) return(NULL)
+    x[which.min(x$median_s), c("topic", "task", "n", "label", "method")]
+  }))
+  wide <- split(best, paste(best$topic, best$task, best$n, sep = "\r"))
+  differ <- Filter(\(x) nrow(x) > 1 && length(unique(x$method)) > 1, wide)
+  if (length(differ)) {
+    tab <- do.call(rbind, lapply(differ, function(x) data.frame(
+      topic = x$topic[1], task = x$task[1], n = x$n[1],
+      fastest = paste(sprintf("%s: %s", x$label, x$method), collapse = "; ")
+    )))
+    cat(sprintf("\nTasks whose fastest method differs between machines (%d of %d tasks run on more than one machine):\n\n",
+                length(differ), sum(vapply(wide, nrow, 1L) > 1)))
+    cat(tbl(tab), sep = "\n")
+  } else {
+    cat("\nThe fastest method agrees across machines for every task run on more than one.\n")
+  }
+}
+```
+
+## How to rerun
+
+In the source repository, from `bench/`, on any OS, one script at a time under a memory cap (the runner skips scripts the machine can't meet):
+
+```sh
+Rscript run_suite.R topics=storage   # or: Rscript run_capped.R <topic>/<script>.R [cap_gb]
+```
+
+Optional Linux container runs with CPU and memory limits: `bench/docker/`. Afterwards run `Rscript bench/refresh_outputs.R` from the repository root (tested versions, format throughput, these references). The `targets-performance-update` skill lists the full procedure.
+
+## Full results
+
+```{r}
+show_cols <- c("task", "n", "method", "median_s", "seconds", "wall_s", "ratio_to_fastest", "mb_fetched", "peak_rss_mb", "net_rss_mb",
+               "loads", "status", "file_mb", "identical_to_ref")
+out <- character(0)
+for (p in files) {
+  d <- unique(csv(p))
+  keep <- intersect(show_cols, names(d))
+  if (!length(intersect(c("task", "method"), keep))) keep <- names(d)
+  d <- d[keep]
+  for (k in names(d)) if (is.numeric(d[[k]])) d[[k]] <- signif(d[[k]], 4)
+  out <- c(out, sprintf("<details><summary>%s %d rows</summary>\n", sub("\\.$", "", src_line(p)), nrow(d)),
+           "", tbl(d), "", "</details>", "")
+}
+cat(out, sep = "\n")
+```

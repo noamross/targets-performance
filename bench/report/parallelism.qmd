@@ -1,0 +1,115 @@
+---
+title: "Parallelism: workers, branches and threads"
+---
+
+```{r}
+source("_helpers.R")
+c1 <- "targets_mech/results/c1_nproc.csv"
+c2 <- "targets_mech/results/c2_startup.csv"
+c8 <- "targets_mech/results/c8_level.csv"
+ov <- "startup/results/oversubscribe.csv"
+bw <- "blas/results/blas_workers_linux.csv"
+env <- csv("fastfns/results/b6_envworkers.csv")
+pl <- "startup/results/pkg_load_time.csv"
+w1 <- function(m) v1(c1, method = m, col = "wall_s")
+w8 <- function(m) v1(c8, method = m, col = "wall_s")
+r8 <- function(m) v1(c8, method = m, col = "peak_rss_mb")
+bwv <- function(t, m) v1(bw, task = t, method = m)
+ovv <- function(s) v1(ov, setting = s, col = "wall")
+```
+
+**When this matters.** The build is slow and the machine has idle cores, or a parallel build is slower or uses more memory than expected. Parallel R work happens at three levels: **pipeline workers** (crew runs independent targets at once), **branches** (dynamic or static branches give workers more independent pieces), and **threads inside a target** (data.table, collapse, BLAS, duckdb, arrow, qs2, Stan). Speed comes from using the right level, and from never stacking them so that workers × threads exceeds the cores.
+
+## Before changing anything
+
+Ask the user where the pipeline runs (laptop, CI runner, shared server, container), how many cores and how much free memory it may use, and whether others share the machine. Then run:
+
+- `machine_profile.R`: cores, *available* memory, container CPU/memory limits, thread defaults per package, BLAS.
+- `tar_dag.R workers=1,2,4,8`: maximum useful speedup (total seconds / critical path) and predicted wall time per worker count. If the speedup bound is 1.5x, eight workers cannot help; shorten the critical path instead.
+
+## Pipeline workers (crew)
+
+With 24 independent 2-second targets, wall time fell from `r secs(w1("nproc=1 (serial, no controller)"))` (serial) to `r secs(w1("nproc=2 (crew)"))`, `r secs(w1("nproc=4 (crew)"))` and `r secs(w1("nproc=6 (crew)"))` with 2, 4 and 6 workers. Each worker is a separate R process: peak memory grew from `r mb(v1(c1, method = "nproc=1 (serial, no controller)", col = "peak_rss_mb"))` to `r mb(v1(c1, method = "nproc=6 (crew)", col = "peak_rss_mb"))`. `r src_line(c1)`
+
+Workers have fixed costs: start-up (seconds) and a round trip per target. 200 targets of 20 ms took `r secs(v1(c1, method = "serial", col = "wall_s", .rep = 1))` serially; one crew worker took `r secs(w1("crew 1 worker deployment worker"))`, and six workers still needed `r secs(w1("crew nproc=6 deployment worker"))` because the main process dispatches targets one at a time. Tiny targets do not parallelize; batch them (`branching.md`) or run them in the main process with `deployment = "main"`.
+
+A portable pattern: size the controller from an environment variable, serial by default, so laptops, CI and servers each choose their worker count.
+
+```r
+# _targets.R
+nproc <- as.integer(Sys.getenv("NPROC", "1"))
+Sys.setenv(OMP_NUM_THREADS = "1", OPENBLAS_NUM_THREADS = "1", R_DATATABLE_NUM_THREADS = "1")  # before workers start
+tar_option_set(
+  controller = if (nproc > 1) crew::crew_controller_local(workers = nproc, seconds_idle = 60),
+  deployment = if (nproc > 1) "worker" else "main"
+)
+```
+
+Rate-limited hosts get their own one-worker controller in a `crew_controller_group()`, and their fetch targets set `resources = tar_resources(crew = tar_resources_crew(controller = "<host>"))` (see `remote-data.md`).
+
+## Threads inside a target
+
+One multithreaded target can match many single-threaded branches with far less memory. Six data.table jobs:
+
+```{r}
+tbl(data.frame(
+  setup = c("1 target, 6 jobs in sequence, 6 threads", "1 target, 1 thread", "6 branches x 1 thread (NPROC = 6)", "6 branches x 2 threads (12 threads)", "6 branches x 6 threads (36 on 12 cores)", "6 branches x 12 threads (72 on 12 cores)"),
+  wall = secs(c(w8("1 target, 6 jobs sequential, DT threads = 6 rep1"), w8("1 target, 6 jobs sequential, DT threads = 1 rep1"), w8("6 branches x 1 thread, NPROC=6 rep1"),
+                w8("6 branches x 2 threads, NPROC=6 (=12 threads) rep1"), w8("6 branches x 6 threads, NPROC=6 (36 threads, oversubscribed) rep1"), w8("6 branches x 12 threads, NPROC=6 (72 threads) rep1"))),
+  `peak memory` = mb(c(r8("1 target, 6 jobs sequential, DT threads = 6 rep1"), r8("1 target, 6 jobs sequential, DT threads = 1 rep1"), r8("6 branches x 1 thread, NPROC=6 rep1"),
+                       r8("6 branches x 2 threads, NPROC=6 (=12 threads) rep1"), r8("6 branches x 6 threads, NPROC=6 (36 threads, oversubscribed) rep1"), r8("6 branches x 12 threads, NPROC=6 (72 threads) rep1"))),
+  check.names = FALSE))
+```
+
+`r src_line(c8)` First of two repetitions shown.
+
+So a one-off heavy step (a big sort, join or grouped summary in a single bottleneck target) is often better served by threads in that one target than by splitting it into branches: no worker start-up, no extra copies, and the same wall time when the work is memory-bandwidth-bound. Split into branches when the pieces are independent and CPU-bound, when each piece is long enough to amortize overhead, or for the organization and caching benefits in `branching.md`.
+
+Model fitting follows the same rule. A package that runs MCMC chains in parallel inside one call (cmdstanr `parallel_chains`, brms `cores`) uses threads well for one or a few fits; split chains or fits into branches only when many cores are idle, compilation is cached, and seeds are set per branch. Keep chains × threads per chain × workers ≤ cores.
+
+## Oversubscription
+
+When workers × threads per worker exceeds the cores, threads fight for CPU and every target slows down:
+
+- 6 mirai workers each running data.table: `r secs(ovv("1 thread each"))` with 1 thread each, `r secs(ovv("default (50% each)"))` with data.table's default (half the CPUs each), `r secs(ovv("all cpus each"))` with all CPUs each. `r src_line(ov)`
+- 3 workers doing BLAS work in a 6-CPU Linux container (OpenBLAS pthreads): `r secs(bwv("W3_rt_none", "pthread|OB=2,OMP=-"))` with 2 threads each, `r secs(bwv("W3_rt_none", "pthread|OB=1,OMP=-"))` with 1, `r secs(bwv("W3_rt_none", "pthread|OB=6,OMP=-"))` with 6, and `r secs(bwv("W3_rt_none", "pthread|OB=-,OMP=-"))` with the default (all host CPUs, ignoring the container limit). `r src_line(bw)`
+
+Defaults that oversubscribe under parallel workers: data.table (half the logical CPUs), OpenBLAS and OpenMP (all CPUs), arrow (all CPUs), duckdb (all CPUs, and 80% of RAM as `memory_limit` per process). collapse, kit, qs2 and Rfast default to 1 thread. Inside containers, data.table, BLAS and arrow count host CPUs, not the container's quota; duckdb follows the quota.
+
+## Getting thread settings into workers
+
+Environment variables set in `_targets.R` **before** workers start are inherited by crew and mirai workers:
+
+```{r}
+e <- env[env$condition != "env set after worker already running (same worker reused)", ]
+lab <- c(none = "none set", RDT1_only = "R_DATATABLE_NUM_THREADS=1", OMP1_only = "OMP_NUM_THREADS=1", both_1_plus_MYVAR = "both = 1")
+tbl(data.frame(engine = e$engine, `set before start` = lab[e$condition], `data.table threads in worker` = e$dt_threads, check.names = FALSE))
+```
+
+`r src_line("fastfns/results/b6_envworkers.csv")` A variable set after a worker was already running did not reach it (worker saw `r env$OMP[env$condition == "env set after worker already running (same worker reused)"]`).
+
+- `R_DATATABLE_NUM_THREADS` set in `_targets.R` does **not** affect the main process (targets has already loaded data.table) or serial runs. Call `data.table::setDTthreads(n)` inside the function as well.
+- OpenBLAS: the pthread build obeys `OPENBLAS_NUM_THREADS` and falls back to `OMP_NUM_THREADS`; the OpenMP build obeys only `OMP_NUM_THREADS`. Set both. At run time, `RhpcBLASctl::blas_set_num_threads()` works for the pthread build and `omp_set_num_threads()` for the OpenMP build; calling the wrong one does nothing (3 workers: `r secs(bwv("W3_rt_blas1", "openmp|OB=-,OMP=-"))` with the wrong setter vs `r secs(bwv("W3_rt_omp1", "openmp|OB=-,OMP=-"))` with the right one).
+- duckdb: set `threads` and `memory_limit` per connection (`duckdb::duckdb(config = list(threads = "2", memory_limit = "2GB"))`).
+- qs2: `tar_resources_qs(nthreads = 1)` inside workers. arrow: `arrow::set_cpu_count(n)`.
+
+A budget: threads per worker = cores available / workers, memory per worker ≤ available memory / (workers + 1).
+
+## Worker start-up
+
+Every crew worker is a fresh `Rscript` that runs the project `.Rprofile` and loads the packages in `tar_option_set(packages = )`. With the default long-lived workers this is paid once per worker: six heavy packages loaded globally cost about the same wall time as loading them only in the two targets that use them (`r secs(v1(c2, method = "packages global(6 heavy); tasks_max Inf", task = "24x0.2s_nproc4", col = "wall_s"))` vs `r secs(v1(c2, method = "packages per-target(2 targets); tasks_max Inf", task = "24x0.2s_nproc4", col = "wall_s"))`). With `tasks_max = 1` (a fresh worker per target) the same pipeline took `r secs(v1(c2, method = "packages global(6 heavy); tasks_max 1", task = "24x0.2s_nproc4", col = "wall_s"))` and `r secs(v1(c2, method = "packages per-target(2 targets); tasks_max 1", task = "24x0.2s_nproc4", col = "wall_s"))`. `r src_line(c2)`
+
+So:
+
+- Keep workers alive (`tasks_max = Inf`, `seconds_idle` of a minute or more); recycle only to contain memory leaks.
+- Attach in `tar_option_set(packages = )` only packages most targets use. Give a heavy package used by a few targets to those targets' `packages =` argument, or call it as `pkg::fn()`.
+- Keep `.Rprofile` cheap; see `environment.md` (renv activation and checks added `r secs(val("renv_default_startup") - val("renv_none_startup"))` per worker start in the benchmarks).
+- `startup_cost.R` measures R, `.Rprofile` and per-package load times for your project.
+
+## Traps
+
+- **Nested parallel frameworks.** `mirai::daemons(n)` inside a target that already runs on a mirai/crew worker fails; `purrr::in_parallel()` or `furrr` inside workers multiplies processes. Pick one level.
+- **Forking after OpenMP.** With the OpenMP build of OpenBLAS, `parallel::mclapply()` children hung when they called BLAS after the parent had used BLAS or data.table threads. crew, mirai and callr start fresh processes and are not affected.
+- **Detached workers escape monitoring.** crew and mirai workers are not children of the R session in the process tree (their launcher exits and they lose the parent link; on macOS they reparent to `launchd`). Measure pipeline memory with system available memory or by summing all R processes, not the session's own RSS.
+- **`detectCores()` lies in containers** (reports host CPUs). Read the cgroup quota; `machine_profile.R` prints it, and `parallelly::availableCores()` respects it.
+- More workers than the DAG's width only add memory and start-up.

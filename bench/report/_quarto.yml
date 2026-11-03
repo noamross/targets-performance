@@ -1,0 +1,16 @@
+# Renders every reference: quarto render bench/report (from the repo root).
+# Output: skills/targets-performance/references/<name>.md (GitHub-flavored markdown).
+project:
+  type: default
+  output-dir: ../../skills/targets-performance/references
+format:
+  gfm:
+    wrap: none
+    from: markdown-smart
+execute:
+  echo: false
+  warning: false
+  message: false
+knitr:
+  opts_chunk:
+    results: asis
