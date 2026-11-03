@@ -1,0 +1,70 @@
+run_capped: storage/s1_threads.R cap 4096 MB, available 18269 MB
+[INFO] RIG START [pid:55115] rig run --rscript storage/s1_threads.R
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+        qs2_t1    94.1    0.30   0.10      TRUE                 TRUE
+        qs2_t4    94.1    0.10   0.04      TRUE                 TRUE
+         qd_t1    94.1    0.31   0.10      TRUE                 TRUE
+         qd_t4    94.1    0.10   0.04      TRUE                 TRUE
+    arrow_zstd   117.1    0.42   0.02     FALSE                 TRUE
+ arrow_zstd_1t   117.1    0.42   0.12     FALSE                 TRUE
+     duck_zstd   106.3    0.50   0.15      TRUE                 TRUE
+  duck_zstd_1t   106.3    0.48   0.17      TRUE                 TRUE
+       np_zstd   127.3    0.32   0.03     FALSE                 TRUE
+          used (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells 1156087 61.8    1797780  96.1         NA  1797780  96.1
+Vcells 1995816 15.3   61951688 472.7      36864 77288454 589.7
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+        qs2_t1    37.8    0.47   0.26      TRUE                 TRUE
+        qs2_t4    37.8    0.13   0.15      TRUE                 TRUE
+         qd_t1    37.5    0.48   0.27      TRUE                 TRUE
+         qd_t4    37.5    0.13   0.16      TRUE                 TRUE
+    arrow_zstd    42.6    0.51   0.09      TRUE                 TRUE
+ arrow_zstd_1t    42.6    0.50   0.09      TRUE                 TRUE
+     duck_zstd    12.8    0.23   0.22     FALSE                FALSE
+  duck_zstd_1t    12.8    0.24   0.22     FALSE                FALSE
+       np_zstd   129.9    0.13   0.19     FALSE                 TRUE
+          used (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells 1164800 62.3    1797780  96.1         NA  1797780  96.1
+Vcells 2080592 15.9   49561351 378.2      36864 77288454 589.7
+[INFO] RIG END [pid:55115] rig run --rscript storage/s1_threads.R
+run_capped: done status 0, peak RSS 2598 MB

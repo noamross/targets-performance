@@ -1,0 +1,244 @@
+[INFO] RIG START [pid:16514] rig run --rscript storage/s3_fidelity.R
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+ task                       method      status   
+ fidelity_df_rownames_attrs rds         identical
+ fidelity_df_rownames_attrs qs2         identical
+ fidelity_df_rownames_attrs qd          identical
+ fidelity_df_rownames_attrs zap         identical
+ fidelity_df_rownames_attrs nanoparquet lossy    
+ fidelity_df_rownames_attrs arrow       lossy    
+ fidelity_df_rownames_attrs duckdb      lossy    
+ fidelity_tibble            rds         identical
+ fidelity_tibble            qs2         identical
+ fidelity_tibble            qd          identical
+ fidelity_tibble            zap         identical
+ fidelity_tibble            nanoparquet lossy    
+ fidelity_tibble            arrow       identical
+ fidelity_tibble            duckdb      lossy    
+ fidelity_list_col          rds         identical
+ fidelity_list_col          qs2         identical
+ fidelity_list_col          qd          identical
+ fidelity_list_col          zap         identical
+ fidelity_list_col          nanoparquet ERROR    
+ fidelity_list_col          arrow       ERROR    
+ fidelity_list_col          duckdb      ERROR    
+ fidelity_grouped_df        rds         identical
+ fidelity_grouped_df        qs2         identical
+ fidelity_grouped_df        qd          identical
+ fidelity_grouped_df        zap         identical
+ fidelity_grouped_df        nanoparquet lossy    
+ fidelity_grouped_df        arrow       identical
+ fidelity_grouped_df        duckdb      lossy    
+ fidelity_difftime_cplx_raw rds         identical
+ fidelity_difftime_cplx_raw qs2         identical
+ fidelity_difftime_cplx_raw qd          identical
+ fidelity_difftime_cplx_raw zap         identical
+ fidelity_difftime_cplx_raw nanoparquet ERROR    
+ fidelity_difftime_cplx_raw arrow       ERROR    
+ fidelity_difftime_cplx_raw duckdb      ERROR    
+ fidelity_named_list        rds         identical
+ fidelity_named_list        qs2         identical
+ fidelity_named_list        qd          identical
+ fidelity_named_list        zap         identical
+ fidelity_named_list        nanoparquet ERROR    
+ fidelity_named_list        arrow       ERROR    
+ fidelity_named_list        duckdb      lossy    
+ fidelity_s4_object         rds         identical
+ fidelity_s4_object         qs2         identical
+ fidelity_s4_object         qd          lossy    
+ fidelity_s4_object         zap         identical
+ fidelity_s4_object         nanoparquet ERROR    
+ fidelity_s4_object         arrow       ERROR    
+ fidelity_s4_object         duckdb      ERROR    
+ fidelity_formula           rds         identical
+ fidelity_formula           qs2         identical
+ fidelity_formula           qd          lossy    
+ fidelity_formula           zap         identical
+ fidelity_formula           nanoparquet ERROR    
+ fidelity_formula           arrow       ERROR    
+ fidelity_formula           duckdb      ERROR    
+ fidelity_closure           rds         identical
+ fidelity_closure           qs2         identical
+ fidelity_closure           qd          lossy    
+ fidelity_closure           zap         identical
+ fidelity_closure           nanoparquet ERROR    
+ fidelity_closure           arrow       ERROR    
+ fidelity_closure           duckdb      ERROR    
+ fidelity_environment       rds         lossy    
+ fidelity_environment       qs2         lossy    
+ fidelity_environment       qd          lossy    
+ fidelity_environment       zap         lossy    
+ fidelity_environment       nanoparquet ERROR    
+ fidelity_environment       arrow       ERROR    
+ fidelity_environment       duckdb      ERROR    
+ detail                                                                                                                                                             
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:data.frame->tbl/data.frame; row.names; col d:numeric->numeric; col o:ordered->factor; col dt:Date->Date; col ts:POSIXct->POSIXct; table attrs                
+ class:data.frame->tbl_df/tbl/data.frame; row.names                                                                                                                 
+ row.names; col d:numeric->numeric; col f:factor->character; col o:ordered->character; col ts:POSIXct->POSIXct; table attrs                                         
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:tbl_df/tbl/data.frame->tbl/data.frame; col d:numeric->numeric; col o:ordered->factor; col dt:Date->Date; col ts:POSIXct->POSIXct; table attrs                
+ <NA>                                                                                                                                                               
+ class:tbl_df/tbl/data.frame->data.frame; col d:numeric->numeric; col f:factor->character; col o:ordered->character; col ts:POSIXct->POSIXct; table attrs           
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ Cannot write a double vector as a Parquet INT32 type in list column.                                                                                               
+ Invalid: cannot convert                                                                                                                                            
+ {"exception_type":"Invalid" "exception_message":"std::exception"} ℹ Context: rapi_register_df                                                                      
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:grouped_df/tbl_df/tbl/data.frame->tbl/data.frame; col d:numeric->numeric; col o:ordered->factor; col dt:Date->Date; col ts:POSIXct->POSIXct; table attrs     
+ <NA>                                                                                                                                                               
+ class:grouped_df/tbl_df/tbl/data.frame->data.frame; col d:numeric->numeric; col f:factor->character; col o:ordered->character; col ts:POSIXct->POSIXct; table attrs
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ Unsuppoted types when writing Parquet file: complex  raw                                                                                                           
+ Cannot infer type from vector                                                                                                                                      
+ {"exception_type":"Invalid" "exception_message":"std::exception"} ℹ Context: rapi_register_df                                                                      
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ is.data.frame(df) is not TRUE                                                                                                                                      
+ Object must be coercible to an Arrow Table using `as_arrow_table()` Caused by error in `as_arrow_tab                                                               
+ class:list->data.frame; values/attrs differ                                                                                                                        
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:Fid->NULL; NULL returned                                                                                                                                     
+ <NA>                                                                                                                                                               
+ no method for coercing this S4 class to a vector                                                                                                                   
+ Object must be coercible to an Arrow Table using `as_arrow_table()` Caused by error in `as_arrow_tab                                                               
+ cannot coerce class ‘structure("Fid"  package = ".GlobalEnv")’ to a data.frame                                                                                     
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:formula->NULL; NULL returned                                                                                                                                 
+ <NA>                                                                                                                                                               
+ is.data.frame(df) is not TRUE                                                                                                                                      
+ Object must be coercible to an Arrow Table using `as_arrow_table()` Caused by error in `as_arrow_tab                                                               
+ cannot coerce class ‘"formula"’ to a data.frame                                                                                                                    
+ <NA>                                                                                                                                                               
+ <NA>                                                                                                                                                               
+ class:function->NULL; NULL returned                                                                                                                                
+ <NA>                                                                                                                                                               
+ is.data.frame(df) is not TRUE                                                                                                                                      
+ Object must be coercible to an Arrow Table using `as_arrow_table()` Caused by error in `as_arrow_tab                                                               
+ cannot coerce class ‘"function"’ to a data.frame                                                                                                                   
+                                                                                                                                                                    
+                                                                                                                                                                    
+ class:environment->NULL; NULL returned                                                                                                                             
+                                                                                                                                                                    
+ is.data.frame(df) is not TRUE                                                                                                                                      
+ Object must be coercible to an Arrow Table using `as_arrow_table()` Caused by error in `as_arrow_tab                                                               
+ cannot coerce class ‘"environment"’ to a data.frame                                                                                                                
+Warning message:
+In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+qd_read text ALTREP (inspect line 1): @b9aa4c000 16 STRSXP g0c7 [MARK,REF(1)] (len=200000, tl=0)
+use_alt_rep=FALSE (inspect line 1): @b9bc00000 16 STRSXP g0c7 [REF(1)] (len=200000, tl=0)
+Warning messages:
+1: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+2: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+3: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+4: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+5: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+6: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+7: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+8: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+9: In qs2::qd_read(p, use_alt_rep = TRUE) :
+  use_alt_rep is temporarily disabled for qdata; reading strings as ordinary character vectors.
+                    method  median_s ratio_to_fastest
+1              qd_alt_read 0.4571479         1.080274
+2            qd_noalt_read 0.4378671         1.034712
+3   qd_alt_read_then_touch 0.5909682         1.396501
+4 qd_noalt_read_then_touch 0.5871771         1.387543
+5   qd_alt_read_touch_1pct 0.4231777         1.000000
+[INFO] RIG END [pid:16514] rig run --rscript storage/s3_fidelity.R

@@ -1,0 +1,332 @@
+run_capped: storage/s2_partial.R cap 4096 MB, available 18419 MB
+[INFO] RIG START [pid:55876] rig run --rscript storage/s2_partial.R
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+a parquet sizes MB: 94 102 106 102 106 102 106
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+           task                  method   median_s ratio_to_fastest
+ a_partial_cols    qs2_full_then_subset 0.04030476         2.214674
+ a_partial_cols qs2_t1_full_then_subset 0.10884131         5.980634
+ a_partial_cols     np_full_then_subset 0.16934476         9.305190
+ a_partial_cols           np_col_select 0.06098258         3.350883
+ a_partial_cols        arrow_col_select 0.01819896         1.000000
+ a_partial_cols     arrow_col_select_1t 0.03074512         1.689389
+ a_partial_cols             duck_select 0.03689742         2.027447
+ a_partial_cols          duck_select_1t 0.03692095         2.028740
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method   median_s
+ a_partial_filter_rg10000_unsorted arrow_open_dataset_filter 0.04390169
+ a_partial_filter_rg10000_unsorted           arrow_filter_1t 0.17393110
+ a_partial_filter_rg10000_unsorted                duck_where 0.14178513
+ a_partial_filter_rg10000_unsorted             duck_where_1t 0.13625805
+ a_partial_filter_rg10000_unsorted       np_full_then_filter 0.20193705
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         3.961831             TRUE
+         3.229605             TRUE
+         3.103708             TRUE
+         4.599756             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                            task                    method   median_s
+ a_partial_filter_rg10000_sorted arrow_open_dataset_filter 0.01141838
+ a_partial_filter_rg10000_sorted           arrow_filter_1t 0.01766641
+ a_partial_filter_rg10000_sorted                duck_where 0.01664551
+ a_partial_filter_rg10000_sorted             duck_where_1t 0.01649356
+ a_partial_filter_rg10000_sorted       np_full_then_filter 0.21018703
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.547191             TRUE
+         1.457782             TRUE
+         1.444475             TRUE
+        18.407785             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                               task                    method   median_s
+ a_partial_filter_rg122880_unsorted arrow_open_dataset_filter 0.03384390
+ a_partial_filter_rg122880_unsorted           arrow_filter_1t 0.14529572
+ a_partial_filter_rg122880_unsorted                duck_where 0.13002818
+ a_partial_filter_rg122880_unsorted             duck_where_1t 0.12382779
+ a_partial_filter_rg122880_unsorted       np_full_then_filter 0.19020228
+ a_partial_filter_rg122880_unsorted      qs2_full_then_filter 0.05464697
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         4.293114             TRUE
+         3.841997             TRUE
+         3.658792             TRUE
+         5.619987             TRUE
+         1.614677             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                             task                    method   median_s
+ a_partial_filter_rg122880_sorted arrow_open_dataset_filter 0.01045541
+ a_partial_filter_rg122880_sorted           arrow_filter_1t 0.02028114
+ a_partial_filter_rg122880_sorted                duck_where 0.01710003
+ a_partial_filter_rg122880_sorted             duck_where_1t 0.01612124
+ a_partial_filter_rg122880_sorted       np_full_then_filter 0.15521399
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.939775             TRUE
+         1.635520             TRUE
+         1.541904             TRUE
+        14.845328             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                                task                    method   median_s
+ a_partial_filter_rg1000000_unsorted arrow_open_dataset_filter 0.03165163
+ a_partial_filter_rg1000000_unsorted           arrow_filter_1t 0.13863896
+ a_partial_filter_rg1000000_unsorted                duck_where 0.13386287
+ a_partial_filter_rg1000000_unsorted             duck_where_1t 0.13257576
+ a_partial_filter_rg1000000_unsorted       np_full_then_filter 0.15413286
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         4.380152             TRUE
+         4.229257             TRUE
+         4.188592             TRUE
+         4.869666             TRUE
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method   median_s
+ a_partial_filter_rg1000000_sorted arrow_open_dataset_filter 0.02496068
+ a_partial_filter_rg1000000_sorted           arrow_filter_1t 0.06291721
+ a_partial_filter_rg1000000_sorted                duck_where 0.05981150
+ a_partial_filter_rg1000000_sorted             duck_where_1t 0.05929039
+ a_partial_filter_rg1000000_sorted       np_full_then_filter 0.14955976
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.520653             TRUE
+         2.396229             TRUE
+         2.375352             TRUE
+         5.991815             TRUE
+                                  method  peak_mb  base_mb net_mb
+                       qs2_full@full.qs2 404.4219 169.5781    235
+                  qs2_full_cols@full.qs2 404.3438 169.5781    235
+               qs2_full_cols_1t@full.qs2 303.8750 169.5781    134
+       np_full@rg122880_unsorted.parquet 382.8281 169.5781    213
+       np_cols@rg122880_unsorted.parquet 207.9531 169.5781     38
+    arrow_full@rg122880_unsorted.parquet 559.9219 169.5781    390
+    arrow_cols@rg122880_unsorted.parquet 267.1875 169.5781     98
+     duck_cols@rg122880_unsorted.parquet 289.0938 169.5781    120
+  duck_cols_1t@rg122880_unsorted.parquet 252.5000 169.5781     83
+ arrow_cols_1t@rg122880_unsorted.parquet 262.5000 169.5781     93
+  arrow_filter@rg122880_unsorted.parquet 439.6250 169.5781    270
+   duck_filter@rg122880_unsorted.parquet 431.5625 169.5781    262
+    arrow_filter@rg122880_sorted.parquet 200.6875 169.5781     31
+     duck_filter@rg122880_sorted.parquet 205.2344 169.5781     36
+  np_full_filter@rg122880_sorted.parquet 391.0938 169.5781    222
+                qs2_full_filter@full.qs2 414.2812 169.5781    245
+There were 25 warnings (use warnings() to see them)
+           used  (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells  1359478  72.7    2122535 113.4         NA  2122535 113.4
+Vcells 21108209 161.1   71757884 547.5      36864 71640672 546.6
+b parquet sizes MB: 38 36 36 7 7 13 13
+           task                  method    median_s ratio_to_fastest
+ b_partial_cols    qs2_full_then_subset 0.167613207       219.520324
+ b_partial_cols qs2_t1_full_then_subset 0.273323917       357.967942
+ b_partial_cols     np_full_then_subset 0.099290110       130.038662
+ b_partial_cols           np_col_select 0.000763543         1.000000
+ b_partial_cols        arrow_col_select 0.002179437         2.854374
+ b_partial_cols     arrow_col_select_1t 0.007317885         9.584116
+ b_partial_cols             duck_select 0.009311305        12.194867
+ b_partial_cols          duck_select_1t 0.009590720        12.560812
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                              task                    method   median_s
+ b_partial_filter_rg10000_unsorted arrow_open_dataset_filter 0.02596919
+ b_partial_filter_rg10000_unsorted           arrow_filter_1t 0.09371493
+ b_partial_filter_rg10000_unsorted                duck_where 0.11357648
+ b_partial_filter_rg10000_unsorted             duck_where_1t 0.11229681
+ b_partial_filter_rg10000_unsorted       np_full_then_filter 0.25659743
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         3.608696             TRUE
+         4.373508             TRUE
+         4.324231             TRUE
+         9.880839             TRUE
+                            task                    method   median_s
+ b_partial_filter_rg10000_sorted arrow_open_dataset_filter 0.01361546
+ b_partial_filter_rg10000_sorted           arrow_filter_1t 0.01858553
+ b_partial_filter_rg10000_sorted                duck_where 0.01898530
+ b_partial_filter_rg10000_sorted             duck_where_1t 0.01865545
+ b_partial_filter_rg10000_sorted       np_full_then_filter 0.28831606
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.365031             TRUE
+         1.394392             TRUE
+         1.370166             TRUE
+        21.175632             TRUE
+                               task                    method   median_s
+ b_partial_filter_rg122880_unsorted arrow_open_dataset_filter 0.03839142
+ b_partial_filter_rg122880_unsorted           arrow_filter_1t 0.06037359
+ b_partial_filter_rg122880_unsorted                duck_where 0.04769210
+ b_partial_filter_rg122880_unsorted             duck_where_1t 0.04952611
+ b_partial_filter_rg122880_unsorted       np_full_then_filter 0.09594340
+ b_partial_filter_rg122880_unsorted      qs2_full_then_filter 0.16905428
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.572580             TRUE
+         1.242260             TRUE
+         1.290031             TRUE
+         2.499085             TRUE
+         4.403439             TRUE
+                             task                    method   median_s
+ b_partial_filter_rg122880_sorted arrow_open_dataset_filter 0.03735375
+ b_partial_filter_rg122880_sorted           arrow_filter_1t 0.04724387
+ b_partial_filter_rg122880_sorted                duck_where 0.02983418
+ b_partial_filter_rg122880_sorted             duck_where_1t 0.02923218
+ b_partial_filter_rg122880_sorted       np_full_then_filter 0.09547412
+ ratio_to_fastest identical_to_ref
+         1.277830             TRUE
+         1.616160             TRUE
+         1.020594             TRUE
+         1.000000             TRUE
+         3.266062             TRUE
+                                task                    method   median_s
+ b_partial_filter_rg1000000_unsorted arrow_open_dataset_filter 0.04446579
+ b_partial_filter_rg1000000_unsorted           arrow_filter_1t 0.05313022
+ b_partial_filter_rg1000000_unsorted                duck_where 0.03206241
+ b_partial_filter_rg1000000_unsorted             duck_where_1t 0.03107296
+ b_partial_filter_rg1000000_unsorted       np_full_then_filter 0.05150404
+ ratio_to_fastest identical_to_ref
+         1.431013             TRUE
+         1.709854             TRUE
+         1.031843             TRUE
+         1.000000             TRUE
+         1.657520             TRUE
+                              task                    method   median_s
+ b_partial_filter_rg1000000_sorted arrow_open_dataset_filter 0.04122021
+ b_partial_filter_rg1000000_sorted           arrow_filter_1t 0.05234386
+ b_partial_filter_rg1000000_sorted                duck_where 0.02974001
+ b_partial_filter_rg1000000_sorted             duck_where_1t 0.02956248
+ b_partial_filter_rg1000000_sorted       np_full_then_filter 0.05531060
+ ratio_to_fastest identical_to_ref
+         1.394342             TRUE
+         1.770618             TRUE
+         1.006005             TRUE
+         1.000000             TRUE
+         1.870973             TRUE
+                                  method  peak_mb  base_mb net_mb
+                       qs2_full@full.qs2 319.4688 169.6094    150
+                  qs2_full_cols@full.qs2 320.1719 169.6094    151
+               qs2_full_cols_1t@full.qs2 203.8750 169.6094     34
+       np_full@rg122880_unsorted.parquet 324.6875 169.6094    155
+       np_cols@rg122880_unsorted.parquet 174.3125 169.6094      5
+    arrow_full@rg122880_unsorted.parquet 715.6406 169.6094    546
+    arrow_cols@rg122880_unsorted.parquet 176.7812 169.6094      7
+     duck_cols@rg122880_unsorted.parquet 190.7812 169.6094     21
+  duck_cols_1t@rg122880_unsorted.parquet 191.2031 169.6094     22
+ arrow_cols_1t@rg122880_unsorted.parquet 175.6406 169.6094      6
+  arrow_filter@rg122880_unsorted.parquet 602.0469 169.6094    432
+   duck_filter@rg122880_unsorted.parquet 247.5312 169.6094     78
+    arrow_filter@rg122880_sorted.parquet 540.9062 169.6094    371
+     duck_filter@rg122880_sorted.parquet 222.5781 169.6094     53
+  np_full_filter@rg122880_sorted.parquet 324.7031 169.6094    155
+                qs2_full_filter@full.qs2 324.0312 169.6094    154
+There were 17 warnings (use warnings() to see them)
+           used (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells  1534955   82    2715734 145.1         NA  2122535 113.4
+Vcells 24372982  186   71757884 547.5      36864 71755820 547.5
+[INFO] RIG END [pid:55876] rig run --rscript storage/s2_partial.R
+run_capped: done status 0, peak RSS 2532 MB

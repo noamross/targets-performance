@@ -1,0 +1,7 @@
+os / arch                  Linux 7.0.0-1017-azure aarch64
+R                          R version 4.6.2 (2026-10-29)
+cores logical / physical   4 4
+cores available to R       4
+memory total / available   15.6 GB / 14.4 GB
+cgroup memory.max          NA
+cgroup cpu.max             NA
