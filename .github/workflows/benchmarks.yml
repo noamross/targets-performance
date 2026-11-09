@@ -115,6 +115,8 @@ jobs:
           - { os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: reference, label: rocker-x64-reference }
     env:
       BENCH_ENV_LABEL: gha-${{ matrix.label }}
+      # Source builds (R-devel, arm64) use every runner core
+      MAKEFLAGS: "-j4"
     defaults:
       run:
         shell: bash
