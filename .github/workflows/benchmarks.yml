@@ -98,21 +98,31 @@ jobs:
     needs: check-updates
     if: needs.check-updates.outputs.changed == 'true' || inputs.force
     runs-on: ${{ matrix.os }}
-    container: ${{ matrix.container }}
+    # Empty image (non-container rows) runs on the host. Docker's default
+    # 64 MB /dev/shm is too small for mori.
+    container:
+      image: ${{ matrix.container }}
+      options: --shm-size=4g
     timeout-minutes: 300
     strategy:
       fail-fast: false
       matrix:
+        label: [linux-x64, linux-x64-devel, linux-arm64, macos-arm64, macos-arm64-accelerate, macos-x64, windows-x64, rocker-x64-openblas, rocker-x64-reference]
+        # Shards split whole topics: scripts in one topic share result CSVs.
+        shard:
+          - { id: 1, topics: targets_mech }
+          - { id: 2, topics: "vectorize,remote,blas" }
+          - { id: 3, topics: "fastfns,storage,startup" }
         include:
-          - { os: ubuntu-24.04, r: release, blas: default, label: linux-x64 }
-          - { os: ubuntu-24.04, r: devel, blas: default, label: linux-x64-devel }
-          - { os: ubuntu-24.04-arm, r: release, blas: default, label: linux-arm64 }
-          - { os: macos-15, r: release, blas: reference, label: macos-arm64 }
-          - { os: macos-15, r: release, blas: accelerate, label: macos-arm64-accelerate }
-          - { os: macos-15-intel, r: release, blas: reference, label: macos-x64 }
-          - { os: windows-latest, r: release, blas: default, label: windows-x64 }
-          - { os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: openblas, label: rocker-x64-openblas }
-          - { os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: reference, label: rocker-x64-reference }
+          - { label: linux-x64, os: ubuntu-24.04, r: release, blas: default }
+          - { label: linux-x64-devel, os: ubuntu-24.04, r: devel, blas: default }
+          - { label: linux-arm64, os: ubuntu-24.04-arm, r: release, blas: default }
+          - { label: macos-arm64, os: macos-15, r: release, blas: reference }
+          - { label: macos-arm64-accelerate, os: macos-15, r: release, blas: accelerate }
+          - { label: macos-x64, os: macos-15-intel, r: release, blas: reference }
+          - { label: windows-x64, os: windows-latest, r: release, blas: default }
+          - { label: rocker-x64-openblas, os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: openblas }
+          - { label: rocker-x64-reference, os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: reference }
     env:
       BENCH_ENV_LABEL: gha-${{ matrix.label }}
       # Source builds (R-devel, arm64) use every runner core
@@ -163,11 +173,12 @@ jobs:
         working-directory: bench
         env:
           SCRIPTS: ${{ inputs.scripts }}
-        run: Rscript run_suite.R ci=TRUE timeout_min=30 cap_gb=4 ${SCRIPTS:+scripts=$SCRIPTS}
+          TOPICS: ${{ matrix.shard.topics }}
+        run: Rscript run_suite.R ci=TRUE timeout_min=30 "topics=$TOPICS" ${SCRIPTS:+scripts=$SCRIPTS}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: bench-${{ matrix.label }}
+          name: bench-${{ matrix.label }}-s${{ matrix.shard.id }}
           path: |
             bench/*/results/
             bench/ci/
@@ -206,16 +217,25 @@ jobs:
           run="$(date -u +%Y-%m-%d-%H%M%S)-${SHA:0:7}"
           [ -f store/index.csv ] || echo "run,label,sha,date,files,scope" > store/index.csv
           logs=0
-          for d in artifacts/bench-*/; do
-            [ -f "$d/ci/run_log.csv" ] && logs=$((logs + 1))
-            label="$(basename "$d")"; label="${label#bench-}"
-            mkdir -p "store/runs/$run/$label"
-            cp -R "$d". "store/runs/$run/$label/"
+          # One directory per label; shards (bench-<label>-s<k>) merge into it.
+          # Topic shards write disjoint result files; run logs are concatenated.
+          for label in $(find artifacts -mindepth 1 -maxdepth 1 -type d -name 'bench-*-s*' | sed -E 's#artifacts/bench-(.*)-s[0-9]+$#\1#' | sort -u); do
+            dest="store/runs/$run/$label"; mkdir -p "$dest/ci"
+            for d in artifacts/bench-"$label"-s*/; do
+              if [ -f "$d/ci/run_log.csv" ]; then
+                logs=$((logs + 1))
+                if [ -f "$dest/ci/run_log.csv" ]; then tail -n +2 "$d/ci/run_log.csv" >> "$dest/ci/run_log.csv"
+                else cp "$d/ci/run_log.csv" "$dest/ci/run_log.csv"; fi
+              fi
+              (cd "$d" && find . -type f ! -path ./ci/run_log.csv) | while read -r f; do
+                mkdir -p "$dest/$(dirname "$f")"; cp "$d/$f" "$dest/$f"
+              done
+            done
             if [ "$scope" = full ]; then
-              rm -rf "store/latest/$label"; mkdir -p "store/latest/$label"
-              cp -R "$d". "store/latest/$label/"
+              rm -rf "store/latest/$label"; mkdir -p "store/latest"
+              cp -R "$dest" "store/latest/$label"
             fi
-            echo "$run,$label,$SHA,$(date -u +%Y-%m-%d),$(find "$d" -type f | wc -l | tr -d ' '),$scope" >> store/index.csv
+            echo "$run,$label,$SHA,$(date -u +%Y-%m-%d),$(find "$dest" -type f | wc -l | tr -d ' '),$scope" >> store/index.csv
           done
           # Store versions only if some runner benchmarked them; otherwise the
           # next check would see no change and skip the rerun.
@@ -235,3 +255,59 @@ jobs:
         if: env.ACT == ''
         working-directory: store
         run: git push origin HEAD:bench-results
+
+  site:
+    # Rebuilds the results site from bench-results after every run, including
+    # weeks where nothing changed, and pushes it to the gh-pages branch.
+    needs: store
+    if: always() && needs.store.result != 'failure' && needs.store.result != 'cancelled'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::ggplot2
+            any::knitr
+            any::rmarkdown
+          install-quarto: false
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Results snapshot and change flags
+        run: |
+          git fetch --depth=1 origin bench-results:refs/remotes/origin/bench-results
+          mkdir -p "$RUNNER_TEMP/br"
+          git archive origin/bench-results | tar -x -C "$RUNNER_TEMP/br"
+          cd bench && Rscript ci_results.R fetch=FALSE "out=$RUNNER_TEMP/ci-results"
+      - name: Render
+        env:
+          BENCH_RESULTS: ${{ runner.temp }}/br
+          CI_FLAGS: ${{ runner.temp }}/ci-results/flags.csv
+        run: quarto render bench/site
+      - name: Commit to gh-pages
+        run: |
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git fetch --depth=1 origin gh-pages
+            git worktree add "$RUNNER_TEMP/pages" FETCH_HEAD
+            git -C "$RUNNER_TEMP/pages" switch -c gh-pages
+          else
+            git worktree add --orphan -b gh-pages "$RUNNER_TEMP/pages"
+          fi
+          find "$RUNNER_TEMP/pages" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R bench/site/_site/. "$RUNNER_TEMP/pages"/
+          touch "$RUNNER_TEMP/pages"/.nojekyll
+          cd "$RUNNER_TEMP/pages"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Results site ${GITHUB_SHA:0:7}" || true
+          git log --stat -1 | head -20
+      - name: Push
+        # act (local test runs) sets ACT; never push from there.
+        if: env.ACT == ''
+        run: git -C "$RUNNER_TEMP/pages" push origin HEAD:gh-pages
