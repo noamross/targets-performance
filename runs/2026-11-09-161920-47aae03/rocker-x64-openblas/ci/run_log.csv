@@ -1,0 +1,2 @@
+"script","topic","status","seconds","peak_mb","cap_mb","killed","machine","run_date","reason"
+"fastfns/b4_join_ifelse.R","fastfns",0,285,2050,4096,"","gha-rocker-x64-openblas","2026-11-09",""
