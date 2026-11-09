@@ -41,6 +41,8 @@ git <- function(...) {
   }
   res
 }
+# Pathspecs (ls-tree, archive) resolve against the working directory; use the top level.
+repo <- git("rev-parse", "--show-toplevel")
 if (toupper(kv("fetch", "TRUE")) == "TRUE") {
   git("fetch", "origin", "bench-results:refs/remotes/origin/bench-results")
 }

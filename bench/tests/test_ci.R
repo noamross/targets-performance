@@ -92,6 +92,15 @@ stopifnot(
   sum(flags$kind == "failed") == 1
 )
 
+# From a subdirectory of the repo (the documented "run from bench/" case):
+# pathspecs must still resolve from the top level.
+sub_dir <- file.path(tmp, "repo", "runs")
+out2 <- file.path(tmp, "out2")
+res <- system2(rscript, c("ci_results.R", paste0("repo=", sub_dir), "ref=bench-results",
+                          "fetch=FALSE", paste0("out=", out2)), stdout = TRUE, stderr = TRUE)
+stopifnot(is.null(attr(res, "status")))
+stopifnot(file.exists(file.path(out2, "linux-x64/fastfns/results/t.csv")))
+
 # ci_versions_diff.R
 v <- data.frame(
   package = c("p", "q"),
