@@ -101,7 +101,7 @@ jobs:
     # Empty image (non-container rows) runs on the host. Docker's default
     # 64 MB /dev/shm is too small for mori.
     container:
-      image: ${{ matrix.container }}
+      image: ${{ matrix.container || '' }}
       options: --shm-size=4g
     timeout-minutes: 300
     strategy:
@@ -125,7 +125,7 @@ jobs:
           - { label: rocker-x64-reference, os: ubuntu-24.04, container: "rocker/r-ver:latest", r: rocker, blas: reference }
     env:
       BENCH_ENV_LABEL: gha-${{ matrix.label }}
-      # Source builds (R-devel, arm64) use every runner core
+      # Parallel source builds (R-devel, arm64)
       MAKEFLAGS: "-j4"
     defaults:
       run:

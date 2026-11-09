@@ -49,4 +49,17 @@ stopifnot(all(abs(cp - 0.25) < 0.01))
 r <- run("topics=a", "scripts=b/none.R")
 stopifnot(r$status == 0, any(grepl("no scripts selected", r$out)))
 
+# Every CI topic in suite.csv is in exactly one shard of the workflow matrix.
+wf <- readLines(file.path("..", ".github", "workflows", "benchmarks.yml"))
+shard_lines <- regmatches(wf, regexpr("\\{ id: [0-9]+, topics: [^}]+\\}", wf))
+shard_topics <- unlist(strsplit(gsub('.*topics: "?([^"}]+)"?.*', "\\1", shard_lines), ","))
+shard_topics <- trimws(shard_topics)
+real <- utils::read.csv("suite.csv", stringsAsFactors = FALSE)
+ci_topics <- unique(real$topic[real$ci])
+stopifnot(
+  length(shard_lines) > 0,
+  !anyDuplicated(shard_topics),
+  setequal(shard_topics, ci_topics)
+)
+
 cat("ok\n")

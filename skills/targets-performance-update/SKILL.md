@@ -95,4 +95,4 @@ Run benchmark subagents one after another, never in parallel.
 
 ## Keeping this skill current
 
-When the benchmark layout changes (new topic, renamed script, new results file), update this skill, `bench/suite.csv`, the topic map in `bench/ci_results.R`, `bench/refresh_outputs.R` and `docs/architecture.md` in the same change. Edit this skill in its source repository, not an installed copy.
+When the benchmark layout changes (new topic, renamed script, new results file), update this skill, `bench/suite.csv`, the topic shards in `.github/workflows/benchmarks.yml` (checked by `bench/tests/test_run_suite.R`), the topic map in `bench/ci_results.R`, `bench/refresh_outputs.R` and `docs/architecture.md` in the same change. Edit this skill in its source repository, not an installed copy.
