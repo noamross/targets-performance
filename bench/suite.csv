@@ -2,7 +2,7 @@ script,topic,args,cap_gb,min_cores,min_ram_gb,est_min,ci,needs,notes
 fastfns/b1_grouped.R,fastfns,1e5;1e7,6,1,8,5,TRUE,,
 fastfns/b2_matrix.R,fastfns,,3,1,2,1,TRUE,,
 fastfns/b3_sortuniq.R,fastfns,,3,1,3,4,TRUE,,
-fastfns/b4_join_ifelse.R,fastfns,,3,1,3,3,TRUE,,
+fastfns/b4_join_ifelse.R,fastfns,,4,1,3,3,TRUE,,
 fastfns/b6_threads.R,fastfns,,3,2,3,1,TRUE,,thread scaling; meaningful only with >=4 cores
 fastfns/b6_envworkers.R,fastfns,,2,2,2,1,TRUE,,env vars reaching crew/mirai workers
 fastfns/b6_identity.R,fastfns,,1,1,1,1,TRUE,,cheap; use as smoke test
