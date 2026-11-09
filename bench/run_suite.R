@@ -1,6 +1,9 @@
 # Run benchmark scripts listed in suite.csv, one at a time, each under a memory
 # cap that covers the script's process tree and any R workers it starts
 # (crew/mirai daemons detach from the tree). Works on Linux, macOS and Windows.
+# Each script's cap: its suite.csv cap_gb (or the cap_gb= override for every
+# row; 4 GB when unset), bounded by 60% of total RAM. Total, not free, memory:
+# macOS reports reclaimable cache as used, which would starve small runners.
 # Usage (from bench/):
 #   Rscript run_suite.R [suite=suite.csv] [ci=TRUE] [topics=fastfns,storage] [scripts=a.R,b.R]
 #                       [skip_needs=network,docker] [cap_gb=] [timeout_min=30] [log=ci/run_log.csv] [dry=FALSE]
@@ -30,6 +33,11 @@ scripts <- split_arg(kv("scripts", NA))
 if (length(scripts)) {
   suite <- suite[suite$script %in% scripts, ]
 }
+# A CI shard can select no scripts (topics= and scripts= don't overlap); not a failure.
+if (nrow(suite) == 0) {
+  cat("run_suite: no scripts selected\n")
+  quit(save = "no")
+}
 skip <- split_arg(kv("skip_needs", NA))
 needs <- strsplit(ifelse(is.na(suite$needs), "", suite$needs), ";")
 if (length(skip)) {
@@ -58,8 +66,9 @@ skip_reason <- function(row) {
 log_file <- kv("log", file.path("ci", "run_log.csv"))
 cap_override <- as.numeric(kv("cap_gb", NA))
 timeout_s <- as.numeric(kv("timeout_min", "30")) * 60
-if (nrow(suite) == 0) {
-  stop("no scripts selected", call. = FALSE)
+script_cap <- function(row) {
+  cap_gb <- if (!is.na(cap_override)) cap_override else if (!is.na(row$cap_gb)) row$cap_gb else 4
+  min(cap_gb, my_ram_gb * 0.6) * 2^30
 }
 
 cat(sprintf(
@@ -69,8 +78,10 @@ cat(sprintf(
 ))
 if (toupper(kv("dry", "FALSE")) == "TRUE") {
   suite$skip <- vapply(seq_len(nrow(suite)), \(i) skip_reason(suite[i, ]), "")
-  print(
-    suite[, c("script", "topic", "est_min", "cap_gb", "min_cores", "min_ram_gb", "needs", "skip")],
+  suite$cap_used_gb <- round(vapply(seq_len(nrow(suite)), \(i) script_cap(suite[i, ]), 0) / 2^30, 2)
+  utils::write.csv(
+    suite[, c("script", "topic", "est_min", "cap_gb", "cap_used_gb", "min_cores", "min_ram_gb", "needs", "skip")],
+    stdout(),
     row.names = FALSE
   )
   quit(save = "no")
@@ -81,10 +92,21 @@ hold <- file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(), va
 if (file.exists(hold) && Sys.getenv("BENCH_HOLD_OK") != "1") {
   stop("on hold (", paste(readLines(hold, warn = FALSE), collapse = " "), "); wait and retry", call. = FALSE)
 }
+# Ancestors (run_capped.R, the shell system2 starts) name the script too.
+ancestors <- local({
+  pids <- Sys.getpid()
+  h <- ps::ps_handle()
+  repeat {
+    h <- tryCatch(ps::ps_parent(h), error = function(e) NULL)
+    if (is.null(h) || ps::ps_pid(h) %in% c(0L, 1L, pids)) break
+    pids <- c(pids, ps::ps_pid(h))
+  }
+  pids
+})
 others <- Filter(
   function(h) {
     cl <- tryCatch(paste(ps::ps_cmdline(h), collapse = " "), error = function(e) "")
-    ps::ps_pid(h) != Sys.getpid() &&
+    !ps::ps_pid(h) %in% ancestors &&
       grepl("(^| )(fastfns|vectorize|storage|targets_mech|remote|startup|blas)/[^ ]+\\.R", cl)
   },
   ps::ps()$ps_handle
@@ -130,7 +152,6 @@ tree_rss <- function(proc, t0) {
   list(rss = rss, handles = hs)
 }
 
-avail <- ps::ps_system_memory()$avail
 write_log <- function(row, status, secs, peak_mb, cap_mb, killed, reason) {
   # Appended after each script so a job timeout still leaves a log.
   log_row <- data.frame(
@@ -170,14 +191,7 @@ for (i in seq_len(nrow(suite))) {
     statuses <- c(statuses, -1L)
     next
   }
-  cap_gb <- if (!is.na(cap_override)) {
-    cap_override
-  } else if (!is.na(row$cap_gb)) {
-    row$cap_gb
-  } else {
-    4
-  }
-  cap <- min(cap_gb * 2^30, avail * 0.6)
+  cap <- script_cap(row)
   # suite.csv separates a script's positional args with ";"
   sargs <- if (is.na(row$args) || !nzchar(row$args)) {
     character(0)
