@@ -7,14 +7,14 @@ source("_data.R")
 res <- read_results()
 ```
 
-For each task at its largest size, each tile is one method's time relative to the fastest method on that platform (1 = fastest; darker = slower). Timing is `median_s` (bench::mark median) or, for `targets_mech`, `wall_s` (one `tar_make()`). Read across a row to see whether a method's rank holds on every platform; absolute times differ between runners. `r src`
+For each task at the largest size each platform ran (memory-limited runners may skip the biggest), each tile is one method's time relative to the fastest method on that platform (1 = fastest; darker = slower). Timing is `median_s` (bench::mark median) or, for `targets_mech`, `wall_s` (one `tar_make()`). Read across a row to see whether a method's rank holds on every platform; absolute times differ between runners. `r src`
 
 ```{r}
 #| output: asis
 dir.create("figures", showWarnings = FALSE)
 for (tp in sort(unique(res$topic))) {
   d <- res[res$topic == tp, ]
-  d <- d[d$n == stats::ave(d$n, d$task, FUN = max), ]
+  d <- d[d$n == stats::ave(d$n, d$label, d$task, FUN = max), ]  # largest n each platform ran
   d$task_n <- paste0(d$task, "\n(n = ", format(d$n, big.mark = ",", scientific = FALSE, trim = TRUE), ")")
   d$text <- ifelse(d$ratio < 10, sprintf("%.1f", d$ratio), sprintf("%.0f", d$ratio))
   rows <- nrow(unique(d[, c("task", "method")]))

@@ -34,3 +34,4 @@
 |---|---|---|---|---|
 | 2026-11-09 | R-devel job builds arrow from source (50 min) and failed on a github.com 504 while CMake fetched Boost | rerun; cache libarrow; `continue-on-error` for devel | run 42574321334 job 129019077728 | user |
 | 2026-11-09 | ggplot2 is a site-only dependency (references stay base R) | keep; base graphics | `bench/site/` | user |
+| 2026-11-09 | Sharding triples setup per platform (27 jobs, each runs `setup-r-dependencies`); cold caches build in parallel, R-devel's arrow source build runs 3x, and `scripts=` test runs start all 27 jobs even where a shard selects nothing | accept; skip install when a shard selects nothing; don't shard R-devel | `benchmarks.yml` matrix; run 42574321334 devel deps step 50 min | user |

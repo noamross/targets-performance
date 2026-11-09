@@ -19,7 +19,7 @@ Source for the `targets-performance` agent skill (speeding up R {targets} pipeli
 - `bench/`: benchmark scripts per topic; results in `bench/<topic>/results/`. Packages: `bench/rproj.toml` (`Rscript bench/deps.R` lists missing ones; rig users can `rig proj sync`).
 - `bench/suite.csv` + `bench/run_suite.R`: script manifest (memory cap, `ci` flag, `needs`, `min_cores`, `min_ram_gb`) and the cross-platform capped runner. `bench/run_capped.R <script> [cap_gb]` runs one script.
 - `.github/workflows/benchmarks.yml`: reruns the CI rows on an OS/arch/BLAS/R-version matrix when versions change; stores results on the `bench-results` branch. `bench/ci_results.R` imports them to `bench/ci-results/`. `bench/news_since.R`: NEWS since tested versions. Tests: `bench/tests/`.
-- `bench/site/`: Quarto website of CI results (plots), built by the `site` job and pushed to `gh-pages`. Local: `BENCH_RESULTS=<bench-results checkout> quarto render bench/site`.
+- `bench/site/`: Quarto website of CI results (plots), built by the `site` job and pushed to `gh-pages` (https://noamross.github.io/targets-performance/; Pages must be enabled on that branch). Local: `BENCH_RESULTS=<bench-results checkout> quarto render bench/site`.
 - `bench/report/`: one Quarto source per reference (`<name>.qmd`, `_helpers.R`, `_quarto.yml`), rendered to gfm in `skills/targets-performance/references/`. Numbers come only from results CSVs (`pick()`) or `data/sources/values_*.csv` (`val()`, `fn()`); claims from `facts_*.csv` (`ffn()`).
 - `bench/docker/`: optional Linux container runs with CPU/memory limits.
 - `bench/refresh_outputs.R`: regenerates tested-versions, format-throughput and references, then runs the CSV and private-name checks.

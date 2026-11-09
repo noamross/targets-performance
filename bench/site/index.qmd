@@ -50,8 +50,7 @@ hist <- do.call(rbind, lapply(seq_len(nrow(index)), function(i) {
   d <- read_runlog(file.path(br, "runs", index$run[i], index$label[i]), index$label[i])
   if (is.null(d)) return(NULL)
   data.frame(run = index$run[i], date = as.Date(index$date[i]), label = index$label[i],
-             scope = index$scope[i], minutes = sum(d$seconds, na.rm = TRUE) / 60,
-             failed = sum(d$status > 0))
+             scope = index$scope[i], minutes = sum(d$seconds, na.rm = TRUE) / 60)
 }))
 ggplot(hist, aes(date, minutes, colour = label, shape = scope)) +
   geom_point(size = 2.5) +
