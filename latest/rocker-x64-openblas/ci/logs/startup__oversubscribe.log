@@ -1,0 +1,4 @@
+             setting     wall threads workers ncpu       date
+1 default (50% each) 1.179782       2       2    4 2026-11-09
+2      1 thread each 1.374720       1       2    4 2026-11-09
+3      all cpus each 4.987241       4       2    4 2026-11-09

@@ -1,0 +1,18 @@
+            task  n                                        method wall_s
+1   24x2s_nproc3 24       packages global(6 heavy); tasks_max Inf 28.600
+2   24x2s_nproc3 24         packages global(6 heavy); tasks_max 1 43.639
+3   24x2s_nproc3 24 packages per-target(2 targets); tasks_max Inf 27.078
+4   24x2s_nproc3 24   packages per-target(2 targets); tasks_max 1 37.780
+5 24x0.2s_nproc3 24       packages global(6 heavy); tasks_max Inf  5.921
+6 24x0.2s_nproc3 24         packages global(6 heavy); tasks_max 1 18.938
+7 24x0.2s_nproc3 24 packages per-target(2 targets); tasks_max Inf  5.763
+8 24x0.2s_nproc3 24   packages per-target(2 targets); tasks_max 1 17.519
+  sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1     75.052     0      0   1024.9844    508.0312
+2     85.911     0      0   1034.0000    485.0469
+3     70.672     0      0    983.2031    485.5781
+4     76.572     0      0    958.6406    484.5938
+5      8.671     0      0   1011.8750    502.1250
+6     21.307     0      0    992.7344    501.2344
+7      7.503     0      0    972.0625    489.1250
+8     14.330     0      0    859.0781    434.2812

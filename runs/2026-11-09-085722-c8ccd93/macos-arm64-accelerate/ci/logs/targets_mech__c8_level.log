@@ -1,0 +1,34 @@
+  RSS 1836 MB over cap 1763 MB; killed (recorded as capped)
+  RSS 1810 MB over cap 1758 MB; killed (recorded as capped)
+  RSS 1791 MB over cap 1761 MB; killed (recorded as capped)
+  RSS 1768 MB over cap 1756 MB; killed (recorded as capped)
+  RSS 1810 MB over cap 1750 MB; killed (recorded as capped)
+  RSS 1771 MB over cap 1744 MB; killed (recorded as capped)
+  RSS 1773 MB over cap 1743 MB; killed (recorded as capped)
+  RSS 1756 MB over cap 1746 MB; killed (recorded as capped)
+       task n                                                           method
+1  dt_6jobs 3                 1 target, 6 jobs sequential, DT threads = 3 rep1
+2  dt_6jobs 1                 1 target, 6 jobs sequential, DT threads = 1 rep1
+3  dt_6jobs 1                              6 branches x 1 thread, NPROC=3 rep1
+4  dt_6jobs 2                6 branches x 2 threads, NPROC=3 (=6 threads) rep1
+5  dt_6jobs 3 6 branches x 3 threads, NPROC=3 (9 threads, oversubscribed) rep1
+6  dt_6jobs 6                6 branches x 6 threads, NPROC=3 (18 threads) rep1
+7  dt_6jobs 3                 1 target, 6 jobs sequential, DT threads = 3 rep2
+8  dt_6jobs 1                 1 target, 6 jobs sequential, DT threads = 1 rep2
+9  dt_6jobs 1                              6 branches x 1 thread, NPROC=3 rep2
+10 dt_6jobs 2                6 branches x 2 threads, NPROC=3 (=6 threads) rep2
+11 dt_6jobs 3 6 branches x 3 threads, NPROC=3 (9 threads, oversubscribed) rep2
+12 dt_6jobs 6                6 branches x 6 threads, NPROC=3 (18 threads) rep2
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1  13.738     12.608     0      0    741.7812    388.4688
+2  14.511     13.571     0      0    809.9531    411.3438
+3      NA         NA    NA     NA   1836.3594    979.4688
+4      NA         NA    NA     NA   1810.2812    889.2969
+5      NA         NA    NA     NA   1791.4062    886.6094
+6      NA         NA    NA     NA   1767.8281    882.0781
+7  14.538     13.502     0      0    739.9375    389.0625
+8  15.658     14.526     0      0    806.9219    410.5000
+9      NA         NA    NA     NA   1809.8438    968.6094
+10     NA         NA    NA     NA   1771.4062    893.2500
+11     NA         NA    NA     NA   1772.7500    889.6875
+12     NA         NA    NA     NA   1755.7500    876.6875

@@ -1,0 +1,12 @@
+a: 100 default
+a: 100 nomori_main
+a: 100 mori_main
+Error in tm_run("c5a", pipe_a(mb, kind), makes = if (kind == "mori_main") 2 else 1) : 
+  run failed:
+Error:
+! Error in tar_make():
+  mori: cannot create region (requested 95.4 MB): out of space. Shared memory is provisioned at the OS or container level; in containers, raise it at start (e.g. `docker run --shm-size=2g ...`).
+  See https://books.ropensci.org/targets/debugging.html
+Timing stopped at: 0.914 0.205 1.113
+Execution halted
+Execution halted

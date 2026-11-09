@@ -1,0 +1,127 @@
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+Some features are not enabled in this build of Arrow. Run `arrow_info()` for more information.
+
+Attaching package: 'arrow'
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+Some features are not enabled in this build of Arrow. Run `arrow_info()` for more information.
+
+Attaching package: 'arrow'
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+! Project is not synced. Run: rig proj sync
+Loading required package: DBI
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+Loading required package: DBI
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:base':
+
+    %notin%
+
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:base':
+
+    %notin%
+
+! Project is not synced. Run: rig proj sync
+collapse 2.1.9, see ?`collapse-package` or ?`collapse-documentation`
+
+Attaching package: 'collapse'
+
+The following object is masked from 'package:stats':
+
+    D
+
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+collapse 2.1.9, see ?`collapse-package` or ?`collapse-documentation`
+
+Attaching package: 'collapse'
+
+The following object is masked from 'package:stats':
+
+    D
+
+! Project is not synced. Run: rig proj sync
+qs2 0.4.0
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+qs2 0.4.0
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+          pkg attach_s namespace_s attach2_s bare_rscript_s r_version
+1     targets     0.38        0.42      0.39            0.2     4.6.2
+2        crew     0.37        0.38      0.39            0.2     4.6.2
+3       dplyr     0.22        0.27      0.20            0.2     4.6.2
+4   tidyverse       NA          NA        NA            0.2     4.6.2
+5     ggplot2       NA          NA        NA            0.2     4.6.2
+6       arrow     0.23        0.20      0.21            0.2     4.6.2
+7      duckdb     0.22        0.25      0.27            0.2     4.6.2
+8          sf       NA          NA        NA            0.2     4.6.2
+9  data.table     0.05        0.04      0.03            0.2     4.6.2
+10   collapse     0.07        0.07      0.07            0.2     4.6.2
+11        qs2     0.06        0.08      0.06            0.2     4.6.2
+         date
+1  2026-11-09
+2  2026-11-09
+3  2026-11-09
+4  2026-11-09
+5  2026-11-09
+6  2026-11-09
+7  2026-11-09
+8  2026-11-09
+9  2026-11-09
+10 2026-11-09
+11 2026-11-09

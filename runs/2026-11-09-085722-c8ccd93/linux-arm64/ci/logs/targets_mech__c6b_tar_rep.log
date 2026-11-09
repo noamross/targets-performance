@@ -1,0 +1,24 @@
+            task    n                                              method
+1  1000reps_20ms 1000                  serial tar_rep batches=1000 reps=1
+2  1000reps_20ms  100                  serial tar_rep batches=100 reps=10
+3  1000reps_20ms   40                   serial tar_rep batches=40 reps=25
+4  1000reps_20ms   10                  serial tar_rep batches=10 reps=100
+5  1000reps_20ms 1000                 nproc=4 tar_rep batches=1000 reps=1
+6  1000reps_20ms  100                 nproc=4 tar_rep batches=100 reps=10
+7  1000reps_20ms   40                  nproc=4 tar_rep batches=40 reps=25
+8  1000reps_20ms   10                 nproc=4 tar_rep batches=10 reps=100
+9  1000reps_20ms    8                  nproc=4 tar_rep batches=8 reps=125
+10 1000reps_20ms    4                  nproc=4 tar_rep batches=4 reps=250
+11 1000reps_20ms   20 nproc=4 tar_map_rep 2 values x 10 batches x 50 reps
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1  25.185     21.199     0      0    319.3984    250.1914
+2  23.091     21.869     0      0    321.0430    301.4414
+3  22.195     21.208     0      0    321.3867    274.5977
+4  22.144     21.245     0      0    321.3867    299.8555
+5  13.483     29.295     0      0   1073.1328    962.6328
+6   8.916     23.868     0      0   1031.1680    779.4453
+7   8.661     23.530     0      0   1031.4609    642.9180
+8   9.001     23.043     0      0   1031.2031    749.6289
+9   8.769     23.099     0      0   1031.2734    609.1172
+10  8.771     23.310     0      0   1030.9766    622.0547
+11  8.903     24.535     0      0   1032.0508    627.7852

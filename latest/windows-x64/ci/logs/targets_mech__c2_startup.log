@@ -1,0 +1,19 @@
+! Project is not synced. Run: rig proj sync
+            task  n                                        method wall_s
+1   24x2s_nproc4 24       packages global(6 heavy); tasks_max Inf  19.02
+2   24x2s_nproc4 24         packages global(6 heavy); tasks_max 1  28.89
+3   24x2s_nproc4 24 packages per-target(2 targets); tasks_max Inf  17.86
+4   24x2s_nproc4 24   packages per-target(2 targets); tasks_max 1  25.52
+5 24x0.2s_nproc4 24       packages global(6 heavy); tasks_max Inf   4.97
+6 24x0.2s_nproc4 24         packages global(6 heavy); tasks_max 1  15.39
+7 24x0.2s_nproc4 24 packages per-target(2 targets); tasks_max Inf   4.82
+8 24x0.2s_nproc4 24   packages per-target(2 targets); tasks_max 1  12.37
+  sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1     63.034     0      0    1177.113   1059.3047
+2     75.037     0      0    1198.219   1096.4336
+3     59.455     0      0    1130.645   1047.8672
+4     64.437     0      0    1131.094   1026.8711
+5      8.408     0      0    1181.117   1063.7852
+6     21.359     0      0    1044.395    927.6523
+7      7.371     0      0    1144.020   1034.0781
+8     11.079     0      0    1062.781    959.7812

@@ -1,0 +1,23 @@
+! Project is not synced. Run: rig proj sync
+       task   n                                         method wall_s
+1     24x2s  24                nproc=1 (serial, no controller)  49.65
+2     24x2s  24                                 nproc=2 (crew)  27.34
+3     24x2s  24                                 nproc=4 (crew)  18.28
+4     24x2s  24                          nproc=1 crew 1 worker  51.55
+5  200x20ms 200                                         serial   7.22
+6  200x20ms 200                                         serial   7.09
+7  200x20ms 200                 crew nproc=2 deployment worker   6.54
+8  200x20ms 200                 crew nproc=4 deployment worker   5.89
+9  200x20ms 200 crew nproc=4, deployment main for tiny targets   7.39
+10 200x20ms 200                crew 1 worker deployment worker   9.59
+   sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1      48.500     0      0    336.0156    315.3477
+2      49.249     0      0    708.2227    642.7461
+3      60.159     0      0   1096.6484   1012.5156
+4      48.813     0      0    524.9453    487.7031
+5       2.902     0      0    332.0664    302.4570
+6       2.920     0      0    326.5664    294.4492
+7       4.311     0      0    729.2656    671.3164
+8       6.319     0      0   1121.5234   1029.0938
+9       2.903     0      0    335.4062    311.4453
+10      3.872     0      0    530.3008    486.5195

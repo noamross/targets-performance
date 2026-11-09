@@ -1,0 +1,26 @@
+              task   n              method wall_s sum_meta_s loads load_s
+1  n_x_50ms_serial   6 static tar_map rep1  1.217      0.335     0      0
+2  n_x_50ms_serial   6    dynamic map rep1  1.185      0.347     0      0
+3  n_x_50ms_serial   6 static tar_map rep2  1.171      0.326     0      0
+4  n_x_50ms_serial   6    dynamic map rep2  1.073      0.320     0      0
+5  n_x_50ms_serial  60 static tar_map rep1  4.269      3.207     0      0
+6  n_x_50ms_serial  60    dynamic map rep1  5.119      3.737     0      0
+7  n_x_50ms_serial  60 static tar_map rep2  4.379      3.222     0      0
+8  n_x_50ms_serial  60    dynamic map rep2  4.617      3.400     0      0
+9  n_x_50ms_serial 300 static tar_map rep1 18.403     16.302     0      0
+10 n_x_50ms_serial 300    dynamic map rep1 17.825     15.937     0      0
+11 n_x_50ms_serial 300 static tar_map rep2 18.526     16.365     0      0
+12 n_x_50ms_serial 300    dynamic map rep2 18.591     16.426     0      0
+   peak_rss_mb sys_peak_mb
+1     312.6406    147.6719
+2     316.7656    157.5469
+3     314.0312    164.6719
+4     322.4062    162.3438
+5     324.7812    172.6094
+6     329.1406    173.5000
+7     328.9219    177.1875
+8     333.1406    171.2188
+9     332.1719    177.3906
+10    340.8281    181.7812
+11    334.7031    185.8438
+12    342.2344    185.5469

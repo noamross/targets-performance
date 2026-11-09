@@ -1,0 +1,7 @@
+A map over group-iterated big table target 1
+A map over group-iterated big table target 3
+  RSS 1881 MB over cap 1714 MB; killed (recorded as capped)
+Error in round(r$by_name, 2) : 
+  non-numeric argument to mathematical function
+Calls: tm_row -> data.frame -> paste0 -> paste
+Execution halted

@@ -1,0 +1,92 @@
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+        qs2_t1    94.1    0.29   0.09      TRUE                 TRUE
+        qs2_t4    94.1    0.14   0.04      TRUE                 TRUE
+         qd_t1    94.1    0.31   0.15      TRUE                 TRUE
+         qd_t4    94.1    0.13   0.04      TRUE                 TRUE
+    arrow_zstd   117.2    0.56   0.22     FALSE                 TRUE
+ arrow_zstd_1t   117.2    0.57   0.23     FALSE                 TRUE
+     duck_zstd   106.3    0.83   0.19      TRUE                 TRUE
+  duck_zstd_1t   106.3    0.53   0.17      TRUE                 TRUE
+       np_zstd   127.3    0.30   0.05     FALSE                 TRUE
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1182716 63.2    1850025  98.9  1850025  98.9
+Vcells 2026299 15.5   61984065 473.0 77303986 589.8
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpeGqcsQ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+        qs2_t1    37.8    0.48   0.25      TRUE                 TRUE
+        qs2_t4    37.8    0.22   0.18      TRUE                 TRUE
+         qd_t1    37.5    0.47   0.11      TRUE                 TRUE
+         qd_t4    37.5    0.19   0.05      TRUE                 TRUE
+    arrow_zstd    42.7    0.61   0.17      TRUE                 TRUE
+ arrow_zstd_1t    42.7    0.57   0.18      TRUE                 TRUE
+     duck_zstd    12.8    0.32   0.29     FALSE                FALSE
+  duck_zstd_1t    12.8    0.28   0.30     FALSE                FALSE
+       np_zstd   129.9    0.12   0.22     FALSE                 TRUE
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1192049 63.7    1850025  98.9  1850025  98.9
+Vcells 2112771 16.2   39669802 302.7 77303986 589.8

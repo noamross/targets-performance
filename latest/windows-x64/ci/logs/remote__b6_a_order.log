@@ -1,0 +1,55 @@
+! Project is not synced. Run: rig proj sync
+fact: 224.1 Mb
+[1] 0
+a1_mutate_filter rows=100095 same: dplyr_bad,dplyr_good,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good        dt_bad       dt_good  duckplyr_bad 
+         0.58          0.06          0.59          0.05          0.04 
+duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.05          0.12          0.11 
+a2a_join_filter_fact rows=20038 same: dplyr_bad,dplyr_good,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good        dt_bad       dt_good  duckplyr_bad 
+         0.08          0.01          0.13          0.01          0.02 
+duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.03          0.03          0.05 
+a2b_join_filter_dim rows=100051 same: dplyr_bad,dplyr_good,dplyr_semi,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good    dplyr_semi        dt_bad       dt_good 
+         0.09          0.02          0.04          0.13          0.02 
+ duckplyr_bad duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.01          0.02          0.04          0.05 
+a2c_join_agg rows=1000 same: dplyr_bad,dplyr_good,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good        dt_bad       dt_good  duckplyr_bad 
+         0.13          0.05          0.14          0.02          0.03 
+duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.03          0.05          0.05 
+a3a_arrange_early rows=100095 same: dplyr_bad,dplyr_good,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good        dt_bad       dt_good  duckplyr_bad 
+         0.22          0.06          0.19          0.06          0.07 
+duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.05          0.08          0.06 
+a3b_distinct_first rows=20000 same: dplyr_bad,dplyr_good,dt_bad,dt_good,duckplyr_bad,duckplyr_good,dbplyr_bad,dbplyr_good | DIFF/FAIL: 
+    dplyr_bad    dplyr_good        dt_bad       dt_good  duckplyr_bad 
+         0.33          0.01          0.34          0.04          0.21 
+duckplyr_good    dbplyr_bad   dbplyr_good 
+         0.04          0.21          0.06 
+Warning message:
+Missing values are always removed in SQL aggregation functions.
+Use `na.rm = TRUE` to silence this warning
+This warning is displayed once every 8 hours. 
+                      object    rows cols      ram_mb     qs2_mb parquet_mb
+1                       full 2000000    6 224.1224670 45.8835926 68.5765924
+2                     3 cols 2000000    3  30.5185165 13.1558676 23.2170963
+3 filtered 5% rows, all cols  100095    6  12.6117249  2.5069256  3.3877535
+4       filtered 5% + 3 cols  100095    3   1.9101028  0.9210014  1.1190052
+5       filtered 1% + 3 cols   20038    3   0.3831253  0.1753807  0.2184353
+       as_of
+1 2026-11-09
+2 2026-11-09
+3 2026-11-09
+4 2026-11-09
+5 2026-11-09
+                                                                       notes
+1 synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default
+2 synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default
+3 synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default
+4 synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default
+5 synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default

@@ -1,0 +1,96 @@
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:base':
+
+    %notin%
+
+                         task    n           method  median_s ratio_to_fastest
+ combine 5 tables x 1000 keys 5000     reduce_merge 0.0017556        25.187948
+ combine 5 tables x 1000 keys 5000 reduce_left_join 0.0028960        41.549498
+ combine 5 tables x 1000 keys 5000  reduce_dt_merge 0.0031398        45.047346
+ combine 5 tables x 1000 keys 5000      stack_dcast 0.0032301        46.342898
+ combine 5 tables x 1000 keys 5000    collapse_join 0.0000697         1.000000
+ combine 5 tables x 1000 keys 5000       cbind_cols 0.0001074         1.540890
+ combine 5 tables x 1000 keys 5000      unlist_cols 0.0003193         4.581062
+ combine 5 tables x 1000 keys 5000        vec_cbind 0.0000869         1.246772
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                           task     n           method  median_s
+ combine 5 tables x 100000 keys 5e+05     reduce_merge 0.3390521
+ combine 5 tables x 100000 keys 5e+05 reduce_left_join 0.0435755
+ combine 5 tables x 100000 keys 5e+05  reduce_dt_merge 0.0295435
+ combine 5 tables x 100000 keys 5e+05      stack_dcast 0.0506916
+ combine 5 tables x 100000 keys 5e+05    collapse_join 0.0143339
+ combine 5 tables x 100000 keys 5e+05       cbind_cols 0.0001120
+ combine 5 tables x 100000 keys 5e+05      unlist_cols 0.0003100
+ combine 5 tables x 100000 keys 5e+05        vec_cbind 0.0002975
+ ratio_to_fastest identical_to_ref
+      3027.250893             TRUE
+       389.066964             TRUE
+       263.781250             TRUE
+       452.603571             TRUE
+       127.981250             TRUE
+         1.000000             TRUE
+         2.767857             TRUE
+         2.656250             TRUE
+                           task     n           method  median_s
+ combine 20 tables x 10000 keys 2e+05     reduce_merge 0.0922778
+ combine 20 tables x 10000 keys 2e+05 reduce_left_join 0.0253645
+ combine 20 tables x 10000 keys 2e+05  reduce_dt_merge 0.0388875
+ combine 20 tables x 10000 keys 2e+05      stack_dcast 0.0201335
+ combine 20 tables x 10000 keys 2e+05    collapse_join 0.0011179
+ combine 20 tables x 10000 keys 2e+05       cbind_cols 0.0003021
+ combine 20 tables x 10000 keys 2e+05      unlist_cols 0.0007507
+ combine 20 tables x 10000 keys 2e+05        vec_cbind 0.0003282
+ ratio_to_fastest identical_to_ref
+       305.454485             TRUE
+        83.960609             TRUE
+       128.723932             TRUE
+        66.645151             TRUE
+         3.700430             TRUE
+         1.000000             TRUE
+         2.484939             TRUE
+         1.086395             TRUE
+                           task     n           method  median_s
+ combine 100 tables x 1000 keys 1e+05     reduce_merge 0.1257363
+ combine 100 tables x 1000 keys 1e+05 reduce_left_join 0.1187702
+ combine 100 tables x 1000 keys 1e+05  reduce_dt_merge 0.1016386
+ combine 100 tables x 1000 keys 1e+05      stack_dcast 0.0231236
+ combine 100 tables x 1000 keys 1e+05    collapse_join 0.0020402
+ combine 100 tables x 1000 keys 1e+05       cbind_cols 0.0017481
+ combine 100 tables x 1000 keys 1e+05      unlist_cols 0.0041785
+ combine 100 tables x 1000 keys 1e+05        vec_cbind 0.0037195
+ ratio_to_fastest identical_to_ref
+        71.927407             TRUE
+        67.942452             TRUE
+        58.142326             TRUE
+        13.227847             TRUE
+         1.167096             TRUE
+         1.000000             TRUE
+         2.390309             TRUE
+         2.127739             TRUE
+                            task     n           method  median_s
+ combine 100 tables x 10000 keys 1e+06 reduce_left_join 0.1851829
+ combine 100 tables x 10000 keys 1e+06  reduce_dt_merge 0.4224466
+ combine 100 tables x 10000 keys 1e+06      stack_dcast 0.1485048
+ combine 100 tables x 10000 keys 1e+06    collapse_join 0.0089179
+ combine 100 tables x 10000 keys 1e+06       cbind_cols 0.0013523
+ combine 100 tables x 10000 keys 1e+06      unlist_cols 0.0033709
+ combine 100 tables x 10000 keys 1e+06        vec_cbind 0.0030359
+ ratio_to_fastest identical_to_ref
+       136.939215             TRUE
+       312.391185             TRUE
+       109.816461             TRUE
+         6.594617             TRUE
+         1.000000             TRUE
+         2.492716             TRUE
+         2.244990             TRUE

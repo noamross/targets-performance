@@ -1,0 +1,26 @@
+a: 100 default
+  RSS 1958 MB over cap 1750 MB; killed (recorded as capped)
+a: 100 nomori_main
+  RSS 2247 MB over cap 1717 MB; killed (recorded as capped)
+a: 100 mori_main
+  RSS 1739 MB over cap 1715 MB; killed (recorded as capped)
+a: 300 default
+skipping c5 a 300 MB: est. peak 2400 MB > budget 2024 MB
+a: 300 nomori_main
+skipping c5 a 300 MB: est. peak 2400 MB > budget 2024 MB
+a: 300 mori_main
+skipping c5 a 300 MB: est. peak 2400 MB > budget 2024 MB
+             task   n                                       method wall_s
+1 a_big100_nproc3 100                    no mori, worker retrieval     NA
+2 a_big100_nproc3 100                no mori, main retrieval (qs2)     NA
+3 a_big100_nproc3 100        mori format_qs_shared, main retrieval     NA
+4         c_guard  20 mutate(big,z=1) result read in fresh session  3.880
+5   d_antipattern  20 share() target cue always, memory=persistent  5.630
+6       e_parquet  20             format_parquet_shared / unshared  3.429
+  sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1         NA    NA     NA   1957.7969   1009.9844
+2         NA    NA     NA   2246.5312   1024.2969
+3         NA    NA     NA   1739.1875    829.9375
+4      0.645     0      0    813.5469    414.2969
+5      0.574     0      0    762.5312    362.7969
+6      0.341     0      0    692.5156    336.8281

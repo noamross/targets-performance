@@ -1,0 +1,20 @@
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//RtmpOumIo4/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckplyr read_parquet_duckdb run1 cold            2.21 s rows 17866
+duckplyr read_parquet_duckdb run2 same session    0.25 s rows 17866
+dbplyr tbl(sql read_parquet) run1 cold            3.09 s rows 17866
+dbplyr tbl(sql read_parquet) run2 same session    0.94 s rows 17866
+  dbplyr tbl(I(url)) FAILED: cannot use object of class “AsIs” in new():  class “SQL” does not extend that class
+  arrow open_dataset(https) FAILED: Invalid: Unrecognized filesystem type in URI: https://blobs.duckdb.org/flight-data-partitioned/Year=2024/data_0.parquet
+arrow read_parquet(https)    run1 cold            3.59 s rows 17866
+arrow read_parquet(https)    run2 same session    3.96 s rows 17866
+identical to duckplyr result (sorted, ignoring attrs): dbplyr = TRUE
+identical to duckplyr result (sorted, ignoring attrs): dbplyr2 = NA
+identical to duckplyr result (sorted, ignoring attrs): arrow = NA
+identical to duckplyr result (sorted, ignoring attrs): arrow2 = TRUE

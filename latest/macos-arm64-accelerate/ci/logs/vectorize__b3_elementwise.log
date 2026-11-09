@@ -1,0 +1,138 @@
+                  task    n        method     median_s ratio_to_fastest
+ scalar op over vector 1000        sapply 0.0003612100        65.746267
+ scalar op over vector 1000        vapply 0.0003132195        57.011193
+ scalar op over vector 1000       map_dbl 0.0004394790        79.992536
+ scalar op over vector 1000 lapply_unlist 0.0003415915        62.175372
+ scalar op over vector 1000    vectorized 0.0000453255         8.250000
+ scalar op over vector 1000   vec_fifelse 0.0000054940         1.000000
+ scalar op over vector 1000     vec_arith 0.0000445260         8.104477
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             task    n        method     median_s ratio_to_fastest
+ sqrt over vector 1000 lapply_unlist 0.0001907525          22.6399
+ sqrt over vector 1000       map_dbl 0.0003256835          38.6545
+ sqrt over vector 1000    vectorized 0.0000084255           1.0000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+                  task     n        method     median_s ratio_to_fastest
+ scalar op over vector 1e+05        sapply 0.0746262730        121.59077
+ scalar op over vector 1e+05        vapply 0.0518630320         84.50195
+ scalar op over vector 1e+05       map_dbl 0.0579195110         94.36995
+ scalar op over vector 1e+05 lapply_unlist 0.0771630865        125.72407
+ scalar op over vector 1e+05    vectorized 0.0070785885         11.53335
+ scalar op over vector 1e+05   vec_fifelse 0.0006137495          1.00000
+ scalar op over vector 1e+05     vec_arith 0.0063647785         10.37032
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             task     n        method     median_s ratio_to_fastest
+ sqrt over vector 1e+05 lapply_unlist 0.0191963640         21.26412
+ sqrt over vector 1e+05       map_dbl 0.0232138310         25.71433
+ sqrt over vector 1e+05    vectorized 0.0009027585          1.00000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+                  task     n        method   median_s ratio_to_fastest
+ scalar op over vector 1e+06        sapply 0.71855329        48.841002
+ scalar op over vector 1e+06        vapply 0.47130140        32.034969
+ scalar op over vector 1e+06       map_dbl 0.56722168        38.554795
+ scalar op over vector 1e+06 lapply_unlist 0.93262946        63.392038
+ scalar op over vector 1e+06    vectorized 0.03896570         2.648550
+ scalar op over vector 1e+06   vec_fifelse 0.01471209         1.000000
+ scalar op over vector 1e+06     vec_arith 0.03032577         2.061282
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             task     n        method    median_s ratio_to_fastest
+ sqrt over vector 1e+06 lapply_unlist 0.297087189         50.09474
+ sqrt over vector 1e+06       map_dbl 0.234093600         39.47278
+ sqrt over vector 1e+06    vectorized 0.005930507          1.00000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+                          task    n           method    median_s
+ row mean/sum of 10-col matrix 1000       apply_mean 0.003347609
+ row mean/sum of 10-col matrix 1000    apply_sum_div 0.000892775
+ row mean/sum of 10-col matrix 1000         rowMeans 0.000005453
+ row mean/sum of 10-col matrix 1000   Rfast_rowmeans 0.000007257
+ row mean/sum of 10-col matrix 1000 collapse_fmean_t 0.000050963
+ row mean/sum of 10-col matrix 1000      reduce_plus 0.000181835
+ ratio_to_fastest identical_to_ref
+       613.902246             TRUE
+       163.721802             TRUE
+         1.000000             TRUE
+         1.330827             TRUE
+         9.345865             TRUE
+        33.345864             TRUE
+                     task    n         method    median_s ratio_to_fastest
+ row var of 10-col matrix 1000      apply_var 5.54605e-03       309.895759
+ row var of 10-col matrix 1000  Rfast_rowVars 1.78965e-05         1.000000
+ row var of 10-col matrix 1000 vector_formula 1.85115e-05         1.034364
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+                          task     n           method    median_s
+ row mean/sum of 10-col matrix 1e+05       apply_mean 0.381713895
+ row mean/sum of 10-col matrix 1e+05    apply_sum_div 0.114756048
+ row mean/sum of 10-col matrix 1e+05         rowMeans 0.000801714
+ row mean/sum of 10-col matrix 1e+05   Rfast_rowmeans 0.000532754
+ row mean/sum of 10-col matrix 1e+05 collapse_fmean_t 0.003346871
+ row mean/sum of 10-col matrix 1e+05      reduce_plus 0.025838610
+ ratio_to_fastest identical_to_ref
+       716.491842             TRUE
+       215.401570             TRUE
+         1.504848             TRUE
+         1.000000             TRUE
+         6.282207             TRUE
+        48.500077             TRUE
+                     task     n         method    median_s ratio_to_fastest
+ row var of 10-col matrix 1e+05      apply_var 0.590460270       297.056961
+ row var of 10-col matrix 1e+05  Rfast_rowVars 0.001987701         1.000000
+ row var of 10-col matrix 1e+05 vector_formula 0.005813513         2.924743
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+                          task     n           method   median_s
+ row mean/sum of 10-col matrix 1e+06       apply_mean 4.24220448
+ row mean/sum of 10-col matrix 1e+06    apply_sum_div 1.43069853
+ row mean/sum of 10-col matrix 1e+06         rowMeans 0.01382360
+ row mean/sum of 10-col matrix 1e+06   Rfast_rowmeans 0.01558644
+ row mean/sum of 10-col matrix 1e+06 collapse_fmean_t 0.05891778
+ row mean/sum of 10-col matrix 1e+06      reduce_plus 0.27809140
+ ratio_to_fastest identical_to_ref
+       306.881288             TRUE
+       103.496804             TRUE
+         1.000000             TRUE
+         1.127524             TRUE
+         4.262115             TRUE
+        20.117146             TRUE
+                     task     n         method   median_s ratio_to_fastest
+ row var of 10-col matrix 1e+06      apply_var 6.94198585       241.077906
+ row var of 10-col matrix 1e+06  Rfast_rowVars 0.02879561         1.000000
+ row var of 10-col matrix 1e+06 vector_formula 0.07817228         2.714729
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE

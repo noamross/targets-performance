@@ -1,0 +1,19 @@
+default threads: data.table 2 collapse 1 
+                     task     n                   method    median_s
+ rbind 1000 dfs x 10 rows 10000        rbindlist_1thread 0.002229468
+ rbind 1000 dfs x 10 rows 10000 collapse_rowbind_1thread 0.001099011
+ ratio_to_fastest identical_to_ref
+         2.028614             TRUE
+         1.000000             TRUE
+                      task     n                   method    median_s
+ rbind 100 dfs x 1000 rows 1e+05        rbindlist_1thread 0.004328265
+ rbind 100 dfs x 1000 rows 1e+05 collapse_rowbind_1thread 0.001272098
+ ratio_to_fastest identical_to_ref
+          3.40246             TRUE
+          1.00000             TRUE
+                     task     n                   method   median_s
+ rbind 5 dfs x 1e+06 rows 5e+06        rbindlist_1thread 0.14566072
+ rbind 5 dfs x 1e+06 rows 5e+06 collapse_rowbind_1thread 0.02073842
+ ratio_to_fastest identical_to_ref
+         7.023714             TRUE
+         1.000000             TRUE

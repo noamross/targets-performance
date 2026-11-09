@@ -1,0 +1,32 @@
+n 10000 mean nchar 1654.902 
+                                       task     n          method  median_s
+ G1 fixed prefilter, rare literal (hit ~1%) 10000      regex_only 1.1617876
+ G1 fixed prefilter, rare literal (hit ~1%) 10000 fixed_prefilter 0.1351677
+ ratio_to_fastest identical_to_ref
+          8.59516             TRUE
+          1.00000             TRUE
+                                             task     n          method
+ G1 fixed prefilter, common literal (hit ~50-90%) 10000      regex_only
+ G1 fixed prefilter, common literal (hit ~50-90%) 10000 fixed_prefilter
+ median_s ratio_to_fastest identical_to_ref
+ 1.660668          1.01004             TRUE
+ 1.644160          1.00000             TRUE
+                                     task     n     method  median_s
+ G2 windowed regex anchored on rare token 10000 full_regex 1.1648958
+ G2 windowed regex anchored on rare token 10000   windowed 0.1800867
+ ratio_to_fastest identical_to_ref
+         6.468527             TRUE
+         1.000000             TRUE
+G4 mismatch cells (doc x term) vs fixed ci: stri_tolower 9971 base tolower 194 regex ci 0 of 900000 
+ASCII-only docs: 22 mismatch there (stri_tolower): 0 
+terms with mismatch: σaσ 
+                                           task     n
+ G4 lowercase once vs case_insensitive per term 10000
+ G4 lowercase once vs case_insensitive per term 10000
+ G4 lowercase once vs case_insensitive per term 10000
+ G4 lowercase once vs case_insensitive per term 10000
+                      method  median_s ratio_to_fastest identical_to_ref
+      fixed_case_insensitive 9.5105392        18.852320             TRUE
+              lowercase_once 0.5044758         1.000000            FALSE
+ lowercase_once_base_tolower 0.7489917         1.484693            FALSE
+      regex_case_insensitive 5.1557654        10.220045             TRUE

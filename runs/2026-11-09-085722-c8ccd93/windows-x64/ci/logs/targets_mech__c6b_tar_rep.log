@@ -1,0 +1,25 @@
+! Project is not synced. Run: rig proj sync
+            task    n                                              method
+1  1000reps_20ms 1000                  serial tar_rep batches=1000 reps=1
+2  1000reps_20ms  100                  serial tar_rep batches=100 reps=10
+3  1000reps_20ms   40                   serial tar_rep batches=40 reps=25
+4  1000reps_20ms   10                  serial tar_rep batches=10 reps=100
+5  1000reps_20ms 1000                 nproc=4 tar_rep batches=1000 reps=1
+6  1000reps_20ms  100                 nproc=4 tar_rep batches=100 reps=10
+7  1000reps_20ms   40                  nproc=4 tar_rep batches=40 reps=25
+8  1000reps_20ms   10                 nproc=4 tar_rep batches=10 reps=100
+9  1000reps_20ms    8                  nproc=4 tar_rep batches=8 reps=125
+10 1000reps_20ms    4                  nproc=4 tar_rep batches=4 reps=250
+11 1000reps_20ms   20 nproc=4 tar_map_rep 2 values x 10 batches x 50 reps
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1   32.42     15.506     0      0    366.9414    337.5742
+2   30.76     28.372     0      0    335.6406    308.6211
+3   30.59     29.171     0      0    335.6094    309.2148
+4   30.93     29.999     0      0    336.1172    296.2148
+5   16.35     29.639     0      0   1115.7305   1030.8984
+6   12.05     35.490     0      0   1119.8281   1023.7422
+7   11.84     35.121     0      0   1113.8203   1015.7500
+8   12.53     33.703     0      0   1092.3320    979.6016
+9   11.44     34.515     0      0   1080.4727    967.8750
+10  11.57     34.515     0      0   1105.0859   1019.3203
+11  11.72     34.752     0      0   1117.9805   1004.2852

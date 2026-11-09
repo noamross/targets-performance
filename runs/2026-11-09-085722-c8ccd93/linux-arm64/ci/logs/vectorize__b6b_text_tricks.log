@@ -1,0 +1,102 @@
+                                                  task     n       method
+ G5 unique-then-match, dup rate 10% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 10% stri_trans_general 1e+05 unique_match
+ median_s ratio_to_fastest identical_to_ref
+ 1.923919         1.068845             TRUE
+ 1.799998         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 10% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 10% R-level per-string fn 1e+05 unique_match
+ median_s ratio_to_fastest identical_to_ref
+ 1.303457         1.073805             TRUE
+ 1.213868         1.000000             TRUE
+                                                  task     n       method
+ G5 unique-then-match, dup rate 50% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 50% stri_trans_general 1e+05 unique_match
+ median_s ratio_to_fastest identical_to_ref
+ 1.920629         1.897443             TRUE
+ 1.012220         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 50% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 50% R-level per-string fn 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.2025536         1.837737             TRUE
+ 0.6543666         1.000000             TRUE
+                                                  task     n       method
+ G5 unique-then-match, dup rate 90% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 90% stri_trans_general 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.9024010         8.944664             TRUE
+ 0.2126856         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 90% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 90% R-level per-string fn 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.1491858         8.853722             TRUE
+ 0.1297969         1.000000             TRUE
+                                       task     n      method   median_s
+ G6 remove punct+digits: charclass vs regex 10000       regex 0.18104060
+ G6 remove punct+digits: charclass vs regex 10000   charclass 0.07311645
+ G6 remove punct+digits: charclass vs regex 10000 regex_posix 0.18084705
+ ratio_to_fastest identical_to_ref
+         2.476058             TRUE
+         1.000000             TRUE
+         2.473411             TRUE
+                                                   task     n    method
+ G6 remove single char ',': fixed vs charclass vs regex 10000     regex
+ G6 remove single char ',': fixed vs charclass vs regex 10000     fixed
+ G6 remove single char ',': fixed vs charclass vs regex 10000 charclass
+ G6 remove single char ',': fixed vs charclass vs regex 10000 base_gsub
+   median_s ratio_to_fastest identical_to_ref
+ 0.13938692         3.496574             TRUE
+ 0.03986385         1.000000             TRUE
+ 0.06880598         1.726024             TRUE
+ 0.06073079         1.523455             TRUE
+                                            task     n          method
+ G6 collapse whitespace runs: charclass vs regex 10000           regex
+ G6 collapse whitespace runs: charclass vs regex 10000      regex_trim
+ G6 collapse whitespace runs: charclass vs regex 10000 charclass_merge
+   median_s ratio_to_fastest identical_to_ref
+ 0.35589564         3.974152             TRUE
+ 0.21639720         2.416426             TRUE
+ 0.08955259         1.000000             TRUE
+                                                    task     n
+ G9 to_ascii: fixed table first, trans only on remaining 10000
+ G9 to_ascii: fixed table first, trans only on remaining 10000
+                        method   median_s ratio_to_fastest identical_to_ref
+             trans_general_all 5.65651332         67.19236             TRUE
+ fixed_then_trans_on_remaining 0.08418388          1.00000             TRUE
+G9 n 10000 mismatch docs 0 
+                                       task     n      method  median_s
+ G6 remove punct+digits: charclass vs regex 50000       regex 0.9140111
+ G6 remove punct+digits: charclass vs regex 50000   charclass 0.3743945
+ G6 remove punct+digits: charclass vs regex 50000 regex_posix 0.9131763
+ ratio_to_fastest identical_to_ref
+         2.441305             TRUE
+         1.000000             TRUE
+         2.439075             TRUE
+                                                   task     n    method
+ G6 remove single char ',': fixed vs charclass vs regex 50000     regex
+ G6 remove single char ',': fixed vs charclass vs regex 50000     fixed
+ G6 remove single char ',': fixed vs charclass vs regex 50000 charclass
+ G6 remove single char ',': fixed vs charclass vs regex 50000 base_gsub
+  median_s ratio_to_fastest identical_to_ref
+ 0.7127267         3.534941             TRUE
+ 0.2016234         1.000000             TRUE
+ 0.3464605         1.718355             TRUE
+ 0.3059785         1.517574             TRUE
+                                            task     n          method
+ G6 collapse whitespace runs: charclass vs regex 50000           regex
+ G6 collapse whitespace runs: charclass vs regex 50000      regex_trim
+ G6 collapse whitespace runs: charclass vs regex 50000 charclass_merge
+  median_s ratio_to_fastest identical_to_ref
+ 1.7952059         3.962565             TRUE
+ 1.1008368         2.429881             TRUE
+ 0.4530414         1.000000             TRUE
+                                                    task     n
+ G9 to_ascii: fixed table first, trans only on remaining 50000
+ G9 to_ascii: fixed table first, trans only on remaining 50000
+                        method   median_s ratio_to_fastest identical_to_ref
+             trans_general_all 28.2614621         63.71921             TRUE
+ fixed_then_trans_on_remaining  0.4435313          1.00000             TRUE
+G9 n 50000 mismatch docs 0 

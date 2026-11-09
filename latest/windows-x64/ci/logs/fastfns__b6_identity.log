@@ -1,0 +1,79 @@
+! Project is not synced. Run: rig proj sync
+   id                      
+1  b_fmean                 
+2  b_fsum                  
+3  b_fmean_small           
+4  grp_sum_collapse        
+5  grp_sum_data.table      
+6  grp_sum_Rfast           
+7  grp_mean_collapse       
+8  grp_mean_data.table     
+9  grp_mean_Rfast          
+10 grp_median_collapse     
+11 grp_median_data.table   
+12 grp_median_Rfast        
+13 grp_q90_collapse        
+14 grp_q90_data.table      
+15 mat_colMeans_collapse   
+16 mat_colMeans_Rfast      
+17 mat_colSums_collapse    
+18 mat_colSums_Rfast       
+19 mat_colVar_collapse     
+20 mat_colVar_Rfast        
+21 join_dt_cols            
+22 join_dt_rows            
+23 join_collapse_equal     
+24 na_fsum                 
+25 na_fsum_na_rm           
+26 na_allNA_group          
+27 na_fcumsum              
+28 int_overflow            
+29 kit_iif_types           
+30 fifelse_types           
+31 ifelse_date             
+32 rfast_rng               
+33 rfast_shuffle           
+34 rfast_rng_seed_sensitive
+35 mask_before             
+36 mask_after_all          
+37 mask_order              
+38 mask_fsum_default_sort  
+   result                                                                                                                                                        
+1  0/20 identical; all.equal 20/20                                                                                                                               
+2  0/20 identical                                                                                                                                                
+3  TRUE                                                                                                                                                          
+4  identical=0 all.equal=1                                                                                                                                       
+5  identical=0 all.equal=1                                                                                                                                       
+6  identical=0 all.equal=1                                                                                                                                       
+7  identical=0 all.equal=1                                                                                                                                       
+8  identical=0 all.equal=1                                                                                                                                       
+9  identical=0 all.equal=1                                                                                                                                       
+10 identical=1 all.equal=1                                                                                                                                       
+11 identical=1 all.equal=1                                                                                                                                       
+12 identical=1 all.equal=1                                                                                                                                       
+13 identical=0 all.equal=1                                                                                                                                       
+14 identical=1 all.equal=1                                                                                                                                       
+15 identical=FALSE all.equal=TRUE                                                                                                                                
+16 identical=FALSE all.equal=TRUE                                                                                                                                
+17 identical=FALSE all.equal=TRUE                                                                                                                                
+18 identical=FALSE all.equal=TRUE                                                                                                                                
+19 identical=FALSE all.equal=TRUE                                                                                                                                
+20 identical=FALSE all.equal=TRUE                                                                                                                                
+21 k,b,a                                                                                                                                                         
+22 TRUE                                                                                                                                                          
+23 TRUE                                                                                                                                                          
+24 fsum=NA sum=NA                                                                                                                                                
+25 fsum=1 sum=NA fmean=1 mean=NA                                                                                                                                 
+26 tapply(na.rm)=NaN,1.5 fmean=NA,1.5 dplyr=NaN,1.5                                                                                                              
+27 fcumsum=1,NA,4 cumsum=1,NA,NA                                                                                                                                 
+28 Integer overflow in one or more groups. Integers in R are bounded between 2,147,483,647 and -2,147,483,647. The sum within each group should be in that range.
+29 ERROR: 'yes' is of type integer but 'no' is of type double. Please make sure that both arguments have the same type.                                          
+30 numeric                                                                                                                                                       
+31 base=numeric fifelse=Date                                                                                                                                     
+32 identical to rnorm: FALSE; reproducible under set.seed: FALSE; Rnorm(seed=1) == set.seed-run: FALSE                                                           
+33 identical: FALSE                                                                                                                                              
+34 TRUE                                                                                                                                                          
+35 sum=NA,7 mean=NA,3.5                                                                                                                                          
+36 sum=8,8,8,8 mean=2.66666666666667,2.66666666666667,2.66666666666667,2.66666666666667                                                                          
+37                                                                                                                                                               
+38 a,b,c                                                                                                                                                         

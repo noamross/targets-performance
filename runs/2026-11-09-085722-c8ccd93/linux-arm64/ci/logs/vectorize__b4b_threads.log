@@ -1,0 +1,27 @@
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:base’:
+
+    %notin%
+
+         task     n          method     median_s ratio_to_fastest
+ pairwise min 1e+05 fifelse_1thread 0.0007488900         1.794374
+ pairwise min 1e+05 kit_iif_1thread 0.0004173545         1.000000
+ identical_to_ref
+             TRUE
+             TRUE
+         task     n           method    median_s ratio_to_fastest
+ pairwise min 1e+05 kit_iif_4threads 0.000216299                1
+ identical_to_ref
+             TRUE
+         task     n          method    median_s ratio_to_fastest
+ pairwise min 1e+06 fifelse_1thread 0.007433096         1.000000
+ pairwise min 1e+06 kit_iif_1thread 0.007525979         1.012496
+ identical_to_ref
+             TRUE
+             TRUE
+         task     n           method    median_s ratio_to_fastest
+ pairwise min 1e+06 kit_iif_4threads 0.003805019                1
+ identical_to_ref
+             TRUE

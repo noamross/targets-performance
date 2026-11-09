@@ -1,0 +1,52 @@
+a: 143.1 Mb
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/Rtmpj35omJ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/Rtmpj35omJ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/Rtmpj35omJ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/Rtmpj35omJ/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+      rds_gzip   101.9    6.97   0.45      TRUE                 TRUE
+      rds_none   133.5    0.77   0.07      TRUE                 TRUE
+        qs2_t1    94.1    0.64   0.08      TRUE                 TRUE
+        qs2_t4    94.1    0.48   0.04      TRUE                 TRUE
+     qs2_t1_l1    96.7    0.96   0.06      TRUE                 TRUE
+     qs2_t4_l1    96.7    0.86   0.03      TRUE                 TRUE
+         qd_t1    94.1    0.74   0.08      TRUE                 TRUE
+         qd_t4    94.1    0.52   0.04      TRUE                 TRUE
+     np_snappy   122.0    0.79   0.04     FALSE                 TRUE
+       np_zstd   127.3    0.90   0.02     FALSE                 TRUE
+  arrow_snappy   130.6    0.94   0.06     FALSE                 TRUE
+    arrow_zstd   117.1    0.86   0.07     FALSE                 TRUE
+     duck_zstd   106.3    1.02   0.25      TRUE                 TRUE
+ arrow_zstd_1t   117.1    0.92   0.18     FALSE                 TRUE
+  duck_zstd_1t   106.3    0.91   0.24      TRUE                 TRUE
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1187035 63.4    1856798  99.2  1668358  89.1
+Vcells 2047787 15.7   64304860 490.7 79580846 607.2

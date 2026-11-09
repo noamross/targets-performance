@@ -1,0 +1,4 @@
+"task","n","dplyr","DT_default","DT_allow_cartesian","collapse_default","collapse_multiple_TRUE","x_rows"
+"join_dupkeys_rowcount",1000,1922,"ERROR allow.cartesian",1922,1000,1922,1000
+"join_dupkeys_rowcount",1e+05,108973,"ERROR allow.cartesian",108973,100000,108973,100000
+"join_dupkeys_rowcount",2e+06,2009091,"ERROR allow.cartesian",2009091,2000000,2009091,2000000

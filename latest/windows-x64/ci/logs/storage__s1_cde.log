@@ -1,0 +1,83 @@
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+c list: 168.6 Mb
+    method size_mb write_s read_s identical equal_ignoring_attrs
+  rds_gzip    11.3    1.15   0.28      TRUE                 TRUE
+  rds_none    33.1    0.37   0.36      TRUE                 TRUE
+    qs2_t1    10.4    0.25   0.31      TRUE                 TRUE
+    qs2_t4    10.4    0.19   0.11      TRUE                 TRUE
+ qs2_t1_l1    10.5    0.24   0.19      TRUE                 TRUE
+ qs2_t4_l1    10.5    0.21   0.08      TRUE                 TRUE
+     qd_t1     9.0    0.19   0.19      TRUE                 TRUE
+     qd_t4     9.0    0.17   0.71      TRUE                 TRUE
+Warning message:
+Some expressions had a GC in every iteration; so filtering is disabled. 
+WRITE FAIL c_listcol np_zstd: Cannot write a list as a Parquet BYTE_ARRAY element when writing a list column of RAW vectors.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpMLvjaA/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpMLvjaA/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+     method size_mb write_s read_s identical equal_ignoring_attrs
+   rds_gzip    11.3    1.18   0.39      TRUE                 TRUE
+   rds_none    33.1    0.35   0.23      TRUE                 TRUE
+     qs2_t1    10.4    0.26   0.10      TRUE                 TRUE
+     qs2_t4    10.4    0.18   0.12      TRUE                 TRUE
+  qs2_t1_l1    10.5    0.23   0.13      TRUE                 TRUE
+  qs2_t4_l1    10.5    0.18   0.18      TRUE                 TRUE
+      qd_t1     9.2    0.18   0.30      TRUE                 TRUE
+      qd_t4     9.2    0.19   1.20      TRUE                 TRUE
+ arrow_zstd     9.4    0.22   2.19     FALSE                 TRUE
+  duck_zstd     9.0    2.20   0.21     FALSE                 TRUE
+Warning message:
+Some expressions had a GC in every iteration; so filtering is disabled. 
+          used  (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 2979506 159.2   11924751 636.9 17844077 953.0
+Vcells 5024957  38.4   28865941 220.3 36082426 275.3
+        method size_mb write_s read_s identical equal_ignoring_attrs
+      rds_gzip   183.1    5.46   0.72      TRUE                 TRUE
+      rds_none   190.7    0.18   0.15      TRUE                 TRUE
+        qs2_t1   168.1    0.18   0.10      TRUE                 TRUE
+        qs2_t4   168.1    0.10   0.05      TRUE                 TRUE
+     qs2_t1_l1   168.2    0.19   0.10      TRUE                 TRUE
+     qs2_t4_l1   168.2    0.09   0.04      TRUE                 TRUE
+         qd_t1   168.1    0.25   0.10      TRUE                 TRUE
+         qd_t4   168.1    0.12   0.04      TRUE                 TRUE
+    np_zstd_df   191.5    1.76   0.21     FALSE                 TRUE
+ arrow_zstd_df   222.4    1.82   1.07     FALSE                 TRUE
+          used (Mb) gc trigger   (Mb)  max used   (Mb)
+Ncells 1234811   66    3907504  208.7  17844077  953.0
+Vcells 2096408   16  135633962 1034.9 169540250 1293.5
+Warning message:
+Some expressions had a GC in every iteration; so filtering is disabled. 
+function (x, p) 
+qs2::qd_save(x, p, nthreads = 1)
+<bytecode: 0x00000177d4ba9000>
+Objects of type language are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type closure are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type environment are not supported in qdata format; further warnings for this type are suppressed for the session
+WRITE FAIL e_model np_zstd: is.data.frame(df) is not TRUE
+WRITE FAIL e_model arrow_zstd: Object must be coercible to an Arrow Table using `as_arrow_table()`
+Caused by error in `as_arrow_table()`:
+! No method for `as_arrow_table()` for object of class list
+   method size_mb write_s read_s identical equal_ignoring_attrs
+ rds_gzip    94.7    3.96   0.81      TRUE                 TRUE
+ rds_none   114.4    0.44   0.48      TRUE                 TRUE
+   qs2_t1    86.7    0.29   0.21      TRUE                 TRUE
+   qs2_t4    86.7    0.18   0.18      TRUE                 TRUE
+    qd_t1    33.8    0.10   0.03     FALSE                FALSE
+qd_t1: classes = fit=lm, fn=NULL, e=NULL; fit$terms env: environment
+zap ERR: there is no package called 'zap'
+zap READ ERR: there is no package called 'zap'
+qs2_t1: classes = fit=lm, fn=function, e=environment; fit$terms env: environment

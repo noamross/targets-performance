@@ -1,0 +1,403 @@
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+a parquet sizes MB: 94 102 106 102 106 102 106
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+           task                  method   median_s ratio_to_fastest
+ a_partial_cols    qs2_full_then_subset 0.05006330         1.499513
+ a_partial_cols qs2_t1_full_then_subset 0.07682300         2.301028
+ a_partial_cols     np_full_then_subset 0.12339690         3.696026
+ a_partial_cols           np_col_select 0.13268531         3.974235
+ a_partial_cols        arrow_col_select 0.03338637         1.000000
+ a_partial_cols     arrow_col_select_1t 0.04594851         1.376265
+ a_partial_cols             duck_select 0.06851329         2.052133
+ a_partial_cols          duck_select_1t 0.06424268         1.924219
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method  median_s
+ a_partial_filter_rg10000_unsorted arrow_open_dataset_filter 0.1031251
+ a_partial_filter_rg10000_unsorted           arrow_filter_1t 0.2365414
+ a_partial_filter_rg10000_unsorted                duck_where 0.1479774
+ a_partial_filter_rg10000_unsorted             duck_where_1t 0.1433178
+ a_partial_filter_rg10000_unsorted       np_full_then_filter 0.2567362
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.293733             TRUE
+         1.434931             TRUE
+         1.389747             TRUE
+         2.489561             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                            task                    method   median_s
+ a_partial_filter_rg10000_sorted arrow_open_dataset_filter 0.01916650
+ a_partial_filter_rg10000_sorted           arrow_filter_1t 0.02039178
+ a_partial_filter_rg10000_sorted                duck_where 0.02889245
+ a_partial_filter_rg10000_sorted             duck_where_1t 0.02739405
+ a_partial_filter_rg10000_sorted       np_full_then_filter 0.28498202
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.063929             TRUE
+         1.507446             TRUE
+         1.429268             TRUE
+        14.868760             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                               task                    method   median_s
+ a_partial_filter_rg122880_unsorted arrow_open_dataset_filter 0.08067283
+ a_partial_filter_rg122880_unsorted           arrow_filter_1t 0.16950148
+ a_partial_filter_rg122880_unsorted                duck_where 0.15202228
+ a_partial_filter_rg122880_unsorted             duck_where_1t 0.14338332
+ a_partial_filter_rg122880_unsorted       np_full_then_filter 0.25177135
+ a_partial_filter_rg122880_unsorted      qs2_full_then_filter 0.06118932
+ ratio_to_fastest identical_to_ref
+         1.318413             TRUE
+         2.770115             TRUE
+         2.484458             TRUE
+         2.343274             TRUE
+         4.114629             TRUE
+         1.000000             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                             task                    method   median_s
+ a_partial_filter_rg122880_sorted arrow_open_dataset_filter 0.01886431
+ a_partial_filter_rg122880_sorted           arrow_filter_1t 0.02329163
+ a_partial_filter_rg122880_sorted                duck_where 0.02613317
+ a_partial_filter_rg122880_sorted             duck_where_1t 0.02710785
+ a_partial_filter_rg122880_sorted       np_full_then_filter 0.13629607
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.234693             TRUE
+         1.385324             TRUE
+         1.436992             TRUE
+         7.225077             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                                task                    method   median_s
+ a_partial_filter_rg1000000_unsorted arrow_open_dataset_filter 0.08314981
+ a_partial_filter_rg1000000_unsorted           arrow_filter_1t 0.20105582
+ a_partial_filter_rg1000000_unsorted                duck_where 0.20657127
+ a_partial_filter_rg1000000_unsorted             duck_where_1t 0.19004285
+ a_partial_filter_rg1000000_unsorted       np_full_then_filter 0.20374947
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.417995             TRUE
+         2.484327             TRUE
+         2.285548             TRUE
+         2.450390             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /tmp/RtmpbKUKof/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method   median_s
+ a_partial_filter_rg1000000_sorted arrow_open_dataset_filter 0.04619899
+ a_partial_filter_rg1000000_sorted           arrow_filter_1t 0.07092565
+ a_partial_filter_rg1000000_sorted                duck_where 0.10435889
+ a_partial_filter_rg1000000_sorted             duck_where_1t 0.09767614
+ a_partial_filter_rg1000000_sorted       np_full_then_filter 0.14202262
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.535221             TRUE
+         2.258900             TRUE
+         2.114249             TRUE
+         3.074150             TRUE
+                                  method  peak_mb base_mb net_mb
+                       qs2_full@full.qs2 428.4961 195.793    233
+                  qs2_full_cols@full.qs2 418.9492 195.793    223
+               qs2_full_cols_1t@full.qs2 325.0781 195.793    129
+       np_full@rg122880_unsorted.parquet 387.8242 195.793    192
+       np_cols@rg122880_unsorted.parquet 226.3398 195.793     31
+    arrow_full@rg122880_unsorted.parquet 514.3867 195.793    319
+    arrow_cols@rg122880_unsorted.parquet 286.4102 195.793     91
+     duck_cols@rg122880_unsorted.parquet 308.9297 195.793    113
+  duck_cols_1t@rg122880_unsorted.parquet 277.3750 195.793     82
+ arrow_cols_1t@rg122880_unsorted.parquet 269.9297 195.793     74
+  arrow_filter@rg122880_unsorted.parquet 452.0859 195.793    256
+   duck_filter@rg122880_unsorted.parquet 323.4258 195.793    128
+    arrow_filter@rg122880_sorted.parquet 223.7461 195.793     28
+     duck_filter@rg122880_sorted.parquet 226.3086 195.793     31
+  np_full_filter@rg122880_sorted.parquet 393.1289 195.793    197
+                qs2_full_filter@full.qs2 422.7734 195.793    227
+           used  (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells  1420092  75.9    2573404 137.5  2097624 112.1
+Vcells 21201804 161.8   72476477 553.0 72410522 552.5
+Warning messages:
+1: Using an external vector in selections was deprecated in tidyselect 1.1.0.
+ℹ Please use `all_of()` or `any_of()` instead.
+  # Was:
+  data %>% select(cs)
+
+  # Now:
+  data %>% select(all_of(cs))
+
+See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+3: Some expressions had a GC in every iteration; so filtering is disabled. 
+4: Some expressions had a GC in every iteration; so filtering is disabled. 
+5: Some expressions had a GC in every iteration; so filtering is disabled. 
+6: Some expressions had a GC in every iteration; so filtering is disabled. 
+7: Some expressions had a GC in every iteration; so filtering is disabled. 
+8: Some expressions had a GC in every iteration; so filtering is disabled. 
+b parquet sizes MB: 38 36 36 7 7 13 13
+           task                  method    median_s ratio_to_fastest
+ b_partial_cols    qs2_full_then_subset 0.237484596       228.088260
+ b_partial_cols qs2_t1_full_then_subset 0.295364340       283.677929
+ b_partial_cols     np_full_then_subset 0.159544587       153.232032
+ b_partial_cols           np_col_select 0.001041196         1.000000
+ b_partial_cols        arrow_col_select 0.003653774         3.509209
+ b_partial_cols     arrow_col_select_1t 0.003604221         3.461616
+ b_partial_cols             duck_select 0.017600642        16.904254
+ b_partial_cols          duck_select_1t 0.019265383        18.503127
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                              task                    method   median_s
+ b_partial_filter_rg10000_unsorted arrow_open_dataset_filter 0.06884425
+ b_partial_filter_rg10000_unsorted           arrow_filter_1t 0.10092168
+ b_partial_filter_rg10000_unsorted                duck_where 0.16176019
+ b_partial_filter_rg10000_unsorted             duck_where_1t 0.12461994
+ b_partial_filter_rg10000_unsorted       np_full_then_filter 0.33653114
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.465942             TRUE
+         2.349654             TRUE
+         1.810172             TRUE
+         4.888297             TRUE
+                            task                    method   median_s
+ b_partial_filter_rg10000_sorted arrow_open_dataset_filter 0.02090830
+ b_partial_filter_rg10000_sorted           arrow_filter_1t 0.01949230
+ b_partial_filter_rg10000_sorted                duck_where 0.03418485
+ b_partial_filter_rg10000_sorted             duck_where_1t 0.02600827
+ b_partial_filter_rg10000_sorted       np_full_then_filter 0.35772224
+ ratio_to_fastest identical_to_ref
+         1.072644             TRUE
+         1.000000             TRUE
+         1.753761             TRUE
+         1.334284             TRUE
+        18.351974             TRUE
+                               task                    method   median_s
+ b_partial_filter_rg122880_unsorted arrow_open_dataset_filter 0.18291542
+ b_partial_filter_rg122880_unsorted           arrow_filter_1t 0.17069260
+ b_partial_filter_rg122880_unsorted                duck_where 0.08018891
+ b_partial_filter_rg122880_unsorted             duck_where_1t 0.07022266
+ b_partial_filter_rg122880_unsorted       np_full_then_filter 0.12590225
+ b_partial_filter_rg122880_unsorted      qs2_full_then_filter 0.22144965
+ ratio_to_fastest identical_to_ref
+         2.604792             TRUE
+         2.430734             TRUE
+         1.141923             TRUE
+         1.000000             TRUE
+         1.792900             TRUE
+         3.153535             TRUE
+                             task                    method   median_s
+ b_partial_filter_rg122880_sorted arrow_open_dataset_filter 0.17999705
+ b_partial_filter_rg122880_sorted           arrow_filter_1t 0.17022208
+ b_partial_filter_rg122880_sorted                duck_where 0.05857361
+ b_partial_filter_rg122880_sorted             duck_where_1t 0.04606728
+ b_partial_filter_rg122880_sorted       np_full_then_filter 0.14525174
+ ratio_to_fastest identical_to_ref
+         3.907264             TRUE
+         3.695075             TRUE
+         1.271480             TRUE
+         1.000000             TRUE
+         3.153035             TRUE
+                                task                    method   median_s
+ b_partial_filter_rg1000000_unsorted arrow_open_dataset_filter 0.25920871
+ b_partial_filter_rg1000000_unsorted           arrow_filter_1t 0.25277005
+ b_partial_filter_rg1000000_unsorted                duck_where 0.06547096
+ b_partial_filter_rg1000000_unsorted             duck_where_1t 0.05488659
+ b_partial_filter_rg1000000_unsorted       np_full_then_filter 0.06663909
+ ratio_to_fastest identical_to_ref
+         4.722624             TRUE
+         4.605315             TRUE
+         1.192841             TRUE
+         1.000000             TRUE
+         1.214123             TRUE
+                              task                    method   median_s
+ b_partial_filter_rg1000000_sorted arrow_open_dataset_filter 0.24263660
+ b_partial_filter_rg1000000_sorted           arrow_filter_1t 0.26406528
+ b_partial_filter_rg1000000_sorted                duck_where 0.05626206
+ b_partial_filter_rg1000000_sorted             duck_where_1t 0.04788024
+ b_partial_filter_rg1000000_sorted       np_full_then_filter 0.07769680
+ ratio_to_fastest identical_to_ref
+         5.067573             TRUE
+         5.515120             TRUE
+         1.175058             TRUE
+         1.000000             TRUE
+         1.622732             TRUE
+                                  method  peak_mb base_mb net_mb
+                       qs2_full@full.qs2 343.7852 193.832    150
+                  qs2_full_cols@full.qs2 346.6406 193.832    153
+               qs2_full_cols_1t@full.qs2 221.7227 193.832     28
+       np_full@rg122880_unsorted.parquet 317.9258 193.832    124
+       np_cols@rg122880_unsorted.parquet 193.7852 193.832      0
+    arrow_full@rg122880_unsorted.parquet 479.6914 193.832    286
+    arrow_cols@rg122880_unsorted.parquet 204.8711 193.832     11
+     duck_cols@rg122880_unsorted.parquet 219.1641 193.832     25
+  duck_cols_1t@rg122880_unsorted.parquet 213.0430 193.832     19
+ arrow_cols_1t@rg122880_unsorted.parquet 203.5703 193.832     10
+  arrow_filter@rg122880_unsorted.parquet 483.5078 193.832    290
+   duck_filter@rg122880_unsorted.parquet 265.5039 193.832     72
+    arrow_filter@rg122880_sorted.parquet 464.9336 193.832    271
+     duck_filter@rg122880_sorted.parquet 239.1094 193.832     45
+  np_full_filter@rg122880_sorted.parquet 317.8281 193.832    124
+                qs2_full_filter@full.qs2 342.5547 193.832    149
+           used  (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells  1426384  76.2    2573404 137.5  2573404 137.5
+Vcells 21280155 162.4   72476477 553.0 72476112 553.0

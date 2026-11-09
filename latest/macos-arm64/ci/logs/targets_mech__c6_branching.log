@@ -1,0 +1,30 @@
+            task    n               method wall_s sum_meta_s loads load_s
+1  1e4rows_0.5ms    1    serial one target  6.678      5.436     0      0
+2  1e4rows_0.5ms   10     serial list B=10  6.705      5.552     0      0
+3  1e4rows_0.5ms  100    serial list B=100  6.961      5.564     0      0
+4  1e4rows_0.5ms 1000   serial list B=1000 11.094      5.923     0      0
+5  1e4rows_0.5ms   10    serial group B=10  7.021      5.725     0      0
+6  1e4rows_0.5ms  100   serial group B=100  6.974      5.504     0      0
+7  1e4rows_0.5ms 1000  serial group B=1000 11.878      6.074     0      0
+8  1e4rows_0.5ms    1   nproc=3 one target  8.659      5.792     0      0
+9  1e4rows_0.5ms   10    nproc=3 list B=10  7.816      8.192     0      0
+10 1e4rows_0.5ms  100   nproc=3 list B=100  7.039      8.193     0      0
+11 1e4rows_0.5ms 1000  nproc=3 list B=1000 11.887     11.582     0      0
+12 1e4rows_0.5ms   10   nproc=3 group B=10  6.361      7.006     0      0
+13 1e4rows_0.5ms  100  nproc=3 group B=100  8.456     12.204     0      0
+14 1e4rows_0.5ms 1000 nproc=3 group B=1000 17.090     16.009     0      0
+   peak_rss_mb sys_peak_mb
+1     323.0938    180.5938
+2     335.7812    164.0000
+3     329.2969    161.6094
+4     349.4219    185.7344
+5     324.3906    150.5469
+6     337.5781    168.4062
+7     401.7656    207.3281
+8     502.3281    246.0156
+9     899.2344    184.5469
+10    914.1719    440.8438
+11    906.1875    445.6250
+12    892.7188    419.5156
+13    933.7344    453.9531
+14    956.2812    471.9844

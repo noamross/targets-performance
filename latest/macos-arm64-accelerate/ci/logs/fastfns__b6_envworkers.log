@@ -1,0 +1,30 @@
+  engine                                                 condition     OMP
+1  mirai                                                      none <unset>
+2   crew                                                      none <unset>
+3  mirai                                                 RDT1_only <unset>
+4   crew                                                 RDT1_only <unset>
+5  mirai                                                 OMP1_only       1
+6   crew                                                 OMP1_only       1
+7  mirai                                         both_1_plus_MYVAR       1
+8   crew                                         both_1_plus_MYVAR       1
+9   crew env set after worker already running (same worker reused) <unset>
+      RDT   MYVAR dt_threads dt_after_setDTthreads1   run_date
+1 <unset> <unset>          1                      1 2026-11-09
+2 <unset> <unset>          1                      1 2026-11-09
+3       1 <unset>          1                      1 2026-11-09
+4       1 <unset>          1                      1 2026-11-09
+5 <unset> <unset>          1                      1 2026-11-09
+6 <unset> <unset>          1                      1 2026-11-09
+7       1   hello          1                      1 2026-11-09
+8       1   hello          1                      1 2026-11-09
+9 <unset> <unset>          1                      1 2026-11-09
+  parent_default_dt_threads
+1                         1
+2                         1
+3                         1
+4                         1
+5                         1
+6                         1
+7                         1
+8                         1
+9                         1

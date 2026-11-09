@@ -1,0 +1,102 @@
+! Project is not synced. Run: rig proj sync
+running 300 1 transient worker
+running 300 1 transient main
+running 300 1 transient auto
+running 300 3 transient worker
+running 300 3 transient auto
+running 300 1 persistent worker
+running 300 1 persistent main
+running 300 1 persistent auto
+running 300 3 persistent worker
+running 300 3 persistent auto
+running 300 1 auto worker
+running 300 1 auto main
+running 300 1 auto auto
+running 300 3 auto worker
+running 300 3 auto auto
+running 100 1 transient worker
+running 100 1 transient main
+running 100 1 transient auto
+running 100 3 transient worker
+running 100 3 transient main
+running 100 3 transient auto
+running 100 1 persistent worker
+running 100 1 persistent main
+running 100 1 persistent auto
+running 100 3 persistent worker
+running 100 3 persistent main
+running 100 3 persistent auto
+running 100 1 auto worker
+running 100 1 auto main
+running 100 1 auto auto
+running 100 3 auto worker
+running 100 3 auto main
+running 100 3 auto auto
+                task   n                                             method
+1  big300_6consumers 300   serial memory=transient storage/retrieval=worker
+2  big300_6consumers 300     serial memory=transient storage/retrieval=main
+3  big300_6consumers 300     serial memory=transient storage/retrieval=auto
+4  big300_6consumers 300  nproc=3 memory=transient storage/retrieval=worker
+5  big300_6consumers 300    nproc=3 memory=transient storage/retrieval=auto
+6  big300_6consumers 300  serial memory=persistent storage/retrieval=worker
+7  big300_6consumers 300    serial memory=persistent storage/retrieval=main
+8  big300_6consumers 300    serial memory=persistent storage/retrieval=auto
+9  big300_6consumers 300 nproc=3 memory=persistent storage/retrieval=worker
+10 big300_6consumers 300   nproc=3 memory=persistent storage/retrieval=auto
+11 big300_6consumers 300        serial memory=auto storage/retrieval=worker
+12 big300_6consumers 300          serial memory=auto storage/retrieval=main
+13 big300_6consumers 300          serial memory=auto storage/retrieval=auto
+14 big300_6consumers 300       nproc=3 memory=auto storage/retrieval=worker
+15 big300_6consumers 300         nproc=3 memory=auto storage/retrieval=auto
+16 big100_6consumers 100   serial memory=transient storage/retrieval=worker
+17 big100_6consumers 100     serial memory=transient storage/retrieval=main
+18 big100_6consumers 100     serial memory=transient storage/retrieval=auto
+19 big100_6consumers 100  nproc=3 memory=transient storage/retrieval=worker
+20 big100_6consumers 100    nproc=3 memory=transient storage/retrieval=main
+21 big100_6consumers 100    nproc=3 memory=transient storage/retrieval=auto
+22 big100_6consumers 100  serial memory=persistent storage/retrieval=worker
+23 big100_6consumers 100    serial memory=persistent storage/retrieval=main
+24 big100_6consumers 100    serial memory=persistent storage/retrieval=auto
+25 big100_6consumers 100 nproc=3 memory=persistent storage/retrieval=worker
+26 big100_6consumers 100   nproc=3 memory=persistent storage/retrieval=main
+27 big100_6consumers 100   nproc=3 memory=persistent storage/retrieval=auto
+28 big100_6consumers 100        serial memory=auto storage/retrieval=worker
+29 big100_6consumers 100          serial memory=auto storage/retrieval=main
+30 big100_6consumers 100          serial memory=auto storage/retrieval=auto
+31 big100_6consumers 100       nproc=3 memory=auto storage/retrieval=worker
+32 big100_6consumers 100         nproc=3 memory=auto storage/retrieval=main
+33 big100_6consumers 100         nproc=3 memory=auto storage/retrieval=auto
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1    6.39      1.033     6   2.80    939.2461   1036.6641
+2    7.12      1.203     6   3.34    939.6914   1075.1562
+3    6.54      1.015     6   2.76    939.2773    995.8906
+4    7.51      1.282     6   4.05   1911.7773   1875.0156
+5    7.63      1.267     6   3.96   1847.1719   1781.2930
+6    6.53      1.157     6   2.48   1228.0195   1192.5234
+7    3.91      1.140     0   0.00    966.6719    988.3867
+8    6.14      1.170     6   2.48   1304.1523   1279.9453
+9    7.36      1.313     6   4.15   1675.1172   1607.3047
+10   7.33      1.343     6   4.20   1501.1758   1424.3008
+11   6.54      1.030     6   2.82    985.2148    988.1172
+12   6.49      0.985     6   2.82    939.5039    968.3320
+13   7.60      1.641     6   2.68    986.4727   1001.7188
+14   7.19      1.359     6   3.96   1693.1758   1610.5039
+15   7.42      1.296     6   4.00   1497.8320   1420.5117
+16   3.25      0.781     6   0.91    504.9727    523.8711
+17   3.20      0.720     6   0.91    547.9453    505.6680
+18   3.28      0.765     6   1.06    498.0469    483.3711
+19   4.92      0.998     6   1.40   1051.5859    989.9570
+20   5.26      1.030     5   1.41   1051.2031   1012.3945
+21   4.94      0.985     6   1.36    903.2383    852.0312
+22   3.03      0.702     6   0.89    661.1797    641.1953
+23   2.16      0.594     0   0.00    529.6094    553.9805
+24   3.24      0.624     6   0.88    618.2344    585.8945
+25   5.11      1.111     6   1.53   1185.6445   1101.6602
+26   6.67      1.139     0   0.00   1247.2812   1305.7656
+27   4.92      0.998     6   1.48   1050.9102    982.9375
+28   3.28      0.875     6   0.96    510.2266    536.5391
+29   3.30      0.811     6   0.92    508.3438    481.7266
+30   3.48      0.813     6   0.94    496.4883    490.9219
+31   5.12      1.032     6   1.39   1145.0742   1070.5273
+32   5.50      1.140     5   1.46    984.4922   1016.8828
+33   5.23      1.000     6   1.42   1189.9375   1111.8633

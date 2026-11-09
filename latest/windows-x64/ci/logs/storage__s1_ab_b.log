@@ -1,0 +1,55 @@
+! Project is not synced. Run: rig proj sync
+The tzdb package is not installed. Timezones will not be available to Arrow compute functions. If you get errors when using Arrow on datetimes, try running `install.packages('tzdb')` and trying again.
+b: 26.8 Mb
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO67G5y/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO67G5y/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO67G5y/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO67G5y/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+        method size_mb write_s read_s identical equal_ignoring_attrs
+      rds_gzip    29.3    2.44   0.42      TRUE                 TRUE
+      rds_none    87.9    0.14   0.16      TRUE                 TRUE
+        qs2_t1    25.2    0.33   0.16      TRUE                 TRUE
+        qs2_t4    25.2    0.17   0.12      TRUE                 TRUE
+     qs2_t1_l1    28.1    0.29   0.17      TRUE                 TRUE
+     qs2_t4_l1    28.1    0.11   0.11      TRUE                 TRUE
+         qd_t1    25.0    0.32   0.07      TRUE                 TRUE
+         qd_t4    25.0    0.14   0.03      TRUE                 TRUE
+   qd_t1_noalt    25.0    0.32   0.15      TRUE                 TRUE
+     np_snappy    43.0    0.32   0.20     FALSE                 TRUE
+       np_zstd    86.6    0.08   0.17     FALSE                 TRUE
+  arrow_snappy    43.4    0.33   0.12      TRUE                 TRUE
+    arrow_zstd    28.5    0.39   0.11      TRUE                 TRUE
+     duck_zstd     6.2    0.17   0.19     FALSE                FALSE
+ arrow_zstd_1t    28.5    0.40   0.12      TRUE                 TRUE
+  duck_zstd_1t     6.2    0.19   0.19     FALSE                FALSE
+          used (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 1192039 63.7    2655120 141.8  2099210 112.2
+Vcells 2112718 16.2   12255594  93.6 12223171  93.3

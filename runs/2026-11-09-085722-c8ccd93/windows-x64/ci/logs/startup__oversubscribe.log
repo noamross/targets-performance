@@ -1,0 +1,11 @@
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+! Project is not synced. Run: rig proj sync
+             setting     wall threads workers ncpu       date
+1 default (50% each) 1.196067       2       2    4 2026-11-09
+2      1 thread each 1.463037       1       2    4 2026-11-09
+3      all cpus each 1.291357       4       2    4 2026-11-09

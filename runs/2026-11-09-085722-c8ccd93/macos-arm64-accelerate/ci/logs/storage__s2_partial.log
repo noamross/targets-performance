@@ -1,0 +1,291 @@
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+a parquet sizes MB: 94 102 106 102 106 102 106
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+           task                  method   median_s ratio_to_fastest
+ a_partial_cols    qs2_full_then_subset 0.10488747         3.672474
+ a_partial_cols qs2_t1_full_then_subset 0.14985963         5.247106
+ a_partial_cols     np_full_then_subset 0.22514773         7.883203
+ a_partial_cols           np_col_select 0.10066960         3.524792
+ a_partial_cols        arrow_col_select 0.02856044         1.000000
+ a_partial_cols     arrow_col_select_1t 0.03876952         1.357455
+ a_partial_cols             duck_select 0.06400863         2.241164
+ a_partial_cols          duck_select_1t 0.06838956         2.394556
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method  median_s
+ a_partial_filter_rg10000_unsorted arrow_open_dataset_filter 0.1311261
+ a_partial_filter_rg10000_unsorted           arrow_filter_1t 0.2747758
+ a_partial_filter_rg10000_unsorted                duck_where 0.1989866
+ a_partial_filter_rg10000_unsorted             duck_where_1t 0.2058103
+ a_partial_filter_rg10000_unsorted       np_full_then_filter 0.3430134
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.095508             TRUE
+         1.517520             TRUE
+         1.569560             TRUE
+         2.615905             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                            task                    method   median_s
+ a_partial_filter_rg10000_sorted arrow_open_dataset_filter 0.01654112
+ a_partial_filter_rg10000_sorted           arrow_filter_1t 0.02083259
+ a_partial_filter_rg10000_sorted                duck_where 0.02410050
+ a_partial_filter_rg10000_sorted             duck_where_1t 0.02533386
+ a_partial_filter_rg10000_sorted       np_full_then_filter 0.32397556
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.259442             TRUE
+         1.457005             TRUE
+         1.531568             TRUE
+        19.586069             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                               task                    method   median_s
+ a_partial_filter_rg122880_unsorted arrow_open_dataset_filter 0.08829887
+ a_partial_filter_rg122880_unsorted           arrow_filter_1t 0.19574339
+ a_partial_filter_rg122880_unsorted                duck_where 0.19145130
+ a_partial_filter_rg122880_unsorted             duck_where_1t 0.20214431
+ a_partial_filter_rg122880_unsorted       np_full_then_filter 0.28556512
+ a_partial_filter_rg122880_unsorted      qs2_full_then_filter 0.17407407
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.216828             TRUE
+         2.168219             TRUE
+         2.289319             TRUE
+         3.234074             TRUE
+         1.971419             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                             task                    method   median_s
+ a_partial_filter_rg122880_sorted arrow_open_dataset_filter 0.01590423
+ a_partial_filter_rg122880_sorted           arrow_filter_1t 0.01983723
+ a_partial_filter_rg122880_sorted                duck_where 0.02489594
+ a_partial_filter_rg122880_sorted             duck_where_1t 0.02812780
+ a_partial_filter_rg122880_sorted       np_full_then_filter 0.24628397
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.247293             TRUE
+         1.565366             TRUE
+         1.768574             TRUE
+        15.485440             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                                task                    method   median_s
+ a_partial_filter_rg1000000_unsorted arrow_open_dataset_filter 0.09633126
+ a_partial_filter_rg1000000_unsorted           arrow_filter_1t 0.21046054
+ a_partial_filter_rg1000000_unsorted                duck_where 0.19169870
+ a_partial_filter_rg1000000_unsorted             duck_where_1t 0.19809224
+ a_partial_filter_rg1000000_unsorted       np_full_then_filter 0.26073331
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         2.184758             TRUE
+         1.989995             TRUE
+         2.056365             TRUE
+         2.706632             TRUE
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T//Rtmp0elP4A/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+                              task                    method   median_s
+ a_partial_filter_rg1000000_sorted arrow_open_dataset_filter 0.04861345
+ a_partial_filter_rg1000000_sorted           arrow_filter_1t 0.09100483
+ a_partial_filter_rg1000000_sorted                duck_where 0.08483290
+ a_partial_filter_rg1000000_sorted             duck_where_1t 0.08777050
+ a_partial_filter_rg1000000_sorted       np_full_then_filter 0.24375595
+ ratio_to_fastest identical_to_ref
+         1.000000             TRUE
+         1.872009             TRUE
+         1.745050             TRUE
+         1.805478             TRUE
+         5.014166             TRUE
+                                  method  peak_mb base_mb net_mb
+                       qs2_full@full.qs2 377.3125 160.875    216
+                  qs2_full_cols@full.qs2 384.1562 160.875    223
+               qs2_full_cols_1t@full.qs2 295.2500 160.875    134
+       np_full@rg122880_unsorted.parquet 314.0781 160.875    153
+       np_cols@rg122880_unsorted.parquet 186.5938 160.875     26
+    arrow_full@rg122880_unsorted.parquet 463.3281 160.875    302
+    arrow_cols@rg122880_unsorted.parquet 239.7188 160.875     79
+     duck_cols@rg122880_unsorted.parquet 269.2656 160.875    108
+  duck_cols_1t@rg122880_unsorted.parquet 168.6875 160.875      8
+ arrow_cols_1t@rg122880_unsorted.parquet 169.3281 160.875      8
+  arrow_filter@rg122880_unsorted.parquet 405.4844 160.875    245
+   duck_filter@rg122880_unsorted.parquet 294.6875 160.875    134
+    arrow_filter@rg122880_sorted.parquet 171.3438 160.875     10
+     duck_filter@rg122880_sorted.parquet 161.1562 160.875      0
+  np_full_filter@rg122880_sorted.parquet 380.9844 160.875    220
+                qs2_full_filter@full.qs2 397.7031 160.875    237
+           used  (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells  1421662  76.0    2578252 137.7         NA  2093930 111.9
+Vcells 21203151 161.8   72476542 553.0      16384 72408196 552.5
+Warning messages:
+1: Using an external vector in selections was deprecated in tidyselect 1.1.0.
+ℹ Please use `all_of()` or `any_of()` instead.
+  # Was:
+  data %>% select(cs)
+
+  # Now:
+  data %>% select(all_of(cs))
+
+See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+3: Some expressions had a GC in every iteration; so filtering is disabled. 
+4: Some expressions had a GC in every iteration; so filtering is disabled. 
+5: Some expressions had a GC in every iteration; so filtering is disabled. 
+6: Some expressions had a GC in every iteration; so filtering is disabled. 
+7: Some expressions had a GC in every iteration; so filtering is disabled. 
+8: Some expressions had a GC in every iteration; so filtering is disabled. 
+skipping s2 b: needs ~750 MB > free budget 645 MB

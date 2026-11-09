@@ -1,0 +1,14 @@
+crossprod          libRblas.0.dylib    5.987 s
+matmul             libRblas.0.dylib    3.650 s
+solve              libRblas.0.dylib    6.520 s
+chol               libRblas.0.dylib    1.817 s
+svd_1000           libRblas.0.dylib    2.666 s
+qr                 libRblas.0.dylib    4.707 s
+lm_fit_2e5x51      libRblas.0.dylib    0.650 s
+glm_logit_2e5x51   libRblas.0.dylib    6.064 s
+Warning messages:
+1: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+2: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+3: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+4: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+5: Some expressions had a GC in every iteration; so filtering is disabled. 

@@ -1,0 +1,26 @@
+       task n                                                            method
+1  dt_6jobs 4                  1 target, 6 jobs sequential, DT threads = 4 rep1
+2  dt_6jobs 1                  1 target, 6 jobs sequential, DT threads = 1 rep1
+3  dt_6jobs 1                               6 branches x 1 thread, NPROC=4 rep1
+4  dt_6jobs 2                 6 branches x 2 threads, NPROC=4 (=8 threads) rep1
+5  dt_6jobs 4 6 branches x 4 threads, NPROC=4 (16 threads, oversubscribed) rep1
+6  dt_6jobs 8                 6 branches x 8 threads, NPROC=4 (32 threads) rep1
+7  dt_6jobs 4                  1 target, 6 jobs sequential, DT threads = 4 rep2
+8  dt_6jobs 1                  1 target, 6 jobs sequential, DT threads = 1 rep2
+9  dt_6jobs 1                               6 branches x 1 thread, NPROC=4 rep2
+10 dt_6jobs 2                 6 branches x 2 threads, NPROC=4 (=8 threads) rep2
+11 dt_6jobs 4 6 branches x 4 threads, NPROC=4 (16 threads, oversubscribed) rep2
+12 dt_6jobs 8                 6 branches x 8 threads, NPROC=4 (32 threads) rep2
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1   6.847      6.186     0      0    652.8242    767.0664
+2  10.145      9.438     0      0    653.0273    475.9570
+3   7.462     15.384     0      0   1940.2109   1675.5938
+4   8.396     20.094     0      0   1991.9414    979.0938
+5  15.004     42.972     0      0   1996.6875   1076.4453
+6  14.920     43.674     0      0   1979.5664   1557.9922
+7   6.824      6.188     0      0    656.8047    247.5117
+8   9.964      9.263     0      0    653.4102    452.6055
+9   7.409     15.029     0      0   1948.7500   1773.9688
+10  8.820     22.081     0      0   1971.8359    957.6914
+11 14.653     42.452     0      0   1982.3633   1158.7109
+12 15.325     44.967     0      0   2016.0898   1625.8945

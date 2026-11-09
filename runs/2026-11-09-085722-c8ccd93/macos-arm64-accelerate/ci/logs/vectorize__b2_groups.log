@@ -1,0 +1,171 @@
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:base’:
+
+    %notin%
+
+                             task    n             method     median_s
+ group mean, 1000 rows, 10 groups 1000       split_lapply 0.0000829635
+ group mean, 1000 rows, 10 groups 1000             tapply 0.0001099415
+ group mean, 1000 rows, 10 groups 1000       split_df_map 0.0002903210
+ group mean, 1000 rows, 10 groups 1000    rowsum_tabulate 0.0000552680
+ group mean, 1000 rows, 10 groups 1000     collapse_fmean 0.0000105780
+ group mean, 1000 rows, 10 groups 1000 collapse_fmean_GRP 0.0000223040
+ group mean, 1000 rows, 10 groups 1000              dt_by 0.0003448715
+ group mean, 1000 rows, 10 groups 1000           dplyr_by 0.0017771040
+ ratio_to_fastest identical_to_ref
+         7.843023             TRUE
+        10.393411             TRUE
+        27.445736             TRUE
+         5.224806             TRUE
+         1.000000             TRUE
+         2.108527             TRUE
+        32.602713             TRUE
+       167.999999             TRUE
+                             task    n                 method    median_s
+ group mean, 1000 rows, 10 groups 1000          dt_by_1thread 0.000320784
+ group mean, 1000 rows, 10 groups 1000 collapse_fmean_1thread 0.000010947
+ ratio_to_fastest identical_to_ref
+         29.30337             TRUE
+          1.00000             TRUE
+                             task    n                  method    median_s
+ group mean, 1000 rows, 10 groups 1000 collapse_fmean_3threads 1.08445e-05
+ ratio_to_fastest identical_to_ref
+                1             TRUE
+                              task    n             method     median_s
+ group mean, 1000 rows, 100 groups 1000       split_lapply 0.0002650650
+ group mean, 1000 rows, 100 groups 1000             tapply 0.0002885990
+ group mean, 1000 rows, 100 groups 1000       split_df_map 0.0020985645
+ group mean, 1000 rows, 100 groups 1000    rowsum_tabulate 0.0000586915
+ group mean, 1000 rows, 100 groups 1000     collapse_fmean 0.0000120745
+ group mean, 1000 rows, 100 groups 1000 collapse_fmean_GRP 0.0000214430
+ group mean, 1000 rows, 100 groups 1000              dt_by 0.0003697790
+ group mean, 1000 rows, 100 groups 1000           dplyr_by 0.0033165720
+ ratio_to_fastest identical_to_ref
+        21.952462             TRUE
+        23.901528             TRUE
+       173.801357             TRUE
+         4.860781             TRUE
+         1.000000             TRUE
+         1.775891             TRUE
+        30.624788             TRUE
+       274.675719             TRUE
+                              task    n                 method     median_s
+ group mean, 1000 rows, 100 groups 1000          dt_by_1thread 0.0003618455
+ group mean, 1000 rows, 100 groups 1000 collapse_fmean_1thread 0.0000124025
+ ratio_to_fastest identical_to_ref
+         29.17521             TRUE
+          1.00000             TRUE
+                              task    n                  method   median_s
+ group mean, 1000 rows, 100 groups 1000 collapse_fmean_3threads 1.1726e-05
+ ratio_to_fastest identical_to_ref
+                1             TRUE
+                               task     n             method     median_s
+ group mean, 100000 rows, 10 groups 1e+05       split_lapply 0.0028384505
+ group mean, 100000 rows, 10 groups 1e+05             tapply 0.0039667910
+ group mean, 100000 rows, 10 groups 1e+05       split_df_map 0.0066710075
+ group mean, 100000 rows, 10 groups 1e+05    rowsum_tabulate 0.0023787790
+ group mean, 100000 rows, 10 groups 1e+05     collapse_fmean 0.0003269135
+ group mean, 100000 rows, 10 groups 1e+05 collapse_fmean_GRP 0.0005505275
+ group mean, 100000 rows, 10 groups 1e+05              dt_by 0.0031259015
+ group mean, 100000 rows, 10 groups 1e+05           dplyr_by 0.0035748925
+ ratio_to_fastest identical_to_ref
+         8.682574             TRUE
+        12.134069             TRUE
+        20.406032             TRUE
+         7.276478             TRUE
+         1.000000             TRUE
+         1.684016             TRUE
+         9.561861             TRUE
+        10.935286             TRUE
+                               task     n                 method    median_s
+ group mean, 100000 rows, 10 groups 1e+05          dt_by_1thread 0.002784003
+ group mean, 100000 rows, 10 groups 1e+05 collapse_fmean_1thread 0.000319431
+ ratio_to_fastest identical_to_ref
+         8.715505             TRUE
+         1.000000             TRUE
+                               task     n                  method    median_s
+ group mean, 100000 rows, 10 groups 1e+05 collapse_fmean_3threads 0.000507375
+ ratio_to_fastest identical_to_ref
+                1             TRUE
+                                  task     n             method    median_s
+ group mean, 100000 rows, 10000 groups 1e+05       split_lapply 0.041319964
+ group mean, 100000 rows, 10000 groups 1e+05             tapply 0.042498488
+ group mean, 100000 rows, 10000 groups 1e+05    rowsum_tabulate 0.009651175
+ group mean, 100000 rows, 10000 groups 1e+05     collapse_fmean 0.000704790
+ group mean, 100000 rows, 10000 groups 1e+05 collapse_fmean_GRP 0.000766618
+ group mean, 100000 rows, 10000 groups 1e+05              dt_by 0.002525744
+ group mean, 100000 rows, 10000 groups 1e+05           dplyr_by 0.063243833
+ ratio_to_fastest identical_to_ref
+        58.627341             TRUE
+        60.299506             TRUE
+        13.693688             TRUE
+         1.000000             TRUE
+         1.087725             TRUE
+         3.583682             TRUE
+        89.734293             TRUE
+                                  task     n                 method
+ group mean, 100000 rows, 10000 groups 1e+05          dt_by_1thread
+ group mean, 100000 rows, 10000 groups 1e+05 collapse_fmean_1thread
+     median_s ratio_to_fastest identical_to_ref
+ 0.0025093435         2.854175             TRUE
+ 0.0008791835         1.000000             TRUE
+                                  task     n                  method
+ group mean, 100000 rows, 10000 groups 1e+05 collapse_fmean_3threads
+    median_s ratio_to_fastest identical_to_ref
+ 0.000581339                1             TRUE
+                              task     n             method   median_s
+ group mean, 1e+06 rows, 10 groups 1e+06       split_lapply 0.02436265
+ group mean, 1e+06 rows, 10 groups 1e+06             tapply 0.03220472
+ group mean, 1e+06 rows, 10 groups 1e+06       split_df_map 0.05361955
+ group mean, 1e+06 rows, 10 groups 1e+06    rowsum_tabulate 0.02733704
+ group mean, 1e+06 rows, 10 groups 1e+06     collapse_fmean 0.00415945
+ group mean, 1e+06 rows, 10 groups 1e+06 collapse_fmean_GRP 0.00626849
+ group mean, 1e+06 rows, 10 groups 1e+06              dt_by 0.02881505
+ group mean, 1e+06 rows, 10 groups 1e+06           dplyr_by 0.01587077
+ ratio_to_fastest identical_to_ref
+         5.857181             TRUE
+         7.742543             TRUE
+        12.891020             TRUE
+         6.572272             TRUE
+         1.000000             TRUE
+         1.507048             TRUE
+         6.927610             TRUE
+         3.815594             TRUE
+                              task     n                 method    median_s
+ group mean, 1e+06 rows, 10 groups 1e+06          dt_by_1thread 0.023329390
+ group mean, 1e+06 rows, 10 groups 1e+06 collapse_fmean_1thread 0.003158107
+ ratio_to_fastest identical_to_ref
+         7.387143             TRUE
+         1.000000             TRUE
+                              task     n                  method    median_s
+ group mean, 1e+06 rows, 10 groups 1e+06 collapse_fmean_3threads 0.003316695
+ ratio_to_fastest identical_to_ref
+                1             TRUE
+                                  task     n             method   median_s
+ group mean, 1e+06 rows, 100000 groups 1e+06       split_lapply 0.52275275
+ group mean, 1e+06 rows, 100000 groups 1e+06             tapply 0.63842113
+ group mean, 1e+06 rows, 100000 groups 1e+06    rowsum_tabulate 0.16609108
+ group mean, 1e+06 rows, 100000 groups 1e+06     collapse_fmean 0.01282275
+ group mean, 1e+06 rows, 100000 groups 1e+06 collapse_fmean_GRP 0.01003510
+ group mean, 1e+06 rows, 100000 groups 1e+06              dt_by 0.03734534
+ group mean, 1e+06 rows, 100000 groups 1e+06           dplyr_by 0.59084108
+ ratio_to_fastest identical_to_ref
+        52.092438             TRUE
+        63.618820             TRUE
+        16.551017             TRUE
+         1.277790             TRUE
+         1.000000             TRUE
+         3.721472             TRUE
+        58.877457             TRUE
+                                  task     n                 method   median_s
+ group mean, 1e+06 rows, 100000 groups 1e+06          dt_by_1thread 0.03673891
+ group mean, 1e+06 rows, 100000 groups 1e+06 collapse_fmean_1thread 0.01236876
+ ratio_to_fastest identical_to_ref
+         2.970299             TRUE
+         1.000000             TRUE
+                                  task     n                  method   median_s
+ group mean, 1e+06 rows, 100000 groups 1e+06 collapse_fmean_3threads 0.01108144
+ ratio_to_fastest identical_to_ref
+                1             TRUE

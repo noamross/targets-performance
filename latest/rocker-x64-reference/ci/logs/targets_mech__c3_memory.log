@@ -1,0 +1,101 @@
+running 300 1 transient worker
+running 300 1 transient main
+running 300 1 transient auto
+running 300 3 transient worker
+running 300 3 transient auto
+running 300 1 persistent worker
+running 300 1 persistent main
+running 300 1 persistent auto
+running 300 3 persistent worker
+running 300 3 persistent auto
+running 300 1 auto worker
+running 300 1 auto main
+running 300 1 auto auto
+running 300 3 auto worker
+running 300 3 auto auto
+running 100 1 transient worker
+running 100 1 transient main
+running 100 1 transient auto
+running 100 3 transient worker
+running 100 3 transient main
+running 100 3 transient auto
+running 100 1 persistent worker
+running 100 1 persistent main
+running 100 1 persistent auto
+running 100 3 persistent worker
+running 100 3 persistent main
+running 100 3 persistent auto
+running 100 1 auto worker
+running 100 1 auto main
+running 100 1 auto auto
+running 100 3 auto worker
+running 100 3 auto main
+running 100 3 auto auto
+                task   n                                             method
+1  big300_6consumers 300   serial memory=transient storage/retrieval=worker
+2  big300_6consumers 300     serial memory=transient storage/retrieval=main
+3  big300_6consumers 300     serial memory=transient storage/retrieval=auto
+4  big300_6consumers 300  nproc=3 memory=transient storage/retrieval=worker
+5  big300_6consumers 300    nproc=3 memory=transient storage/retrieval=auto
+6  big300_6consumers 300  serial memory=persistent storage/retrieval=worker
+7  big300_6consumers 300    serial memory=persistent storage/retrieval=main
+8  big300_6consumers 300    serial memory=persistent storage/retrieval=auto
+9  big300_6consumers 300 nproc=3 memory=persistent storage/retrieval=worker
+10 big300_6consumers 300   nproc=3 memory=persistent storage/retrieval=auto
+11 big300_6consumers 300        serial memory=auto storage/retrieval=worker
+12 big300_6consumers 300          serial memory=auto storage/retrieval=main
+13 big300_6consumers 300          serial memory=auto storage/retrieval=auto
+14 big300_6consumers 300       nproc=3 memory=auto storage/retrieval=worker
+15 big300_6consumers 300         nproc=3 memory=auto storage/retrieval=auto
+16 big100_6consumers 100   serial memory=transient storage/retrieval=worker
+17 big100_6consumers 100     serial memory=transient storage/retrieval=main
+18 big100_6consumers 100     serial memory=transient storage/retrieval=auto
+19 big100_6consumers 100  nproc=3 memory=transient storage/retrieval=worker
+20 big100_6consumers 100    nproc=3 memory=transient storage/retrieval=main
+21 big100_6consumers 100    nproc=3 memory=transient storage/retrieval=auto
+22 big100_6consumers 100  serial memory=persistent storage/retrieval=worker
+23 big100_6consumers 100    serial memory=persistent storage/retrieval=main
+24 big100_6consumers 100    serial memory=persistent storage/retrieval=auto
+25 big100_6consumers 100 nproc=3 memory=persistent storage/retrieval=worker
+26 big100_6consumers 100   nproc=3 memory=persistent storage/retrieval=main
+27 big100_6consumers 100   nproc=3 memory=persistent storage/retrieval=auto
+28 big100_6consumers 100        serial memory=auto storage/retrieval=worker
+29 big100_6consumers 100          serial memory=auto storage/retrieval=main
+30 big100_6consumers 100          serial memory=auto storage/retrieval=auto
+31 big100_6consumers 100       nproc=3 memory=auto storage/retrieval=worker
+32 big100_6consumers 100         nproc=3 memory=auto storage/retrieval=main
+33 big100_6consumers 100         nproc=3 memory=auto storage/retrieval=auto
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1   6.017      1.093     6  2.584    988.7227    678.2539
+2   6.026      1.093     6  2.619    982.7031    799.3633
+3   6.197      1.131     6  2.649    988.4180    920.8203
+4   6.802      1.488     6  4.153   2028.6172   2088.2383
+5   6.725      1.457     6  3.940   2163.6094   1105.7070
+6   6.454      1.418     6  2.610   1389.0195    656.4492
+7   3.734      1.376     0  0.000   1015.4258    849.8828
+8   6.362      1.423     6  2.492   1388.9258   1064.0117
+9   7.224      1.627     6  3.974   2198.0938   1734.6094
+10  6.604      1.417     6  3.772   2227.7266   1159.1367
+11  6.193      1.140     6  2.642    987.9688    740.7227
+12  6.047      1.093     6  2.590    980.3047    535.5586
+13  6.281      1.099     6  2.803    988.5195    739.3594
+14  6.364      1.367     6  3.606   2225.8594   1836.7852
+15  6.338      1.379     6  3.661   2226.4102   1499.9688
+16  2.693      0.766     6  0.812    533.3633    179.5742
+17  2.661      0.686     6  0.805    530.0430    338.6680
+18  2.862      0.787     6  0.883    533.2578    292.2656
+19  4.175      0.982     6  1.317   1238.7188    652.6836
+20  4.747      0.984     5  1.175   1059.0742    754.5586
+21  4.098      0.925     6  1.172   1268.5312    579.5625
+22  2.696      0.641     6  0.841    677.1953    292.0039
+23  1.771      0.650     0  0.000    514.3711    187.7148
+24  2.801      0.730     6  0.845    676.5078    302.1055
+25  4.223      1.027     6  1.338   1266.7461    924.3906
+26  4.496      1.177     0  0.000   1453.6680    975.2266
+27  3.996      0.924     6  1.174   1268.3203    319.4062
+28  2.692      0.757     6  0.828    533.2852    109.9766
+29  2.629      0.690     6  0.815    530.5977    132.5273
+30  2.700      0.775     6  0.808    532.8477    337.7969
+31  4.004      0.946     6  1.179   1239.7031    920.5703
+32  4.646      0.946     5  1.161   1140.6172    923.5234
+33  3.816      0.915     6  1.208   1201.1797    781.0664

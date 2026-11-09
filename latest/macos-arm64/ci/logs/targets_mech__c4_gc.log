@@ -1,0 +1,33 @@
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+skipping c4 nproc 3: est. peak 2400 MB > budget 2024 MB
+       task   n            method wall_s sum_meta_s loads load_s peak_rss_mb
+1 big300_gc 300  serial gc=0 rep1  9.447      1.161     6  4.646    1073.641
+2 big300_gc 300  serial gc=1 rep1  9.262      1.012     6  4.249    1054.453
+3 big300_gc 300 serial gc=10 rep1  8.141      0.938     6  4.112    1064.312
+4 big300_gc 300  serial gc=0 rep2  8.235      0.912     6  3.932    1063.000
+5 big300_gc 300  serial gc=1 rep2  8.900      0.895     6  4.050    1089.312
+6 big300_gc 300 serial gc=10 rep2  8.416      1.063     6  3.923    1061.281
+7 big300_gc 300  serial gc=0 rep3  9.545      1.060     6  4.708    1057.609
+8 big300_gc 300  serial gc=1 rep3  9.549      1.253     6  3.853    1056.359
+9 big300_gc 300 serial gc=10 rep3  8.770      1.055     6  4.290    1060.859
+  sys_peak_mb
+1    643.8438
+2    613.3906
+3    623.4688
+4    616.8438
+5    625.8125
+6    630.2500
+7    635.5469
+8    620.4844
+9    623.6250
+           cfg wall_s peak_rss_mb
+1  serial gc=0  9.447    1063.000
+2  serial gc=1  9.262    1056.359
+3 serial gc=10  8.416    1061.281

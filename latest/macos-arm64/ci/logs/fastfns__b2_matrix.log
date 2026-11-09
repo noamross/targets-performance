@@ -1,0 +1,145 @@
+
+##### 1000 100 x 10 
+matrix_rowSums n=1000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 1.72200e-06         1.000000             TRUE
+       base 3.03400e-06         1.761905             TRUE
+ collapse_t 7.56450e-06         4.392857            FALSE
+   kit_psum 5.49195e-05        31.892857             TRUE
+matrix_rowMeans n=1000
+     method  median_s ratio_to_fastest identical_to_ref
+      Rfast 1.968e-06         1.000000             TRUE
+ collapse_t 5.330e-06         2.708333            FALSE
+       base 9.799e-06         4.979167             TRUE
+matrix_colSums n=1000
+   method   median_s ratio_to_fastest identical_to_ref
+    Rfast 1.2300e-06         1.000000            FALSE
+ collapse 2.2960e-06         1.866667            FALSE
+     base 2.8905e-06         2.350000             TRUE
+matrix_colMeans n=1000
+   method  median_s ratio_to_fastest identical_to_ref
+    Rfast 2.091e-06         1.000000            FALSE
+ collapse 2.378e-06         1.137255            FALSE
+     base 9.758e-06         4.666667             TRUE
+matrix_colVar n=1000
+     method   median_s ratio_to_fastest identical_to_ref
+      Rfast 4.1615e-06         1.000000            FALSE
+   collapse 4.4690e-06         1.073892            FALSE
+ base_apply 6.3181e-05        15.182266             TRUE
+matrix_rowVar n=1000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 3.28000e-06          1.00000            FALSE
+ collapse_t 8.30250e-06          2.53125            FALSE
+ base_apply 5.00733e-04        152.66250             TRUE
+matrix_colMedian n=1000
+     method     median_s ratio_to_fastest identical_to_ref
+      Rfast 0.0000046535         1.000000             TRUE
+   collapse 0.0000052480         1.127753             TRUE
+ base_apply 0.0001844385        39.634361             TRUE
+matrix_rowMedian n=1000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 9.20450e-06         1.000000            FALSE
+ collapse_t 1.04550e-05         1.135857            FALSE
+ base_apply 1.56743e-03       170.289532             TRUE
+matrix_colMeans_NA n=1000
+             method    median_s ratio_to_fastest identical_to_ref
+ Rfast_nonNA_unsafe 2.21400e-06          1.00000            FALSE
+           collapse 2.48050e-06          1.12037            FALSE
+               base 1.13365e-05          5.12037             TRUE
+
+##### 1e+05 1000 x 100 
+matrix_rowSums n=100000
+     method     median_s ratio_to_fastest identical_to_ref
+      Rfast 0.0000251535         1.000000             TRUE
+       base 0.0000323490         1.286064             TRUE
+ collapse_t 0.0003055730        12.148329            FALSE
+   kit_psum 0.0015764910        62.674817             TRUE
+matrix_rowMeans n=100000
+     method    median_s ratio_to_fastest identical_to_ref
+       base 0.000020582         1.000000             TRUE
+      Rfast 0.000023862         1.159363             TRUE
+ collapse_t 0.000309591        15.041833            FALSE
+matrix_colSums n=100000
+   method    median_s ratio_to_fastest identical_to_ref
+ collapse 3.96265e-05         1.000000            FALSE
+    Rfast 4.55715e-05         1.150026            FALSE
+     base 9.93225e-05         2.506467             TRUE
+matrix_colMeans n=100000
+   method    median_s ratio_to_fastest identical_to_ref
+    Rfast 4.63095e-05         1.000000            FALSE
+ collapse 5.18855e-05         1.120407            FALSE
+     base 9.77030e-05         2.109783             TRUE
+matrix_colVar n=100000
+     method     median_s ratio_to_fastest identical_to_ref
+      Rfast 0.0002503460         1.000000            FALSE
+   collapse 0.0003948095         1.577055            FALSE
+ base_apply 0.0022578495         9.018916             TRUE
+matrix_rowVar n=100000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 0.000323162         1.000000            FALSE
+ collapse_t 0.000771907         2.388607            FALSE
+ base_apply 0.008096311        25.053413             TRUE
+matrix_colMedian n=100000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 0.001403697         1.000000             TRUE
+   collapse 0.001419912         1.011552             TRUE
+ base_apply 0.005994897         4.270793             TRUE
+matrix_rowMedian n=100000
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 0.001641046         1.000000            FALSE
+ collapse_t 0.002195509         1.337872            FALSE
+ base_apply 0.023990740        14.619180             TRUE
+matrix_colMeans_NA n=100000
+             method    median_s ratio_to_fastest identical_to_ref
+           collapse 4.60840e-05         1.000000            FALSE
+ Rfast_nonNA_unsafe 9.52635e-05         2.067171            FALSE
+               base 2.49444e-04         5.412811             TRUE
+
+##### 1e+07 1e+05 x 100 
+matrix_rowSums n=1e+07
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 0.003771672         1.000000             TRUE
+       base 0.004900566         1.299309             TRUE
+ collapse_t 0.042180677        11.183549            FALSE
+   kit_psum 0.263005406        69.731781             TRUE
+matrix_rowMeans n=1e+07
+     method    median_s ratio_to_fastest identical_to_ref
+      Rfast 0.003747482         1.000000             TRUE
+       base 0.005537501         1.477659             TRUE
+ collapse_t 0.075257304        20.082099            FALSE
+matrix_colSums n=1e+07
+   method    median_s ratio_to_fastest identical_to_ref
+ collapse 0.005403677         1.000000            FALSE
+    Rfast 0.007799799         1.443424            FALSE
+     base 0.013399415         2.479685             TRUE
+matrix_colMeans n=1e+07
+   method    median_s ratio_to_fastest identical_to_ref
+    Rfast 0.007455440         1.000000            FALSE
+ collapse 0.009033817         1.211708            FALSE
+     base 0.015159422         2.033337             TRUE
+matrix_colVar n=1e+07
+     method   median_s ratio_to_fastest identical_to_ref
+      Rfast 0.02202815         1.000000            FALSE
+   collapse 0.02944981         1.336917            FALSE
+ base_apply 0.14543235         6.602113             TRUE
+matrix_rowVar n=1e+07
+     method   median_s ratio_to_fastest identical_to_ref
+      Rfast 0.03169472         1.000000            FALSE
+ collapse_t 0.08367009         2.639875            FALSE
+ base_apply 0.96227861        30.360847             TRUE
+matrix_colMedian n=1e+07
+     method  median_s ratio_to_fastest identical_to_ref
+   collapse 0.1172556         1.000000             TRUE
+      Rfast 0.1234222         1.052591             TRUE
+ base_apply 0.3785614         3.228516             TRUE
+matrix_rowMedian n=1e+07
+     method  median_s ratio_to_fastest identical_to_ref
+      Rfast 0.1662403         1.000000            FALSE
+ collapse_t 0.2241245         1.348196            FALSE
+ base_apply 3.4537938        20.775917             TRUE
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+3: Some expressions had a GC in every iteration; so filtering is disabled. 
+4: Some expressions had a GC in every iteration; so filtering is disabled. 
+5: Some expressions had a GC in every iteration; so filtering is disabled. 

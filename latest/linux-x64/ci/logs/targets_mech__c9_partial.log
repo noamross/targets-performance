@@ -1,0 +1,88 @@
+a: tar_read(big) in command (loads all) FAILED
+a: path string only (undeclared) FAILED
+b: normal retrieval, then subset 2 cols (nanoparquet format)
+b: retrieval none + nanoparquet col_select 2 cols
+b: retrieval none + arrow open_dataset select 2 cols
+b: retrieval none + duckdb sum(x1),sum(x2)
+b: normal retrieval, then filter x1 < 0.01 (1% rows)
+b: retrieval none + arrow filter x1 < 0.01
+b: retrieval none + duckdb filter x1 < 0.01
+b: qs2 format big: normal retrieval then subset
+b: qs2 format big: retrieval none + qs2::qs_read whole then subset
+c: nproc=3 normal retrieval=worker
+c: nproc=3 normal retrieval=main (big shipped by main)
+c: nproc=3 retrieval=none storage=worker, nanoparquet col_select
+c: nproc=3 retrieval=none storage=main, nanoparquet col_select
+c: nproc=3 qs2 big, retrieval=none, qs_read whole then subset
+                           task   n
+1                  a_dependency   5
+2                  a_dependency   5
+3                  a_dependency   5
+4                  a_dependency   5
+5                  a_dependency   5
+6                b_serial_300MB 300
+7                b_serial_300MB 300
+8                b_serial_300MB 300
+9                b_serial_300MB 300
+10               b_serial_300MB 300
+11               b_serial_300MB 300
+12               b_serial_300MB 300
+13               b_serial_300MB 300
+14               b_serial_300MB 300
+15               c_nproc3_300MB 300
+16               c_nproc3_300MB 300
+17               c_nproc3_300MB 300
+18               c_nproc3_300MB 300
+19               c_nproc3_300MB 300
+20          d_file_target_300MB 300
+21 d_file_target_300MB_uptodate 300
+22 d_file_target_300MB_uptodate 300
+23                  t_store_arg   5
+                                                               method wall_s
+1                                path via tar_path_target(big) symbol  0.741
+2                                                      if (FALSE) big  0.773
+3                                        tar_target_raw(deps = 'big')  0.811
+4                                tar_read(big) in command (loads all)     NA
+5                                       path string only (undeclared)     NA
+6           normal retrieval, then subset 2 cols (nanoparquet format)  1.582
+7                      retrieval none + nanoparquet col_select 2 cols  1.314
+8                   retrieval none + arrow open_dataset select 2 cols  1.444
+9                             retrieval none + duckdb sum(x1),sum(x2)  0.945
+10                  normal retrieval, then filter x1 < 0.01 (1% rows)  1.617
+11                            retrieval none + arrow filter x1 < 0.01  1.069
+12                           retrieval none + duckdb filter x1 < 0.01  0.939
+13                       qs2 format big: normal retrieval then subset  1.801
+14    qs2 format big: retrieval none + qs2::qs_read whole then subset  1.775
+15                                    nproc=3 normal retrieval=worker  3.436
+16                nproc=3 normal retrieval=main (big shipped by main)  5.529
+17      nproc=3 retrieval=none storage=worker, nanoparquet col_select  3.118
+18        nproc=3 retrieval=none storage=main, nanoparquet col_select  3.014
+19         nproc=3 qs2 big, retrieval=none, qs_read whole then subset  3.532
+20  format = file parquet target; consumer reads path with col_select  1.302
+21                     format = file: up-to-date make (rehashes file)  0.700
+22         format parquet (nanoparquet) store target: up-to-date make  0.741
+23 tar_make(store = 'alt_store'): tar_path_target(big) inside command  0.814
+   sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1       0.017     0      0    309.8320     1.28125
+2       0.017     0      0    302.0898   163.31250
+3       0.016     0      0    271.7422   188.54297
+4          NA    NA     NA          NA          NA
+5          NA    NA     NA          NA          NA
+6       1.017     0      0    584.0781   914.06641
+7       1.458     0      0    293.0820   835.87500
+8       1.548     0      0    585.7266   694.46875
+9       1.079     0      0    299.9414   788.92969
+10      1.005     0      0    569.7461   817.32812
+11      1.190     0      0    515.2305   836.82812
+12      1.048     0      0    316.8906   773.52734
+13      1.008     0      0    577.7070   901.90625
+14      1.958     0      0    547.8477   713.80859
+15      1.432     0      0   1747.3203  1041.88672
+16      1.536     0      0   3466.4531  2987.69922
+17      3.296     0      0    847.9922   425.85156
+18      3.064     0      0    841.8750   535.99219
+19      4.574     0      0   1394.0664   803.02734
+20      2.529     0      0    375.6094   746.65625
+21      2.281     0      0    940.4844   598.09375
+22      0.865     0      0    983.3281   834.77734
+23      0.011     0      0    302.0781    31.02734

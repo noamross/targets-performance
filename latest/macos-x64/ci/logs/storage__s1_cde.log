@@ -1,0 +1,80 @@
+c list: 168.6 Mb
+    method size_mb write_s read_s identical equal_ignoring_attrs
+  rds_gzip    11.3    2.02   0.89      TRUE                 TRUE
+  rds_none    33.1    0.72   0.62      TRUE                 TRUE
+    qs2_t1    10.4    0.48   0.29      TRUE                 TRUE
+    qs2_t4    10.4    0.34   0.26      TRUE                 TRUE
+ qs2_t1_l1    10.5    0.42   0.28      TRUE                 TRUE
+ qs2_t4_l1    10.5    0.31   0.25      TRUE                 TRUE
+     qd_t1     9.0    0.28   0.30      TRUE                 TRUE
+     qd_t4     9.0    0.20   0.35      TRUE                 TRUE
+WRITE FAIL c_listcol np_zstd: Cannot write a list as a Parquet BYTE_ARRAY element when writing a list column of RAW vectors.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T//Rtmp6lC9nm/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+duckdb keeps downloaded extensions and secrets in a temporary directory:
+ℹ /var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T//Rtmp6lC9nm/duckdb
+This is removed when the R session ends.
+• Extensions are re-downloaded each session.
+• Secrets are lost.
+ℹ Run duckdb(shared_home = TRUE) (or create ~/.duckdb) to keep them (suitable for most users).
+ℹ Run duckdb(shared_home = FALSE) to accept the temporary directory (and silence this message).
+ℹ See ?duckdb_storage for details and alternatives.
+     method size_mb write_s read_s identical equal_ignoring_attrs
+   rds_gzip    11.3    1.92   1.23      TRUE                 TRUE
+   rds_none    33.1    0.69   1.07      TRUE                 TRUE
+     qs2_t1    10.4    0.46   0.53      TRUE                 TRUE
+     qs2_t4    10.4    0.29   0.51      TRUE                 TRUE
+  qs2_t1_l1    10.5    0.42   0.44      TRUE                 TRUE
+  qs2_t4_l1    10.5    0.30   0.36      TRUE                 TRUE
+      qd_t1     9.2    0.26   0.69      TRUE                 TRUE
+      qd_t4     9.2    0.20   0.50      TRUE                 TRUE
+ arrow_zstd     9.4    0.65   4.40     FALSE                 TRUE
+  duck_zstd     9.0    4.03   1.53     FALSE                 TRUE
+Warning message:
+Some expressions had a GC in every iteration; so filtering is disabled. 
+          used  (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells 3882633 207.4   12733270 680.1         NA 15916587 850.1
+Vcells 6544104  50.0   28869379 220.3      16384 31830833 242.9
+        method size_mb write_s read_s identical equal_ignoring_attrs
+      rds_gzip   183.1    9.10   1.09      TRUE                 TRUE
+      rds_none   190.7    0.33   0.50      TRUE                 TRUE
+        qs2_t1   168.1    0.84   0.43      TRUE                 TRUE
+        qs2_t4   168.1    2.08   0.27      TRUE                 TRUE
+     qs2_t1_l1   168.2    0.77   0.37      TRUE                 TRUE
+     qs2_t4_l1   168.2    0.82   0.22      TRUE                 TRUE
+         qd_t1   168.1    1.36   0.44      TRUE                 TRUE
+         qd_t4   168.1    0.53   0.25      TRUE                 TRUE
+    np_zstd_df   191.5    6.44   0.82     FALSE                 TRUE
+ arrow_zstd_df   222.4    5.17   1.57     FALSE                 TRUE
+          used (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
+Ncells 1222862 65.4    4172439  222.9         NA  15916587  850.1
+Vcells 2090128 16.0  135652568 1035.0      16384 169564836 1293.7
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+function (x, p) 
+qs2::qd_save(x, p, nthreads = 1)
+<bytecode: 0x7fc1a04a0940>
+Objects of type language are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type closure are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type environment are not supported in qdata format; further warnings for this type are suppressed for the session
+WRITE FAIL e_model np_zstd: is.data.frame(df) is not TRUE
+WRITE FAIL e_model arrow_zstd: Object must be coercible to an Arrow Table using `as_arrow_table()`
+Caused by error in `as_arrow_table()`:
+! No method for `as_arrow_table()` for object of class list
+   method size_mb write_s read_s identical equal_ignoring_attrs
+ rds_gzip    94.7   10.49   2.98      TRUE                 TRUE
+ rds_none   114.4    2.25   2.54      TRUE                 TRUE
+   qs2_t1    86.7    1.22   1.14      TRUE                 TRUE
+   qs2_t4    86.7    0.84   0.98      TRUE                 TRUE
+    qd_t1    33.8    0.44   0.20     FALSE                FALSE
+qd_t1: classes = fit=lm, fn=NULL, e=NULL; fit$terms env: environment
+zap ERR: there is no package called ‘zap’
+zap READ ERR: there is no package called ‘zap’
+qs2_t1: classes = fit=lm, fn=function, e=environment; fit$terms env: environment

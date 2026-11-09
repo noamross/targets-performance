@@ -1,0 +1,22 @@
+! Project is not synced. Run: rig proj sync
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:base':
+
+    %notin%
+
+         task     n          method  median_s ratio_to_fastest identical_to_ref
+ pairwise min 1e+05 fifelse_1thread 0.0006477         1.296956             TRUE
+ pairwise min 1e+05 kit_iif_1thread 0.0004994         1.000000             TRUE
+         task     n           method  median_s ratio_to_fastest
+ pairwise min 1e+05 kit_iif_4threads 0.0003429                1
+ identical_to_ref
+             TRUE
+         task     n          method  median_s ratio_to_fastest identical_to_ref
+ pairwise min 1e+06 fifelse_1thread 0.0071385          1.32452             TRUE
+ pairwise min 1e+06 kit_iif_1thread 0.0053895          1.00000             TRUE
+         task     n           method  median_s ratio_to_fastest
+ pairwise min 1e+06 kit_iif_4threads 0.0032675                1
+ identical_to_ref
+             TRUE

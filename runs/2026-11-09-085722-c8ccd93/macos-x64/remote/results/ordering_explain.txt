@@ -1,0 +1,64 @@
+EXPLAIN of bad-order pipelines, duckdb 2.0.0, synthetic 2e6-row parquet. dbplyr: DBI EXPLAIN of sql_render; duckplyr: dplyr::explain().
+
+=== a1 dbplyr SQL ===
+<SQL> SELECT id, REGEXP_REPLACE(txt, '[0-9]+', '#', 'g') AS "out"
+FROM (SELECT * FROM read_parquet('/var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T/targets-performance-bench/b6/fact_syn.parquet')) AS q01
+WHERE (x > 0.95)
+
+=== a1 dbplyr EXPLAIN ===
+╭─ Projection ───────────╮
+│ Projections: id, out   │
+│ ~400,000 rows          │
+╰────────────┬───────────╯
+╭─ Read Parquet ─────────╮
+│ Function: READ_PARQUET │
+│ Projections: id, txt   │
+│ Filters: x > 0.95      │
+│ ~400,000 rows          │
+╰────────────────────────╯
+ 
+
+=== a2a dbplyr EXPLAIN ===
+╭─ Hash Join ────────────╮
+│ Join Type: INNER       │
+│ Conditions: g = g      │
+│ ~400,000 rows          │
+╰────────────┬───────────╯
+             ├─────────────────────────╮
+╭─ Read Parquet ─────────╮  ╭─ R Dataframe Scan ─╮
+│ Function: READ_PARQUET │  │ data.frame         │
+│ Projections: id, g, x  │  │ Projections: g,    │
+│ Filters: x > 0.99      │  │              cat   │
+│ ~400,000 rows          │  │ ~1,000 rows        │
+╰────────────────────────╯  ╰────────────────────╯
+ 
+
+=== a1 duckplyr explain ===
+╭─ Projection ───────────╮
+│ Projections: id, out   │
+│ ~400,000 rows          │
+╰────────────┬───────────╯
+╭─ Read Parquet ─────────╮
+│ Function: READ_PARQUET │
+│ Projections: id, txt   │
+│ Filters: x > 0.95      │
+│ ~400,000 rows          │
+╰────────────────────────╯
+
+=== a2a duckplyr explain ===
+╭─ Projection ─────────────────────────────╮
+│ Projections: id, g, x, cat               │
+│ ~400,000 rows                            │
+╰─────────────────────┬────────────────────╯
+╭─ Hash Join ─────────┴────────────────────╮
+│ Join Type: INNER                         │
+│ Conditions: g_x IS NOT DISTINCT FROM g_y │
+│ ~400,000 rows                            │
+╰─────────────────────┬────────────────────╯
+                      ├──────────────────────────────────╮
+╭─ Read Parquet ──────┴────────────────────╮  ╭─ R Dataframe Scan ─╮
+│ Function: READ_PARQUET                   │  │ data.frame         │
+│ Projections: id, g, x                    │  │ Projections: g,    │
+│ Filters: x > 0.99                        │  │              cat   │
+│ ~400,000 rows                            │  │ ~1,000 rows        │
+╰──────────────────────────────────────────╯  ╰────────────────────╯

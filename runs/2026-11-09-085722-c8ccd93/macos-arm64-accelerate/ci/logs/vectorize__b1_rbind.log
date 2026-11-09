@@ -1,0 +1,78 @@
+                    task    n           method     median_s ratio_to_fastest
+ rbind 100 dfs x 10 rows 1000    do_call_rbind 0.0026144880        70.113249
+ rbind 100 dfs x 10 rows 1000       list_rbind 0.0003289020         8.820231
+ rbind 100 dfs x 10 rows 1000        rbindlist 0.0002628510         7.048928
+ rbind 100 dfs x 10 rows 1000 collapse_rowbind 0.0000426605         1.144035
+ rbind 100 dfs x 10 rows 1000   collapse_rbind 0.0000372895         1.000000
+ rbind 100 dfs x 10 rows 1000     Reduce_rbind 0.0102530545       274.958218
+ rbind 100 dfs x 10 rows 1000        vec_rbind 0.0003283280         8.804838
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                     task     n           method     median_s ratio_to_fastest
+ rbind 1000 dfs x 10 rows 10000    do_call_rbind 0.0238585150        63.001678
+ rbind 1000 dfs x 10 rows 10000       list_rbind 0.0034043940         8.989769
+ rbind 1000 dfs x 10 rows 10000        rbindlist 0.0008575970         2.264602
+ rbind 1000 dfs x 10 rows 10000 collapse_rowbind 0.0004501185         1.188600
+ rbind 1000 dfs x 10 rows 10000   collapse_rbind 0.0003786965         1.000000
+ rbind 1000 dfs x 10 rows 10000     Reduce_rbind 0.2854105530       753.665674
+ rbind 1000 dfs x 10 rows 10000        vec_rbind 0.0099351815        26.235208
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                      task     n           method   median_s ratio_to_fastest
+ rbind 10000 dfs x 10 rows 1e+05    do_call_rbind 0.27404826        18.404561
+ rbind 10000 dfs x 10 rows 1e+05       list_rbind 0.04709783         3.163001
+ rbind 10000 dfs x 10 rows 1e+05        rbindlist 0.02589562         1.739101
+ rbind 10000 dfs x 10 rows 1e+05 collapse_rowbind 0.02197760         1.475974
+ rbind 10000 dfs x 10 rows 1e+05   collapse_rbind 0.01489024         1.000000
+ rbind 10000 dfs x 10 rows 1e+05        vec_rbind 1.29304246        86.838276
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                      task     n           method     median_s ratio_to_fastest
+ rbind 100 dfs x 1000 rows 1e+05    do_call_rbind 0.0164828200        37.138106
+ rbind 100 dfs x 1000 rows 1e+05       list_rbind 0.0014731710         3.319261
+ rbind 100 dfs x 1000 rows 1e+05        rbindlist 0.0018037335         4.064065
+ rbind 100 dfs x 1000 rows 1e+05 collapse_rowbind 0.0004438250         1.000000
+ rbind 100 dfs x 1000 rows 1e+05   collapse_rbind 0.0006408505         1.443926
+ rbind 100 dfs x 1000 rows 1e+05     Reduce_rbind 0.2461040580       554.506974
+ rbind 100 dfs x 1000 rows 1e+05        vec_rbind 0.0021171990         4.770346
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                       task     n           method    median_s ratio_to_fastest
+ rbind 10 dfs x 100000 rows 1e+06    do_call_rbind 0.079085064        29.396406
+ rbind 10 dfs x 100000 rows 1e+06       list_rbind 0.009885920         3.674657
+ rbind 10 dfs x 100000 rows 1e+06        rbindlist 0.011468049         4.262744
+ rbind 10 dfs x 100000 rows 1e+06 collapse_rowbind 0.002717296         1.010036
+ rbind 10 dfs x 100000 rows 1e+06   collapse_rbind 0.002690297         1.000000
+ rbind 10 dfs x 100000 rows 1e+06     Reduce_rbind 0.190551805        70.829282
+ rbind 10 dfs x 100000 rows 1e+06        vec_rbind 0.018073292         6.717954
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE

@@ -1,0 +1,20 @@
+! Project is not synced. Run: rig proj sync
+default threads: data.table 2 collapse 1 
+                     task     n                   method   median_s
+ rbind 1000 dfs x 10 rows 10000        rbindlist_1thread 0.00070555
+ rbind 1000 dfs x 10 rows 10000 collapse_rowbind_1thread 0.00039605
+ ratio_to_fastest identical_to_ref
+         1.781467             TRUE
+         1.000000             TRUE
+                      task     n                   method   median_s
+ rbind 100 dfs x 1000 rows 1e+05        rbindlist_1thread 0.00112665
+ rbind 100 dfs x 1000 rows 1e+05 collapse_rowbind_1thread 0.00013200
+ ratio_to_fastest identical_to_ref
+         8.535227             TRUE
+         1.000000             TRUE
+                     task     n                   method   median_s
+ rbind 5 dfs x 1e+06 rows 5e+06        rbindlist_1thread 0.08193470
+ rbind 5 dfs x 1e+06 rows 5e+06 collapse_rowbind_1thread 0.01999295
+ ratio_to_fastest identical_to_ref
+          4.09818             TRUE
+          1.00000             TRUE

@@ -1,0 +1,143 @@
+
+##### 1e+05 few int 
+grouped_sum_int_few n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+    collapse_GRP 9.426504e-05         1.000000             TRUE
+     Rfast_group 2.637961e-04         2.798451             TRUE
+        collapse 3.684416e-04         3.908571             TRUE
+ collapse_nosort 4.397421e-04         4.664955             TRUE
+     base_rowsum 1.186630e-03        12.588232             TRUE
+              DT 1.707203e-03        18.110666             TRUE
+           dplyr 1.997453e-03        21.189755            FALSE
+     base_tapply 2.843408e-03        30.163973            FALSE
+  base_aggregate 2.279304e-02       241.797413            FALSE
+grouped_mean_int_few n=100000
+       method     median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 9.216211e-05         1.000000            FALSE
+     collapse 3.678955e-04         3.991831            FALSE
+  Rfast_group 4.679696e-04         5.077679            FALSE
+           DT 1.645662e-03        17.856168            FALSE
+        dplyr 2.282706e-03        24.768379             TRUE
+  base_tapply 3.065768e-03        33.264951             TRUE
+grouped_median_int_few n=100000
+       method    median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.001219809         1.000000             TRUE
+  Rfast_group 0.001477431         1.211199             TRUE
+     collapse 0.001542638         1.264656             TRUE
+           DT 0.002659694         2.180419             TRUE
+        dplyr 0.003811341         3.124540             TRUE
+  base_tapply 0.004393569         3.601851             TRUE
+grouped_quantile90_int_few n=100000
+            method     median_s ratio_to_fastest identical_to_ref
+ collapse_fnth_GRP 0.0009640641         1.000000            FALSE
+     collapse_fnth 0.0013037230         1.352320            FALSE
+                DT 0.0031487985         3.266171             TRUE
+             dplyr 0.0041005401         4.253389             TRUE
+       base_tapply 0.0047217010         4.897704             TRUE
+
+##### 1e+05 few chr 
+grouped_sum_chr_few n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+    collapse_GRP 9.366404e-05         1.000000             TRUE
+        collapse 3.015220e-04         3.219187             TRUE
+ collapse_nosort 3.621725e-04         3.866719             TRUE
+     base_rowsum 1.506783e-03        16.087103             TRUE
+              DT 1.963722e-03        20.965591             TRUE
+           dplyr 2.088827e-03        22.301270            FALSE
+     base_tapply 3.654483e-03        39.016922            FALSE
+  base_aggregate 2.370359e-02       253.070361            FALSE
+grouped_mean_chr_few n=100000
+       method     median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 9.129057e-05         1.000000            FALSE
+     collapse 3.023736e-04         3.312211            FALSE
+           DT 1.994748e-03        21.850539            FALSE
+        dplyr 2.347291e-03        25.712301             TRUE
+  base_tapply 3.908595e-03        42.814884             TRUE
+grouped_median_chr_few n=100000
+       method    median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.001214436         1.000000             TRUE
+     collapse 0.001643322         1.353156             TRUE
+           DT 0.002964845         2.441335             TRUE
+        dplyr 0.004029153         3.317715             TRUE
+  base_tapply 0.005200480         4.282218             TRUE
+grouped_quantile90_chr_few n=100000
+            method     median_s ratio_to_fastest identical_to_ref
+ collapse_fnth_GRP 0.0009638991         1.000000            FALSE
+     collapse_fnth 0.0014145021         1.467479            FALSE
+                DT 0.0033895851         3.516535             TRUE
+             dplyr 0.0042255850         4.383846             TRUE
+       base_tapply 0.0054880669         5.693612             TRUE
+
+##### 1e+05 many int 
+grouped_sum_int_many n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+    collapse_GRP 0.0001191965         1.000000             TRUE
+        collapse 0.0007707931         6.466572             TRUE
+ collapse_nosort 0.0008529956         7.156211             TRUE
+     Rfast_group 0.0024413121        20.481401            FALSE
+              DT 0.0028788510        24.152135             TRUE
+     base_rowsum 0.0048999995        41.108571             TRUE
+     base_tapply 0.0119550551       100.296996            FALSE
+           dplyr 0.0310039221       260.107563            FALSE
+  base_aggregate 0.0734106675       615.879171            FALSE
+grouped_mean_int_many n=100000
+       method     median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.0001267386         1.000000            FALSE
+     collapse 0.0007558461         5.963821            FALSE
+           DT 0.0029120056        22.976476            FALSE
+  Rfast_group 0.0053023466        41.836883            FALSE
+  base_tapply 0.0433717665       342.214431             TRUE
+        dplyr 0.0741765682       585.272266             TRUE
+grouped_median_int_many n=100000
+       method    median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.001354577         1.000000             TRUE
+     collapse 0.001972487         1.456164             TRUE
+           DT 0.004163605         3.073731             TRUE
+  Rfast_group 0.006823097         5.037068            FALSE
+  base_tapply 0.214057926       158.025652             TRUE
+        dplyr 0.276362489       204.021236             TRUE
+grouped_quantile90_int_many n=100000
+            method    median_s ratio_to_fastest identical_to_ref
+ collapse_fnth_GRP 0.001130867         1.000000            FALSE
+     collapse_fnth 0.001727888         1.527932            FALSE
+                DT 0.798270338       705.892259             TRUE
+       base_tapply 0.924107375       817.167081             TRUE
+             dplyr 1.069306089       945.562994             TRUE
+
+##### 1e+05 many chr 
+grouped_sum_chr_many n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+    collapse_GRP 0.0001074796          1.00000             TRUE
+        collapse 0.0017793661         16.55539             TRUE
+ collapse_nosort 0.0018030656         16.77589             TRUE
+              DT 0.0041863900         38.95056             TRUE
+     base_rowsum 0.0269098486        250.37175             TRUE
+           dplyr 0.0307767210        286.34949            FALSE
+     base_tapply 0.0342871951        319.01127            FALSE
+  base_aggregate 0.0987577066        918.85094            FALSE
+grouped_mean_chr_many n=100000
+       method     median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.0001360071          1.00000            FALSE
+     collapse 0.0016441125         12.08843            FALSE
+           DT 0.0040654176         29.89122            FALSE
+        dplyr 0.0737113171        541.96673             TRUE
+  base_tapply 0.0739650036        543.83197             TRUE
+grouped_median_chr_many n=100000
+       method    median_s ratio_to_fastest identical_to_ref
+ collapse_GRP 0.001368725         1.000000             TRUE
+     collapse 0.003158078         2.307314             TRUE
+           DT 0.005183421         3.787044             TRUE
+  base_tapply 0.239509136       174.987095             TRUE
+        dplyr 0.272184574       198.860005             TRUE
+grouped_quantile90_chr_many n=100000
+            method    median_s ratio_to_fastest identical_to_ref
+ collapse_fnth_GRP 0.001151358         1.000000            FALSE
+     collapse_fnth 0.002868234         2.491176            FALSE
+                DT 0.828941243       719.968532             TRUE
+       base_tapply 0.946185376       821.799738             TRUE
+             dplyr 1.043074452       905.951765             TRUE
+skipping grouped n=1e+07 few int: needs ~3815 MB > free budget 3039 MB
+skipping grouped n=1e+07 few chr: needs ~7629 MB > free budget 3039 MB
+skipping grouped n=1e+07 many int: needs ~3815 MB > free budget 3039 MB
+skipping grouped n=1e+07 many chr: needs ~7629 MB > free budget 3039 MB
+There were 50 or more warnings (use warnings() to see the first 50)

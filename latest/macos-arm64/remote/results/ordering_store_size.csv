@@ -1,0 +1,6 @@
+"object","rows","cols","ram_mb","qs2_mb","parquet_mb","as_of","notes"
+"full",2000000,6,224.122467041016,45.883547782898,68.5765924453735,"2026-11-09","synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default"
+"3 cols",2000000,3,30.5185165405273,13.1558675765991,23.2170963287354,"2026-11-09","synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default"
+"filtered 5% rows, all cols",100095,6,12.6117248535156,2.50690174102783,3.3877534866333,"2026-11-09","synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default"
+"filtered 5% + 3 cols",100095,3,1.91010284423828,0.921001434326172,1.11900520324707,"2026-11-09","synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default"
+"filtered 1% + 3 cols",20038,3,0.383125305175781,0.175380706787109,0.218435287475586,"2026-11-09","synthetic 2e6-row table; qs2 nthreads=1 default level; nanoparquet default"

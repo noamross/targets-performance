@@ -1,0 +1,16 @@
+! Project is not synced. Run: rig proj sync
+new connection + INSTALL/LOAD httpfs + secret, SELECT 1        2.56 s total,   128 ms/call
+memoized connection, SELECT 1                                  0.15 s total,     8 ms/call
+new connection each call, remote count(*)                     16.80 s total,   840 ms/call
+memoized connection, remote count(*)                           6.88 s total,   344 ms/call
+  threads memory_limit max_memory
+1       4     12.5 GiB   12.5 GiB
+RAM 16.0 GiB; default memory_limit per process = 80%; N workers can claim N x 12.5 GiB
+  threads memory_limit
+1       2      1.8 GiB
+[1] 0
+  threads
+1       1
+threads  1  remote 3-col cold  3.94 s  GET 64  47.3 MB
+threads  2  remote 3-col cold  2.39 s  GET 72  45.5 MB
+threads  4  remote 3-col cold  2.40 s  GET 88  40.1 MB

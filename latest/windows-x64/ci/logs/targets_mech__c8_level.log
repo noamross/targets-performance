@@ -1,0 +1,27 @@
+! Project is not synced. Run: rig proj sync
+       task n                                                            method
+1  dt_6jobs 4                  1 target, 6 jobs sequential, DT threads = 4 rep1
+2  dt_6jobs 1                  1 target, 6 jobs sequential, DT threads = 1 rep1
+3  dt_6jobs 1                               6 branches x 1 thread, NPROC=4 rep1
+4  dt_6jobs 2                 6 branches x 2 threads, NPROC=4 (=8 threads) rep1
+5  dt_6jobs 4 6 branches x 4 threads, NPROC=4 (16 threads, oversubscribed) rep1
+6  dt_6jobs 8                 6 branches x 8 threads, NPROC=4 (32 threads) rep1
+7  dt_6jobs 4                  1 target, 6 jobs sequential, DT threads = 4 rep2
+8  dt_6jobs 1                  1 target, 6 jobs sequential, DT threads = 1 rep2
+9  dt_6jobs 1                               6 branches x 1 thread, NPROC=4 rep2
+10 dt_6jobs 2                 6 branches x 2 threads, NPROC=4 (=8 threads) rep2
+11 dt_6jobs 4 6 branches x 4 threads, NPROC=4 (16 threads, oversubscribed) rep2
+12 dt_6jobs 8                 6 branches x 8 threads, NPROC=4 (32 threads) rep2
+   wall_s sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1    8.47      7.734     0      0    613.7930    558.7031
+2   12.52     11.719     0      0    576.5391    543.0859
+3    9.78     21.500     0      0   1764.4492   1648.2227
+4    9.43     20.266     0      0   1782.9492   1696.8164
+5    9.39     19.579     0      0   1861.1484   1767.4258
+6    9.23     19.954     0      0   1755.7031   1677.1836
+7    8.56      7.781     0      0    574.4805    545.5430
+8   12.61     11.844     0      0    565.5469    521.8516
+9    9.90     21.234     0      0   1747.4844   1644.6055
+10   9.33     20.109     0      0   1784.0000   1694.7227
+11   9.23     20.232     0      0   1850.3516   1783.5391
+12   9.34     19.580     0      0   1744.5703   1653.7070

@@ -1,0 +1,49 @@
+skipping sav_qs4 variants: fewer than 4 cores
+         name seconds     bytes
+1        base   2.768  52725752
+2        noop   0.000        48
+3      sav_qs   0.000  52725752
+4     sav_rds   0.000  61305783
+5      sav_np   0.000  90195339
+6  sav_fmt_np   0.001 181576291
+7        d_qs   0.000        51
+8       d_rds   0.000        51
+9        d_np   0.000        51
+10   d_fmt_np   0.000        51
+                                                                                                                                                                                                                                                                                      format
+1                                                                                                                                                                                                                                                                                         qs
+2                                                                                                                                                                                                                                                                                        rds
+3                                                                                                                                                                                                                                                                                         qs
+4                                                                                                                                                                                                                                                                                        rds
+5  format_custom&read=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9yZWFkKHBhdGgsICJ0YmwiKQ&write=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF93cml0ZShvYmplY3QsIHBhdGgsICJzbmFwcHkiKQ&marshal=&unmarshal=&convert=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9jb252ZXJ0KG9iamVjdCwgInRibCIp&copy=&repository=
+6     format_custom&read=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9yZWFkKHBhdGgsICJ0YmwiKQ&write=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF93cml0ZShvYmplY3QsIHBhdGgsICJ6c3RkIik&marshal=&unmarshal=&convert=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9jb252ZXJ0KG9iamVjdCwgInRibCIp&copy=&repository=
+7                                                                                                                                                                                                                                                                                        rds
+8                                                                                                                                                                                                                                                                                        rds
+9                                                                                                                                                                                                                                                                                        rds
+10                                                                                                                                                                                                                                                                                       rds
+      base       noop     sav_qs    sav_rds     sav_np sav_fmt_np       d_qs 
+     4.384      0.062      1.558      6.317      1.670      1.280      0.542 
+     d_rds       d_np   d_fmt_np 
+     0.955      0.782      0.644 
+    qs    rds     np fmt_np 
+ 0.556  0.985  0.576  0.523 
+    topic            task     n     method seconds_meta bytes_meta
+1 storage b_targets_store 2e+05       noop        0.000         48
+2 storage b_targets_store 2e+05     sav_qs        0.000   52725752
+3 storage b_targets_store 2e+05    sav_rds        0.000   61305783
+4 storage b_targets_store 2e+05     sav_np        0.000   90195339
+5 storage b_targets_store 2e+05 sav_fmt_np        0.001  181576291
+6 storage b_targets_store 2e+05       d_qs        0.000         51
+7 storage b_targets_store 2e+05      d_rds        0.000         51
+8 storage b_targets_store 2e+05       d_np        0.000         51
+9 storage b_targets_store 2e+05   d_fmt_np        0.000         51
+  wall_tar_make_s tar_read_s
+1           0.062         NA
+2           1.558      0.556
+3           6.317      0.985
+4           1.670      0.576
+5           1.280      0.523
+6           0.542         NA
+7           0.955         NA
+8           0.782         NA
+9           0.644         NA

@@ -1,0 +1,15 @@
+new connection + INSTALL/LOAD httpfs + secret, SELECT 1        1.03 s total,    52 ms/call
+memoized connection, SELECT 1                                  0.06 s total,     3 ms/call
+new connection each call, remote count(*)                     16.02 s total,   801 ms/call
+memoized connection, remote count(*)                           7.01 s total,   351 ms/call
+  threads memory_limit max_memory
+1       4     12.4 GiB   12.4 GiB
+RAM 15.6 GiB; default memory_limit per process = 80%; N workers can claim N x 12.4 GiB
+  threads memory_limit
+1       2      1.8 GiB
+[1] 0
+  threads
+1       1
+threads  1  remote 3-col cold  3.96 s  GET 64  47.3 MB
+threads  2  remote 3-col cold  2.60 s  GET 72  45.5 MB
+threads  4  remote 3-col cold  2.10 s  GET 88  40.1 MB

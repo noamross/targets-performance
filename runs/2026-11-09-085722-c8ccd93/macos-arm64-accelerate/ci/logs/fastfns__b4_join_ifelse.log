@@ -1,0 +1,136 @@
+
+## join 1000 
+join_left_m1 n=1000
+     method     median_s ratio_to_fastest identical_to_ref
+   collapse 0.0000192700          1.00000             TRUE
+         DT 0.0004283680         22.22979            FALSE
+ base_merge 0.0005864845         30.43511             TRUE
+      dplyr 0.0008965880         46.52766             TRUE
+                   task    n dplyr            DT_default DT_allow_cartesian
+1 join_dupkeys_rowcount 1000  1922 ERROR allow.cartesian               1922
+  collapse_default collapse_multiple_TRUE x_rows
+1             1000                   1922   1000
+join_left_dupkeys n=1000
+                 method     median_s ratio_to_fastest identical_to_ref
+ collapse_multiple_TRUE 0.0000391960          1.00000             TRUE
+                     DT 0.0006930435         17.68149            FALSE
+                  dplyr 0.0082446490        210.34414             TRUE
+
+## join 1e+05 
+join_left_m1 n=100000
+     method     median_s ratio_to_fastest identical_to_ref
+   collapse 0.0005511425          1.00000             TRUE
+         DT 0.0066112705         11.99557            FALSE
+      dplyr 0.0167867940         30.45817             TRUE
+ base_merge 0.1702741070        308.94752             TRUE
+                   task     n  dplyr            DT_default DT_allow_cartesian
+1 join_dupkeys_rowcount 1e+05 108973 ERROR allow.cartesian             108973
+  collapse_default collapse_multiple_TRUE x_rows
+1           100000                 108973 100000
+join_left_dupkeys n=100000
+                 method    median_s ratio_to_fastest identical_to_ref
+ collapse_multiple_TRUE 0.001555683          1.00000             TRUE
+                     DT 0.005131827          3.29876            FALSE
+                  dplyr 0.020360682         13.08793             TRUE
+
+## join 2e+06 
+join_left_m1 n=2e+06
+     method   median_s ratio_to_fastest identical_to_ref
+   collapse 0.05219033         1.000000             TRUE
+         DT 0.34928642         6.692550            FALSE
+      dplyr 0.40211156         7.704713             TRUE
+ base_merge 4.81669279        92.290896             TRUE
+                   task     n   dplyr            DT_default DT_allow_cartesian
+1 join_dupkeys_rowcount 2e+06 2009091 ERROR allow.cartesian            2009091
+  collapse_default collapse_multiple_TRUE  x_rows
+1          2000000                2009091 2000000
+join_left_dupkeys n=2e+06
+                 method   median_s ratio_to_fastest identical_to_ref
+ collapse_multiple_TRUE 0.02610741         1.000000             TRUE
+                     DT 0.08045711         3.081773            FALSE
+                  dplyr 0.14174426         5.429274             TRUE
+There were 34 warnings (use warnings() to see them)
+
+## ifelse 1000 
+ifelse2 n=1000
+        method    median_s ratio_to_fastest identical_to_ref
+       kit_iif 3.95650e-06         1.000000             TRUE
+    DT_fifelse 4.28450e-06         1.082902             TRUE
+ dplyr_if_else 6.80600e-06         1.720207             TRUE
+   base_ifelse 1.74455e-05         4.409326             TRUE
+case3 n=1000
+          method    median_s ratio_to_fastest identical_to_ref
+         kit_nif 1.30995e-05         1.000000             TRUE
+        DT_fcase 4.47105e-05         3.413146             TRUE
+     base_nested 7.42920e-05         5.671362             TRUE
+ dplyr_case_when 7.49275e-05         5.719875             TRUE
+lag_ungrouped n=1000
+        method   median_s ratio_to_fastest identical_to_ref
+ collapse_flag 4.4895e-06         1.000000             TRUE
+          base 4.8995e-06         1.091324             TRUE
+      DT_shift 7.0930e-06         1.579909             TRUE
+     dplyr_lag 1.7302e-05         3.853881             TRUE
+lag_grouped n=1000
+        method    median_s ratio_to_fastest identical_to_ref
+ collapse_flag 0.000007872          1.00000             TRUE
+      base_ave 0.000185484         23.56250             TRUE
+            DT 0.000330378         41.96875             TRUE
+         dplyr 0.001888030        239.84115             TRUE
+cumsum_grouped n=1000
+           method     median_s ratio_to_fastest identical_to_ref
+ collapse_fcumsum 0.0000146165          1.00000             TRUE
+  base_ave_cumsum 0.0001517615         10.38289             TRUE
+               DT 0.0002574185         17.61150             TRUE
+            dplyr 0.0007965480         54.49649             TRUE
+
+## ifelse 1e+05 
+ifelse2 n=100000
+        method    median_s ratio_to_fastest identical_to_ref
+ dplyr_if_else 0.000269534         1.000000             TRUE
+       kit_iif 0.000421070         1.562215             TRUE
+    DT_fifelse 0.000530048         1.966535             TRUE
+   base_ifelse 0.002000329         7.421433             TRUE
+case3 n=100000
+          method    median_s ratio_to_fastest identical_to_ref
+        DT_fcase 0.001832680         1.000000             TRUE
+ dplyr_case_when 0.001983334         1.082204             TRUE
+         kit_nif 0.001995388         1.088782             TRUE
+     base_nested 0.006331999         3.455050             TRUE
+lag_ungrouped n=100000
+        method     median_s ratio_to_fastest identical_to_ref
+      DT_shift 0.0000846445         1.000000             TRUE
+ collapse_flag 0.0003147160         3.718092             TRUE
+     dplyr_lag 0.0003398285         4.014774             TRUE
+          base 0.0004977605         5.880601             TRUE
+lag_grouped n=100000
+        method     median_s ratio_to_fastest identical_to_ref
+ collapse_flag 0.0008172735         1.000000             TRUE
+            DT 0.0033519755         4.101412             TRUE
+      base_ave 0.0132965870        16.269446             TRUE
+         dplyr 0.0301336470        36.870946             TRUE
+cumsum_grouped n=100000
+           method     median_s ratio_to_fastest identical_to_ref
+ collapse_fcumsum 0.0007983315         1.000000             TRUE
+               DT 0.0043957330         5.506150             TRUE
+            dplyr 0.0070147515         8.786765             TRUE
+  base_ave_cumsum 0.0143005950        17.913104             TRUE
+
+## ifelse 1e+07 
+ifelse2 n=1e+07
+        method   median_s ratio_to_fastest identical_to_ref
+       kit_iif 0.04791047         1.000000             TRUE
+    DT_fifelse 0.04822961         1.006661             TRUE
+ dplyr_if_else 0.10232177         2.135687             TRUE
+   base_ifelse 0.51516373        10.752634             TRUE
+case3 n=1e+07
+          method  median_s ratio_to_fastest identical_to_ref
+         kit_nif 0.1971984         1.000000             TRUE
+ dplyr_case_when 0.2192833         1.111993             TRUE
+        DT_fcase 0.2586024         1.311382             TRUE
+     base_nested 1.1615005         5.890009             TRUE
+lag_ungrouped n=1e+07
+        method   median_s ratio_to_fastest identical_to_ref
+      DT_shift 0.00758623         1.000000             TRUE
+ collapse_flag 0.02945604         3.882830             TRUE
+     dplyr_lag 0.04308551         5.679436             TRUE
+          base 0.12045513        15.878128             TRUE

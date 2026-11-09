@@ -1,0 +1,96 @@
+! Project is not synced. Run: rig proj sync
+                    task    n                method   median_s ratio_to_fastest
+ any of 10 terms in text 1000        map_str_detect 0.00068785         1.846825
+ any of 10 terms in text 1000        map_stri_fixed 0.00046385         1.245402
+ any of 10 terms in text 1000      stri_fixed_outer 0.00081435         2.186468
+ any of 10 terms in text 1000 stri_fixed_outer_loop 0.00048330         1.297624
+ any of 10 terms in text 1000     alternation_regex 0.00719765        19.325144
+ any of 10 terms in text 1000 base_grepl_fixed_loop 0.00037245         1.000000
+ any of 10 terms in text 1000           per_doc_map 0.00257770         6.920929
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                              task    n             method  median_s
+ count 200 terms (per-term totals) 1000         loop_count 0.0106583
+ count 200 terms (per-term totals) 1000 one_collapsed_text 0.0054274
+ ratio_to_fastest identical_to_ref
+         1.963795             TRUE
+         1.000000             TRUE
+                        task    n               method  median_s
+ replace 200-term dictionary 1000                 loop 0.0130234
+ replace 200-term dictionary 1000  vectorize_all_FALSE 0.0068497
+ replace 200-term dictionary 1000         purrr_reduce 0.0128826
+ replace 200-term dictionary 1000 base_gsub_fixed_loop 0.0167653
+ ratio_to_fastest identical_to_ref
+         1.901310             TRUE
+         1.000000             TRUE
+         1.880754             TRUE
+         2.447596             TRUE
+                    task     n                method   median_s
+ any of 10 terms in text 10000        map_str_detect 0.00575975
+ any of 10 terms in text 10000        map_stri_fixed 0.00539070
+ any of 10 terms in text 10000      stri_fixed_outer 0.00784070
+ any of 10 terms in text 10000 stri_fixed_outer_loop 0.00556935
+ any of 10 terms in text 10000     alternation_regex 0.07655590
+ any of 10 terms in text 10000 base_grepl_fixed_loop 0.00547145
+ any of 10 terms in text 10000           per_doc_map 0.02570985
+ ratio_to_fastest identical_to_ref
+         1.068460             TRUE
+         1.000000             TRUE
+         1.454486             TRUE
+         1.033140             TRUE
+        14.201477             TRUE
+         1.014980             TRUE
+         4.769297             TRUE
+                              task     n             method  median_s
+ count 200 terms (per-term totals) 10000         loop_count 0.1080521
+ count 200 terms (per-term totals) 10000 one_collapsed_text 0.0487640
+ ratio_to_fastest identical_to_ref
+         2.215817             TRUE
+         1.000000             TRUE
+                        task     n               method   median_s
+ replace 200-term dictionary 10000                 loop 0.13480840
+ replace 200-term dictionary 10000  vectorize_all_FALSE 0.08603995
+ replace 200-term dictionary 10000         purrr_reduce 0.14012840
+ replace 200-term dictionary 10000 base_gsub_fixed_loop 0.16104300
+ ratio_to_fastest identical_to_ref
+         1.566812             TRUE
+         1.000000             TRUE
+         1.628643             TRUE
+         1.871724             TRUE
+                    task     n                method   median_s
+ any of 10 terms in text 1e+05        map_str_detect 0.12502330
+ any of 10 terms in text 1e+05        map_stri_fixed 0.11591510
+ any of 10 terms in text 1e+05      stri_fixed_outer 0.13138090
+ any of 10 terms in text 1e+05 stri_fixed_outer_loop 0.11358950
+ any of 10 terms in text 1e+05     alternation_regex 0.84472940
+ any of 10 terms in text 1e+05 base_grepl_fixed_loop 0.07979795
+ any of 10 terms in text 1e+05           per_doc_map 0.29783810
+ ratio_to_fastest identical_to_ref
+         1.566748             TRUE
+         1.452607             TRUE
+         1.646419             TRUE
+         1.423464             TRUE
+        10.585853             TRUE
+         1.000000             TRUE
+         3.732403             TRUE
+                              task     n             method  median_s
+ count 200 terms (per-term totals) 1e+05         loop_count 2.2840056
+ count 200 terms (per-term totals) 1e+05 one_collapsed_text 0.5359686
+ ratio_to_fastest identical_to_ref
+         4.261454             TRUE
+         1.000000             TRUE
+Warning messages:
+1: In norm(eval(e, env)) : NAs introduced by coercion
+2: In norm(eval(e, env)) : NAs introduced by coercion
+3: In norm(eval(e, env)) : NAs introduced by coercion
+4: In norm(eval(e, env)) : NAs introduced by coercion
+5: In norm(eval(e, env)) : NAs introduced by coercion
+6: In norm(eval(e, env)) : NAs introduced by coercion
+7: In norm(eval(e, env)) : NAs introduced by coercion
+8: In norm(eval(e, env)) : NAs introduced by coercion

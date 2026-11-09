@@ -1,0 +1,15 @@
+! Project is not synced. Run: rig proj sync
+crossprod                         1.756 s
+matmul                            2.115 s
+solve                             2.620 s
+chol                              0.555 s
+svd_1000                          1.278 s
+qr                                1.759 s
+lm_fit_2e5x51                     0.233 s
+glm_logit_2e5x51                  2.663 s
+Warning messages:
+1: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+2: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+3: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+4: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+5: Some expressions had a GC in every iteration; so filtering is disabled. 

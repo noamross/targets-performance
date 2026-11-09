@@ -1,0 +1,13 @@
+"topic","task","n","method","wall_s","sum_meta_s","n_targets","completed","skipped","loads","load_s","writes","write_s","peak_rss_mb","sys_peak_mb","errors","notes","packages","machine","cores","r_version","run_date"
+"targets_mech","a_big100_nproc3",100,"no mori, worker retrieval",NA,NA,NA,NA,NA,NA,NA,NA,NA,1957.796875,1009.984375,NA,"6 consumers (spin 1 s + 90 MB matrix); NPROC=3; tree RSS double-counts shared pages (see sys_peak_mb) KILLED at memory cap (peak is a lower bound)","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"
+"targets_mech","a_big100_nproc3",100,"no mori, main retrieval (qs2)",NA,NA,NA,NA,NA,NA,NA,NA,NA,2246.53125,1024.296875,NA,"6 consumers (spin 1 s + 90 MB matrix); NPROC=3; tree RSS double-counts shared pages (see sys_peak_mb) KILLED at memory cap (peak is a lower bound)","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"
+"targets_mech","a_big100_nproc3",100,"mori format_qs_shared, main retrieval",NA,NA,NA,NA,NA,NA,NA,NA,NA,1739.1875,829.9375,NA,"6 consumers (spin 1 s + 90 MB matrix); NPROC=3; tree RSS double-counts shared pages (see sys_peak_mb) KILLED at memory cap (peak is a lower bound)","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"
+"targets_mech","c_guard",20,"mutate(big,z=1) result read in fresh session",3.88,0.645,4,4,0,0,0,0,0,813.546875,414.296875,0,"rds: [! in callr subprocess.
+Caused by error in `readRDS(path)`:
+! mori: shared memory region not found: '/mori_12693_d24d4415']; bare qs2 write: [! in callr subprocess.
+Caused by error in `qs2::qs_read(path)`:
+! mori: shared memory region not found: '/mori_12693_d24d4415']; format_qs_unshared: [5e+05]","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"
+"targets_mech","d_antipattern",20,"share() target cue always, memory=persistent",5.63,0.574,5,5,0,0,0,0,0,762.53125,362.796875,0,"completed per make (5 targets): 5,4,4 ; skipped 0,1,1; tar_read(shared) in fresh session: ! in callr subprocess.
+Caused by error in `readRDS(path)`:
+! mori: shared memory region not found: '/mori_12a78_21dad420'","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"
+"targets_mech","e_parquet",20,"format_parquet_shared / unshared",3.429,0.341,3,3,0,0,0,0,0,692.515625,336.828125,0,"consumer sees shared=1 nrow=250000 (2nd make, read path); fresh-session read all.equal=TRUE; mutate result sum(z)=250000","targets 1.12.0; crew 1.3.3; tarchetypes 0.14.1; mori 0.2.2; qs2 0.4.0","gha-macos-arm64",3,"4.6.2","2026-11-09"

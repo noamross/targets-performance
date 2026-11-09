@@ -1,0 +1,90 @@
+b3a_ext_cache          cache=TRUE run1 (cold)                     2.66 s  GET  78  HEAD 2    42.9 MB 
+b3a_ext_cache          cache=TRUE run2 same query                 0.65 s  GET   0  HEAD 2     0.0 MB 
+b3a_ext_cache          cache=TRUE run3 other cols                 1.70 s  GET  48  HEAD 2    47.0 MB 
+b3a_ext_cache          cache=FALSE run1 (cold)                    3.04 s  GET  80  HEAD 2    43.5 MB 
+b3a_ext_cache          cache=FALSE run2 same query                3.12 s  GET  80  HEAD 2    43.5 MB 
+b3a_ext_cache          cache=FALSE run3 other cols                3.66 s  GET 119  HEAD 2    90.4 MB 
+                                        name        value
+1         allow_extensions_metadata_mismatch        false
+2                          cache_local_files        false
+3                 enable_external_file_cache         true
+4                 enable_http_metadata_cache        false
+5                experimental_metadata_reuse         true
+6   external_file_cache_local_max_block_size        16384
+7  external_file_cache_remote_max_block_size      2097152
+8  external_file_cache_remote_min_block_size         4096
+9         external_file_cache_request_sizing         AUTO
+10                 external_file_cache_spill        false
+11               force_column_metadata_reuse        false
+12                    parquet_metadata_cache        false
+13              validate_external_file_cache VALIDATE_ALL
+b3b_meta_cache         off run1                                   3.32 s  GET  80  HEAD 2    43.5 MB 
+b3b_meta_cache         off run2 other cols                        5.11 s  GET 119  HEAD 2    90.4 MB 
+b3b_meta_cache         http_meta on run1                          2.71 s  GET  80  HEAD 1    43.5 MB 
+b3b_meta_cache         http_meta on run2 other cols               3.20 s  GET 119  HEAD 0    90.4 MB 
+b3b_meta_cache         http_meta + parquet_meta on run1           2.91 s  GET  78  HEAD 1    42.8 MB 
+b3b_meta_cache         http_meta + parquet_meta on run2 other cols   2.53 s  GET 115  HEAD 0    89.2 MB 
+b3c_cache_httpfs       session 1 (cold)                           3.67 s  GET 166  HEAD 2    82.8 MB ext 0.15.0
+   cache_type cache_hit_count cache_miss_count
+1    metadata               0                0
+2        data               0                0
+3 file handle               0                0
+4        glob               0                0
+  cache_miss_by_in_use (file handle cache) number_bytes_to_read (data cache)
+1                                        0                                NA
+2                                        0                                 0
+3                                        0                                NA
+4                                        0                                NA
+  number_bytes_to_cache (data cache) bytes_read_from_hits (data cache)
+1                                 NA                                NA
+2                                  0                                 0
+3                                 NA                                NA
+4                                 NA                                NA
+  bytes_read_from_misses (data cache)
+1                                  NA
+2                                   0
+3                                  NA
+4                                  NA
+b3c_cache_httpfs       session 2 (warm, fresh R)                  0.63 s  GET   0  HEAD 2     0.0 MB ext 0.15.0
+   cache_type cache_hit_count cache_miss_count
+1    metadata               0                0
+2        data               0                0
+3 file handle               0                0
+4        glob               0                0
+  cache_miss_by_in_use (file handle cache) number_bytes_to_read (data cache)
+1                                        0                                NA
+2                                        0                                 0
+3                                        0                                NA
+4                                        0                                NA
+  number_bytes_to_cache (data cache) bytes_read_from_hits (data cache)
+1                                 NA                                NA
+2                                  0                                 0
+3                                 NA                                NA
+4                                 NA                                NA
+  bytes_read_from_misses (data cache)
+1                                  NA
+2                                   0
+3                                  NA
+4                                  NA
+b3c_cache_httpfs       session 3 (warm, fresh R)                  0.60 s  GET   0  HEAD 2     0.0 MB ext 0.15.0
+   cache_type cache_hit_count cache_miss_count
+1    metadata               0                0
+2        data               0                0
+3 file handle               0                0
+4        glob               0                0
+  cache_miss_by_in_use (file handle cache) number_bytes_to_read (data cache)
+1                                        0                                NA
+2                                        0                                 0
+3                                        0                                NA
+4                                        0                                NA
+  number_bytes_to_cache (data cache) bytes_read_from_hits (data cache)
+1                                 NA                                NA
+2                                  0                                 0
+3                                 NA                                NA
+4                                 NA                                NA
+  bytes_read_from_misses (data cache)
+1                                  NA
+2                                   0
+3                                  NA
+4                                  NA
+cache dir size MB: 70.3

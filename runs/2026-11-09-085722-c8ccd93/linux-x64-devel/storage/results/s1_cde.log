@@ -1,0 +1,84 @@
+[INFO] RIG START [pid:8037] rig run --rscript storage/s1_cde.R
+c list: 168.6 Mb
+    method size_mb write_s read_s identical equal_ignoring_attrs
+  rds_gzip    11.3    0.96   0.37      TRUE                 TRUE
+  rds_none    33.1    0.25   0.50      TRUE                 TRUE
+    qs2_t1    10.4    0.15   0.10      TRUE                 TRUE
+    qs2_t4    10.4    0.09   0.35      TRUE                 TRUE
+ qs2_t1_l1    10.5    0.14   0.10      TRUE                 TRUE
+ qs2_t4_l1    10.5    0.10   0.28      TRUE                 TRUE
+     qd_t1     9.0    0.13   0.12      TRUE                 TRUE
+     qd_t4     9.0    0.08   0.08      TRUE                 TRUE
+       zap    10.1    0.55   0.45      TRUE                 TRUE
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+WRITE FAIL c_listcol np_zstd: Cannot write a list as a Parquet BYTE_ARRAY element when writing a list column of RAW vectors.
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+WRITE FAIL c_listcol fst: unable to load shared object '<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so':
+  dlopen(<repo>/bench/.rvenv/lib/fstcore/libs/fstcore.so, 0x0006): symbol not found in flat namespace '___kmpc_barrier'
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ ~/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+     method size_mb write_s read_s identical equal_ignoring_attrs
+   rds_gzip    11.3    1.00   0.51      TRUE                 TRUE
+   rds_none    33.1    0.28   0.62      TRUE                 TRUE
+     qs2_t1    10.4    0.17   0.15      TRUE                 TRUE
+     qs2_t4    10.4    0.09   0.40      TRUE                 TRUE
+  qs2_t1_l1    10.5    0.15   0.13      TRUE                 TRUE
+  qs2_t4_l1    10.5    0.09   0.11      TRUE                 TRUE
+      qd_t1     9.2    0.12   0.12      TRUE                 TRUE
+      qd_t4     9.2    0.08   0.15      TRUE                 TRUE
+        zap    10.1    0.58   0.77      TRUE                 TRUE
+ arrow_zstd     9.4    0.20   2.95     FALSE                 TRUE
+  duck_zstd     9.0    1.47   1.58     FALSE                 TRUE
+Warning messages:
+1: Some expressions had a GC in every iteration; so filtering is disabled. 
+2: Some expressions had a GC in every iteration; so filtering is disabled. 
+          used (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
+Ncells 1159908 62.0    7132600 381.0         NA  8915750 476.2
+Vcells 2003926 15.3   27234410 207.8      36864 42553753 324.7
+        method size_mb write_s read_s identical equal_ignoring_attrs
+      rds_gzip   183.1    5.37   1.13      TRUE                 TRUE
+      rds_none   190.7    0.17   0.21      TRUE                 TRUE
+        qs2_t1   168.1    0.22   0.14      TRUE                 TRUE
+        qs2_t4   168.1    0.14   0.08      TRUE                 TRUE
+     qs2_t1_l1   168.2    0.27   0.15      TRUE                 TRUE
+     qs2_t4_l1   168.2    0.15   0.08      TRUE                 TRUE
+         qd_t1   168.1    0.35   0.10      TRUE                 TRUE
+         qd_t4   168.1    0.13   0.10      TRUE                 TRUE
+           zap   170.0    0.67   0.20      TRUE                 TRUE
+    np_zstd_df   191.5    1.97   0.14     FALSE                 TRUE
+ arrow_zstd_df   222.4    1.22   0.47     FALSE                 TRUE
+Warning message:
+Some expressions had a GC in every iteration; so filtering is disabled. 
+          used (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
+Ncells 1223772 65.4    3651892  195.1         NA   8915750  476.2
+Vcells 2092264 16.0  178133499 1359.1      36864 222663301 1698.8
+function (x, p) 
+qs2::qd_save(x, p, nthreads = 1)
+<bytecode: 0xb3fa86ee8>
+Objects of type language are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type closure are not supported in qdata format; further warnings for this type are suppressed for the session
+Objects of type environment are not supported in qdata format; further warnings for this type are suppressed for the session
+WRITE FAIL e_model np_zstd: is.data.frame(df) is not TRUE
+WRITE FAIL e_model arrow_zstd: Object must be coercible to an Arrow Table using `as_arrow_table()`
+Caused by error in `as_arrow_table()`:
+! No method for `as_arrow_table()` for object of class list
+   method size_mb write_s read_s identical equal_ignoring_attrs
+ rds_gzip    94.7    4.28   0.37      TRUE                 TRUE
+ rds_none   114.4    0.18   0.17      TRUE                 TRUE
+   qs2_t1    86.7    0.25   0.17      TRUE                 TRUE
+   qs2_t4    86.7    0.15   0.15      TRUE                 TRUE
+    qd_t1    33.8    0.20   0.10     FALSE                FALSE
+      zap    87.6    0.33   0.14      TRUE                 TRUE
+qd_t1: classes = fit=lm, fn=NULL, e=NULL; fit$terms env: environment
+zap: classes = fit=lm, fn=function, e=environment; fit$terms env: environment
+qs2_t1: classes = fit=lm, fn=function, e=environment; fit$terms env: environment
+[INFO] RIG END [pid:8037] rig run --rscript storage/s1_cde.R

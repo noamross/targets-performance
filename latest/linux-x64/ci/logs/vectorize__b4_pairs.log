@@ -1,0 +1,109 @@
+         task    n     method     median_s ratio_to_fastest identical_to_ref
+ pairwise min 1000 mapply_min 3.710736e-04        70.645685             TRUE
+ pairwise min 1000   map2_dbl 3.802976e-04        72.401766             TRUE
+ pairwise min 1000       pmin 5.252601e-06         1.000000             TRUE
+ pairwise min 1000     ifelse 2.137717e-05         4.069826             TRUE
+ pairwise min 1000    fifelse 6.695627e-06         1.274726             TRUE
+ pairwise min 1000    kit_iif 7.061113e-06         1.344308             TRUE
+                         task    n   method     median_s ratio_to_fastest
+ pairwise min (map2 1e6 incl) 1000 map2_dbl 6.584511e-04         59.33565
+ pairwise min (map2 1e6 incl) 1000     pmin 1.109706e-05          1.00000
+ identical_to_ref
+             TRUE
+             TRUE
+                    task    n          method     median_s ratio_to_fastest
+ flatten list of scalars 1000       do_call_c 6.365613e-05         4.440274
+ flatten list of scalars 1000          unlist 1.433608e-05         1.000000
+ flatten list of scalars 1000           vec_c 1.250482e-04         8.722618
+ flatten list of scalars 1000    purrr_list_c 1.289941e-04         8.997864
+ flatten list of scalars 1000 sapply_identity 3.958606e-04        27.612886
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+            task    n        method     median_s ratio_to_fastest
+ recode 3 levels 1000 sapply_switch 1.994211e-04        18.200125
+ recode 3 levels 1000     case_when 6.487709e-05         5.920995
+ recode 3 levels 1000         fcase 1.766707e-05         1.612382
+ recode 3 levels 1000        lookup 1.350103e-05         1.232169
+ recode 3 levels 1000     match_idx 1.095713e-05         1.000000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+         task     n     method     median_s ratio_to_fastest identical_to_ref
+ pairwise min 1e+05 mapply_min 0.0607855062       201.219790             TRUE
+ pairwise min 1e+05   map2_dbl 0.0771998501       255.556605             TRUE
+ pairwise min 1e+05       pmin 0.0005307284         1.756884             TRUE
+ pairwise min 1e+05     ifelse 0.0032058150        10.612290             TRUE
+ pairwise min 1e+05    fifelse 0.0003020851         1.000000             TRUE
+ pairwise min 1e+05    kit_iif 0.0004953256         1.639689             TRUE
+                         task     n   method     median_s ratio_to_fastest
+ pairwise min (map2 1e6 incl) 1e+05 map2_dbl 0.0695615740          134.084
+ pairwise min (map2 1e6 incl) 1e+05     pmin 0.0005187909            1.000
+ identical_to_ref
+             TRUE
+             TRUE
+                    task     n          method    median_s ratio_to_fastest
+ flatten list of scalars 1e+05       do_call_c 0.011009170         8.772256
+ flatten list of scalars 1e+05          unlist 0.001254999         1.000000
+ flatten list of scalars 1e+05           vec_c 0.014330408        11.418664
+ flatten list of scalars 1e+05    purrr_list_c 0.012651396        10.080805
+ flatten list of scalars 1e+05 sapply_identity 0.031783966        25.325897
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+            task     n        method    median_s ratio_to_fastest
+ recode 3 levels 1e+05 sapply_switch 0.019794031        21.773026
+ recode 3 levels 1e+05     case_when 0.002811772         3.092891
+ recode 3 levels 1e+05         fcase 0.002441255         2.685330
+ recode 3 levels 1e+05        lookup 0.001183301         1.301607
+ recode 3 levels 1e+05     match_idx 0.000909108         1.000000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+         task     n  method    median_s ratio_to_fastest identical_to_ref
+ pairwise min 1e+06    pmin 0.007483899         1.620147             TRUE
+ pairwise min 1e+06  ifelse 0.020447886         4.426646             TRUE
+ pairwise min 1e+06 fifelse 0.004619273         1.000000             TRUE
+ pairwise min 1e+06 kit_iif 0.004630945         1.002527             TRUE
+                         task     n   method    median_s ratio_to_fastest
+ pairwise min (map2 1e6 incl) 1e+06 map2_dbl 0.374374001         77.01239
+ pairwise min (map2 1e6 incl) 1e+06     pmin 0.004861218          1.00000
+ identical_to_ref
+             TRUE
+             TRUE
+                    task     n          method   median_s ratio_to_fastest
+ flatten list of scalars 1e+06       do_call_c 0.19837205         8.504874
+ flatten list of scalars 1e+06          unlist 0.02332451         1.000000
+ flatten list of scalars 1e+06           vec_c 0.12874424         5.519697
+ flatten list of scalars 1e+06    purrr_list_c 0.12458352         5.341312
+ flatten list of scalars 1e+06 sapply_identity 0.28846746        12.367565
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+            task     n        method    median_s ratio_to_fastest
+ recode 3 levels 1e+06 sapply_switch 0.201932101        22.960718
+ recode 3 levels 1e+06     case_when 0.023517035         2.674008
+ recode 3 levels 1e+06         fcase 0.025049682         2.848278
+ recode 3 levels 1e+06        lookup 0.011391165         1.295234
+ recode 3 levels 1e+06     match_idx 0.008794677         1.000000
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE

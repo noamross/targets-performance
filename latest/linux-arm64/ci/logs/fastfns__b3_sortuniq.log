@@ -1,0 +1,494 @@
+
+##### int 1000 
+su_order_int n=1000
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 5.81600e-06         1.000000            FALSE
+          base_radix 1.43710e-05         2.470942             TRUE
+                base 1.60590e-05         2.761176             TRUE
+              forder 3.03420e-05         5.216988             TRUE
+         Rfast_Order 3.10940e-05         5.346286            FALSE
+  Rfast_Order_stable 3.51055e-05         6.036021             TRUE
+su_sort_int n=1000
+        method    median_s ratio_to_fastest identical_to_ref
+  collapse_idx 8.44350e-06         1.000000             TRUE
+    Rfast_Sort 1.67910e-05         1.988630             TRUE
+ DT_forder_idx 2.95580e-05         3.500681             TRUE
+    base_radix 3.04385e-05         3.604962             TRUE
+          base 3.04900e-05         3.611062             TRUE
+     kit_psort 6.38800e-05         7.565583             TRUE
+su_unique_int n=1000
+                   method    median_s ratio_to_fastest identical_to_ref
+         collapse_funique 3.22750e-06         1.000000             TRUE
+              kit_funique 3.35600e-06         1.039814             TRUE
+ Rfast_sort_unique_SORTED 3.50400e-06         1.085670            FALSE
+                     base 1.06405e-05         3.296824             TRUE
+                DT_unique 1.74181e-04        53.967777             TRUE
+su_uniqueN_int n=1000
+            method    median_s ratio_to_fastest identical_to_ref
+       kit_uniqLen 1.81200e-06         1.000000             TRUE
+ collapse_fnunique 2.59600e-06         1.432671             TRUE
+              base 1.08035e-05         5.962196             TRUE
+        DT_uniqueN 1.43195e-05         7.902594             TRUE
+su_duplicated_int n=1000
+               method   median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 2.4440e-06         1.000000             TRUE
+ collapse_fduplicated 2.5000e-06         1.022913             TRUE
+                 base 9.6835e-06         3.962152             TRUE
+su_match_int n=1000
+                 method   median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 2.6485e-06         1.000000             TRUE
+                   base 5.1075e-06         1.928450             TRUE
+ Rfast_Match_NOT_dropin 1.8699e-05         7.060223            FALSE
+su_in_int n=1000
+             method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 4.4435e-06         1.000000             TRUE
+               base 6.4275e-06         1.446495             TRUE
+su_count_int n=1000
+          method     median_s ratio_to_fastest identical_to_ref
+  kit_countOccur 0.0000043035         1.000000             TRUE
+   collapse_qtab 0.0000183025         4.252934             TRUE
+ collapse_fcount 0.0000255820         5.944464             TRUE
+     Rfast_Table 0.0000622200        14.457999             TRUE
+      base_table 0.0001024820        23.813640             TRUE
+         DT_N_by 0.0005762565       133.904148             TRUE
+
+##### int 1e+05 
+su_order_int n=100000
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 0.000421694         1.000000            FALSE
+          base_radix 0.000462623         1.097059             TRUE
+                base 0.000467835         1.109418             TRUE
+              forder 0.000982823         2.330654             TRUE
+         Rfast_Order 0.007521101        17.835447            FALSE
+  Rfast_Order_stable 0.008241739        19.544360             TRUE
+su_sort_int n=100000
+        method     median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.0006006705         1.000000             TRUE
+    base_radix 0.0008361840         1.392084             TRUE
+          base 0.0008455725         1.407714             TRUE
+     kit_psort 0.0010134605         1.687215             TRUE
+ DT_forder_idx 0.0011219905         1.867897             TRUE
+    Rfast_Sort 0.0033002830         5.494332             TRUE
+su_unique_int n=100000
+                   method    median_s ratio_to_fastest identical_to_ref
+ Rfast_sort_unique_SORTED 0.000197864         1.000000            FALSE
+              kit_funique 0.001361108         6.879005             TRUE
+         collapse_funique 0.001420144         7.177374             TRUE
+                DT_unique 0.001812040         9.158008             TRUE
+                     base 0.002617945        13.231035             TRUE
+su_uniqueN_int n=100000
+            method     median_s ratio_to_fastest identical_to_ref
+        DT_uniqueN 0.0009887945         1.000000             TRUE
+ collapse_fnunique 0.0010722775         1.084429             TRUE
+       kit_uniqLen 0.0011547520         1.167838             TRUE
+              base 0.0026208130         2.650513             TRUE
+su_duplicated_int n=100000
+               method    median_s ratio_to_fastest identical_to_ref
+ collapse_fduplicated 0.001191894         1.000000             TRUE
+      kit_fduplicated 0.001335253         1.120279             TRUE
+                 base 0.002078499         1.743862             TRUE
+su_match_int n=100000
+                 method    median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 0.001082452         1.000000             TRUE
+                   base 0.001692879         1.563930             TRUE
+ Rfast_Match_NOT_dropin 0.005296039         4.892632            FALSE
+su_in_int n=100000
+             method    median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.001254362         1.000000             TRUE
+               base 0.001838934         1.466031             TRUE
+su_count_int n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+ collapse_fcount 0.0004976855         1.000000             TRUE
+   collapse_qtab 0.0009142350         1.836973             TRUE
+  kit_countOccur 0.0014546575         2.922845             TRUE
+         DT_N_by 0.0025973910         5.218940             TRUE
+     Rfast_Table 0.0080958335        16.266967             TRUE
+      base_table 0.0087196510        17.520404             TRUE
+
+##### int 1e+07 
+su_order_int n=1e+07
+              method  median_s ratio_to_fastest identical_to_ref
+                base 0.1576131         1.000000             TRUE
+          base_radix 0.1589416         1.008429             TRUE
+ collapse_radixorder 0.1622811         1.029617            FALSE
+              forder 0.3794472         2.407460             TRUE
+  Rfast_Order_stable 2.1895574        13.891975             TRUE
+         Rfast_Order 2.2599352        14.338497            FALSE
+su_sort_int n=1e+07
+        method  median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.2762354         1.000000             TRUE
+     kit_psort 0.3513774         1.272022             TRUE
+    base_radix 0.3554690         1.286834             TRUE
+          base 0.3817016         1.381798             TRUE
+    Rfast_Sort 0.4700720         1.701708             TRUE
+ DT_forder_idx 0.5053600         1.829454             TRUE
+su_unique_int n=1e+07
+                   method   median_s ratio_to_fastest identical_to_ref
+ Rfast_sort_unique_SORTED 0.06791728         1.000000            FALSE
+         collapse_funique 0.37636142         5.541468             TRUE
+              kit_funique 0.37966416         5.590097             TRUE
+                DT_unique 0.44679603         6.578533             TRUE
+                     base 0.94559775        13.922786             TRUE
+su_uniqueN_int n=1e+07
+            method  median_s ratio_to_fastest identical_to_ref
+       kit_uniqLen 0.3110393         1.000000             TRUE
+ collapse_fnunique 0.4002889         1.286940             TRUE
+        DT_uniqueN 0.4178780         1.343490             TRUE
+              base 0.9630634         3.096275             TRUE
+su_duplicated_int n=1e+07
+               method  median_s ratio_to_fastest identical_to_ref
+ collapse_fduplicated 0.3619643         1.000000             TRUE
+      kit_fduplicated 0.3756156         1.037714             TRUE
+                 base 0.9038521         2.497075             TRUE
+su_match_int n=1e+07
+                 method  median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 0.1344195         1.000000             TRUE
+                   base 0.2007996         1.493828             TRUE
+ Rfast_Match_NOT_dropin 1.2855320         9.563584            FALSE
+su_in_int n=1e+07
+             method  median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.1736628         1.000000             TRUE
+               base 0.2413481         1.389751             TRUE
+su_count_int n=1e+07
+          method  median_s ratio_to_fastest identical_to_ref
+ collapse_fcount 0.2361665         1.000000             TRUE
+   collapse_qtab 0.4132283         1.749733             TRUE
+  kit_countOccur 0.4250081         1.799612             TRUE
+         DT_N_by 0.6902444         2.922703             TRUE
+      base_table 1.9356550         8.196147             TRUE
+     Rfast_Table 3.9430406        16.696023             TRUE
+
+##### dbl 1000 
+su_order_dbl n=1000
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 3.29860e-05         1.000000            FALSE
+  Rfast_Order_stable 3.47380e-05         1.053113             TRUE
+         Rfast_Order 3.67175e-05         1.113124            FALSE
+          base_radix 4.41335e-05         1.337946             TRUE
+                base 4.67130e-05         1.416146             TRUE
+              forder 9.39065e-05         2.846859             TRUE
+su_sort_dbl n=1000
+        method    median_s ratio_to_fastest identical_to_ref
+    Rfast_Sort 2.38745e-05         1.000000             TRUE
+  collapse_idx 3.22980e-05         1.352824             TRUE
+    base_radix 6.36560e-05         2.666276             TRUE
+          base 6.38000e-05         2.672307             TRUE
+ DT_forder_idx 9.78340e-05         4.097845             TRUE
+     kit_psort 1.12909e-04         4.729272             TRUE
+su_unique_dbl n=1000
+                   method     median_s ratio_to_fastest identical_to_ref
+         collapse_funique 0.0000083235         1.000000             TRUE
+              kit_funique 0.0000087830         1.055205             TRUE
+                     base 0.0000165870         1.992791             TRUE
+ Rfast_sort_unique_SORTED 0.0000196065         2.355560            FALSE
+                DT_unique 0.0002710035        32.558839             TRUE
+su_uniqueN_dbl n=1000
+            method   median_s ratio_to_fastest identical_to_ref
+ collapse_fnunique 4.0280e-06         1.000000             TRUE
+       kit_uniqLen 6.9755e-06         1.731753             TRUE
+              base 1.6383e-05         4.067279             TRUE
+        DT_uniqueN 8.1859e-05        20.322493             TRUE
+su_duplicated_dbl n=1000
+               method   median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 7.5235e-06         1.000000             TRUE
+ collapse_fduplicated 7.8955e-06         1.049445             TRUE
+                 base 1.5163e-05         2.015418             TRUE
+su_match_dbl n=1000
+                 method    median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 9.15150e-06         1.000000             TRUE
+                   base 2.12875e-05         2.326121             TRUE
+ Rfast_Match_NOT_dropin 3.38340e-05         3.697099            FALSE
+su_in_dbl n=1000
+             method    median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 1.00075e-05         1.000000             TRUE
+               base 2.34945e-05         2.347689             TRUE
+su_count_dbl n=1000
+          method     median_s ratio_to_fastest identical_to_ref
+  kit_countOccur 0.0000102035         1.000000             TRUE
+ collapse_fcount 0.0000294500         2.886265             TRUE
+   collapse_qtab 0.0000614280         6.020287             TRUE
+     Rfast_Table 0.0003623815        35.515411             TRUE
+         DT_N_by 0.0006790465        66.550350             TRUE
+      base_table 0.0010207855       100.042681             TRUE
+
+##### dbl 1e+05 
+su_order_dbl n=100000
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 0.002779066         1.000000            FALSE
+          base_radix 0.003468552         1.248100             TRUE
+                base 0.003473848         1.250006             TRUE
+              forder 0.005709487         2.054463             TRUE
+         Rfast_Order 0.006701234         2.411326            FALSE
+  Rfast_Order_stable 0.007501989         2.699465             TRUE
+su_sort_dbl n=100000
+        method    median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.003175946         1.000000             TRUE
+    Rfast_Sort 0.003836633         1.208028             TRUE
+    base_radix 0.004402174         1.386099             TRUE
+          base 0.004415126         1.390177             TRUE
+     kit_psort 0.004509328         1.419838             TRUE
+ DT_forder_idx 0.006157055         1.938652             TRUE
+su_unique_dbl n=100000
+                   method     median_s ratio_to_fastest identical_to_ref
+         collapse_funique 0.0009696290         1.000000            FALSE
+              kit_funique 0.0009732445         1.003729            FALSE
+                     base 0.0013853390         1.428731             TRUE
+ Rfast_sort_unique_SORTED 0.0038794390         4.000952            FALSE
+                DT_unique 0.0064951420         6.698585             TRUE
+su_uniqueN_dbl n=100000
+            method     median_s ratio_to_fastest identical_to_ref
+ collapse_fnunique 0.0004382730         1.000000             TRUE
+       kit_uniqLen 0.0007262435         1.657057            FALSE
+              base 0.0013766795         3.141146             TRUE
+        DT_uniqueN 0.0058727765        13.399814             TRUE
+su_duplicated_dbl n=100000
+               method     median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 0.0007247435         1.000000            FALSE
+ collapse_fduplicated 0.0007394025         1.020226            FALSE
+                 base 0.0012133180         1.674134             TRUE
+su_match_dbl n=100000
+                 method    median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 0.000834297         1.000000             TRUE
+                   base 0.001899444         2.276700             TRUE
+ Rfast_Match_NOT_dropin 0.006020899         7.216733            FALSE
+su_in_dbl n=100000
+             method     median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.0009747565         1.000000             TRUE
+               base 0.0020361675         2.088899             TRUE
+su_count_dbl n=100000
+          method    median_s ratio_to_fastest identical_to_ref
+ collapse_fcount 0.000781469         1.000000             TRUE
+  kit_countOccur 0.001097640         1.404586            FALSE
+   collapse_qtab 0.003652064         4.673333            FALSE
+     Rfast_Table 0.004734210         6.058091             TRUE
+         DT_N_by 0.007601823         9.727606             TRUE
+      base_table 0.047775403        61.135378             TRUE
+
+##### dbl 1e+07 
+su_order_dbl n=1e+07
+              method  median_s ratio_to_fastest identical_to_ref
+              forder 0.4787043         1.000000             TRUE
+ collapse_radixorder 0.5021068         1.048887            FALSE
+          base_radix 0.5616398         1.173250             TRUE
+                base 0.5624971         1.175041             TRUE
+  Rfast_Order_stable 1.7052987         3.562322             TRUE
+         Rfast_Order 1.8233106         3.808845            FALSE
+su_sort_dbl n=1e+07
+        method  median_s ratio_to_fastest identical_to_ref
+    Rfast_Sort 0.4063968         1.000000             TRUE
+ DT_forder_idx 0.6476259         1.593580             TRUE
+  collapse_idx 0.6495335         1.598274             TRUE
+    base_radix 0.9164138         2.254973             TRUE
+     kit_psort 0.9203093         2.264558             TRUE
+          base 0.9267048         2.280295             TRUE
+su_unique_dbl n=1e+07
+                   method  median_s ratio_to_fastest identical_to_ref
+              kit_funique 0.1692857         1.000000            FALSE
+         collapse_funique 0.1710882         1.010648            FALSE
+                     base 0.2665216         1.574389             TRUE
+ Rfast_sort_unique_SORTED 0.4144009         2.447937            FALSE
+                DT_unique 0.5048366         2.982156             TRUE
+su_uniqueN_dbl n=1e+07
+            method  median_s ratio_to_fastest identical_to_ref
+ collapse_fnunique 0.1070779         1.000000             TRUE
+       kit_uniqLen 0.1522378         1.421748            FALSE
+              base 0.2466082         2.303073             TRUE
+        DT_uniqueN 0.4695619         4.385237             TRUE
+su_duplicated_dbl n=1e+07
+               method  median_s ratio_to_fastest identical_to_ref
+ collapse_fduplicated 0.2079183         1.000000            FALSE
+      kit_fduplicated 0.2105619         1.012715            FALSE
+                 base 0.2674239         1.286197             TRUE
+su_match_dbl n=1e+07
+                 method   median_s ratio_to_fastest identical_to_ref
+        collapse_fmatch 0.03938755         1.000000             TRUE
+                   base 0.10457759         2.655093             TRUE
+ Rfast_Match_NOT_dropin 1.31302936        33.336154            FALSE
+su_in_dbl n=1e+07
+             method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.05673282         1.000000             TRUE
+               base 0.13345095         2.352271             TRUE
+su_count_dbl n=1e+07
+          method  median_s ratio_to_fastest identical_to_ref
+ collapse_fcount 0.1695317         1.000000             TRUE
+  kit_countOccur 0.1925173         1.135583            FALSE
+     Rfast_Table 0.2385046         1.406843             TRUE
+         DT_N_by 0.6274928         3.701329             TRUE
+   collapse_qtab 0.7535668         4.444989            FALSE
+      base_table 4.7259421        27.876444             TRUE
+
+##### chr 1000 
+su_order_chr n=1000
+              method     median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 0.0000151230         1.000000            FALSE
+          base_radix 0.0000273945         1.811446            FALSE
+              forder 0.0000575810         3.807512            FALSE
+  Rfast_Order_stable 0.0000930705         6.154235            FALSE
+         Rfast_Order 0.0000944460         6.245189            FALSE
+                base 0.0013662250        90.340872             TRUE
+su_sort_chr n=1000
+        method     median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.0000221500         1.000000            FALSE
+     kit_psort 0.0000249750         1.127540            FALSE
+    base_radix 0.0000449770         2.030564            FALSE
+ DT_forder_idx 0.0000587245         2.651219            FALSE
+    Rfast_Sort 0.0001098020         4.957201            FALSE
+          base 0.0011330350        51.152822             TRUE
+FAILED: Rfast_sort_unique_SORTED Not compatible with requested type: [type=character; target=integer].
+su_unique_chr n=1000
+           method    median_s ratio_to_fastest identical_to_ref
+ collapse_funique 2.88350e-06         1.000000             TRUE
+      kit_funique 2.90800e-06         1.008497             TRUE
+             base 1.28510e-05         4.456737             TRUE
+        DT_unique 2.04695e-04        70.988382             TRUE
+su_uniqueN_chr n=1000
+            method    median_s ratio_to_fastest identical_to_ref
+       kit_uniqLen 1.71950e-06         1.000000             TRUE
+ collapse_fnunique 2.53200e-06         1.472521             TRUE
+              base 1.25670e-05         7.308520             TRUE
+        DT_uniqueN 3.74415e-05        21.774644             TRUE
+su_duplicated_chr n=1000
+               method   median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 2.2115e-06         1.000000             TRUE
+ collapse_fduplicated 2.2955e-06         1.037983             TRUE
+                 base 1.1347e-05         5.130907             TRUE
+su_match_chr n=1000
+          method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch 3.1235e-06         1.000000             TRUE
+      DT_chmatch 7.9150e-06         2.534016             TRUE
+            base 1.4579e-05         4.667520             TRUE
+su_in_chr n=1000
+             method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 4.7400e-06         1.000000             TRUE
+            DT_chin 7.4235e-06         1.566139             TRUE
+               base 1.5851e-05         3.344093             TRUE
+su_count_chr n=1000
+          method    median_s ratio_to_fastest identical_to_ref
+  kit_countOccur 4.22800e-06         1.000000             TRUE
+ collapse_fcount 2.30305e-05         5.447138             TRUE
+   collapse_qtab 2.69265e-05         6.368614             TRUE
+      base_table 1.93116e-04        45.675497             TRUE
+         DT_N_by 5.91416e-04       139.880795             TRUE
+
+##### chr 1e+05 
+su_order_chr n=100000
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder 0.001796830         1.000000            FALSE
+          base_radix 0.002375799         1.322217            FALSE
+              forder 0.003625982         2.017989            FALSE
+  Rfast_Order_stable 0.008094350         4.504795            FALSE
+         Rfast_Order 0.008579488         4.774791            FALSE
+                base 0.308683218       171.793224             TRUE
+su_sort_chr n=100000
+        method    median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.003195857         1.000000            FALSE
+     kit_psort 0.003693035         1.155569            FALSE
+    base_radix 0.003911329         1.223875            FALSE
+ DT_forder_idx 0.004945391         1.547438            FALSE
+    Rfast_Sort 0.017542322         5.489082            FALSE
+          base 0.271599681        84.984929             TRUE
+FAILED: Rfast_sort_unique_SORTED Not compatible with requested type: [type=character; target=integer].
+su_unique_chr n=100000
+           method     median_s ratio_to_fastest identical_to_ref
+      kit_funique 0.0006408770         1.000000             TRUE
+ collapse_funique 0.0006422845         1.002196             TRUE
+             base 0.0021541325         3.361226             TRUE
+        DT_unique 0.0034157555         5.329814             TRUE
+su_uniqueN_chr n=100000
+            method    median_s ratio_to_fastest identical_to_ref
+       kit_uniqLen 0.000389648         1.000000             TRUE
+ collapse_fnunique 0.000523420         1.343315             TRUE
+              base 0.002197774         5.640409             TRUE
+        DT_uniqueN 0.003645705         9.356408             TRUE
+su_duplicated_chr n=100000
+               method     median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 0.0004568440         1.000000             TRUE
+ collapse_fduplicated 0.0004650875         1.018044             TRUE
+                 base 0.0019206230         4.204111             TRUE
+su_match_chr n=100000
+          method    median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch 0.000446697         1.000000             TRUE
+      DT_chmatch 0.001118268         2.503415             TRUE
+            base 0.001962580         4.393539             TRUE
+su_in_chr n=100000
+             method    median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.000580220         1.000000             TRUE
+            DT_chin 0.001083374         1.867178             TRUE
+               base 0.002102527         3.623673             TRUE
+su_count_chr n=100000
+          method     median_s ratio_to_fastest identical_to_ref
+  kit_countOccur 0.0008423050         1.000000             TRUE
+ collapse_fcount 0.0009641295         1.144632             TRUE
+   collapse_qtab 0.0025270060         3.000108             TRUE
+         DT_N_by 0.0044475680         5.280235             TRUE
+      base_table 0.0290285570        34.463237             TRUE
+
+##### chr 2e+06 
+su_order_chr n=2e+06
+              method    median_s ratio_to_fastest identical_to_ref
+ collapse_radixorder  0.06480897         1.000000            FALSE
+          base_radix  0.06990121         1.078573            FALSE
+              forder  0.17714525         2.733345            FALSE
+  Rfast_Order_stable  0.25127009         3.877088            FALSE
+         Rfast_Order  0.26760294         4.129103            FALSE
+                base 13.45663697       207.635399             TRUE
+su_sort_chr n=2e+06
+        method  median_s ratio_to_fastest identical_to_ref
+  collapse_idx 0.1328383         1.000000            FALSE
+    base_radix 0.1626100         1.224120            FALSE
+     kit_psort 0.1892635         1.424766            FALSE
+ DT_forder_idx 0.2518215         1.895699            FALSE
+    Rfast_Sort 0.5119807         3.854164            FALSE
+          base 9.5524256        71.910162             TRUE
+FAILED: Rfast_sort_unique_SORTED Not compatible with requested type: [type=character; target=integer].
+su_unique_chr n=2e+06
+           method   median_s ratio_to_fastest identical_to_ref
+      kit_funique 0.03180505         1.000000             TRUE
+ collapse_funique 0.03247324         1.021009             TRUE
+             base 0.12635802         3.972891             TRUE
+        DT_unique 0.16807922         5.284670             TRUE
+su_uniqueN_chr n=2e+06
+            method   median_s ratio_to_fastest identical_to_ref
+       kit_uniqLen 0.02033346         1.000000             TRUE
+ collapse_fnunique 0.03060022         1.504920             TRUE
+              base 0.12320884         6.059415             TRUE
+        DT_uniqueN 0.17451916         8.582858             TRUE
+su_duplicated_chr n=2e+06
+               method   median_s ratio_to_fastest identical_to_ref
+      kit_fduplicated 0.02321360         1.000000             TRUE
+ collapse_fduplicated 0.02358483         1.015992             TRUE
+                 base 0.12361723         5.325208             TRUE
+su_match_chr n=2e+06
+          method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch 0.03317718         1.000000             TRUE
+      DT_chmatch 0.05846104         1.762086             TRUE
+            base 0.13417755         4.044273             TRUE
+su_in_chr n=2e+06
+             method   median_s ratio_to_fastest identical_to_ref
+ collapse_fmatch_in 0.03562314         1.000000             TRUE
+            DT_chin 0.06108349         1.714714             TRUE
+               base 0.14066045         3.948570             TRUE
+su_count_chr n=2e+06
+          method   median_s ratio_to_fastest identical_to_ref
+  kit_countOccur 0.04121552         1.000000             TRUE
+ collapse_fcount 0.04909047         1.191068             TRUE
+   collapse_qtab 0.10143926         2.461191             TRUE
+         DT_N_by 0.19429809         4.714197             TRUE
+      base_table 1.65582295        40.174742             TRUE
+There were 50 or more warnings (use warnings() to see the first 50)
+[1] "C.UTF-8"
+$base
+ [1] "_x" "10" "9"  "a"  "A"  "b"  "B"  "e"  "é"  "z"  "Z" 
+
+$radix_C
+ [1] "10" "9"  "A"  "B"  "Z"  "_x" "a"  "b"  "e"  "z"  "é" 
+
+$forder
+ [1] "10" "9"  "A"  "B"  "Z"  "_x" "a"  "b"  "e"  "z"  "é" 
+
+$radixorder
+ [1] "10" "9"  "A"  "B"  "Z"  "_x" "a"  "b"  "e"  "z"  "é" 
+
+$fsort_dplyr
+ [1] "10" "9"  "A"  "B"  "Z"  "_x" "a"  "b"  "e"  "z"  "é" 
+

@@ -1,0 +1,94 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘arrow’
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+
+Attaching package: ‘arrow’
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+Loading required package: DBI
+Loading required package: DBI
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:base’:
+
+    %notin%
+
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:base’:
+
+    %notin%
+
+collapse 2.1.9, see ?`collapse-package` or ?`collapse-documentation`
+
+Attaching package: ‘collapse’
+
+The following object is masked from ‘package:stats’:
+
+    D
+
+collapse 2.1.9, see ?`collapse-package` or ?`collapse-documentation`
+
+Attaching package: ‘collapse’
+
+The following object is masked from ‘package:stats’:
+
+    D
+
+qs2 0.4.0
+qs2 0.4.0
+          pkg attach_s namespace_s attach2_s bare_rscript_s r_version
+1     targets    0.303       0.288     0.289          0.132     4.6.2
+2        crew    0.305       0.278     0.283          0.132     4.6.2
+3       dplyr    0.165       0.168     0.163          0.132     4.6.2
+4   tidyverse       NA          NA        NA          0.132     4.6.2
+5     ggplot2       NA          NA        NA          0.132     4.6.2
+6       arrow    0.186       0.178     0.188          0.132     4.6.2
+7      duckdb    0.206       0.206     0.203          0.132     4.6.2
+8          sf       NA          NA        NA          0.132     4.6.2
+9  data.table    0.032       0.031     0.031          0.132     4.6.2
+10   collapse    0.062       0.057     0.060          0.132     4.6.2
+11        qs2    0.055       0.053     0.055          0.132     4.6.2
+         date
+1  2026-11-09
+2  2026-11-09
+3  2026-11-09
+4  2026-11-09
+5  2026-11-09
+6  2026-11-09
+7  2026-11-09
+8  2026-11-09
+9  2026-11-09
+10 2026-11-09
+11 2026-11-09

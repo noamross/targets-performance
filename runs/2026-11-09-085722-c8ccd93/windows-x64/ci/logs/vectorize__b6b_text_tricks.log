@@ -1,0 +1,103 @@
+! Project is not synced. Run: rig proj sync
+                                                  task     n       method
+ G5 unique-then-match, dup rate 10% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 10% stri_trans_general 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.0297549         1.113345             TRUE
+ 0.9249199         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 10% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 10% R-level per-string fn 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.0402915         1.079579             TRUE
+ 0.9636083         1.000000             TRUE
+                                                  task     n       method
+ G5 unique-then-match, dup rate 50% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 50% stri_trans_general 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.0369134         1.878637             TRUE
+ 0.5519499         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 50% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 50% R-level per-string fn 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.0402799         1.889521             TRUE
+ 0.5505522         1.000000             TRUE
+                                                  task     n       method
+ G5 unique-then-match, dup rate 90% stri_trans_general 1e+05       direct
+ G5 unique-then-match, dup rate 90% stri_trans_general 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.0100069         9.000528             TRUE
+ 0.1122164         1.000000             TRUE
+                                                     task     n       method
+ G5 unique-then-match, dup rate 90% R-level per-string fn 1e+05       direct
+ G5 unique-then-match, dup rate 90% R-level per-string fn 1e+05 unique_match
+  median_s ratio_to_fastest identical_to_ref
+ 1.1037518         8.909796             TRUE
+ 0.1238807         1.000000             TRUE
+                                       task     n      method  median_s
+ G6 remove punct+digits: charclass vs regex 10000       regex 0.1151002
+ G6 remove punct+digits: charclass vs regex 10000   charclass 0.0730915
+ G6 remove punct+digits: charclass vs regex 10000 regex_posix 0.1156287
+ ratio_to_fastest identical_to_ref
+         1.574741             TRUE
+         1.000000             TRUE
+         1.581972             TRUE
+                                                   task     n    method
+ G6 remove single char ',': fixed vs charclass vs regex 10000     regex
+ G6 remove single char ',': fixed vs charclass vs regex 10000     fixed
+ G6 remove single char ',': fixed vs charclass vs regex 10000 charclass
+ G6 remove single char ',': fixed vs charclass vs regex 10000 base_gsub
+   median_s ratio_to_fastest identical_to_ref
+ 0.08897320         2.587024             TRUE
+ 0.03439210         1.000000             TRUE
+ 0.06176125         1.795798             TRUE
+ 0.05813880         1.690470             TRUE
+                                            task     n          method
+ G6 collapse whitespace runs: charclass vs regex 10000           regex
+ G6 collapse whitespace runs: charclass vs regex 10000      regex_trim
+ G6 collapse whitespace runs: charclass vs regex 10000 charclass_merge
+   median_s ratio_to_fastest identical_to_ref
+ 0.19594740         2.138341             TRUE
+ 0.15438845         1.684815             TRUE
+ 0.09163525         1.000000             TRUE
+                                                    task     n
+ G9 to_ascii: fixed table first, trans only on remaining 10000
+ G9 to_ascii: fixed table first, trans only on remaining 10000
+                        method  median_s ratio_to_fastest identical_to_ref
+             trans_general_all 3.1082382         53.33852             TRUE
+ fixed_then_trans_on_remaining 0.0582738          1.00000             TRUE
+G9 n 10000 mismatch docs 0 
+                                       task     n      method  median_s
+ G6 remove punct+digits: charclass vs regex 50000       regex 0.5842009
+ G6 remove punct+digits: charclass vs regex 50000   charclass 0.3706192
+ G6 remove punct+digits: charclass vs regex 50000 regex_posix 0.5892720
+ ratio_to_fastest identical_to_ref
+         1.576283             TRUE
+         1.000000             TRUE
+         1.589966             TRUE
+                                                   task     n    method
+ G6 remove single char ',': fixed vs charclass vs regex 50000     regex
+ G6 remove single char ',': fixed vs charclass vs regex 50000     fixed
+ G6 remove single char ',': fixed vs charclass vs regex 50000 charclass
+ G6 remove single char ',': fixed vs charclass vs regex 50000 base_gsub
+  median_s ratio_to_fastest identical_to_ref
+ 0.4670522         2.679293             TRUE
+ 0.1743192         1.000000             TRUE
+ 0.2967764         1.702488             TRUE
+ 0.2863410         1.642625             TRUE
+                                            task     n          method
+ G6 collapse whitespace runs: charclass vs regex 50000           regex
+ G6 collapse whitespace runs: charclass vs regex 50000      regex_trim
+ G6 collapse whitespace runs: charclass vs regex 50000 charclass_merge
+  median_s ratio_to_fastest identical_to_ref
+ 0.9801328         2.061639             TRUE
+ 0.7786465         1.637827             TRUE
+ 0.4754143         1.000000             TRUE
+                                                    task     n
+ G9 to_ascii: fixed table first, trans only on remaining 50000
+ G9 to_ascii: fixed table first, trans only on remaining 50000
+                        method   median_s ratio_to_fastest identical_to_ref
+             trans_general_all 15.3543475         46.00584             TRUE
+ fixed_then_trans_on_remaining  0.3337478          1.00000             TRUE
+G9 n 50000 mismatch docs 0 

@@ -1,0 +1,51 @@
+os / arch                  Linux 7.0.0-1017-azure x86_64
+R                          R version 4.6.2 (2026-10-29)
+cores logical / physical   4 4
+cores available to R       4
+memory total / available   15.6 GB / 14.4 GB
+cgroup memory.max          max
+cgroup cpu.max             max 100000
+parallelly::availableCores 4
+in container               TRUE
+/dev/shm (mori limit)      0.1 GB total, 0.1 GB free
+disk free at dir           83.5 GB (/__w/targets-performance/targets-performance/bench)
+
+threads (default in a fresh session; workers inherit env vars set before they start)
+  $OMP_NUM_THREADS         -
+  $OMP_THREAD_LIMIT        -
+  $R_DATATABLE_NUM_THREADS -
+  $OPENBLAS_NUM_THREADS    -
+  $VECLIB_MAXIMUM_THREADS  -
+  $MKL_NUM_THREADS         -
+  $R_PARALLELLY_AVAILABLECORES_FALLBACK -
+  $NPROC                   -
+  data.table               2 threads, OpenMP yes
+  collapse                 nthreads 1 (default 1)
+  kit                      OpenMP yes, kit.nThread 1 (default 1; set nThread= per call)
+  qs2                      nthreads arg / tar_resources_qs(); default 1
+  arrow                    cpu 4, io 8
+  duckdb                   threads 4, memory_limit 12.4 GiB, version 2.0.0
+  BLAS                     check path: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.1 /usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.1
+
+packages
+  targets                  1.12.0
+  tarchetypes              0.14.1
+  crew                     1.3.3
+  mirai                    2.7.4
+  qs2                      0.4.0
+  mori                     0.2.2
+  nanoparquet              0.5.2
+  arrow                    26.0.1
+  duckdb                   2.0.0
+  duckplyr                 1.2.2
+  collapse                 2.1.9
+  data.table               1.18.6.1
+  kit                      0.0.21
+  Rfast                    2.1.5.2
+  stringi                  1.8.9
+  bench                    1.1.4
+  ps                       1.9.3
+cli tools                  aria2c=no wget=no curl=no docker=no
+
+budget hint: workers x peak RSS per worker + main process must fit in *available* memory,
+and workers x threads per worker should not exceed physical cores.

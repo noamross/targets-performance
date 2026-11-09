@@ -1,0 +1,22 @@
+       task   n                                         method wall_s
+1     24x2s  24                nproc=1 (serial, no controller) 51.092
+2     24x2s  24                                 nproc=2 (crew) 27.674
+3     24x2s  24                                 nproc=4 (crew) 16.201
+4     24x2s  24                          nproc=1 crew 1 worker 52.711
+5  200x20ms 200                                         serial  6.204
+6  200x20ms 200                                         serial  6.234
+7  200x20ms 200                 crew nproc=2 deployment worker  5.630
+8  200x20ms 200                 crew nproc=4 deployment worker  4.927
+9  200x20ms 200 crew nproc=4, deployment main for tiny targets  5.977
+10 200x20ms 200                crew 1 worker deployment worker  8.356
+   sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1      50.209     0      0    315.2461 116.4609375
+2      50.404     0      0    697.4062 607.5117188
+3      52.191     0      0   1078.0664 957.9375000
+4      50.342     0      0    508.4297 387.3867188
+5       4.730     0      0    313.5273 269.9765625
+6       4.738     0      0    311.7578 270.2890625
+7       5.153     0      0    700.7422 545.7109375
+8       6.422     0      0   1075.7578 834.9492188
+9       4.242     0      0    316.6680   0.1601562
+10      4.928     0      0    511.0508 276.1132812

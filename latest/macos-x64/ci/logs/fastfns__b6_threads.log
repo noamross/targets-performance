@@ -1,0 +1,81 @@
+DT_groupby_sum n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_4 0.1111493         1.000000             TRUE
+ threads_2 0.1782866         1.604028             TRUE
+ threads_1 0.1855643         1.669505             TRUE
+DT_groupby_mean n=1e+07
+    method   median_s ratio_to_fastest identical_to_ref
+ threads_4 0.09363232         1.000000             TRUE
+ threads_2 0.11599040         1.238786             TRUE
+ threads_1 0.19115328         2.041531             TRUE
+DT_forder_dbl n=1e+07
+    method median_s ratio_to_fastest identical_to_ref
+ threads_4 1.321496         1.000000             TRUE
+ threads_2 1.325084         1.002715             TRUE
+ threads_1 1.596741         1.208283             TRUE
+DT_forder_int n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_4 0.2915350         1.000000             TRUE
+ threads_2 0.4111232         1.410202             TRUE
+ threads_1 0.7115255         2.440618             TRUE
+DT_uniqueN_int n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_4 0.3056850         1.000000             TRUE
+ threads_2 0.4335152         1.418176             TRUE
+ threads_1 0.6870490         2.247572             TRUE
+collapse_fsum_matrix_cols n=1e+07
+    method    median_s ratio_to_fastest identical_to_ref
+ threads_4 0.003471755         1.000000             TRUE
+ threads_2 0.005278259         1.520343             TRUE
+ threads_1 0.008434413         2.429438             TRUE
+collapse_fmean_matrix_cols n=1e+07
+    method    median_s ratio_to_fastest identical_to_ref
+ threads_4 0.004420942         1.000000             TRUE
+ threads_2 0.008147393         1.842909             TRUE
+ threads_1 0.010797546         2.442363             TRUE
+collapse_fsum_grouped_vec n=1e+07
+    method   median_s ratio_to_fastest identical_to_ref
+ threads_4 0.05979781         1.000000             TRUE
+ threads_2 0.06451561         1.078896             TRUE
+ threads_1 0.08870505         1.483416             TRUE
+collapse_fmedian_grouped n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_4 0.2968678         1.000000             TRUE
+ threads_2 0.3572072         1.203253             TRUE
+ threads_1 0.4750487         1.600203             TRUE
+collapse_fnth90_grouped n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_4 0.2622314         1.000000             TRUE
+ threads_2 0.3313183         1.263458             TRUE
+ threads_1 0.4420010         1.685538             TRUE
+collapse_fmedian_matrix_cols n=1e+07
+    method   median_s ratio_to_fastest identical_to_ref
+ threads_4 0.07450563         1.000000             TRUE
+ threads_2 0.07518238         1.009083             TRUE
+ threads_1 0.12838209         1.723119             TRUE
+kit_iif n=1e+07
+    method   median_s ratio_to_fastest identical_to_ref
+ threads_4 0.05382268         1.000000             TRUE
+ threads_2 0.05404505         1.004132             TRUE
+ threads_1 0.09714947         1.804991             TRUE
+kit_psort_dbl n=1e+07
+    method  median_s ratio_to_fastest identical_to_ref
+ threads_1 0.9198017         1.000000             TRUE
+ threads_2 0.9696855         1.054233             TRUE
+ threads_4 0.9834708         1.069220             TRUE
+There were 15 warnings (use warnings() to see them)
+Rfast_colMedians n=1e+07
+    method   median_s ratio_to_fastest identical_to_ref
+ threads_4 0.03426571         1.000000             TRUE
+ threads_2 0.06556761         1.913505             TRUE
+ threads_1 0.11909543         3.475644             TRUE
+Rfast_colVars n=1e+07
+    method    median_s ratio_to_fastest identical_to_ref
+ threads_4 0.006778126         1.000000             TRUE
+ threads_2 0.012008157         1.771604             TRUE
+ threads_1 0.020238269         2.985821             TRUE
+Rfast_colsums n=1e+07
+    method    median_s ratio_to_fastest identical_to_ref
+ threads_4 0.004488575         1.000000             TRUE
+ threads_2 0.004727956         1.053331             TRUE
+ threads_1 0.008303729         1.849970             TRUE

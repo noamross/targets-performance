@@ -1,0 +1,35 @@
+A map over group-iterated big table target 1
+A map over group-iterated big table target 3
+B map over list-of-chunks target (one stored object) 1
+B map over list-of-chunks target (one stored object) 3
+C branches use the whole table as static dependency 1
+C branches use the whole table as static dependency 3
+D chunks produced per branch (dynamic chunk target) 1
+D chunks produced per branch (dynamic chunk target) 3
+             task n
+1 6branches_200MB 6
+2 6branches_200MB 6
+3 6branches_200MB 6
+4 6branches_200MB 6
+5 6branches_200MB 6
+6 6branches_200MB 6
+7 6branches_200MB 6
+8 6branches_200MB 6
+                                                                          method
+1            serial [retrieval=auto]: A map over group-iterated big table target
+2           nproc=3 [retrieval=auto]: A map over group-iterated big table target
+3  serial [retrieval=auto]: B map over list-of-chunks target (one stored object)
+4 nproc=3 [retrieval=auto]: B map over list-of-chunks target (one stored object)
+5   serial [retrieval=auto]: C branches use the whole table as static dependency
+6  nproc=3 [retrieval=auto]: C branches use the whole table as static dependency
+7   serial [retrieval=auto]: D chunks produced per branch (dynamic chunk target)
+8  nproc=3 [retrieval=auto]: D chunks produced per branch (dynamic chunk target)
+  wall_s sum_meta_s loads load_s peak_rss_mb  sys_peak_mb
+1  6.347      3.929     0  0.000    912.1914  678.7070312
+2  8.005      4.786     1  0.587   1883.0039 2111.9492188
+3  6.207      4.158     0  0.000    760.8164  566.6445312
+4  7.136      4.500     1  0.677   1491.1719 1158.8710938
+5  7.806      4.136     6  1.840    753.2656  363.0976562
+6  8.094      4.648     6  2.550   2098.2812 2200.8554688
+7  6.155      4.098     6  0.202    400.4844    0.3007812
+8  4.862      4.247     6  0.383   1030.2539  354.7343750
