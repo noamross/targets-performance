@@ -1,0 +1,76 @@
+$status
+[1] 0
+
+$stdout
+[1] ""
+
+$stderr
+NULL
+
+$timeout
+[1] FALSE
+
+         name seconds     bytes
+1        base   2.238  52758441
+2        noop   0.000        48
+3      sav_qs   0.000  52758441
+4     sav_qs4   0.000  52758441
+5  sav_qs4_l1   0.001  58943790
+6     sav_rds   0.000  61305783
+7      sav_np   0.000  90195339
+8  sav_fmt_np   0.000 181576291
+9        d_qs   0.000        51
+10      d_qs4   0.000        51
+11   d_qs4_l1   0.000        51
+12      d_rds   0.000        51
+13       d_np   0.001        51
+14   d_fmt_np   0.000        51
+                                                                                                                                                                                                                                                                                      format
+1                                                                                                                                                                                                                                                                                         qs
+2                                                                                                                                                                                                                                                                                        rds
+3                                                                                                                                                                                                                                                                                         qs
+4                                                                                                                                                                                                                                                                                         qs
+5                                                                                                                                                                                                                                                                                         qs
+6                                                                                                                                                                                                                                                                                        rds
+7  format_custom&read=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9yZWFkKHBhdGgsICJ0YmwiKQ&write=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF93cml0ZShvYmplY3QsIHBhdGgsICJzbmFwcHkiKQ&marshal=&unmarshal=&convert=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9jb252ZXJ0KG9iamVjdCwgInRibCIp&copy=&repository=
+8     format_custom&read=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9yZWFkKHBhdGgsICJ0YmwiKQ&write=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF93cml0ZShvYmplY3QsIHBhdGgsICJ6c3RkIik&marshal=&unmarshal=&convert=dGFyY2hldHlwZXM6OnRhcl9uYW5vcGFycXVldF9jb252ZXJ0KG9iamVjdCwgInRibCIp&copy=&repository=
+9                                                                                                                                                                                                                                                                                        rds
+10                                                                                                                                                                                                                                                                                       rds
+11                                                                                                                                                                                                                                                                                       rds
+12                                                                                                                                                                                                                                                                                       rds
+13                                                                                                                                                                                                                                                                                       rds
+14                                                                                                                                                                                                                                                                                       rds
+      base       noop     sav_qs    sav_qs4 sav_qs4_l1    sav_rds     sav_np 
+     3.775      0.049      1.692      1.032      0.937      7.087      1.287 
+sav_fmt_np       d_qs      d_qs4   d_qs4_l1      d_rds       d_np   d_fmt_np 
+     0.771      0.572      0.466      0.463      1.207      0.741      0.676 
+    qs    qs4 qs4_l1    rds     np fmt_np 
+ 0.527  0.526  0.514  1.160  0.693  0.625 
+     topic            task     n     method seconds_meta bytes_meta
+1  storage b_targets_store 2e+05       noop        0.000         48
+2  storage b_targets_store 2e+05     sav_qs        0.000   52758441
+3  storage b_targets_store 2e+05    sav_qs4        0.000   52758441
+4  storage b_targets_store 2e+05 sav_qs4_l1        0.001   58943790
+5  storage b_targets_store 2e+05    sav_rds        0.000   61305783
+6  storage b_targets_store 2e+05     sav_np        0.000   90195339
+7  storage b_targets_store 2e+05 sav_fmt_np        0.000  181576291
+8  storage b_targets_store 2e+05       d_qs        0.000         51
+9  storage b_targets_store 2e+05      d_qs4        0.000         51
+10 storage b_targets_store 2e+05   d_qs4_l1        0.000         51
+11 storage b_targets_store 2e+05      d_rds        0.000         51
+12 storage b_targets_store 2e+05       d_np        0.001         51
+13 storage b_targets_store 2e+05   d_fmt_np        0.000         51
+   wall_tar_make_s tar_read_s
+1            0.049         NA
+2            1.692      0.527
+3            1.032      0.526
+4            0.937      0.514
+5            7.087      1.160
+6            1.287      0.693
+7            0.771      0.625
+8            0.572         NA
+9            0.466         NA
+10           0.463         NA
+11           1.207         NA
+12           0.741         NA
+13           0.676         NA

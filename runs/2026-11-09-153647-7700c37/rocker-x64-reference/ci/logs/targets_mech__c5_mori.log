@@ -1,0 +1,30 @@
+a: 100 default
+a: 100 nomori_main
+a: 100 mori_main
+a: 300 default
+a: 300 nomori_main
+a: 300 mori_main
+              task   n                                       method wall_s
+1  a_big100_nproc3 100                    no mori, worker retrieval 10.207
+2  a_big100_nproc3 100                no mori, main retrieval (qs2)  8.327
+3  a_big100_nproc3 100        mori format_qs_shared, main retrieval  7.468
+4   b_rerun_big100 100          mori format_qs_shared: 2nd tar_make  1.076
+5  a_big300_nproc3 300                    no mori, worker retrieval 15.840
+6  a_big300_nproc3 300                no mori, main retrieval (qs2) 12.977
+7  a_big300_nproc3 300        mori format_qs_shared, main retrieval 10.989
+8   b_rerun_big300 300          mori format_qs_shared: 2nd tar_make  1.100
+9          c_guard  20 mutate(big,z=1) result read in fresh session  3.177
+10   d_antipattern  20 share() target cue always, memory=persistent  5.198
+11       e_parquet  20             format_parquet_shared / unshared  3.210
+   sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1       8.358     0      0   1998.0078   1949.7344
+2       8.755     0      0   1939.0469   1416.3672
+3       8.606     0      0   1496.5039    641.3125
+4       8.606     0      0   1496.5039    641.3125
+5       8.596     0      0   3935.1680   3984.1484
+6       9.794     0      0   3905.7148   3540.4062
+7      11.668     0      0   2851.6055   1451.9023
+8      11.668     0      0   2851.6055   1451.9023
+9       0.227     0      0    736.8789    156.9297
+10      0.338     0      0    687.5898    439.1914
+11      0.344     0      0    667.3711    325.0977

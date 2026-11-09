@@ -1,0 +1,31 @@
+a: 100 default
+a: 100 nomori_main
+a: 100 mori_main
+a: 300 default
+a: 300 nomori_main
+  RSS 4618 MB over cap 4520 MB; killed (recorded as capped)
+a: 300 mori_main
+              task   n                                       method wall_s
+1  a_big100_nproc3 100                    no mori, worker retrieval 21.875
+2  a_big100_nproc3 100                no mori, main retrieval (qs2) 20.052
+3  a_big100_nproc3 100        mori format_qs_shared, main retrieval 14.236
+4   b_rerun_big100 100          mori format_qs_shared: 2nd tar_make  1.551
+5  a_big300_nproc3 300                    no mori, worker retrieval 31.339
+6  a_big300_nproc3 300                no mori, main retrieval (qs2)     NA
+7  a_big300_nproc3 300        mori format_qs_shared, main retrieval 14.881
+8   b_rerun_big300 300          mori format_qs_shared: 2nd tar_make  1.528
+9          c_guard  20 mutate(big,z=1) result read in fresh session  5.685
+10   d_antipattern  20 share() target cue always, memory=persistent  6.198
+11       e_parquet  20             format_parquet_shared / unshared  4.512
+   sum_meta_s loads load_s peak_rss_mb sys_peak_mb
+1      15.555     0      0   2518.0156   2372.8281
+2      19.774     0      0   2759.6016   2799.5859
+3      21.015     0      0   1707.0195   1551.1250
+4      21.015     0      0   1707.0195   1551.1250
+5      20.749     0      0   4349.2891   3264.6055
+6          NA    NA     NA   4617.8867   3305.5430
+7      20.041     0      0   3032.3164   2333.4219
+8      20.041     0      0   3032.3164   2333.4219
+9       1.065     0      0    779.3320    718.4883
+10      0.695     0      0    745.3789    747.0898
+11      0.496     0      0    670.3633    516.3828

@@ -1,0 +1,7 @@
+"script","topic","status","seconds","peak_mb","cap_mb","killed","machine","run_date","reason"
+"targets_mech/c5_mori.R","targets_mech",0,93,3520,5120,"","gha-linux-arm64","2026-11-09",""
+"targets_mech/c6c_bigmap.R","targets_mech",0,68,2160,5120,"","gha-linux-arm64","2026-11-09",""
+"vectorize/b1_rbind.R","vectorize",0,28,1788,3072,"","gha-linux-arm64","2026-11-09",""
+"fastfns/b4_join_ifelse.R","fastfns",0,278,2008,3072,"","gha-linux-arm64","2026-11-09",""
+"storage/s1_threads.R","storage",0,77,3065,4096,"","gha-linux-arm64","2026-11-09",""
+"storage/s5_targets.R","storage",0,25,796,3072,"","gha-linux-arm64","2026-11-09",""

@@ -1,0 +1,95 @@
+! Project is not synced. Run: rig proj sync
+                    task    n           method   median_s ratio_to_fastest
+ rbind 100 dfs x 10 rows 1000    do_call_rbind 0.00278305        63.685355
+ rbind 100 dfs x 10 rows 1000       list_rbind 0.00036965         8.458810
+ rbind 100 dfs x 10 rows 1000        rbindlist 0.00019490         4.459954
+ rbind 100 dfs x 10 rows 1000 collapse_rowbind 0.00004845         1.108696
+ rbind 100 dfs x 10 rows 1000   collapse_rbind 0.00004370         1.000000
+ rbind 100 dfs x 10 rows 1000     Reduce_rbind 0.00786720       180.027460
+ rbind 100 dfs x 10 rows 1000        vec_rbind 0.00035580         8.141876
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                     task     n           method   median_s ratio_to_fastest
+ rbind 1000 dfs x 10 rows 10000    do_call_rbind 0.03132725        57.360157
+ rbind 1000 dfs x 10 rows 10000       list_rbind 0.00366505         6.710702
+ rbind 1000 dfs x 10 rows 10000        rbindlist 0.00102460         1.876041
+ rbind 1000 dfs x 10 rows 10000 collapse_rowbind 0.00054615         1.000000
+ rbind 1000 dfs x 10 rows 10000   collapse_rbind 0.00085930         1.573377
+ rbind 1000 dfs x 10 rows 10000     Reduce_rbind 0.21797740       399.116360
+ rbind 1000 dfs x 10 rows 10000        vec_rbind 0.00898685        16.454912
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                      task     n           method   median_s ratio_to_fastest
+ rbind 10000 dfs x 10 rows 1e+05    do_call_rbind 0.33466950        50.433934
+ rbind 10000 dfs x 10 rows 1e+05       list_rbind 0.05947650         8.962974
+ rbind 10000 dfs x 10 rows 1e+05        rbindlist 0.01035835         1.560980
+ rbind 10000 dfs x 10 rows 1e+05 collapse_rowbind 0.00677930         1.021625
+ rbind 10000 dfs x 10 rows 1e+05   collapse_rbind 0.00663580         1.000000
+ rbind 10000 dfs x 10 rows 1e+05        vec_rbind 0.69217010       104.308463
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                      task     n           method   median_s ratio_to_fastest
+ rbind 100 dfs x 1000 rows 1e+05    do_call_rbind 0.01182020        70.568358
+ rbind 100 dfs x 1000 rows 1e+05       list_rbind 0.00108115         6.454627
+ rbind 100 dfs x 1000 rows 1e+05        rbindlist 0.00100935         6.025970
+ rbind 100 dfs x 1000 rows 1e+05 collapse_rowbind 0.00017385         1.037910
+ rbind 100 dfs x 1000 rows 1e+05   collapse_rbind 0.00016750         1.000000
+ rbind 100 dfs x 1000 rows 1e+05     Reduce_rbind 0.20923730      1249.177910
+ rbind 100 dfs x 1000 rows 1e+05        vec_rbind 0.00148655         8.874925
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                       task     n           method   median_s ratio_to_fastest
+ rbind 10 dfs x 100000 rows 1e+06    do_call_rbind 0.04069490        27.381846
+ rbind 10 dfs x 100000 rows 1e+06       list_rbind 0.00802455         5.399374
+ rbind 10 dfs x 100000 rows 1e+06        rbindlist 0.00891305         5.997208
+ rbind 10 dfs x 100000 rows 1e+06 collapse_rowbind 0.00154550         1.039900
+ rbind 10 dfs x 100000 rows 1e+06   collapse_rbind 0.00148620         1.000000
+ rbind 10 dfs x 100000 rows 1e+06     Reduce_rbind 0.10138860        68.220024
+ rbind 10 dfs x 100000 rows 1e+06        vec_rbind 0.01217575         8.192538
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+                     task     n           method  median_s ratio_to_fastest
+ rbind 5 dfs x 1e+06 rows 5e+06    do_call_rbind 0.1668653         9.435681
+ rbind 5 dfs x 1e+06 rows 5e+06       list_rbind 0.0533051         3.014227
+ rbind 5 dfs x 1e+06 rows 5e+06        rbindlist 0.0627251         3.546897
+ rbind 5 dfs x 1e+06 rows 5e+06 collapse_rowbind 0.0176845         1.000000
+ rbind 5 dfs x 1e+06 rows 5e+06   collapse_rbind 0.0181418         1.025859
+ rbind 5 dfs x 1e+06 rows 5e+06     Reduce_rbind 0.3175343        17.955515
+ rbind 5 dfs x 1e+06 rows 5e+06        vec_rbind 0.0942963         5.332144
+ identical_to_ref
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE
+             TRUE

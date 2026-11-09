@@ -1,0 +1,7 @@
+"script","topic","status","seconds","peak_mb","cap_mb","killed","machine","run_date","reason"
+"targets_mech/c5_mori.R","targets_mech",0,161,3423,4301,"","gha-macos-arm64-accelerate","2026-11-09",""
+"targets_mech/c6c_bigmap.R","targets_mech",0,85,2459,4301,"","gha-macos-arm64-accelerate","2026-11-09",""
+"vectorize/b1_rbind.R","vectorize",0,33,2021,3072,"","gha-macos-arm64-accelerate","2026-11-09",""
+"fastfns/b4_join_ifelse.R","fastfns",137,245,3110,3072,"memory","gha-macos-arm64-accelerate","2026-11-09",""
+"storage/s1_threads.R","storage",0,51,2560,4096,"","gha-macos-arm64-accelerate","2026-11-09",""
+"storage/s5_targets.R","storage",0,19,982,3072,"","gha-macos-arm64-accelerate","2026-11-09",""
