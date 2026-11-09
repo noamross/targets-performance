@@ -23,8 +23,14 @@
 | 2026-11-03 | Public repo github.com/noamross/targets-performance with fresh history; `notes/` gitignored and kept local; `context/` published except example code from two other projects (kept in `notes/`) (user, 2026-11-03); project-name patterns for the skills/ check live in gitignored `.private-names` | agreed | user |
 | 2026-11-03 | BLAS output `.rds` files (153 MB each) gitignored; `blas.R` writes cross-BLAS differences to `blas/results/blas_diffs.csv`, which `environment.qmd` reads | proposed | main agent |
 | 2026-11-03 | `bench/ci-results/` committed when imported, so the shipped `benchmarks.md` renders the cross-platform table reproducibly | proposed | main agent |
+| 2026-11-09 | `run_suite.R` caps each script at min(suite.csv `cap_gb` or `cap_gb=` override, 60% of total RAM), not of free memory: macOS counts reclaimable cache as used, so 7 GB macOS runners capped scripts at 2 GB and killed them (run 42574321334). CI no longer passes `cap_gb=4`, so suite.csv caps apply | agreed | user |
+| 2026-11-09 | CI matrix sharded by topic (3 shards: `targets_mech`; `vectorize,remote,blas`; `fastfns,storage,startup`) via `run_suite.R topics=`; whole topics per shard because scripts in one topic share result CSVs. Artifacts `bench-<label>-s<k>`; `store` merges shards into one `<label>/` and concatenates run logs; a shard with no selected scripts exits 0 | agreed | user (plan) |
+| 2026-11-09 | rocker containers run with `--shm-size=4g` (Docker default 64 MB `/dev/shm` breaks mori) | agreed | user (plan) |
+| 2026-11-09 | Results site `bench/site/` (Quarto website, ggplot2): status grid, suite time per run, ratio heatmaps per topic, `ci_results.R` flags, versions; built by the `site` job from the bench-results branch and pushed to `gh-pages` | agreed | user |
 
 ## Open questions
 
 | Raised | Question | Options | Evidence | Owner |
 |---|---|---|---|---|
+| 2026-11-09 | R-devel job builds arrow from source (50 min) and failed on a github.com 504 while CMake fetched Boost | rerun; cache libarrow; `continue-on-error` for devel | run 42574321334 job 129019077728 | user |
+| 2026-11-09 | ggplot2 is a site-only dependency (references stay base R) | keep; base graphics | `bench/site/` | user |

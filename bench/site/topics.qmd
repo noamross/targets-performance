@@ -1,0 +1,39 @@
+---
+title: "Results by topic"
+---
+
+```{r}
+source("_data.R")
+res <- read_results()
+```
+
+For each task at its largest size, each tile is one method's time relative to the fastest method on that platform (1 = fastest; darker = slower). Timing is `median_s` (bench::mark median) or, for `targets_mech`, `wall_s` (one `tar_make()`). Read across a row to see whether a method's rank holds on every platform; absolute times differ between runners. `r src`
+
+```{r}
+#| output: asis
+dir.create("figures", showWarnings = FALSE)
+for (tp in sort(unique(res$topic))) {
+  d <- res[res$topic == tp, ]
+  d <- d[d$n == stats::ave(d$n, d$task, FUN = max), ]
+  d$task_n <- paste0(d$task, "\n(n = ", format(d$n, big.mark = ",", scientific = FALSE, trim = TRUE), ")")
+  d$text <- ifelse(d$ratio < 10, sprintf("%.1f", d$ratio), sprintf("%.0f", d$ratio))
+  rows <- nrow(unique(d[, c("task", "method")]))
+  p <- ggplot(d, aes(label, method, fill = log10(ratio))) +
+    geom_tile(colour = "white") +
+    geom_text(aes(label = text, colour = log10(ratio) > 1), size = 2.4, show.legend = FALSE) +
+    scale_colour_manual(values = c(`FALSE` = "grey15", `TRUE` = "white")) +
+    scale_fill_gradient(low = "#f2f5fb", high = "#173b7a", limits = c(0, NA),
+                        name = "Time / fastest", labels = \(x) format(10^x, digits = 2)) +
+    facet_grid(task_n ~ ., scales = "free_y", space = "free_y", switch = "y") +
+    labs(x = NULL, y = NULL) +
+    theme_minimal(base_size = 9) +
+    theme(strip.text.y.left = element_text(angle = 0, hjust = 1, face = "bold"),
+          strip.placement = "outside", panel.grid = element_blank(),
+          axis.text.x = element_text(angle = 30, hjust = 1), legend.position = "top")
+  f <- file.path("figures", paste0(tp, ".png"))
+  ggsave(f, p, width = 10, height = min(1.8 + 0.17 * rows + 0.12 * length(unique(d$task)), 48),
+         dpi = 110, limitsize = FALSE)
+  cat("\n\n## ", tp, "\n\n", sep = "")
+  cat(sprintf("![Time relative to the fastest method per task (largest n), by platform, topic %s. %s](%s){fig-alt=\"Heatmap of method time ratios by platform for topic %s\"}\n\n", tp, src, f, tp))
+}
+```

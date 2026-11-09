@@ -1,0 +1,90 @@
+---
+title: "Run status"
+---
+
+```{r}
+source("_data.R")
+logs <- do.call(rbind, lapply(labels, \(l) read_runlog(file.path(br, "latest", l), l)))
+logs$result <- status_name(logs$status, logs$killed)
+status_height <- max(4, 0.22 * length(unique(logs$script)) + 1.5)
+cap_status <- paste("Exit status of each benchmark script in the latest full run per platform. Skipped = machine below the script's min_cores / min_ram_gb, or unix-only on Windows.", src)
+cap_hist <- paste0("Sum of script wall times (minutes) per platform and run, full and partial runs. Source: bench-results branch, runs/ and index.csv; latest run ", max(index$date), ".")
+```
+
+Weekly CI runs of the benchmark suite (`bench/suite.csv`, `ci == TRUE`) on each platform, from the [targets-performance](https://github.com/noamross/targets-performance) repository. `r src`
+
+## Latest status per script and platform
+
+```{r}
+#| fig-height: !expr status_height
+#| fig-width: 10
+#| fig-cap: !expr cap_status
+cols <- c("ok" = "#3b8a4a", "skipped" = "#b8b8b8", "killed: memory" = "#d08a1e",
+          "killed: timeout" = "#8e5ac8", "failed" = "#c23b3b")
+ggplot(logs, aes(label, script, fill = result)) +
+  geom_tile(colour = "white") +
+  scale_fill_manual(values = cols, drop = FALSE) +
+  labs(x = NULL, y = NULL, fill = NULL) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1), legend.position = "top")
+```
+
+```{r}
+#| output: asis
+bad <- logs[!logs$result %in% c("ok", "skipped"), c("label", "script", "result", "peak_mb", "cap_mb")]
+if (nrow(bad)) {
+  cat("Failed or killed (logs: `latest/<label>/ci/logs/` on the bench-results branch):\n\n")
+  print(knitr::kable(bad, row.names = FALSE))
+} else {
+  cat("Every script that ran passed.\n")
+}
+```
+
+## Suite time per run
+
+```{r}
+#| fig-height: 4
+#| fig-width: 10
+#| fig-cap: !expr cap_hist
+hist <- do.call(rbind, lapply(seq_len(nrow(index)), function(i) {
+  d <- read_runlog(file.path(br, "runs", index$run[i], index$label[i]), index$label[i])
+  if (is.null(d)) return(NULL)
+  data.frame(run = index$run[i], date = as.Date(index$date[i]), label = index$label[i],
+             scope = index$scope[i], minutes = sum(d$seconds, na.rm = TRUE) / 60,
+             failed = sum(d$status > 0))
+}))
+ggplot(hist, aes(date, minutes, colour = label, shape = scope)) +
+  geom_point(size = 2.5) +
+  geom_line(data = hist[hist$scope == "full", ]) +
+  labs(x = "Run date", y = "Suite minutes", colour = NULL, shape = NULL) +
+  theme_minimal()
+```
+
+## Changes since the previous run
+
+```{r}
+#| output: asis
+ff <- Sys.getenv("CI_FLAGS")
+if (nzchar(ff) && file.exists(ff)) {
+  flags <- utils::read.csv(ff, stringsAsFactors = FALSE)
+  if (nrow(flags)) {
+    cat("From `bench/ci_results.R`: timings that moved by more than its threshold, changed fastest methods, and failed scripts.\n\n")
+    print(knitr::kable(flags, row.names = FALSE))
+  } else {
+    cat("No flagged changes.\n")
+  }
+} else {
+  cat("Flags not available for this build.\n")
+}
+```
+
+## Package versions tested
+
+```{r}
+#| output: asis
+vf <- file.path(br, "latest", "versions.csv")
+if (file.exists(vf)) {
+  v <- utils::read.csv(vf, stringsAsFactors = FALSE)
+  print(knitr::kable(v, row.names = FALSE))
+}
+```

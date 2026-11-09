@@ -1,0 +1,21 @@
+# CI benchmark results site: quarto render bench/site (from the repo root).
+# Needs BENCH_RESULTS: a checkout of the bench-results branch. Optional
+# CI_FLAGS: flags.csv from bench/ci_results.R. Published to gh-pages by CI.
+project:
+  type: website
+  output-dir: _site
+website:
+  title: "targets-performance CI benchmarks"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Status
+      - href: topics.qmd
+        text: Results by topic
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+  warning: false
+  message: false

@@ -14,3 +14,6 @@ bench/ci/
 # Local working notes and private context (not published)
 notes/
 bench/blas/results/*.rds
+bench/site/_site/
+bench/site/figures/
+bench/site/.quarto/
