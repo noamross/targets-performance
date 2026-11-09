@@ -29,9 +29,9 @@ writeLines(c('library(targets)',
   'rd <- sapply(vars, function(s) system.time(tar_read_raw(paste0("sav_", s)))[["elapsed"]])',
   'm <- tar_meta(fields = c("seconds", "bytes", "format"), complete_only = TRUE)',
   'saveRDS(list(wall = unlist(out), read = rd, meta = as.data.frame(m)), "res.rds")'), file.path(S5, "run.R"))
-old <- setwd(S5); on.exit(setwd(old), add = TRUE)
-system2(rscript_bin(), c("run.R"), env = paste0("R_LIBS=", paste(.libPaths(), collapse = .Platform$path.sep)))
-r <- readRDS("res.rds"); setwd(old)
+processx::run(rscript_bin(), "run.R", wd = S5, echo = TRUE, stderr_to_stdout = TRUE,
+              env = c("current", R_LIBS = paste(.libPaths(), collapse = .Platform$path.sep)))
+r <- readRDS(file.path(S5, "res.rds"))
 print(r$meta); print(r$wall); print(r$read)
 m <- r$meta; m <- m[m$name != "base", ]
 rows <- data.frame(topic = "storage", task = "b_targets_store", n = 2e5, method = m$name, seconds_meta = m$seconds, bytes_meta = m$bytes,

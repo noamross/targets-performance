@@ -17,6 +17,6 @@ for (v in names(variants)) for (np in c(1, NP3)) {
   if (!tm_fits(MB * (2 + 2 * np), sprintf("c6c np %d", np))) next
   src <- paste(pre(np, retrieval = RETR), variants[[v]], sep = "\n")
   r <- tryCatch(tm_run("c6c", src, after = "res$by_name <- tapply(res$meta$seconds, sub('_[0-9a-f]+$', '', res$meta$name), sum)"), error = function(e) { message(conditionMessage(e)); NULL })
-  if (!is.null(r)) rows[[length(rows) + 1]] <- tm_row("6branches_200MB", 6, sprintf("%s [retrieval=%s]: %s", if (np == 1) "serial" else sprintf("nproc=%d", np), RETR, v), r, notes = paste(names(r$by_name), round(r$by_name, 2), collapse = "; "))
+  if (!is.null(r)) rows[[length(rows) + 1]] <- tm_row("6branches_200MB", 6, sprintf("%s [retrieval=%s]: %s", if (np == 1) "serial" else sprintf("nproc=%d", np), RETR, v), r, notes = if (isTRUE(r$capped)) "" else paste(names(r$by_name), round(r$by_name, 2), collapse = "; "))
 }
 tm_save(do.call(rbind, rows), OUT)
