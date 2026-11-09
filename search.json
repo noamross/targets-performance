@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "topics.html",
+    "href": "topics.html",
+    "title": "Results by topic",
+    "section": "",
+    "text": "For each task at the largest size each platform ran (memory-limited runners may skip the biggest), each tile is one method’s time relative to the fastest method on that platform (1 = fastest; darker = slower). Timing is median_s (bench::mark median) or, for targets_mech, wall_s (one tar_make()). Read across a row to see whether a method’s rank holds on every platform; absolute times differ between runners. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#blas",
+    "href": "topics.html#blas",
+    "title": "Results by topic",
+    "section": "blas",
+    "text": "blas\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic blas. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#blas_dt",
+    "href": "topics.html#blas_dt",
+    "title": "Results by topic",
+    "section": "blas_dt",
+    "text": "blas_dt\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic blas_dt. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#blas_workers",
+    "href": "topics.html#blas_workers",
+    "title": "Results by topic",
+    "section": "blas_workers",
+    "text": "blas_workers\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic blas_workers. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#fastfns",
+    "href": "topics.html#fastfns",
+    "title": "Results by topic",
+    "section": "fastfns",
+    "text": "fastfns\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic fastfns. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#ordering",
+    "href": "topics.html#ordering",
+    "title": "Results by topic",
+    "section": "ordering",
+    "text": "ordering\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic ordering. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#storage",
+    "href": "topics.html#storage",
+    "title": "Results by topic",
+    "section": "storage",
+    "text": "storage\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic storage. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#targets_mech",
+    "href": "topics.html#targets_mech",
+    "title": "Results by topic",
+    "section": "targets_mech",
+    "text": "targets_mech\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic targets_mech. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "topics.html#vectorize",
+    "href": "topics.html#vectorize",
+    "title": "Results by topic",
+    "section": "vectorize",
+    "text": "vectorize\n\n\n\nTime relative to the fastest method per task (largest n), by platform, topic vectorize. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Run status",
+    "section": "",
+    "text": "Weekly CI runs of the benchmark suite (bench/suite.csv, ci == TRUE) on each platform, from the targets-performance repository. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93)."
+  },
+  {
+    "objectID": "index.html#latest-status-per-script-and-platform",
+    "href": "index.html#latest-status-per-script-and-platform",
+    "title": "Run status",
+    "section": "Latest status per script and platform",
+    "text": "Latest status per script and platform\n\n\n\n\n\nExit status of each benchmark script in the latest full run per platform. Skipped = machine below the script’s min_cores / min_ram_gb, or unix-only on Windows. Source: bench-results branch, latest/ (runs 2026-11-09; commits c8ccd93).\n\n\n\n\nFailed or killed (logs: latest/&lt;label&gt;/ci/logs/ on the bench-results branch):\n\n\n\n\n\n\n\n\n\n\nlabel\nscript\nresult\npeak_mb\ncap_mb\n\n\n\n\nmacos-arm64\nfastfns/b4_join_ifelse.R\nkilled: memory\n2113\n2024\n\n\nmacos-arm64\nvectorize/b1_rbind.R\nkilled: memory\n2048\n2024\n\n\nmacos-arm64\nstorage/s1_threads.R\nkilled: memory\n2164\n2024\n\n\nmacos-arm64\ntargets_mech/c6c_bigmap.R\nfailed\n1305\n2024\n\n\nmacos-arm64-accelerate\nfastfns/b4_join_ifelse.R\nkilled: memory\n2104\n2090\n\n\nmacos-arm64-accelerate\nvectorize/b1_rbind.R\nkilled: memory\n2103\n2090\n\n\nmacos-arm64-accelerate\nstorage/s1_threads.R\nkilled: memory\n2655\n2090\n\n\nmacos-arm64-accelerate\ntargets_mech/c6c_bigmap.R\nfailed\n1240\n2090\n\n\nmacos-x64\ntargets_mech/c5_mori.R\nkilled: memory\n4106\n4096\n\n\nrocker-x64-openblas\ntargets_mech/c5_mori.R\nfailed\n1892\n4096\n\n\nrocker-x64-reference\ntargets_mech/c5_mori.R\nfailed\n1890\n4096\n\n\nwindows-x64\nstorage/s5_targets.R\nfailed\n84\n4096"
+  },
+  {
+    "objectID": "index.html#suite-time-per-run",
+    "href": "index.html#suite-time-per-run",
+    "title": "Run status",
+    "section": "Suite time per run",
+    "text": "Suite time per run\n\n\n\n\n\nSum of script wall times (minutes) per platform and run, full and partial runs. Source: bench-results branch, runs/ and index.csv; latest run 2026-11-09."
+  },
+  {
+    "objectID": "index.html#changes-since-the-previous-run",
+    "href": "index.html#changes-since-the-previous-run",
+    "title": "Run status",
+    "section": "Changes since the previous run",
+    "text": "Changes since the previous run\nFrom bench/ci_results.R: timings that moved by more than its threshold, changed fastest methods, and failed scripts.\n\n\n\n\n\n\n\n\n\n\n\nlabel\ntopic\ntask\nkind\ndetail\nreference\n\n\n\n\nmacos-arm64-accelerate\nfastfns\nfastfns/b4_join_ifelse.R\nfailed\nstatus 137 (memory)\nfast-functions\n\n\nmacos-arm64-accelerate\nvectorize\nvectorize/b1_rbind.R\nfailed\nstatus 137 (memory)\nvectorization\n\n\nmacos-arm64-accelerate\nstorage\nstorage/s1_threads.R\nfailed\nstatus 137 (memory)\nstorage-formats\n\n\nmacos-arm64-accelerate\ntargets_mech\ntargets_mech/c6c_bigmap.R\nfailed\nstatus 1\nmemory, branching, parallelism, sharing-mori\n\n\nmacos-arm64\nfastfns\nfastfns/b4_join_ifelse.R\nfailed\nstatus 137 (memory)\nfast-functions\n\n\nmacos-arm64\nvectorize\nvectorize/b1_rbind.R\nfailed\nstatus 137 (memory)\nvectorization\n\n\nmacos-arm64\nstorage\nstorage/s1_threads.R\nfailed\nstatus 137 (memory)\nstorage-formats\n\n\nmacos-arm64\ntargets_mech\ntargets_mech/c6c_bigmap.R\nfailed\nstatus 1\nmemory, branching, parallelism, sharing-mori\n\n\nmacos-x64\ntargets_mech\ntargets_mech/c5_mori.R\nfailed\nstatus 137 (memory)\nmemory, branching, parallelism, sharing-mori\n\n\nrocker-x64-openblas\ntargets_mech\ntargets_mech/c5_mori.R\nfailed\nstatus 1 (NA)\nmemory, branching, parallelism, sharing-mori\n\n\nrocker-x64-reference\ntargets_mech\ntargets_mech/c5_mori.R\nfailed\nstatus 1 (NA)\nmemory, branching, parallelism, sharing-mori\n\n\nwindows-x64\nstorage\nstorage/s5_targets.R\nfailed\nstatus 1 (NA)\nstorage-formats"
+  },
+  {
+    "objectID": "index.html#package-versions-tested",
+    "href": "index.html#package-versions-tested",
+    "title": "Run status",
+    "section": "Package versions tested",
+    "text": "Package versions tested\n\n\n\npackage\nversion\nr_version\nplatform\ntested\n\n\n\n\ntargets\n1.12.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ntarchetypes\n0.14.1\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ncrew\n1.3.3\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nmirai\n2.7.4\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nqs2\n0.4.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nmori\n0.2.2\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nnanoparquet\n0.5.2\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\narrow\n26.0.1\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nduckdb\n2.0.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nduckplyr\n1.2.2\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ndbplyr\n2.6.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ncollapse\n2.1.9\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ndata.table\n1.18.6.1\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nkit\n0.0.21\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nRfast\n2.1.5.2\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nRfast2\n0.1.5.6\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nfastverse\n0.3.4\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nstringi\n1.8.9\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nvctrs\n0.7.3\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\npurrr\n1.2.2\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ndplyr\n1.2.1\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\ncurl\n8.1.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nhttr2\n1.3.0\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09\n\n\nbench\n1.1.4\n4.6.2\nx86_64-pc-linux-gnu\n2026-11-09"
+  }
+]
